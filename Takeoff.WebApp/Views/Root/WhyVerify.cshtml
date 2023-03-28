@@ -1,0 +1,15 @@
+﻿@{
+    Layout = "~/Views/Shared/Layout-App-Slim.cshtml";
+    
+    Html.ShowExternalLinksForVisitors();
+    ViewData["PageTitle"] = "Why We Verify Your Email Address";
+}
+
+@section Header
+{
+  <h1>Why We Verify Your Email Address</h1>
+}
+
+    <p>We wanted to make it super easy to sign up for Takeoff.  When someone signs up for Takeoff, all we know is the email address that was entered. At that point we don’t know if the person really owns that email address. If we didn't verify this ownership, a mischievous person could cause some trouble.</p>
+    <p>For example, without verification, a person could sign up under steve@gmail.com. But it's not Steve. It's Jon, Steve's evil nemesis. After signing up, Jon invites jodi@gmail.com. Jodi gets an email from Takeoff that says steve@gmail.com wants her to join a project. She accepts, because she works with Steve. In Takeoff, 'Steve' asks her to upload some files - private company documents. Jodi obliges. Jon gets those sensitive documents and laughs himself to sleep with thoughts of blackmail. </p>
+    <p>We must prevent these situations, as rare as they are. So when someone claims to be steve@gmail.com, we must restrict what they can do until we know it is indeed them. This is a common practice among web sites. It's simple to do - just click on a link in an email we send. Some other web sites make you do this up front. We find that annoying, so we let people experience Takeoff right away and they can verify their email at their leisure. </p>

@@ -1,0 +1,24 @@
+﻿@{
+    Layout = "~/Views/Shared/Layout-External-Slim.cshtml";
+    
+    ViewData["PageTitle"] = "Try";
+}
+@section JsDocReady
+{
+    $("#mainForm").madValidate({ useAjax: false }); 
+    $("#timezoneOffset").val(new Date().getTimezoneOffset());
+}
+@section Header
+{
+	<h1>@S.Trial_PageHeading</h1>
+}
+<p class="instructions">
+    @("Want to try Takeoff {0}without giving any personal information{/0}?  Then hit the button below, see if Takeoff is right for you, and sign up if and when you want.".FormatResource(Html.Element("strong")))
+</p>
+
+<div class="actions">
+            <form method="post" action="@Url.Action("Create", "Signup", new { type = SignupType.StartTrial }, UrlType.RelativeHttps)">
+                <input class="btn btn-large btn-primary" value="@("Try Takeoff Now")" type="submit" />
+            </form>    
+</div>
+

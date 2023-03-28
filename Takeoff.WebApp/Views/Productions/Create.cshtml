@@ -1,0 +1,54 @@
+﻿@model Productions_Create
+@{
+    Layout = "~/Views/Shared/Layout-App-Slim.cshtml";
+    
+
+    ViewData["PageTitle"] = S.Productions_Create_PageTitle;
+}
+@section JsExternal
+{
+    @Html.JsLib("app-productions-create.js")
+}
+
+@section JsDocReady
+{
+    window.views.Productions_Create();
+}
+
+@section Header
+{
+    <h1>@S.Productions_Create_PageHeading</h1>
+}
+
+
+@Html.ValidationSummary(@S.Validation_SummaryHeading)
+<form method="post" class="form-horizontal" action="@(Url.Action<ProductionsController>(c => c.Create()))"  enctype="multipart/form-data">
+    @Html.AntiForgeryToken()
+    <fieldset>
+        @Html.TextBoxControlGroupFor(m => m.Title, S.Productions_Create_Form_Title_Label)
+        <div class="control-group">
+            @Html.ControlLabel(S.Productions_Create_Form_Logo_Label, "Logo", "The logo will be shown alongside the production title on the site and in emails.  You can also set an account-wide logo in Account/Logo.")
+            <div class="controls">
+                <input type="file" id="Logo" name="Logo" size="30" />
+            </div>
+        </div>
+        <div id="CustomUrl-group" class="control-group">
+            @Html.ControlLabel("Custom Url", "CustomUrl", "A custom web address for this production makes it easier to find and share.  For example, enter 'mymovie' and this production can be found at http://takeoffvideo.com/mymovie.")
+            <div class="controls">
+                <div class="input-prepend">
+                    <span class="add-on">@("http://takeoffvideo.com/")</span><input type="text" size="16" id="CustomUrl" name="CustomUrl" class="span2" />
+                </div>
+            </div>
+        </div>
+        <div id="SemiAnonymousLogin-Container" class="control-group">
+            @Html.ControlLabel("Guest Password", "SemiAnonymousDecryptedPassword", "Setting this password lets people enter the production without creating a Takeoff account.  You can optionally allow those people to add comments.")
+            <div class="controls">
+                @Html.TextBoxFor(m => m.SemiAnonymousDecryptedPassword)
+                <div id="SemiAnonymousUsersCanComment-Container" style="visibility:hidden">@Html.CheckBoxFor(m => m.SemiAnonymousUsersCanComment)Guests can Comment</div>
+            </div>
+        </div>
+        <div class="form-actions">
+            <input type="submit" value="Create Production"  class="btn btn-primary" /><a href="#" class="btn">@S.Shared_CancelBtn_Text</a>
+        </div>
+    </fieldset>
+</form>

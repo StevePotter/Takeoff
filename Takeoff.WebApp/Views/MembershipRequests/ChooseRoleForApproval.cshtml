@@ -1,0 +1,33 @@
+﻿@{
+    Layout = "~/Views/Shared/Layout-App-Slim.cshtml";
+    int RequestId = (int)ViewData["RequestId"];
+    this.ViewData.AddBodyCss("chooserole");
+}
+
+@section Header
+{
+    <h1>@("Please Choose a Role for Your New Member")</h1>
+}
+
+<div id="roles">
+<div>
+	          		<h3>Client</h3>
+	          	    <p>Can add comments and upload files, but cannot add new videos or invite people in. Use this for customers and reviewers.</p>
+	          	    <div class="alert-actions">
+                        <form method="post" action="@Url.Action("Approve", "MembershipRequests", new { id = RequestId })">
+                        <input type="hidden" name="role" value="Client" />
+                        <input type="submit" value="Approve as Client" class="@Html.PrimaryButtonClass()" />
+                        </form>
+	          	    </div>
+	          	</div>
+<div>
+	      			<h3>Staff</h3>
+	      		    <p>Can add comments, upload files, add new teammates and upload new videos. Use this for editors and contractors.</p>
+	      		    <div>
+                        <form method="post" action="@Url.Action("Approve", "MembershipRequests", new { id = RequestId })">
+                        <input type="hidden" name="role" value="Staff" />
+                        <input type="submit" value="Approve as Staff" class="@Html.PrimaryButtonClass()" />
+                        </form>
+	      		    </div>
+	      		</div>
+</div>

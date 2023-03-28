@@ -1,0 +1,36 @@
+﻿@model Account_Subscription
+@{
+    Layout = "~/Views/Account/Layout.cshtml";
+    
+    ViewData["Heading"] = S.Account_Billing_PageTitle;
+}
+
+@section JsDocReady
+{
+    window.views.Account_BillingInfo();
+}
+@Html.ValidationSummary("Your billing info couldn't be updated.  Please address the following:")
+<form method="post" action="@(Url.Action<AccountController>(c => c.Billing()))" id="mainForm" class="form-horizontal">
+@Html.AntiForgeryToken()
+    <fieldset>
+        @Html.TextBoxControlGroupFor(m=>m.FirstName)
+        @Html.TextBoxControlGroupFor(m => m.LastName)
+        @Html.ControlGroup(Html.ControlLabelFor(m => m.PostalCode), Html.TextBoxFor(m => m.PostalCode, new { @class= "mini"}))
+        <div class="@Html.ControlGroupClass()">
+            @Html.ControlLabelFor(m => m.CreditCardNumber)
+            <div class="controls">
+                @Html.TextBoxFor(m => m.CreditCardNumber)
+                <span class="help-block" id="cards-accepted">@S.Subscribe_CardsAccepted</span>                
+            </div>
+        </div>
+        @Html.ControlGroup(Html.ControlLabelFor(m => m.CreditCardVerificationCode), Html.TextBoxFor(m => m.CreditCardVerificationCode, new { @class = "mini" }))
+        <div class="@Html.ControlGroupClass()">
+            @Html.ControlLabel("Expiration", "ccExpiration")
+            <div class="controls">
+                @Html.DropDownListFor(m => m.CreditCardMonth, Model.CreditCardMonths)
+                @Html.DropDownListFor(m => m.CreditCardYear, Model.CreditCardYears)
+            </div>
+        </div>
+        @Html.FormButtons(S.Shared_SubmitBtn_Text)
+    </fieldset>
+</form>

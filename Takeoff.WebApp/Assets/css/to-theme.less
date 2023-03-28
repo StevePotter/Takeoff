@@ -1,0 +1,1096 @@
+
+@import "bootstrap-2.0.3/bootstrap.less";
+@import "datatable.less";
+
+//variable overrides
+@linkColor:             #004D66;
+@errorText:               darken(#b94a48, 10%);
+@errorBackground:         darken(#f2dede, 4%);
+@errorBorder:             darken(spin(@errorBackground, -10), 3%);
+
+//for whatever reason, putting bootstrap into a subfolder screwed up the url completely and setting the @iconSpritePath did nothing.  
+[class^="icon-"],
+[class*=" icon-"] {
+  background-image: url("../img/glyphicons-halflings.png");
+}
+.icon-white {
+  background-image: url("../img/glyphicons-halflings-white.png");
+}
+
+//fixes IE broken background-color when using rgba 
+.rgba-bg(@r: 255, @g: 255, @b: 255, @a: 1)
+{
+    background-color: rgb(@r, @g, @b);//ie <= 8 
+    background-color: rgba(@r, @g, @b, @a);
+}
+
+.reset-background() {
+    background:none;
+    .reset-filter();
+}
+
+
+.actions {
+  padding-left: 20px;
+}
+
+
+//hides various links shown up top.  keeps the main app logo.  should be applied to the body element 
+.hide-top-nav()
+{
+    #top-nav ul.nav
+    {
+        visibility: hidden;
+    }
+}
+
+
+.left {
+	float: left;
+}
+.right {
+	float: right;
+}
+
+
+/* typography
+*******************************************************/
+h1 {
+    font-weight: normal;
+    margin-bottom: 18px;
+}
+h2 {
+	font-weight: normal;
+}
+a, a:link, a:visited, a:active {
+	cursor: default;
+}
+a:hover {
+	cursor: pointer;
+}
+blockquote {
+	border-left: 5px solid #ccc;
+	position: relative;
+	padding-right: 60px;
+}
+blockquote:after {
+	font-family: Constantia, "Lucida Bright", Lucidabright, "Lucida Serif", Lucida, "DejaVu Serif", "Bitstream Vera Serif", "Liberation Serif", Georgia, serif;
+	content: "”";
+	position: absolute;
+	font-size: 120px;
+	line-height: 1em;
+	color: #ccc;
+	top: -10px;
+	right: 0;
+	z-index: 0;
+}
+
+.label {
+	text-shadow: none;
+}
+
+
+/* page
+*******************************************************/
+html, body {
+    background-color: #E7E9EA;
+    background-image: url("../img/body-bg.png");
+    text-shadow: 0 1px 0 #FFFFFF;
+}
+hr {
+	border-bottom: 1px solid #ddd;
+	box-shadow: 0 1px 0 rgba(255,255,255,.5);
+}
+footer {
+	border-top: 1px solid #ddd;
+	box-shadow: 0 -1px 0 rgba(255,255,255,.5);
+}
+.btn.tiny {
+    font-size: 11px;
+    padding: 2px 5px;
+}
+blockquote small {
+	color: #777;
+}
+#logo {
+    float: left;
+    &.default
+    {
+    	margin-top:  -20px;
+    }
+}
+
+div[role="main"] {
+	margin-top: 18px;
+}
+
+#top-nav
+{
+	margin-top: 50px;
+	#logo { margin-right: 25px; }
+    .navbar-inner
+    {
+        .reset-background();
+        .box-shadow(none);
+        border: none;
+        padding: 0;
+    }
+    .btn { margin: 0 } //reset bootstrap's stuf
+	.nav .dropdown-toggle .caret, .navbar .nav .open.dropdown .caret {
+		border-top-color: #004D66;
+	}
+    .nav > li
+    {
+        margin: 0 5px;
+        color: #004D66;
+        font-size: 14px;
+        text-shadow: none;
+        > a
+        {
+            color: #004D66; 
+            text-shadow: none;
+            .border-radius(3px);
+            padding: 4px 10px;
+            text-decoration: none;
+            &:hover {
+	            color: #004D66;
+	            text-decoration: underline;
+            }
+            &.selected {
+                color: #004D66;
+                text-decoration: none;
+                cursor: default;
+                pointer-events: none;
+            }
+            &.btn-primary {
+	            color: #fff;
+	            text-decoration: none;
+            }
+		}
+        //for 'hi, bill' when they are logged in
+        &#nav-user-recognition { padding-top: 5px; }
+
+        .dropdown-menu a:hover
+        {
+            color:white;
+        }       
+    }
+}
+
+h2 .btn {
+	float: right;
+}
+
+.nav-tabs
+{
+	box-shadow: 0 1px 0 rgba(255,255,255,.5);
+    li.active > a {
+	    box-shadow: 0 1px 0 #fff inset;
+    }
+    li > a:hover {
+	    .rgba-bg(255,255,255,.2);
+	    background-image: none;
+	    border-color: #ddd #ddd transparent;
+    }
+}
+
+
+/* forms
+***************************************************************/
+.input-prepend .add-on, .input-append .add-on {
+    color: #8D8D8D;
+}
+
+//prevent annoying outline when clicking on certain elements and wandering cursor away
+.tabs
+{
+    a:focus {
+      outline: 0;
+    }
+}
+
+
+/********************************************************************************************
+* 
+* Bootstrap overrides/resets
+*
+********************************************************************************************/
+//bootstrap had 5px bottom margin.  it threw off our forms, like in productions/create
+.input-prepend, .input-append {
+  margin-bottom: inherit;
+}
+
+.page-header
+{
+  border-bottom: 1px solid #ddd;
+  .box-shadow(0 1px 0 rgba(255,255,255,.5));
+  padding-bottom: 0;   
+  h1
+  {
+    margin-bottom: 8px;
+  }
+}
+
+.nav.nav-tabs
+{
+	margin-bottom:0;
+}
+
+.nav-pills .active > a, dropdown-menu a:hover { text-shadow: none; }//otherwise active stuff in dropdowns or pills looks bad
+
+.btn-primary, .nav > li > a.btn-primary:hover
+{
+	background-color: #004D66;
+	background-image: -moz-linear-gradient(center top , #006788, #004D66);
+	background-image: -webkit-gradient-linear-gradient(center top , #006788, #004D66);
+	background-image: linear-gradient(center top , #006788, #004D66);
+}
+
+.well {
+	.rgba-bg(255,255,255,.2);
+	.box-shadow(0 1px 0 #fff inset);
+}
+
+.table-striped {
+	background-color: rgba(255,255,255,.2);
+	.box-shadow(0 1px 0 #fff inset);
+}
+.table-striped tbody tr:nth-child(2n+1) td {
+    .rgba-bg(0,77,102,.05);
+}
+.table-striped tbody tr:hover td {
+    .rgba-bg(255,255,204,.3);
+}
+
+//Tokenizer
+.tokenizer-container
+{
+    overflow: hidden;
+	position: relative;
+	padding: 0px 0px 4px 4px;//bottom&left padding.  top and right are filled by tokens and input
+	//below copied from forms.less
+	font-size: @baseFontSize;
+	line-height: @baseLineHeight;
+	color: @gray;
+	background-color: @inputBackground;
+	border: 1px solid @inputBorder;
+	.border-radius(@inputBorderRadius);
+}
+
+.tokenizer-container input
+{
+    float: left;
+    display: block;
+    padding: 1px 0 1px 0 !important;
+    border-width: 4px 4px 0px 0px !important;
+    border-color: transparent !important;
+    border-style: solid !important;
+    position: relative;
+    background: transparent;
+    display: block;
+    margin: 0;
+    .box-shadow(none);
+}
+
+
+.tokenizer-token
+{
+	float: left;
+	margin: 4px 4px 0px 0px;
+	background-color: #F9FCFF;
+	text-decoration: none;
+    border: 1px solid #AACCEE;
+    padding: 0px 4px 0px 4px;
+    .border-radius(2px);
+    cursor: default;
+    &:hover
+    {
+        cursor: default;
+        text-decoration: none;
+        background-color: #D5ECFF;
+        .tokenizer-token-close { .opacity(40); }
+    }
+}
+
+.tokenizer-token-selected
+{
+    color: white;
+    text-shadow:none;
+    background-color: #348DD3;
+    &:hover
+    {
+        background-color: #348DD3;
+        color: white;
+        .tokenizer-token-close
+        {
+            color: white;
+        }
+    }
+}
+
+.tokenizer-token-invalid
+{
+    background-color: #F2DEDE;
+    border-color: #EED3D7;
+    color: #B94A48;
+    &:hover {
+        background-color: darken(#F2DEDE,5%);
+        color: darken(#B94A48,5%);
+    }
+    &.tokenizer-token-selected
+    {
+        background-color: darken(#F2DEDE,20%);
+        color: white;
+    }
+}
+
+.tokenizer-token-title
+{
+}
+
+
+.tokenizer-token-close
+{
+    margin-left: 3px;
+    padding-left: 3px;
+    font-size: 14px;
+    font-weight: bold;
+    color: @black;
+    text-shadow: 0 1px 0 rgba(255,255,255,1);
+    .opacity(20);
+    &:hover {
+        color: @black;
+        text-decoration: none;
+        cursor: pointer;
+        .opacity(60);
+    }
+}
+
+
+
+
+/********************************************************************************************
+*
+* Tooltips
+*
+********************************************************************************************/
+
+//override bootstrap's ugly black tooltip
+.tooltip-inner {
+    .border-radius(6px);
+    border-style: solid;
+    border-color: @black;
+    background-color: @white;
+    color: @textColor;
+    max-width: 240px;
+}
+
+//these are a simple label used to give a popover 
+.tooltip-anchor
+{
+    cursor: pointer;   
+    background-color: #BFBFBF;
+    font-size: 9.75px;
+    font-weight: bold;
+    padding: 1px 3px 2px;
+    text-transform: uppercase;
+}
+
+.dropdown-menu li > a:hover,
+.dropdown-menu .active > a,
+.dropdown-menu .active > a:hover {
+text-shadow:0;
+}
+
+
+/********************************************************************************************
+*
+* Forms
+*
+********************************************************************************************/
+
+// submit, cancel, etc buttons at bottom.  overrides most of bootstrap's defaults
+.form-actions {
+    //kill the top and bottom spacing around form buttons, which weren't there in original bootstrap
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-left: 0;        
+    .btn {
+	    margin-right: 20px;
+    }
+} 
+
+// highlight invalid fields with a subtle border.  input-validation-error is added by asp.net mvc in server-side validation
+input.invalid, select.invalid, textarea.invalid, .input-validation-error
+{
+	border-color: #EE5F5B;
+	box-shadow: 0 0 6px #F8B9B7;
+}
+
+
+.typical-form(@labelWidth, @inputBlockLeft, @labelFontSize)
+{
+    fieldset
+    {
+        padding-top: 0;//reset to align form with options menu
+    }
+    // submit, cancel, etc buttons at bottom.  overrides most of bootstrap's defaults
+    .form-actions {        
+        padding-left: @inputBlockLeft;        
+    } 
+
+    // a single field, intended to be used mostly for textfields with a label on the left
+    .control-group
+    {
+        margin-bottom: 20px;
+        label .tooltip-anchor { position: relative; left: 4px; top: -2px; }//it doesn't just go in label.control-label, like in the case of a checkbox
+        label.control-label {
+            display: inline-block;
+            font-size: @labelFontSize;
+            width: @labelWidth;
+            cursor: pointer;
+            padding-right: 20px;
+            //helps align the tooltip anchors next to field labels
+        }
+        input[type="checkbox"], input[type="radio"] {
+	        margin-right: 10px;
+        }
+        .help-block {
+            color: #999;
+            margin-top: 2px;
+        }
+    }
+    // a group of check/radio inputs, each with a label on the right.  this is like bootstrap's .inputs-list but doesn't have such crazy markup
+    ul.option-group
+    {        
+        margin-left: @inputBlockLeft;
+        list-style: none;
+        > li
+        {
+            padding-top: 6px;
+            margin-left: 20px;//part of wrapping the label
+            > label
+            {
+	            text-align: left;
+	            display: inline;
+                cursor: pointer;
+                width: auto;
+                float: none;
+            }
+            input[type="radio"], input[type="checkbox"] {
+                float: left;
+                margin: 3px 0 0 -20px;//this mess makes it possible to do wrapping
+            }
+        }
+    }
+    
+
+    //container for input groups
+    div.controls
+    {
+        margin-left: @inputBlockLeft;
+    }   
+}
+
+//for posting in .actions.  generally it's a form with a single button, no fields.  see /RenderedViews/AccountPlan_Edit_Edit-Downgrade.html.  this shuts off the odd margin that was being added
+.actions form
+{ 
+    margin: 0;
+}
+
+//a field that contains no input elements, only a label + div.  useful for dt, dd
+//todo: this should be removed
+.field.text
+{
+    > div
+    {
+        margin-left: 220px;
+        font-size: 13px;
+        line-height: 18px;
+        padding-top: 6px;
+    }
+}
+
+div.empty-data-msg {
+    display: none;
+}
+
+/********************************************************************************************
+*
+* Form validation
+*
+********************************************************************************************/
+/* added dynamically by the validation plugin.  contains validation error msg for an element.  positioned absolutely on the page */
+label.invalid {
+    cursor: auto;
+    margin-left: 10px;
+    width: auto;
+    color: @white;
+    .gradientBar(#ee5f5b, #c43c35);
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    .border-radius(4px);
+    .box-shadow(inset 0 1px 0 rgba(255,255,255,.25));
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+    padding: 7px 15px;
+    z-index: 10;
+}
+
+//hardcoded (unfortunately) in .net's validation summary, so we basically made a copy of "alert-message error" with a few tweaks
+.validation-summary-errors
+{
+    .border-radius(4px 4px 4px 4px);
+    border-style: solid;
+    border-width: 1px;
+    margin-bottom: 18px;
+    padding: 7px 15px;
+    position: relative;
+    color: @white;
+    .gradientBar(#ee5f5b, #c43c35);
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    .box-shadow(inset 0 1px 0 rgba(255,255,255,.25));
+    //.net validation summary puts lis in there, and the color was black with standard bootstrap
+    li
+    {
+        text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+        color: @white;
+    } 
+}
+
+
+
+
+/********************************************************************************************
+*
+* Notification Banner.
+*
+* This is created by javascript and rolls down from the top.  It's contained in a div#notification, which is created by the script.  Can contain success, error, or warning messages.
+********************************************************************************************/
+#notification {
+    display: none;
+    color: #fff;
+    font-size: 14px;
+    padding: 10px 20px;
+    z-index: 100;
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: #323232;
+    /* potter: got rid of rgba because IE didn't support it and ended up with transparent bg */
+    text-align: center;
+    .border-radius(0 0 0 10px);
+    .box-shadow(0 1px 4px rgba(0, 0, 0, 0.3));
+    text-shadow: 0 1px 0 #000;
+    overflow: hidden;
+    text-align: center;
+    /* in case html with links is used in notification window */
+    a {
+        color: #fea;
+    }
+    /* a little indicator icon next to the text */    
+    span.icon {
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+        vertical-align: middle;
+        margin-right: 7px;
+    }
+
+    &.warning span.icon {
+        background-image: url(../img/exclamation-large.png);
+    }
+    &.error span.icon {
+        background-image: url(../img/cross-large.png);
+    }
+    &.success span.icon {
+        background-image: url(../img/tick-large.png);
+    }
+    /* for notifying that another user added comments or whatever in the same production...as the activity window is updated */
+    &.info span.icon {
+        background-image: url(../img/info.24.png);
+    }
+}
+
+
+/**********************************************/
+/* Any styles needed by steve that won't interfere with screen.less
+/**********************************************/
+
+body.app.slim > div.container
+{
+    div[role='main']
+    {
+        #main-content //600px wide container for content and forms
+        {
+            width: 600px;
+            margin: auto;
+
+            .well;
+            // slim pages usually have forms.  this defines defaults for forms.  the form must be an immediate child of #main-content.  This prevents conflicts with more complex screens that have sub forms and whatnot. 
+            > form.form-horizontal
+            {
+                padding-top: 18px;
+                .form-actions
+                {
+                    border: none;
+                    background: none;
+                }
+
+                .typical-form(200px, 220px, 14px);
+            }
+            //usually for choices, where one choice is a post (input contained in form).  good example is signup/sample
+            > div.actions
+            {
+                background: #f5f5f5;
+                margin-top: 18px;
+                margin-bottom: 18px;
+                padding: 17px 20px 18px 20px;
+                border-top: 1px solid #ddd;
+                .border-radius(0 0 3px 3px);
+                form
+                {
+                    display: inline;
+                    margin: 0;
+                    padding: 0;
+                }
+                ul
+                {
+                    list-style: none;
+                    margin: 0;
+                    li
+                    {
+                        margin-top: 10px;
+                        &:first-child
+                        {
+                            margin-top: 0px;                        
+                        }
+                    }
+                }
+                &.big-explanations
+                {  
+                    .row-fluid
+                    {
+                      margin-bottom: 14px;
+				              .btn { padding-left: 0; padding-right: 0; width:100% }
+                      form { width: 100% }
+                    }
+
+                }
+            }
+        }
+    }
+    > footer
+    {
+        margin-top: 17px;
+        padding-top: 17px;
+        p
+        {
+            text-align: center;
+        }
+    }
+}
+
+
+body.app.account-shell > div.container
+{
+    #main-content
+    {
+        > form
+        {
+            .form-actions
+            {
+                border: none;
+                background: none;
+            }
+            
+        }
+        > form.form-horizontal { .typical-form(200px, 220px, 13px); }
+    }
+    > footer
+    {
+        margin-top: 17px;
+        padding-top: 17px;
+        p
+        {
+            text-align: center;
+        }
+    }
+}
+
+
+//contains dashboard and production
+body.app.medium > div.container
+{
+    form.form-horizontal
+    {
+        .typical-form(200px, 220px, 13px);
+        padding-top: 18px;
+        .form-actions
+        {
+            border: none;
+            background: none;
+        }
+    }    
+    > footer
+    {
+        margin-top: 17px;
+        padding-top: 17px;
+        p
+        {
+            text-align: center;
+        }
+    }
+}
+
+body.dashboard-index
+{
+    #activity > ul > li
+    {      
+        list-style: none;
+        background-repeat: no-repeat;
+        background-position: 0px 2px;
+        padding-left: 18px;
+        margin-left: -18px;
+        &.invited {
+          background-image: url(../img/user-small.png);
+        }
+        &.commented {
+          background-image: url(../img/balloon-small-left.png);
+        }
+        &.added {
+          background-image: url(../img/plus-small.png);
+        }    
+    }
+}
+
+em.relativeDate {
+  font-style: normal !important;
+}
+
+
+/* invitation
+**********************************************/
+#videoThumbnailStrip
+{
+    text-align: center;
+}
+
+#videoThumbnailStrip img
+{
+    margin: 8px 5px 18px 5px;
+}
+
+/********************************************************************************************
+*
+* /productions/create*
+*
+********************************************************************************************/
+body.productions-create
+{
+    
+    input[type="file"]
+    {
+        width: auto;//needed because setting the width caused the tooltip anchor to sit over the Browse button (at least in FF)
+    }
+}
+
+//login page for a password-protected production
+body.password-protected-production.login
+{
+    .form-container
+    {
+        padding: 7px 15px;
+        margin-bottom: 18px;
+        color: @grayDark;
+        border-width: 1px;
+        border-style: solid;
+        .border-radius(4px);
+        .box-shadow(inset 0 1px 0 rgba(255,255,255,.25));
+        border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+		background-color: #FDF5D9;
+		.form-actions { .reset-background(); border: none;}
+    }
+
+    #production-password-form
+    {
+        
+    }
+}
+
+
+/********************************************************************************************
+*
+* /signup/subscribe
+*
+********************************************************************************************/
+body.signup-subscribe
+{
+    //div that lets people close their TO account and possibly remain as a guest
+    #client-close
+    {
+        margin-top: 60px;
+    }
+}
+
+
+
+
+/********************************************************************************************
+*
+* /account/necessaryinfo.  this is used when a user is missing some required info.  this is not a link in the account page and was created for beta conversion, although could be used in the future for other new required info
+*
+********************************************************************************************/
+body.account-necessaryinfo
+{
+    .hide-top-nav();
+}
+
+
+/********************************************************************************************
+*
+* Demo forbidden view.  This is shown on pages that aren't available for demo accounts.  Urges them to sign up
+*
+********************************************************************************************/
+body.demo-forbidden
+{
+    .hide-top-nav();
+}
+
+
+/********************************************************************************************
+*
+* Various login pages
+*
+********************************************************************************************/
+body.login
+{
+    #nav-login
+    {
+        display:none;
+    }
+}
+
+//guest/signup
+body.signup-guest
+{
+    #nav-login
+    {
+        display:none;
+    }
+}
+
+
+/********************************************************************************************
+*
+* /membershiprequests/{id}
+* When they choose a role
+*
+********************************************************************************************/
+body.membershipRequests-details.chooserole
+{
+    #roles
+    {
+        .clearfix;
+        > div 
+        {    
+            .well;
+            float: left;
+            margin-right: 0;
+            width: 260px;   
+        }
+    }
+}
+
+
+/********************************************************************************************
+*
+* /body/trial
+*
+********************************************************************************************/
+body.trial-index
+{
+    #nav-login
+    {
+        display:none;
+    }
+}
+
+body.signup-trial
+{
+    #nav-signup
+    {
+        display:none;
+    }    
+}
+
+body.account-billing
+{
+    #CreditCardMonth { width: 140px; }
+    #CreditCardYear { width: 70px; }
+}
+
+body.signup-subscribe
+{
+    #CreditCardMonth { width: 140px; }
+    #CreditCardYear { width: 70px; }
+}
+
+/********************************************************************************************
+*
+* /support
+*
+********************************************************************************************/
+
+body.support-index 
+{
+
+    #support-options /* sole UL includes the various support options */
+    {
+        li
+        {
+            list-style: none;
+            padding: 10px 0 10px 56px;
+            margin-bottom: 10px;
+			&:hover {
+			    .box-shadow(0 1px 0 rgba(0, 0, 0, 0.1) inset);
+                color: #004D66;
+            }            
+                
+            a /* title and link to option */
+            {
+                font-size: 26px;
+                font-weight: 300;
+                padding-bottom: 10px;
+                display: block;
+                text-decoration: none;
+                &:hover
+                {
+                    text-decoration: underline;                    
+                }
+            }
+            span /* details of the support option */
+            {
+                display: block;
+                font-size: 16px;
+            }
+        }        
+        #support-request
+        {
+            background: url('../img/support-request.png') no-repeat center left;
+        }
+        #support-knowledgeBase
+        {
+            background: url('../img/support-knowledgebase.png') no-repeat center left;
+        }
+        #support-suggestions
+        {
+            background: url('../img/support-idea.png') no-repeat center left;
+        }
+        #support-discussions
+        {
+            background: url('../img/support-discuss.png') no-repeat center left;
+        }
+    }
+}
+
+/********************************************************************************************
+*
+* /  - home page
+*
+********************************************************************************************/
+body.root-index 
+{
+	.hero-unit
+	{
+		padding: 40px;
+		h1
+		{
+			margin-bottom: 5px;
+			color: #004D66;
+			font-size: 56px;
+		}
+    }
+    #comparison table { width: 100%; }
+}
+
+/********************************************************************************************
+*
+* /contact 
+*
+********************************************************************************************/
+body.root-contact 
+{
+    #main-content 
+    {
+        dt {width: 180px;}
+        dd {margin-left: 190px;}
+        address {margin-left: 190px;}
+    }
+}
+
+body.root-about
+{
+    #people .person
+    {
+        .clearfix; margin-bottom: 8px;
+        h3 {font-weight: normal; font-size: 16px;}
+        img {width: 80px; float: left; margin-right: 6px;}
+        
+    }
+}
+
+
+//********************************************************************************************
+//
+// /signup/subscribe and /signup?type=DirectPurchase (after post)
+//
+//********************************************************************************************
+
+body.subscribe
+{
+    .hide-top-nav();
+}
+
+body.subscribe-choose-plan
+{
+    .hide-top-nav();
+}
+
+
+body.accountMemberships-details
+{
+    dl
+    {
+        margin-top: 6px;
+        dt {width: 180px;}
+        dd {margin-left: 190px;}
+    }
+}
+
+body.production-invitation
+{
+    #invitation-details { font-size: 16px; }
+}
+
+body.production-membership-request
+{
+    #details { font-size: 16px; }
+}
+
+body.referrals-create
+{
+    #people { width: 500px; }
+}
+
+/********************************************************************************************
+*
+* /productions/{id}.  The big kahuna
+*
+********************************************************************************************/
+@import "to-production.less";
+@import "to-production-comments.less";
+@import "to-production-videodetails.less";

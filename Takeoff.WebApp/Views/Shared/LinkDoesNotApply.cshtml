@@ -1,0 +1,10 @@
+﻿@{
+    Layout = "~/Views/Shared/Layout-App-Slim.cshtml"; 
+    ViewData["PageTitle"] = S.LinkDoesNotApplyTitle;
+
+}
+@section Header
+{
+    <h1>@S.LinkDoesNotApplyTitle</h1>
+}
+<p class="@Html.AlertErrorClass(true)">@S.LinkDoesNotApplyMsg</p>

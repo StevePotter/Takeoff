@@ -1,0 +1,85 @@
+﻿@model Invoices_Invoice
+@{
+    Layout = "~/Views/Account/Layout.cshtml";
+    
+    ViewData["Heading"] = "Invoice #{0} - {1}".FormatString(Model.Id, Model.Date.ToString(DateTimeFormat.ShortDate));
+}
+@section JsDocReady {
+}
+@if (Model.LineItems.HasItems())
+{
+    <h3>@("Charges")</h3>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>
+                    @("Description")
+                </th>
+                <th>
+                    @("Date")
+                </th>
+                <th>
+                    @("Total")
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var lineItem in Model.LineItems)
+            {
+                <tr>
+                    <td>@lineItem.Description
+                    </td>
+                    <td>@(lineItem.StartDate.HasValue ? lineItem.StartDate.Value.ToString(DateTimeFormat.ShortDate) : string.Empty)
+                    </td>
+                    <td>@lineItem.Amount.ToString(NumberFormat.Currency)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@if (Model.Payments.HasItems())
+{
+    <h3>@("Payments")</h3>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>
+                    @("Date")
+                </th>
+                <th>
+                    @("Description")
+                </th>
+                <th>
+                    @("Total")
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var payment in Model.Payments)
+            {
+                <tr>
+                    <td>@payment.Date.ToString(DateTimeFormat.ShortDate)</td>
+                    <td>@payment.Message.CharsOr("Thanks!")</td>
+                    <td>@payment.Amount.ToString(NumberFormat.Currency)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+<h3>@("Bottom Line")</h3>    
+<ul>
+<li>
+@("Subtotal:") <strong>@Model.Subtotal.ToString(NumberFormat.Currency)</strong>
+</li>
+<li>
+@("Paid:") <strong>@Model.Paid.ToString(NumberFormat.Currency)</strong>
+</li>
+<li>
+@("Total Due:") <strong>@Model.TotalDue.ToString(NumberFormat.Currency)</strong>
+</li>
+
+</ul>
+

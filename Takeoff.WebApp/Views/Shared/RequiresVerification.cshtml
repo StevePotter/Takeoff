@@ -1,0 +1,13 @@
+﻿@{
+    Layout = "~/Views/Shared/Layout-App-Slim.cshtml"; 
+    ViewData["PageTitle"] = S.MustVerify_Heading;
+}
+@section Header
+{
+    <h1>@S.MustVerify_Heading</h1>
+}
+<p class="@Html.AlertErrorClass(true)">@S.MustVerify_Message</p>
+
+<div class="actions">
+<a class="@Html.PrimaryButtonClass()" href="@(Url.Action<AccountController>(c => c.Verify(null)))">@("Email me with a link to verify")</a>
+</div>

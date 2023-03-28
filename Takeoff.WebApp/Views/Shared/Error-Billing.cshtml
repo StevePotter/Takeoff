@@ -1,0 +1,17 @@
+﻿@model System.Web.Mvc.HandleErrorInfo
+@{
+    Layout = "~/Views/Shared/Layout-App-Slim.cshtml"; 
+    string report = Model == null || Model.Exception == null ? string.Empty : Model.Exception.Report();
+    ViewData["PageTitle"] = S.Error_Billing_PageTitle;
+    ViewData.AddBodyCss("error-billing");
+}
+@section Header
+{
+    <h1>@S.Error_Billing_PageHeading</h1>
+}
+<p class="@Html.AlertErrorClass(true)">
+    @S.Error_Billing_Message
+</p>
+<pre class="hide">
+@Html.Raw(report)
+</pre>

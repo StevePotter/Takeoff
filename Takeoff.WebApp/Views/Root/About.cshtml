@@ -1,0 +1,42 @@
+﻿@{
+    Layout = "~/Views/Shared/Layout-External-Slim.cshtml";
+    ViewData["PageTitle"] = "About";
+
+}
+@section JsDocReady
+{
+}
+@section Header
+{
+	<h1>@("About Takeoff")</h1>
+}
+<section>
+    <div class="page-header">
+        <h2>@("Mission")</h2>
+    </div>
+    <p>@("Our goal is to make production easier for video creators and their clients by providing the best tool for review and approval.")</p>
+</section>
+<section>
+    <div class="page-header">
+        <h2>@("History")</h2>
+    </div>
+    <p>@("We were just a filmmaker and software developer who decided to do some video production.  During projects we struggled to get accurate feedback during post production.  So production took longer, we did extra rounds of edits, and our clients were frustrated.  We tried email, ftp, YouTube, Vimeo, and some other professional tools.  They were either insufficient, too complex, or too expensive.")</p>
+    <p>@("So we built Takeoff in our spare time.  Our clients loved it.  Then we showed our producer buddies.  They all wanted their own account.  And it grew from there.  Now it's been a few years and thousands of people have used Takeoff.  We hope you fall in love with Takeoff too!")</p>
+</section>
+<section id="people">
+    <div class="page-header">
+        <h2>@("People")</h2>
+    </div>
+    <div class="person">        
+        <h3>@("Stephen Potter, CEO")</h3>
+        <img alt="@("Stephen Potter, CEO")" src="@this.Url.Asset("/Assets/img/about-steve.jpg")">
+        <p>@("With decades of experience in software, Steve builds the systems behind Takeoff.  He also oversees business operations and determines company direction.")</p>
+    </div>
+    <div class="person">        
+        <h3>@("Chris Kilayko, President")</h3>
+        <img alt="@("Chris Kilayko, President")" src="@this.Url.Asset("/Assets/img/about-chris.jpg")">
+        <p>@("Chris is a video expert and has done it all, from home movies all the way to producing live NBC newscasts.  Chris is responsible for customer service and for finding awesome video producers that could use Takeoff.")</p>
+    </div>
+
+</section>
+

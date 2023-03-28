@@ -1,0 +1,10 @@
+﻿@model AccountPlan_Edit_DowngradeInvalid
+@{
+    Layout = "~/Views/Account/Layout.cshtml";
+    
+    ViewData["Heading"] = "Account Plan";
+}
+<div class="@Html.AlertErrorClass(true)">
+Sorry but you can't downgrade to this plan because you have exceeded its limit for <strong>@Model.LimitsExceeded.Select(c => c.ToLowerInvariant()).ToArray().AssembleList()</strong>.  Please delete the necessary stuff and you'll be able to downgrade.
+</div>
+

@@ -1,0 +1,54 @@
+﻿@model Email_ActivityDigest
+@{
+    Layout = "~/Views/Email/Layout-Simple.cshtml";
+    var changeSettingsUrl = Url.Action<AccountNotificationsController>(c => c.Index(), UrlType.AbsoluteHttps);
+}
+@section Subject
+{
+Recent Takeoff Activity
+}
+@section Plain {
+
+@*Hey there!  Here's all the activity on your Takeoff productions from @Html.Raw(Model.PeriodStart.ToString(DateTimeFormat.ShortDateTime)) to @Html.Raw(Model.PeriodEnd.ToString(DateTimeFormat.ShortDateTime))
+*@
+@foreach (var productionData in Model.ActivityPerProduction)
+{
+    <text>
+    -------------------------------------------------------------------
+    Production:  @Html.Raw(productionData.ProductionTitle) - @Html.Raw(productionData.ProductionUrl)
+    </text>
+    foreach (var change in productionData.PlainTextChanges)
+    {
+@Html.Raw("- " + change.Indent())
+    }
+}
+}
+@section HtmlExplanation
+{
+You are recieving this because you are a member of Takeoff and subscribe to activity digest emails.  Visit <a href="@changeSettingsUrl">@changeSettingsUrl</a> to change this setting.
+}
+
+
+
+@*<p class="mainText">Hey there!  Here's all the activity on your Takeoff productions from<br /><strong>@Model.PeriodStart.ToString(DateTimeFormat.ShortDateTime) to @Model.PeriodEnd.ToString(DateTimeFormat.ShortDateTime)</strong>:</p>
+*@
+@foreach (var productionData in Model.ActivityPerProduction)
+{
+    
+    <div class="activity-production-title">
+    @if (productionData.LogoUrl.HasChars())
+    {
+        <img src="@productionData.LogoUrl" class="activity-production-logo" width="@productionData.LogoWidth" height="@productionData.LogoHeight" alt="Logo" />
+    }    
+    <a href="@productionData.ProductionUrl">@productionData.ProductionTitle</a>
+</div>
+    <div class="activity-production-items">
+        <ul class="activityList">
+        @foreach (var change in productionData.HtmlChanges)
+        {
+            <li>@Html.Raw(change)</li>
+        }       
+        </ul>
+    </div>
+}
+

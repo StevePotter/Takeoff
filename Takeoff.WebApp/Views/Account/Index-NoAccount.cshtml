@@ -1,0 +1,11 @@
+﻿@model IAccount
+@{
+    Layout = "~/Views/Account/Layout.cshtml";
+    ViewData["Heading"] = S.Account_Index_PageTitle;
+    
+
+}
+
+<p>Thanks for being a part of Takeoff.  Right now, you are a guest, most likely you are here to review some video.  Have a blast!</p>
+<p>In this &quot;Account&quot; section, you can edit your preferences.  If you want, you can <a href="@(Url.Action<SignupController>(c => c.Index(null, null, null)))">create your very own Takeoff account</a>, which will 
+let you create videos and add productions.</p>

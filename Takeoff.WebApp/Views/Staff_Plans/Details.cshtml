@@ -1,0 +1,95 @@
+﻿@model Staff_Plans_Plan
+@{
+    Layout = "~/Views/Staff/staff-layout.cshtml";
+    ViewData["SubTitle"] = "Plans";
+}
+@section JsDocReady
+{
+    $("#delete").click(function()
+    {
+        if ( confirm('You sure you want to delete this?  No undo!') )
+        {
+            $("#deleteForm").submit();
+        }
+        return false;
+    });
+}
+
+<div class="columnBg">
+    <div class="columnBgHeader">
+        <h3>New Account Plan</h3>
+    </div>
+    <div>
+        <a href="/staff/plans">Plans</a> &nbsp; <a href="/staff/plans/edit?id=@Model.Id">Edit</a> &nbsp; <a href="#" id="delete">Delete</a>
+
+        <form method="post" id="deleteForm" action="/staff/plans/delete?id=@Model.Id">
+            @Html.AntiForgeryToken()        
+        </form>
+    </div>
+    <div class="formfield">
+        @Html.LabelFor(m => m.Id)
+        @Html.DisplayTextFor(m => m.Id)
+    </div>
+    <div class="formfield">
+        @Html.LabelFor(m => m.Title)
+        @Html.DisplayTextFor(m => m.Title)
+    </div>
+    <div class="formfield">
+        @Html.LabelFor(m => m.Notes)
+        @Html.DisplayTextFor(m => m.Notes)
+    </div>
+    <div class="formfield">
+        @Html.LabelFor(m => m.Price)
+        @Html.DisplayTextFor(m => m.Price)
+    </div>
+    <div class="formfield">
+        @Html.LabelFor(m => m.AllowSignups)
+        @Html.DisplayTextFor(m => m.AllowSignups)
+    </div>
+    <div class="formfield">
+        @Html.LabelFor(m => m.BillingIntervalLength)
+        @Html.DisplayTextFor(m => m.BillingIntervalLength)
+        @Html.DisplayTextFor(m => m.BillingIntervalUnit)
+    </div>
+    <div class="formfield">
+        @Html.LabelFor(m => m.TrialIntervalLength)
+        @Html.DisplayTextFor(m => m.TrialIntervalLength)
+        @Html.DisplayTextFor(m => m.TrialIntervalUnit)
+    </div>
+    <div class="formfield">
+        @Html.LabelFor(m => m.VideosTotalMaxCount)
+        @Html.DisplayTextFor(m => m.VideosTotalMaxCount)
+    </div>
+    <div class="formfield">
+        @Html.LabelFor(m => m.VideosPerBillingCycleMax)
+        @Html.DisplayTextFor(m => m.VideosPerBillingCycleMax)
+    </div>
+    <div class="formfield">
+        @Html.LabelFor(m => m.VideoFileSizeMax)
+        @Html.DisplayTextFor(m => m.VideoFileSizeMax)
+    </div>
+    <div class="formfield">
+        @Html.LabelFor(m => m.VideoDurationLimit, "Max Video Duration (sec)")
+        @Html.DisplayTextFor(m => m.VideoDurationLimit)
+    </div>
+    <div class="formfield">
+        @Html.LabelFor(m => m.ProductionLimit)
+        @Html.DisplayTextFor(m => m.ProductionLimit)
+    </div>
+    <div class="formfield">
+        @Html.LabelFor(m => m.AssetFileSizeMax)
+        @Html.DisplayTextFor(m => m.AssetFileSizeMax)
+    </div>
+    <div class="formfield">
+        @Html.LabelFor(m => m.AssetsAllTimeMaxCount)
+        @Html.DisplayTextFor(m => m.AssetsAllTimeMaxCount)
+    </div>
+    <div class="formfield">
+        @Html.LabelFor(m => m.AssetsTotalMaxCount)
+        @Html.DisplayTextFor(m => m.AssetsTotalMaxCount)
+    </div>
+    <div class="formfield">
+        @Html.LabelFor(m => m.AssetsTotalSizeMax)
+        @Html.DisplayTextFor(m => m.AssetsTotalSizeMax)
+    </div>
+</div>

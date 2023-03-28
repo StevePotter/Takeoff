@@ -1,0 +1,17 @@
+﻿@model MembershipRequests_Reject
+@{
+    Layout = "~/Views/Shared/Layout-App-Slim.cshtml"; 
+}
+
+@section Header
+{
+    <h1>@("Membership Request Ignored")</h1>
+}
+
+<p>If you want, we can automatically ignore any request from @Model.RequestedByName in the future so you won't be bothered.</p>
+<div class="actions">
+<form method="post" action="@Url.Action("DenyFutureRequestsFromUser", "MembershipRequests")">
+    <input type="hidden" name="userId" value="@Model.RequestedById" />
+    @Html.SubmitButton("Always Ignore Requests From Them")
+</form>
+</div>

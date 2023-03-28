@@ -1,0 +1,294 @@
+﻿@{
+    Layout = "~/Views/Shared/Layout-External-Medium.cshtml";
+
+    ViewData["PageTitle"] = S.Home_PageTitle;
+
+    var options = new
+    {
+        message = (string)ViewData["message"],
+        videoPlayerUrl = this.Url.Asset("Assets/ExternalPlayer.swf"),
+    };
+
+}
+@section JsDocReady
+{
+    window.views.home(@Html.Json(options));
+}
+<div class="hero-unit">
+    <h1>@("Simple Video Review & Approval")</h1>
+    <p>@("Still using email, ftp, YouTube, or Vimeo to collaborate during post production?  Then you'll love Takeoff.")</p>
+    <form method="post" action="@Url.Action("Create", "Signup", new { type = SignupType.StartTrial }, UrlType.RelativeHttps)">
+    <input class="btn btn-large btn-primary" value="@("Try Instantly")" type="submit" />
+    <span>@("No Personal Info Required!")</span>
+    </form>
+</div>
+<section>
+<div class="page-header">
+        <h1>@("Highlights")</h1>
+      </div>
+<ul class="thumbnails">
+    <li class="span3">
+        <div class="thumbnail">
+            <img alt="@("Comment Screenshot")" src="@this.Url.Asset("/Assets/img/home-highlight-1.jpg")" />
+            <div class="caption">
+                <h5>@("Video Feedback")</h5>
+                <p>@("Write comments with frame-by-frame precision.")</p>
+            </div>
+        </div>
+    </li>
+    <li class="span3">
+        <div class="thumbnail">
+            <img alt="@("Activity Screenshot")" src="@this.Url.Asset("/Assets/img/home-highlight-2.jpg")" />
+            <div class="caption">
+                <h5>@("Privacy")</h5>
+                <p>@("Only people you invite ever have access to your videos.")</p>
+            </div>
+        </div>
+    </li>
+    <li class="span3">
+        <div class="thumbnail">
+            <img alt="@("Assets Screenshot")" src="@this.Url.Asset("/Assets/img/home-highlight-3.jpg")" />
+            <div class="caption">
+                <h5>@("File Sharing")</h5>
+                <p>@("Share files like scripts and soundtracks with teammates.")</p>
+            </div>
+        </div>
+    </li>
+    <li class="span3">
+        <div class="thumbnail">
+            <img alt="@("Mobile Screenshot")" src="@this.Url.Asset("/Assets/img/home-highlight-4.jpg")" />
+            <div class="caption">
+                <h5>@("Everywhere")</h5>
+                <p>@("Takeoff works on the web and mobile devices.")</p>
+            </div>
+        </div>
+    </li>
+</ul>
+</section>
+<section id="quotes-container">
+    <div class="page-header">
+        <h1>@("What They're Saying")</h1>
+      </div>
+    <ul id="quotes" class="unstyled">
+        <li><blockquote><p>Takeoff saves me time, heartache, and makes me look better for my clients.</p><small>Adam Kaplan - ASK Media Productions</small></blockquote></li>
+        <li><blockquote><p>It is everything I need in a video collaboration tool.</p><small>Michael Hanrahan - President, The Ocean Channel</small></blockquote></li>
+        <li><blockquote><p>It's so easy...there's really nothing to learn. It just works.</p><small>Eric Rodriguez - Videographer</small></blockquote></li>
+        <li><blockquote><p>After Takeoff, things went from frustrating to pleasant.</p><small>Harry Dollard - InTime Solutions</small></blockquote></li>
+        <li><blockquote><p>We don't have to ship tapes or transfer huge video files!</p><small>Joel Connable - Travel TV News</small></blockquote></li>
+        <li><blockquote><p>What a great weapon in my arsenal. It's so easy and so worth it.</p><small>Jeff Barnes - Final Cutz</small></blockquote></li>
+    </ul>
+</section>
+<section id="comparison">
+     <div class="page-header">
+        <h1>@S.Home_ComparisonSection_Heading</h1>
+     </div>
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#takeoff-vs-email" data-toggle="tab">Email</a></li>
+        <li><a href="#takeoff-vs-youtube" data-toggle="tab">YouTube</a></li>
+        <li><a href="#takeoff-vs-ftp" data-toggle="tab">FTP</a></li>
+        <li><a href="#takeoff-vs-finalcutserver" data-toggle="tab">Final Cut Server</a></li>
+    </ul>
+    <div class="tab-content">
+        <table class="tab-pane active table table-striped" id="takeoff-vs-email">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Takeoff</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Send large files</td>
+                    <td><img src="@this.Url.Asset("/Assets/img/icon-check.png")" alt="Yes" /></td>
+                    <td><img src="@this.Url.Asset("/Assets/img/icon-cross.png")" alt="No" /></td>
+                </tr>
+                <tr>	
+                    <td>Avoid transferring video files just to watch</td>
+                    <td><img src="@this.Url.Asset("/Assets/img/icon-check.png")" alt="Yes" /></td>
+                    <td><img src="@this.Url.Asset("/Assets/img/icon-cross.png")" alt="No" /></td>
+                </tr>
+                <tr>
+                    <td>Know everyone can watch your videos</td>
+                    <td><img src="@this.Url.Asset("/Assets/img/icon-check.png")" alt="Yes" /></td>
+                    <td><img src="@this.Url.Asset("/Assets/img/icon-cross.png")" alt="No" /></td>
+                </tr>	
+                <tr>	
+                    <td>Easily write comments for specific moments</td>
+                    <td><img src="@this.Url.Asset("/Assets/img/icon-check.png")" alt="Yes" /></td>
+
+                    <td><img src="@this.Url.Asset("/Assets/img/icon-cross.png")" alt="No" /></td>
+                </tr>	
+                <tr>	
+                    <td>Keep all files in a single organized place</td>
+                    <td><img src="@this.Url.Asset("/Assets/img/icon-check.png")" alt="Yes" /></td>
+                    <td><img src="@this.Url.Asset("/Assets/img/icon-cross.png")" alt="No" /></td>
+                </tr>
+                <tr>
+                    <td>Know what video is the latest</td>
+
+                    <td><img src="@this.Url.Asset("/Assets/img/icon-check.png")" alt="Yes" /></td>
+                    <td><img src="@this.Url.Asset("/Assets/img/icon-cross.png")" alt="No" /></td>
+                </tr>                
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th colspan="3">Bottom line: Takeoff never stops you from using email.  But it works much better than email for many aspects of video production.</th>
+                </tr>
+            </tfoot>
+        </table>
+        <table class="tab-pane table table-striped" id="takeoff-vs-youtube">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Takeoff</th>
+
+                    <th>YouTube</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Limit video duration</td>
+                    <td><img src="@this.Url.Asset("/Assets/img/icon-check.png")" alt="Yes" /></td>
+                    <td><img src="@this.Url.Asset("/Assets/img/icon-cross.png")" alt="No" /></td>
+                </tr>
+                <tr>
+                    <td>Ad free</td>
+                    <td><img src="@this.Url.Asset("/Assets/img/icon-check.png")" alt="Yes" /></td>
+                    <td><img src="@this.Url.Asset("/Assets/img/icon-cross.png")" alt="No" /></td>
+                </tr>	
+                <tr>	
+                    <td>Easily write comments for specific moments</td>
+                    <td><img src="@this.Url.Asset("/Assets/img/icon-check.png")" alt="Yes" /></td>
+
+                    <td><img src="@this.Url.Asset("/Assets/img/icon-cross.png")" alt="No" /></td>
+                </tr>	
+                <tr>	
+                    <td>Keep all asset files in a single organized place</td>
+                    <td><img src="@this.Url.Asset("/Assets/img/icon-check.png")" alt="Yes" /></td>
+                    <td><img src="@this.Url.Asset("/Assets/img/icon-cross.png")" alt="No" /></td>
+                </tr>
+                <tr>
+                    <td>Permit downloading of videos</td>
+                    <td><img src="@this.Url.Asset("/Assets/img/icon-check.png")" alt="Yes" /></td>
+                    <td><img src="@this.Url.Asset("/Assets/img/icon-cross.png")" alt="No" /></td>
+                </tr>
+                <tr>
+                    <td>Private by nature</td>
+                    <td><img src="@this.Url.Asset("/Assets/img/icon-check.png")" alt="Yes" /></td>
+                    <td><img src="@this.Url.Asset("/Assets/img/icon-cross.png")" alt="No" /></td>
+                </tr>
+                <tr>
+                    <td>Add videos without sending out new links</td>
+                    <td><img src="@this.Url.Asset("/Assets/img/icon-check.png")" alt="Yes" /></td>
+                    <td><img src="@this.Url.Asset("/Assets/img/icon-cross.png")" alt="No" /></td>
+                </tr>
+
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th colspan="3">Bottom line:  YouTube (and similar sites) was built to show video once it's completed, not while it's still being produced.  Takeoff was built from the ground up to be used during production, so it has many crucial features YouTube lacks.  Use YouTube...just use it after Takeoff :)</th>
+                </tr>
+            </tfoot>
+        </table>
+        <table  class="tab-pane table table-striped" id="takeoff-vs-ftp">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Takeoff</th>
+
+                    <th>FTP</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Know everyone can watch your videos</td>
+                    <td><img src="@this.Url.Asset("/Assets/img/icon-check.png")" alt="Yes" /></td>
+                    <td><img src="@this.Url.Asset("/Assets/img/icon-cross.png")" alt="No" /></td>
+                </tr>
+                <tr>	
+                    <td>Easily write comments for specific moments</td>
+                    <td><img src="@this.Url.Asset("/Assets/img/icon-check.png")" alt="Yes" /></td>
+                    <td><img src="@this.Url.Asset("/Assets/img/icon-cross.png")" alt="No" /></td>
+                </tr>	
+                <tr>	
+                    <td>Keep communication in a centralized place</td>
+                    <td><img src="@this.Url.Asset("/Assets/img/icon-check.png")" alt="Yes" /></td>
+                    <td><img src="@this.Url.Asset("/Assets/img/icon-cross.png")" alt="No" /></td>
+                </tr>
+                <tr>	
+                    <td>Avoid transferring video files just to watch</td>
+                    <td><img src="@this.Url.Asset("/Assets/img/icon-check.png")" alt="Yes" /></td>
+                    <td><img src="@this.Url.Asset("/Assets/img/icon-cross.png")" alt="No" /></td>
+                </tr>                	
+                <tr>	
+                    <td>Easily write comments for specific moments</td>
+                    <td><img src="@this.Url.Asset("/Assets/img/icon-check.png")" alt="Yes" /></td>
+                    <td><img src="@this.Url.Asset("/Assets/img/icon-cross.png")" alt="No" /></td>
+                </tr>	
+                <tr>
+                    <td>Automatic file management</td>
+                    <td><img src="@this.Url.Asset("/Assets/img/icon-check.png")" alt="Yes" /></td>
+                    <td><img src="@this.Url.Asset("/Assets/img/icon-cross.png")" alt="No" /></td>
+                </tr>
+                <tr>
+                    <td>No special programs needed</td>
+                    <td><img src="@this.Url.Asset("/Assets/img/icon-check.png")" alt="Yes" /></td>
+                    <td><img src="@this.Url.Asset("/Assets/img/icon-cross.png")" alt="No" /></td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th colspan="3">Bottom line:  FTP lets you share large files but it's a huge hassle.  Takeoff eliminates all the problems that FTP presents.  Good riddance!</th>
+                </tr>
+            </tfoot>
+        </table>
+        <table class="tab-pane table table-striped" id="takeoff-vs-finalcutserver">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Takeoff</th>
+
+                    <th>FCP Server</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Affordable for anyone</td>
+                    <td><img src="@this.Url.Asset("/Assets/img/icon-check.png")" alt="Yes" /></td>
+                    <td><img src="@this.Url.Asset("/Assets/img/icon-cross.png")" alt="No" /></td>
+                </tr>	
+                <tr>	
+                    <td>Nothing to install</td>
+                    <td><img src="@this.Url.Asset("/Assets/img/icon-check.png")" alt="Yes" /></td>
+                    <td><img src="@this.Url.Asset("/Assets/img/icon-cross.png")" alt="No" /></td>
+                </tr>	
+                <tr>	
+                    <td>Doesn't require a Mac</td>
+                    <td><img src="@this.Url.Asset("/Assets/img/icon-check.png")" alt="Yes" /></td>
+                    <td><img src="@this.Url.Asset("/Assets/img/icon-cross.png")" alt="No" /></td>
+                </tr>
+                <tr>	
+                    <td>Easily write comments for specific moments</td>
+                    <td><img src="@this.Url.Asset("/Assets/img/icon-check.png")" alt="Yes" /></td>
+                    <td><img src="@this.Url.Asset("/Assets/img/icon-cross.png")" alt="No" /></td>
+                </tr>	
+                <tr>
+                    <td>Visual customizations</td>
+                    <td><img src="@this.Url.Asset("/Assets/img/icon-check.png")" alt="Yes" /></td>
+                    <td><img src="@this.Url.Asset("/Assets/img/icon-cross.png")" alt="No" /></td>
+                </tr>
+                <tr>
+                    <td>Works with any editing program</td>
+                    <td><img src="@this.Url.Asset("/Assets/img/icon-check.png")" alt="Yes" /></td>
+                    <td><img src="@this.Url.Asset("/Assets/img/icon-cross.png")" alt="No" /></td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th colspan="3">Bottom line:  Final Cut Server was built for larger production houses and is overkill for most of us.  Takeoff is simple, inexpensive, and easy to learn.</th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</section>

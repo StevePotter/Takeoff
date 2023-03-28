@@ -1,0 +1,17 @@
+﻿@{
+    Layout = "~/Views/Shared/Layout-App-Slim.cshtml";
+    
+    ViewData["PageTitle"] = "Not Available";
+}
+@section Header
+{
+    <h1>Production Not Available</h1>
+}
+<p class="alert alert-error">
+    This production was created for a trial account whose owner never signed up.  Therefore, we have no way of 
+    being able to safely grant you access.  If you created this production, you'll need to restart your trial and 
+    sign up, which is free.  
+</p>
+<div class="actions">
+    <a class="@Html.PrimaryButtonClass()" href="@(Url.Action<SignupController>(c => c.Index(null,null, null)))">Start Over</a>
+</div>

@@ -1,0 +1,12 @@
+﻿@{
+    Layout = "~/Views/Shared/Layout-App-Slim.cshtml"; 
+    ViewData.AddBodyCss("semianonymous-forbidden");
+    ViewData["PageTitle"] = "Not Allowed";
+}
+@section Header
+{
+    <h1>@("Not Allowed")</h1>
+}
+<p class="@Html.AlertWarningClass(true)">
+    @("Sorry, but when you have entered a production by entering a password and don't have an account, you must stay in that production.")
+</p>

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Takeoff - Simple Video Collaboration</title>
+    <link rel="shortcut icon" href="../Assets/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="../Assets/apple-touch-icon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />  
+
+    <link href="../Assets/css/to-theme.less" rel="stylesheet/less" type="text/css" />
+<link href="../Assets/css/jquery-ui-1.8.7.custom.css" rel="stylesheet" type="text/css" />
+
+    
+    <script language="javascript" type="text/javascript">
+        window.urlPrefixes = {
+            asset: '',
+            relative: '',
+            relativeHttps: '',
+            absoluteHttp: '',
+            absoluteHttps: ''
+        };
+    </script>
+    <script src="../scripts/underscore.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/less-1.3.0.min.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/jquery-1.7.1.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/backbone.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/jquery.json-2.2.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/jquery.form.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/jquery.validate.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/jquery.watermark.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/jquery.cookies.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/jquery.cycle.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/jquery.textchange.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/jquery.quote_rotator.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/takeoff-helpers.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/takeoff-forms.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/takeoff-tabs.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/takeoff-popup.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/takeoff-tooltip.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/takeoff-loginPing.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/takeoff-notification.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/date.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/json2.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/jquery.scrollTo.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/swfobject.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/takeoff-player.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/jquery.tools.min.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/jquery.keyfilter.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/bootstrap-modal.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/bootstrap-dropdown.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/bootstrap-tab.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/bootstrap-tooltip.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/bootstrap-popover.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/app.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/app-presales.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/app-login.js" language="javascript" type="text/javascript"></script>
+    
+    
+    
+    <script language="javascript" type="text/javascript">
+        
+    
+
+    
+    </script>
+    <!--[if lt IE 9]>
+    <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+<body class="app slim">
+    
+<div class="container">
+        <div class="navbar" id="top-nav">
+    <div class="navbar-inner">
+      <div class="container">
+                <a id="logo" class="default" href="Root_Index.html"><img src="../Assets/img/brand-logo.png" alt="Takeoff Logo" title="You are using Takeoff - takeoffvideo.com" /></a>
+        <div class="nav-collapse">
+          <ul class="nav">
+          </ul>
+          <ul class="nav pull-right">
+                    <li id="nav-login"><a href="Account_Login.html">Log In</a></li>
+                <li class="dropdown">
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">Help <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    <li><a href="Support_Request.html">Support Request</a></li>
+                    <li><a href="Root_Contact.html">Contact Info</a></li>
+                    <li><a href="Support_KnowledgeBase.html">Knowledge Base</a></li>
+                    <li><a href="Support_Discussions.html">Discuss</a></li>
+                    </ul>
+               </li>
+
+          </ul>
+        </div><!-- /.nav-collapse -->
+      </div>
+    </div><!-- /navbar-inner -->
+  </div>
+
+    <div role="main">
+        
+		<div id="main-content">
+
+
+<h1>Which Plan is Right for You?</h1>
+    
+
+<table class="table table-striped">
+<thead>
+    <tr>
+        <th>Plan</th>
+        <th>Price Per Month</th>
+        <th>Videos</th>
+        <th>Assets</th>
+        <th>Productions</th>
+        <th></th>
+    </tr>
+</thead>
+<tbody>
+    <tr>
+        <td>Solo</td>
+        <td>$9.99</td>
+        <td>10</td>
+        <td>1 GB</td>
+        <td>5</td>
+        <td>
+          <a class="btn" href="Signup_Index.html">Choose Plan</a>
+        </td>
+    </tr>
+    <tr>
+        <td>Freelance</td>
+        <td>$24.99</td>
+        <td>30</td>
+        <td>4 GB</td>
+        <td>15</td>
+        <td>
+          <a class="btn" href="Signup_Index.html">Change Plan</a>
+        </td>
+    </tr>
+    <tr>
+        <td>Studio</td>
+        <td>$59.99</td>
+        <td>80</td>
+        <td>10 GB</td>
+        <td>&infin;</td>
+        <td>
+          <a class="btn" href="Signup_Index.html">Change Plan</a>
+        </td>
+    </tr>
+    <tr>
+        <td>Network</td>
+        <td>$199.99</td>
+        <td>350</td>
+        <td>50 GB</td>
+        <td>&infin;</td>
+        <td>
+          <a class="btn" href="Signup_Index.html">Change Plan</a>
+        </td>
+    </tr>
+    <tr>
+        <td>Custom</td>
+        <td colspan="5"><a class="btn" href="mailto:sales@takeoffvideo.com?subject=Custom Takeoff Plan">Contact us</a> and let's build a custom plan for you.</td>
+    </tr>
+</tbody>
+</table>
+
+
+<section id="faqs">
+<h3>Frequently Asked Questions</h3>
+<ul>
+
+    <li>
+        <strong>What are &quot;productions&quot;?</strong>
+        <p>A production is a place in Takeoff for you to collaborate with a specific team on any number of videos and files.  Productions generally are associated with a single piece of finished work, where videos are versions, scenes, etc.  Only people you invite in have access to your production.</p>
+    </li>
+    <li>
+        <strong>What do you mean by &quot;videos&quot;?</strong>
+        <p>When we say &quot;x number of videos&quot;, we mean the number of maximum videos that can be uploaded in a given month.  The month begins on the same date as your current billing cycle.</p>
+    </li>
+    <li>
+        <strong>What do you mean by &quot;assets&quot;?</strong>
+        <p>Assets are files kept in a production that teammates can access.  Assets are generally files needed for video production, like scripts and soundtracks.  Plans include a maximum total size of assets that can exist at any given time.</p>
+    </li>
+    <li>
+        <strong>Can I change plans at any time?</strong>
+        <p>Yes. Simply click on the &quot;Account&quot; link and you&#39;ll see the option.</p>
+    </li>
+    <li>
+        <strong>What if I need more videos than your biggest plan allows?</strong>
+        <p>We can create a custom plan for you if you have large requirements. Just sign up for one of the plans right now to get started. Then e-mail <a href="mailto:sales@takeoffvideo.com"></a>sales@takeoffvideo.com</a> and we&#39;ll switch you over to a custom plan.</p>
+    </li>
+    <li>
+        <strong>Are there per-user fees?</strong>
+        <p>No. You can include an unlimited number of people in your productions. Only you pay for the videos that are uploaded to your productions. If you are a 
+filmmaker, your clients are considered as guests and will not be billed.</p>
+    </li>
+    <li>
+        <strong>What types of payment do you accept?</strong>
+        <p>Currently we accept Visa, Mastercard, Discover, and American Express. We do not accept PayPal. At this time we only accept payments online so we will 
+not be able to accept a P.O., invoice you, or take an order over the phone.</p>
+    </li>
+</ul>
+</section>
+
+		</div>
+	</div>
+	<footer>
+        <p>&#169; Copyright Takeoff, Inc. 2012</p>
+	</footer>
+</div>
+
+</body>
+<!-- See takeoffvideo.com/thanksto for a list of all the awesome projects and companies we use to make Takeoff possible -->
+</html>
+<!-- 
+-->

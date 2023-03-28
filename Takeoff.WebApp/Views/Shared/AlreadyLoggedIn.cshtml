@@ -1,0 +1,15 @@
+﻿@model IUser
+@{
+    Layout = "~/Views/Shared/Layout-App-Slim.cshtml";    
+}
+@section Header
+{
+    <h1>@("You'll Need to Log Out")</h1>
+}
+<p class="@Html.AlertWarningClass()">
+@("Sorry but you can't do this while you are logged in.")
+</p>
+<div class="actions">
+<a href="@(Url.Action<AccountController>(c => c.Logout(null)))" class="btn">@("Sign Out")</a>
+<a href="@Url.Action("Index", "Dashboard")" class="btn">@("Visit Dashboard")</a>
+</div>

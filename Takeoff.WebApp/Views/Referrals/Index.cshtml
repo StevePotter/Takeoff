@@ -1,0 +1,108 @@
+﻿@model Account_Notifications
+@{
+    Layout = "~/Views/Account/Layout.cshtml";
+
+    ViewData["Heading"] = "Referrals";   
+}
+@section JsDocReady {
+    // window.views.Account_Notifications();
+//    $("#invite-email").watermark("Email Address");
+}
+<h3>@("What is This?")</h3>
+<p>@("Referrals are an easy way to get Takeoff for free. Refer someone, and if they sign up, you get a Takeoff credit each time they are billed.")
+ <a>Discounts and More Info</a>
+</p>
+<h3>Refer Someone</h3>
+<form id="invite-form" method="post" action="@(Url.Action<ReferralsController>(c => c.Index()))" class="form-horizontal">
+    @Html.AntiForgeryToken()
+    <fieldset>
+        <div class="@Html.ControlGroupClass()">
+            <input id="invite-email" name="email" type="text" placeholder="Email Address" style="width: 300px; height: 30px; font-size: 18px;" />
+            <input type="submit" class="btn btn-primary" value="Update" />
+        </div>
+    </fieldset>
+</form>
+<h3>My Referrals</h3>
+<table cellspacing="0" class="data table table-striped" id="referrals">
+    <thead>
+        <tr>
+            <th>
+                @("Person")
+            </th>
+            <th>
+                @("Status")
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="odd">
+            <td class=" sorting_1">
+                Anderson Roseman
+            </td>
+            <td>
+                In Trial
+            </td>
+        </tr>
+        <tr class="even">
+            <td class=" sorting_1">
+                Bill Frank
+            </td>
+            <td>
+                Active
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<h3>Credits</h3>
+<table cellspacing="0" class="data table table-striped" id="credits">
+    <thead>
+        <tr>
+            <th>
+                @("Person")
+            </th>
+            <th>
+                @("Date")
+            </th>
+            <th>
+                @("My Credit")
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="odd">
+            <td>
+                Bill Frank
+            </td>
+            <td>
+                6/4/2012
+            </td>
+            <td>
+                $4.99
+            </td>
+        </tr>
+        <tr class="even">
+            <td>
+                Bill Frank
+            </td>
+            <td>
+                5/4/2012
+            </td>
+            <td>
+                $4.99
+            </td>
+        </tr>
+        <tr class="odd">
+            <td>
+                Bill Frank
+            </td>
+            <td>
+                3/4/2012
+            </td>
+            <td>
+                $4.99
+            </td>
+        </tr>
+    </tbody>
+</table>

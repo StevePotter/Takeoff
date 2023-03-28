@@ -1,0 +1,17 @@
+﻿@model Account_LimitReached
+@{
+    Layout = "~/Views/Shared/Layout-App-Slim.cshtml";
+    ViewData["PageTitle"] = "Signup Required";
+    
+    Html.DisableNagBanners();
+}
+@section Header
+{
+    <h1>@("Signup Required")</h1>
+}
+<p>
+@("Sorry but you must be signed up in order to do this.  Don't worry, it's free and takes only seconds.")
+</p>
+<div class="actions">
+    <a class="@Html.PrimaryButtonClass()" href="@(Url.Action<SignupController>(c => c.Index(null, null, null)))">@("Sign Up")</a>
+</div>

@@ -1,0 +1,25 @@
+﻿@{
+    Layout = "~/Views/Shared/Layout-External-Slim.cshtml";
+    
+}
+@section Header
+{
+	<h1>Welcome to Takeoff Support</h1>
+}
+
+<p class="instructions">@S.Support_Explanation</p>
+
+<ul id="support-options">
+    <li id="support-request">
+        <a href="@(Url.Action<SupportController>(c => c.RequestAction()))">Support Request</a><span>Contact Takeoff personnel directly to report issues.</span>
+    </li>
+    <li id="support-knowledgeBase">
+        <a href="@(Url.Action<SupportController>(c => c.KnowledgeBase()))">Knowledge Base</a><span>Check out or knowledge base of tips, tricks, and how to's.</span>
+    </li>
+    <li id="support-suggestions">
+        <a href="@(Url.Action<SupportController>(c => c.Suggestions()))">Suggestions</a><span>Suggest an addition or change to Takeoff.</span>
+    </li>
+    <li id="support-discussions">
+        <a href="@(Url.Action<SupportController>(c => c.Discussions()))">Discuss</a><span>Ask questions and discuss issues with the entire Takeoff community.</span>
+    </li>
+</ul>

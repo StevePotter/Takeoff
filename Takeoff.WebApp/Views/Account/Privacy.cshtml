@@ -1,0 +1,55 @@
+﻿@model Account_Privacy
+@{
+    Layout = "~/Views/Account/Layout.cshtml";
+    
+    ViewData["Heading"] = "Privacy Settings";
+}
+@section JsDocReady {
+    window.views.Account_Privacy();
+}
+<h3>@("Basic Settings")</h3>
+<form id="mainForm" method="post" action="@(Url.Action<AccountController>(c => c.Privacy()))">
+    <fieldset>
+        <div class="controls checkbox">
+            @Html.CheckBoxFor(m => m.EnableMembershipRequests)
+            <label for="EnableMembershipRequests">@("Let non-members request membership to my productions")</label>
+        </div>
+        <div class="controls checkbox">
+            @Html.CheckBoxFor(m => m.EnableInvitations)
+            <label for="EnableInvitations">@("Let people invite me into their productions")</label>
+        </div>
+        @Html.FormButtons(S.Shared_UpdateBtn_Text)
+    </fieldset>
+</form>
+
+    @if (Model.AutoResponses.HasItems())
+    {    
+    <hr />
+    <h3>@("Auto Responses to Membership Requests")</h3>
+      <p>@("You have indicated that you want to always automatically:")</p>
+      <ul>
+        @foreach (var response in Model.AutoResponses)
+        {
+            string message1 = null;
+            string message2 = null;
+            if (response.IsInvitation && response.Accept)
+            {
+                message1 = "Accept invitations from ";
+                message2 = " for their productions.";
+            }
+            else if (response.IsInvitation)
+            {
+                message1 = "Decline invitations from ";
+                message2 = " for their productions.";
+            }
+            else
+            {
+                message1 = "Ignore requests for membership from ";
+                message2 = " for my productions.";
+            }
+        <li>@message1 <a href="@Html.Attribute("mailto:" + response.TargetUserEmail)">@response.TargetUserName</a> @message2 [<a href="@Url.Action("DeleteAutoResponse", "Account", new { id = response.Id })">Cancel</a>]</li>
+        }
+       
+      </ul>
+}
+

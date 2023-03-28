@@ -1,0 +1,320 @@
+﻿body.production-details
+{
+
+    &.not-logged-in
+    {
+        #nav-login
+        {
+            display:none;
+        }
+    }
+
+/* mainTabs - Videos/Assets/Team/Settings tabs.  i also included the title here.  
+***************************************************************************************************/
+
+/* videos panel can be toggled when its in video details mode so make it always pointer even when open */
+#mainTabs #videos-tab a:hover {
+	color: #ED2E26 !important;
+	cursor:pointer !important; 
+}
+
+#mainTabs-panels
+{
+    margin-top: 10px;//todo: figure out why this was necessary, but it was.  otherwise the tabs were cut off
+}
+
+/* right now the tab panes much have a regular flow-based positioning or else flash elements within panes (file/videos) will die when they are hidden. */
+#mainArea
+{
+    //prevents annoying outline when clicking on certain elements and wandering cursor away
+    a:focus {
+        outline: 0;
+    }
+    .tabPane
+    {
+        top: 0px;
+        height: 1px;
+        left: 200px;
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+        width: 10px;
+	    margin: 0 auto;
+        overflow: hidden;
+    }
+}
+
+
+
+/* added to .tabPane elements when one of them is being shown */
+#mainArea .openTabPane
+{
+    right:0;
+    left: 0px !important;
+    top: 0px;
+    z-index: 8 !important;
+    height: auto;
+    width: auto;
+    position: relative !important;
+}
+
+.tabPane img.loading {
+	width: 16px;
+	margin: 20px auto;
+	display: block;
+}
+
+.tabPane h2 {
+	margin-top: 0;
+}
+
+
+/* #mainArea zindices
+
+1 - closed tabs.  we can't hide tabs via display:none because it would screw up the swfupload plugins.  so instead
+2 - background
+3 - tabs and title
+4 - player
+5 - open tabs & comment details
+*/
+
+/* contains the video player and add forms.  the main focal point of the page */
+#mainArea
+{
+    min-height: 200px;
+    clear: both;
+    position: relative;
+
+    /* used to put tabs behind when tabs close.  this avoids the Flash elements in file uploads and video from being destroyed */
+    .background
+    {
+        z-index: 2;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        top: -10px;
+        position: absolute;
+        background-color: #E7E9EA; /*otherwise it would be transparent and not hide tabs underneath */
+    }
+
+
+}
+
+
+/* we make each pane 1px high and can't hide them (well most of them anyway) because it could break any flash plugins like file upload or video if we hide.  but when they are open, they will be slowly pushed down.  so this fixes that.  lame but works */
+#filesArea.openTabPane
+{
+    top: -1px;
+}
+#membersArea.openTabPane
+{
+    top: -2px;
+}
+#settingsArea.openTabPane
+{
+    top: -3px;
+}
+#video-details-container.openTabPane
+{
+    top: -4px;
+}
+
+/* videos list
+***************************************************************************************************/
+
+/* hide the "No videos" and No Files messages because javascript will show it and this would cause some flashing */
+#videosListEmptyMsg
+{
+    display: none;
+}
+
+#videosList li
+{
+    width: 260px;
+    a
+    {
+        border: 1px solid #DDDDDD;
+        border-radius: 4px 4px 4px 4px;
+        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075);
+        margin: 0 0 18px 20px;
+        width: 230px;
+        float: left;
+        min-height:150px;
+        padding:18px;
+        > *
+        {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+    &:hover a
+    {
+        color: #ed2e26;
+        text-decoration: none;
+    }
+    strong
+    {
+        font-size:17px;
+        font-weight:bold;
+        text-align: center;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    div
+    {
+        display:block;
+        text-align:center;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+
+    /* div that contains the rotating thumbnails */
+    div.thumbs,div.noThumbs
+    {
+        height: 90px;
+        margin: 18px auto;
+    }
+
+    /* used in place of thumbnails when a video doesn't have any (either still transcoding or old or something) */
+    div.noThumbs
+    {
+        background-image: url("../img/play.64.png");
+        background-repeat: no-repeat;
+        background-position: center center;
+    }
+
+}
+
+
+
+#videosArea, #filesArea//this is for the divs that a swfupload plugin are embedded in
+{
+    > h2
+    {
+        position: relative;
+        div
+        {
+            position: absolute;
+            right: 0px;
+            top: 0px;
+            &:hover //needed because the div gets the focus, not the underlying a.btn
+            {
+                a
+                {
+                    background-position: 0 -15px;
+                    color: #333;
+                    text-decoration: none;
+                }
+            }
+            a
+            {
+                white-space: nowrap;
+            }
+        }
+    }
+}
+
+
+#sideBar
+{
+  background-color: rgba(255, 255, 255, 0.2);
+  border: 1px solid #eee;
+  border: 1px solid rgba(0,0,0,.05);
+  .border-radius(4px);
+  .box-shadow(0 1px 0 #FFFFFF inset);
+  padding: 14px;
+  margin-left: 10px;
+  width: 280px;
+}
+    
+#activity-container > ul > li
+{        
+    list-style: none;
+    background-repeat: no-repeat;
+    background-position: 0px 12px;
+    padding-top: 10px;
+    padding-left: 18px;
+    margin-left: -18px;
+    &:first-child
+    {
+        margin-top: -10px;//clears padding for first item.  this was easier than clearing padding and background-position
+    }
+    &.invited {
+        background-image: url(../img/user-small.png);
+    }
+    &.commented {
+        background-image: url(../img/balloon-small-left.png);
+    }
+    &.added {
+        background-image: url(../img/plus-small.png);
+    }    
+}
+
+
+
+
+/* asset list
+***************************************************************************************************/
+
+/* hide the "No Files" messages because javascript will show it and this would cause some flashing */
+#filesTableEmptyMsg
+{
+    display: none;
+}
+
+
+/* Team
+***************************************************************************************************/
+#member-add-form
+{
+    display: none;
+    .well;
+    .tooltip-anchor
+    {
+        cursor: pointer;
+    }
+}
+.ui-autocomplete .ui-menu-item a {
+    font-size: 12px;
+}
+
+
+
+/* file uploading
+***************************************************************************************************/
+
+
+
+#videoUploadQueue, #fileUploadQueue
+{
+    display: none;
+    li
+    {
+        list-style: none;
+		.status-file-cancel { font-size: 14px; }
+		.progress { margin-top: 6px; }
+		.status, .file-name { font-size: 16px; }
+		.progressPercent { margin-right: 3px; }
+
+    }
+}
+
+
+#fileUploadQueue
+{
+    .cancel {
+	    font-size: 11px;
+	    font-weight: normal;
+	    display: inline-block;
+	    width: 16px;
+	    height: 16px;
+	    background-image: url(../img/cross.png);
+	    text-indent: -9999px;
+	    //top: -4px;
+	    position: relative;
+    }
+}
+
+
+}//end of body.  not indented for ease of editing/reading

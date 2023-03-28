@@ -1,0 +1,106 @@
+﻿@{
+    Layout = "~/Views/Shared/Layout-Base.cshtml";
+    ViewData["MainCssLib"] = "Assets/css/theme.css";
+
+    ViewData.AddBodyCss("app", "account-shell");//account-shell is needed because when using account-area, some pages outside of the shell got wrong css attributes (like signup or /account/demoforbidden).
+    this.RedefineSection("CssExternal");
+    this.RedefineSection("CssInline");
+    this.RedefineSection("JsDocReady");
+
+    var user = ViewData["User"].CastTo<IUser>();
+    
+    var account = user.Account;
+    var hasAccount = account != null;
+    var isSubscribed = hasAccount && account.IsSubscribed();
+    
+    var heading = ViewData["Heading"].CastTo<string>();
+    if (heading.HasChars())
+    {
+        if (ViewData["PageTitle"] == null)
+        {
+            ViewData["PageTitle"] = heading;
+        }
+        if (ViewData["IncludeHeadingPrefix"].ValueOr(false))
+        {
+            heading = S.Account_Shared_PageHeading + heading.StartWith(" - ");
+        }
+    }
+
+}
+@section JsInline
+{
+    @if (ViewData["Identity"].CastTo<Identity>() != null)
+    {
+    <text>
+    $.loginPing();
+    </text>
+    }
+    @RenderSection("JsInline", false)
+}
+@section JsExternal
+{
+    @Html.JsLib("interior.js")
+    @Html.JsLib("app-account.js")
+    @RenderSection("JsExternal", false)
+}
+<div class="container">
+    @RenderPage("~/Views/Shared/Layout-Nav.cshtml")
+
+    <div id="main-content-container" role="main">
+        <div class="page-header">
+    	    <h1>@heading</h1>    
+        </div>
+        @RenderPage("~/Views/Shared/Layout-NagBanners.cshtml")
+
+        @if (IsSectionDefined("AfterHeader"))
+        {
+            @RenderSection("AfterHeader")
+        }
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span3">
+                    <nav class="account-nav well">
+                    <ul class="nav nav-list">
+                        <li><a href="@(Url.Action<AccountController>(c => c.Index()))" @(Html.ClassAttIfAction<AccountController>("selected", c => c.Index()))>@S.Account_Shared_SideNav_Summary_Text</a></li>
+                        <li><a href="@(Url.Action<AccountController>(c => c.MainInfo()))" @(Html.ClassAttIfAction<AccountController>("selected", c => c.MainInfo()))>@S.Account_Shared_SideNav_PersonalInfo_Text</a></li>
+                        @if (hasAccount)
+                        {
+                            <li><a href="@(Url.Action<AccountController>(c => c.Logo()))" @(Html.ClassAttIfAction<AccountController>("selected", c => c.Logo()))>@S.Account_Shared_SideNav_Logo_Text</a></li>
+                        }
+                        @if (isSubscribed)
+                        {
+                            <li><a href="@(Url.Action<AccountController>(c => c.Billing()))"  @(Html.ClassAttIfAction<AccountController>("selected", c => c.Billing()))>Billing Information</a></li>
+                        }
+                        <li><a href="@(Url.Action<AccountNotificationsController>(c => c.Index()))" @(Html.ClassAttIfAction<AccountNotificationsController>("selected", c => c.Index()))>Email Notifications</a></li>
+                        <li><a href="@(Url.Action<AccountController>(c => c.Privacy()))" @(Html.ClassAttIfAction<AccountController>("selected", c => c.Privacy()))>Privacy Settings</a></li>
+                        @if (hasAccount)
+                        {
+                            <li><a href="@(Url.Action<AccountMembersController>(c => c.Index()))" @(Html.ClassAttIfAction<AccountMembersController>("selected", c => c.Index()))>My Members</a></li>
+                            if (account.Status != AccountStatus.TrialAnonymous && account.Status != AccountStatus.Trial2)
+                            {
+                                <li><a href="@(Url.Action<AccountPlanController>(c => c.Index()))" @(Html.ClassAttIfAction<AccountPlanController>("selected", c => c.Index()))>Change Plan</a></li>
+                            }
+                            if (isSubscribed)
+                            {
+                                <li><a href="@(Url.Action<InvoicesController>(c => c.Index()))" @(Html.ClassAttIfAction<InvoicesController>("selected", c => c.Index()))>Invoices</a></li>
+                            }
+                        }
+                        else
+                        {
+                            <li><a href="@(Url.Action<SignupController>(c => c.Index(null, null, null)))">Get My Own Account</a></li>  
+                        }
+                        <li><a href="@(Url.Action<AccountMembershipsController>(c => c.Index()))" @(Html.ClassAttIfAction<AccountMembershipsController>("selected", c => c.Index()))>Associated Accounts</a></li>
+                        <li><a  href="@(Url.Action<AccountController>(c => c.Close()))" @(Html.ClassAttIfAction<AccountController>("selected", c => c.Close()))>Close My Account</a></li>
+                    </ul>
+                    </nav>        
+                </div>
+                <div class="span9" id="main-content">
+                    @RenderBody()
+                </div>
+            </div>
+        </div>
+    </div>
+<footer>
+    <p>@S.Footer_Copyright.FormatResource(DateTime.Now.Year.ToInvariant()) &nbsp; @S.Footer_SupportLink.FormatResource(Html.StartActionLink("Index", "Support"))</p>
+</footer>
+</div>

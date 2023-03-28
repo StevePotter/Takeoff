@@ -1,0 +1,13 @@
+﻿@{
+    Layout = "~/Views/Shared/Layout-App-Slim.cshtml"; 
+    ViewData["PageTitle"] = "Request Sent";
+    ViewData.AddBodyCss("membership-request-created");//had to do this because two different controllers use this view currently (productions and membershiprequests)       
+}
+
+@section Header
+{
+    <h1>@("Request Sent")</h1>
+}
+<p class="@Html.AlertSuccessClass(true)">
+@("We emailed the person in charge of the production.  You'll get an email once they decide. If you don't hear back in a while, check your junk mail. Then maybe contact them personally and ask them to add you as a team member.")
+</p>

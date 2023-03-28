@@ -1,0 +1,36 @@
+﻿@{
+    Layout = "~/Views/Shared/Layout-App-Medium.cshtml";
+
+    ViewData.AddBodyCss("staff");//account-shell is needed because when using account-area, some pages outside of the shell got wrong css attributes (like signup or /account/demoforbidden).
+    this.RedefineSection("CssExternal");
+    this.RedefineSection("CssInline");
+    this.RedefineSection("JsExternal");
+    this.RedefineSection("JsDocReady");
+    this.RedefineSection("JsInline");
+    const string ActiveCssClass = "active";
+
+}
+
+@section JsExternal
+{
+    @Html.JsLib("interior.js")
+    @Html.JsLib("app-staff.js")
+    @RenderSection("JsExternal", false)
+}
+
+@section Header
+{
+    <ul class="nav nav-pills">
+        <li @(Html.ClassAttIfAction<StaffController>(ActiveCssClass, s => s.VideoWatches()))><a href="@(Url.Action<StaffController>(c => c.VideoWatches()))">Video Watches</a></li>
+        <li @(Html.ClassAttIfAction<StaffController>(ActiveCssClass, s => s.VideoUploads()))><a href="@(Url.Action<StaffController>(c => c.VideoUploads()))">Video Uploads</a></li>
+        <li @(Html.ClassAttIfAction<StaffController>(ActiveCssClass, s => s.UsageInfo()))><a href="@(Url.Action<StaffController>(c => c.UsageInfo()))">Usage Info</a></li>
+        <li @(Html.ClassAttIfController<Staff_UsersController>(ActiveCssClass))><a href="@(Url.Action<Staff_UsersController>(c => c.Index(null)))">Users</a></li>
+        <li @(Html.ClassAttIfController<Staff_AccountsController>(ActiveCssClass))><a href="@(Url.Action<Staff_AccountsController>(c => c.Index(null)))">Accounts</a></li>
+        <li @(Html.ClassAttIfController<Staff_EncodesController>(ActiveCssClass))><a href="@(Url.Action<Staff_EncodesController>(c => c.Index(null)))">Encodes</a></li>
+        <li @(Html.ClassAttIfController<Staff_OutgoingMailController>(ActiveCssClass))><a href="@(Url.Action<Staff_OutgoingMailController>(c => c.Index(null)))">Outgoing Mail</a></li>
+        <li @(Html.ClassAttIfController<Staff_PlansController>(ActiveCssClass))><a href="@(Url.Action<Staff_PlansController>(c => c.Index()))">Plans</a></li>
+     </ul>
+    @RenderSection("Header", false)
+}
+
+@RenderBody()

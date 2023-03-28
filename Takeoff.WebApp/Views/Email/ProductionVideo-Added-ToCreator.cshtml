@@ -1,0 +1,25 @@
+﻿@model Email_ProductionVideo_New
+@{
+    Layout = "~/Views/Email/Layout-ProductionBase.cshtml";
+    var changeSettingsUrl = Url.Action<AccountNotificationsController>(c => c.Index(), UrlType.AbsoluteHttps);
+}
+@section Subject
+{
+@Model.VideoTitle is Ready
+}
+@section HtmlHeader {
+    @Model.VideoTitle is Ready
+}
+@section HtmlExplanation
+{
+You are recieving this because you are a member of Takeoff and your settings indicate you wish to recieve an email when your videos are ready.  Visit <a href="@changeSettingsUrl">@changeSettingsUrl</a> to change this setting.
+}
+@section Plain {
+@Html.Raw(Model.VideoTitle), the video you uploaded for the @Html.Raw(Model.ProductionTitle) production, is ready to go. Your teammate(s) have been sent an email as well.  To view it, please go to the following link:
+@Html.Raw(Model.WatchUrl)
+}
+
+<p class="big-link-container">
+<a href="@Model.WatchUrl">Watch It</a>
+<div class="link-to-copy">If clicking the above link didn't work, just copy and paste the following into your browser address bar:<br><b>@Model.WatchUrl</b></div>
+</p>

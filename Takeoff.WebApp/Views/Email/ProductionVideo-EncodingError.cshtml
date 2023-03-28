@@ -1,0 +1,44 @@
+﻿@model Email_ProductionVideo_EncodingError
+@{
+    Layout = "~/Views/Email/Layout-ProductionBase.cshtml";
+    ViewData["IncludeThumbnails"] = false;
+    var changeSettingsUrl = Url.Action<AccountNotificationsController>(c => c.Index(), UrlType.AbsoluteHttps);
+}
+@section Subject
+{
+Problem With Your Video
+}
+@section HtmlHeader {
+Problem with the video you uploaded to @Model.ProductionTitle
+}
+@section Plain {
+The video file you uploaded, @Model.UploadedFileName, which you titled @Model.VideoTitle, couldn't be processed.
+
+@if (Model.Error == Takeoff.Transcoder.TranscodeJobErrorCodes.NotAVideo)
+{
+<text>
+It appears as if the file wasn't a video.  If you wanted to upload something that's not a video, please do it in the assets section.
+</text>
+}
+else if (Model.Error == Takeoff.Transcoder.TranscodeJobErrorCodes.NotCompatible)
+{
+<text>
+Our encoders couldn't handle your video format.  We recommend encoding in h.264 or as a MOV.
+</text>
+}
+}
+<p class="text">The video file you uploaded, @Model.UploadedFileName, which you titled @Model.VideoTitle, couldn't be processed.</p>
+
+@if (Model.Error == Takeoff.Transcoder.TranscodeJobErrorCodes.NotAVideo)
+{
+<p class="text">It appears as if the file wasn't a video.  If you wanted to upload something that's not a video, please do it in the assets section.</p>    
+}
+else if (Model.Error == Takeoff.Transcoder.TranscodeJobErrorCodes.NotCompatible)
+{
+<p class="text">Our encoders couldn't handle your video format.  We recommend encoding in h.264 or as a MOV.</p>    
+}
+
+<p class="big-link-container">
+<a href="@Model.ProductionUrl">Visit the Production</a>
+<div class="link-to-copy">If clicking the above link didn't work, just copy and paste the following into your browser address bar:<br><b>@Model.ProductionUrl</b></div>
+</p>

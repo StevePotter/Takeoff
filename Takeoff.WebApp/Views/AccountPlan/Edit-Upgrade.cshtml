@@ -1,0 +1,34 @@
+﻿@model AccountPlan_Edit
+@{
+    Layout = "~/Views/Account/Layout.cshtml";
+    
+    ViewData["Heading"] = "Upgrade Your Plan";
+    var user = (IUser)ViewData["User"];
+    var account = user.Account;
+    var currentPlan = Model.CurrentPlan;
+    var newPlan = (IPlan) Model.NewPlan;
+    var newPlanCharge = newPlan.PriceInDollars().ToString(NumberFormat.Currency);
+}
+@if (account.IsSubscribed() && !account.InTrialPeriod())
+{
+    <p>Awesome! Here's how it works: We will issue you a prorated credit for the remainder of the month for your current plan. Then we start your billing cycle fresh today with the new plan. So from now on, you will be billed on this day each month.</p>
+}
+else if (account.IsSubscribed() && account.TrialPeriodEndsOn.HasValue)
+{
+    <p>Awesome! Since you're still in the trial period, you won't pay anything until your trial expires, which is on @account.TrialPeriodEndsOn.Value.ToString(DateTimeFormat.ShortDate).</p>
+}
+else
+{
+    <p>Awesome. We hope you enjoy this plan!</p>
+}
+<p>You are currently on the @currentPlan.Title plan, which charges @currentPlan.PriceInDollars().ToString(NumberFormat.Currency)
+    every @currentPlan.BillingIntervalLength @currentPlan.BillingIntervalType.ToString().ToLowerInvariant().EndWith("(s)").</p>
+<p>You are upgrading to the @newPlan.Title plan, which charges @newPlan.PriceInDollars().ToString(NumberFormat.Currency)
+    every @newPlan.BillingIntervalLength @newPlan.BillingIntervalType.ToString().ToLowerInvariant().EndWith("(s)").</p>
+<form  method="post" action="@(Url.Action<AccountPlanController>(c => c.EditPost(null)))">
+<div class="well">
+@Html.AntiForgeryToken()
+@Html.Hidden("plan", newPlan.Id)
+    <input class="@Html.PrimaryButtonClass()" type="submit" value="Upgrade my Account" />
+    <a class="btn" href="@(Url.Action<AccountPlanController>(c => c.Index()))">Cancel</a>
+</div></form>

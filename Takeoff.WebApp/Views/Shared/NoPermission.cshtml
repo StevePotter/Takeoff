@@ -1,0 +1,14 @@
+﻿@{
+    Layout = "~/Views/Shared/Layout-App-Slim.cshtml"; 
+    ViewData["PageTitle"] = S.Error_NoPermission_PageTitle;
+    ViewData.AddBodyCss("error-access");   
+    
+}
+@section Header
+{
+    <h1>@("Denied!")</h1>
+}
+
+<p class="@Html.AlertErrorClass(true)">
+    @("Sorry but you don't have permission to come here.  Please don't hate us.")
+</p>

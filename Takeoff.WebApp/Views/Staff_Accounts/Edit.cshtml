@@ -1,0 +1,20 @@
+﻿@model Staff_Accounts_Edit
+@{
+    Layout = "~/Views/Staff/staff-layout.cshtml";
+}
+@section Header
+{
+<h1>@("Account #") @Model.Id</h1>
+}
+@Html.ValidationSummary("Please address the following:")
+<form id="mainForm" method="post" action="@Url.Action("Edit", "Staff_Accounts")" class="form-horizontal">
+@Html.AntiForgeryToken()
+    <fieldset>
+        @Html.TextBoxControlGroupFor(m => m.OwnerId)
+        @Html.ControlGroup(Html.ControlLabelFor(m => m.PlanId), Html.DropDownListFor(m => m.PlanId, Model.Plans))
+        @Html.ControlGroup(Html.ControlLabelFor(m => m.Status), Html.DropDownListFor(m => m.Status, typeof(AccountStatus).SelectItems()))
+        @Html.TextBoxControlGroupFor(m => m.TrialPeriodEndsOn)
+        @Html.TextBoxControlGroupFor(m => m.CurrentBillingPeriodStartedOn)
+        @Html.FormButtons("Update")
+    </fieldset>
+</form>

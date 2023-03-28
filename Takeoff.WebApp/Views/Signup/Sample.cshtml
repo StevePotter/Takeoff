@@ -1,0 +1,17 @@
+﻿@{
+    Layout = "~/Views/Shared/Layout-App-Slim.cshtml";
+    
+    ViewData["PageTitle"] = S.Signup_Sample_PageTitle;
+    ViewData["EnableNagBanner"] = false;//don't nag them quite yet
+}
+@section Header
+{
+<h1>@S.Demo_Sample_PageHeading</h1>
+}
+<p>@S.Demo_Sample_Explanation</p>
+<div class="actions">
+        <form method="post" action="@(Url.Action<DemoController>(c => c.SamplePost()))">
+	        <input class="@Html.PrimaryButtonClass()" value="@S.Signup_Sample_YesBtn_Text" type="submit" />
+        </form>
+        <a class="btn" href="@(Url.Action<DashboardController>(c=>c.Index(null,null)))">@S.Signup_Sample_NoBtn_Text</a>
+</div>

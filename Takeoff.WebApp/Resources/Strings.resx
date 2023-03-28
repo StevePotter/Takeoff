@@ -1,0 +1,1141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Demo_Forbidden_Message" xml:space="preserve">
+    <value>Sorry, but we can't allow certain things in demo mode.  To continue, you'll need to sign up for a real Takeoff account.  We hope you do!  It only takes seconds and there's no credit card required.</value>
+    <comment>{0} is link for them to sign up.</comment>
+  </data>
+  <data name="Demo_Forbidden_Title" xml:space="preserve">
+    <value>Not Available in Demo Mode</value>
+  </data>
+  <data name="Account_LimitReachedMsg_AssetAllTimeCount" xml:space="preserve">
+    <value>you can't upload more asset files</value>
+  </data>
+  <data name="Account_LimitReachedMsg_AssetCount" xml:space="preserve">
+    <value>you can't upload more asset files</value>
+  </data>
+  <data name="Account_LimitReachedMsg_AssetFileSize" xml:space="preserve">
+    <value>you can't upload a file that big</value>
+  </data>
+  <data name="Account_LimitReachedMsg_AssetTotalSize" xml:space="preserve">
+    <value>you can't upload more asset files</value>
+  </data>
+  <data name="Account_LimitReached_Demo_Explanation" xml:space="preserve">
+    <value>You're currently in a demo.  In the demo, {0}.  In order to do it, we need you to {1}sign up{/1}.  No credit card required!</value>
+    <comment>{0} is a description of the limitation that was exceeded.  {1} is the link to sign up for an account.</comment>
+  </data>
+  <data name="Account_LimitReachedMsg_GenericLimit" xml:space="preserve">
+    <value>you can't do this</value>
+  </data>
+  <data name="Account_LimitReached_Normal_Explanation" xml:space="preserve">
+    <value>With your current account plan, {0}.  You can {1}upgrade your account{/1} to fix the problem.</value>
+    <comment>{0} is a description of the limitation that was exceeded.  {1} is the link to update to a better plan</comment>
+  </data>
+  <data name="Account_LimitReachedMsg_ProductionCount" xml:space="preserve">
+    <value>you reached the maximum number of productions</value>
+  </data>
+  <data name="Account_LimitReachedMsg_VideoCount" xml:space="preserve">
+    <value>you can't add another video</value>
+  </data>
+  <data name="Account_LimitReachedMsg_VideoFileSize" xml:space="preserve">
+    <value>you can't upload a video that big</value>
+  </data>
+  <data name="Dashboard_Activity_EmptyMsg" xml:space="preserve">
+    <value>There's no recent activity.</value>
+  </data>
+  <data name="Dashboard_Activity_Title" xml:space="preserve">
+    <value>Latest Activity</value>
+  </data>
+  <data name="Dashboard_Demo" xml:space="preserve">
+    <value>This is a demo.  {0}Get full featured Takeoff for free!{/0} </value>
+    <comment>{0} is link for them to sign up.</comment>
+  </data>
+  <data name="Dashboard_NewProduction_Text" xml:space="preserve">
+    <value>New Production</value>
+  </data>
+  <data name="Dashboard_PlanUsage_DaysLeft" xml:space="preserve">
+    <value>There are {0} days left in your trial.  {1}Purchase Takeoff now!{/1}</value>
+    <comment>{0} is # of days left.  {1} is signup link</comment>
+  </data>
+  <data name="Dashboard_PlanUsage_Signup" xml:space="preserve">
+    <value>Signup now</value>
+  </data>
+  <data name="Dashboard_Productions_Title" xml:space="preserve">
+    <value>Active Productions</value>
+  </data>
+  <data name="Dashboard_Title" xml:space="preserve">
+    <value>Dashboard</value>
+  </data>
+  <data name="DefaultPageTitle" xml:space="preserve">
+    <value>Takeoff - Simple Video Collaboration</value>
+  </data>
+  <data name="LinkDoesNotApplyMsg" xml:space="preserve">
+    <value>This link doesn't apply to you.  Maybe it worked in the past or it works for someone else, but in your situation you don't need to worry about it.</value>
+  </data>
+  <data name="LinkDoesNotApplyTitle" xml:space="preserve">
+    <value>Nothing to See Here</value>
+  </data>
+  <data name="Signup_Account_PageHeading" xml:space="preserve">
+    <value>Please Enter Your Basic Account Information</value>
+  </data>
+  <data name="Signup_Account_Form_PasswordConfirm_Label" xml:space="preserve">
+    <value>Retype Password</value>
+  </data>
+  <data name="Signup_Account_Form_SignupSource_Email" xml:space="preserve">
+    <value>You emailed me</value>
+    <comment>Option in signupsource dropdown</comment>
+  </data>
+  <data name="Signup_Account_Form_SignupSource_Label" xml:space="preserve">
+    <value>How did you hear about us?</value>
+  </data>
+  <data name="Signup_Account_Form_SignupSource_MessageForum" xml:space="preserve">
+    <value>Message forum</value>
+    <comment>Option in signupsource dropdown</comment>
+  </data>
+  <data name="Signup_Account_Form_SignupSource_Other" xml:space="preserve">
+    <value>Other</value>
+    <comment>Option in signupsource dropdown</comment>
+  </data>
+  <data name="Signup_Account_Form_SignupSource_SearchEngine" xml:space="preserve">
+    <value>Search engine</value>
+    <comment>Option in signupsource dropdown</comment>
+  </data>
+  <data name="Signup_Account_Form_SignupSource_WordOfMouth" xml:space="preserve">
+    <value>Someone told me</value>
+    <comment>Option in signupsource dropdown</comment>
+  </data>
+  <data name="Signup_Account_Form_ValidationSummary_Heading" xml:space="preserve">
+    <value>Your account couldn't be created because:</value>
+  </data>
+  <data name="Account_ViewModel_Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="Account_ViewModel_FirstName" xml:space="preserve">
+    <value>First Name</value>
+  </data>
+  <data name="Account_ViewModel_LastName" xml:space="preserve">
+    <value>Last Name</value>
+  </data>
+  <data name="Signup_Account_ViewModel_Password" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="Validation_InvalidEmail" xml:space="preserve">
+    <value>Must be a valid e-mail address.</value>
+  </data>
+  <data name="Validation_Required" xml:space="preserve">
+    <value>{0} Required</value>
+  </data>
+  <data name="Nav_HomeBtn_Text" xml:space="preserve">
+    <value>Home</value>
+    <comment>Home button on site nav</comment>
+  </data>
+  <data name="Home_PageHeading" xml:space="preserve">
+    <value>Takeoff Helps Video Producers Collaborate</value>
+  </data>
+  <data name="Nav_BlogBtn_Text" xml:space="preserve">
+    <value>Blog</value>
+  </data>
+  <data name="Nav_DemoBtn_Text" xml:space="preserve">
+    <value>Try</value>
+  </data>
+  <data name="Nav_LoginBtn_Text" xml:space="preserve">
+    <value>Log In</value>
+  </data>
+  <data name="Nav_PricingBtn_Text" xml:space="preserve">
+    <value>Pricing</value>
+  </data>
+  <data name="Nav_SignupBtn_Text" xml:space="preserve">
+    <value>Sign Up</value>
+  </data>
+  <data name="Nav_SupportBtn_Text" xml:space="preserve">
+    <value>Support</value>
+  </data>
+  <data name="Nav_TourBtn_Text" xml:space="preserve">
+    <value>Tour</value>
+  </data>
+  <data name="Production_Details_MustLogInHeader" xml:space="preserve">
+    <value>Before you can access this production, we need you to log in.</value>
+  </data>
+  <data name="AccountPlan_Model_AllowSignups" xml:space="preserve">
+    <value>Let Users Sign Up</value>
+    <comment>If not, the plan is private or deprecated and must be set by admin</comment>
+  </data>
+  <data name="AccountPlan_Model_AssetFileSizeMax" xml:space="preserve">
+    <value>Max Asset File Size</value>
+  </data>
+  <data name="AccountPlan_Model_AssetsAllTimeMaxCount" xml:space="preserve">
+    <value>Max number of lifetime assets (for demo)</value>
+  </data>
+  <data name="AccountPlan_Model_AssetsTotalMaxCount" xml:space="preserve">
+    <value>Max # of Asset Files At Once</value>
+  </data>
+  <data name="AccountPlan_Model_AssetsTotalSizeMax" xml:space="preserve">
+    <value>Max Total Storage of Assets</value>
+  </data>
+  <data name="AccountPlan_Model_BillingInterval" xml:space="preserve">
+    <value>Billing Cycle</value>
+  </data>
+  <data name="AccountPlan_Model_CreatedOn" xml:space="preserve">
+    <value>Date Created</value>
+  </data>
+  <data name="AccountPlan_Model_Description" xml:space="preserve">
+    <value>Description (notes)</value>
+  </data>
+  <data name="AccountPlan_Model_Id" xml:space="preserve">
+    <value>Unique ID</value>
+  </data>
+  <data name="AccountPlan_Model_Price" xml:space="preserve">
+    <value>Price (in dollars)</value>
+  </data>
+  <data name="AccountPlan_Model_ProductionLimit" xml:space="preserve">
+    <value>Max # of Productions</value>
+  </data>
+  <data name="AccountPlan_Model_TrialInterval" xml:space="preserve">
+    <value>Trial Period</value>
+  </data>
+  <data name="AccountPlan_Model_VideoFileSizeMax" xml:space="preserve">
+    <value>Max Video File Size</value>
+  </data>
+  <data name="AccountPlan_Model_VideosTotalMaxCount" xml:space="preserve">
+    <value>Max # of Videos At Once</value>
+  </data>
+  <data name="Dashboard_NoProductions" xml:space="preserve">
+    <value>There aren't any active productions. Maybe you should {0}create one{/0}.</value>
+    <comment>{0} is link to new production</comment>
+  </data>
+  <data name="Login_DefaultHeading" xml:space="preserve">
+    <value>Welcome to Takeoff</value>
+  </data>
+  <data name="Login_EmailLabel" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="Login_PasswordLabel" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="Login_RememberMeLabel" xml:space="preserve">
+    <value>Keep me signed in</value>
+  </data>
+  <data name="Login_SignupBtnText" xml:space="preserve">
+    <value>I'm New Here</value>
+  </data>
+  <data name="Login_Subheading" xml:space="preserve">
+    <value>Please Log In to Continue</value>
+  </data>
+  <data name="Login_SubmitBtnText" xml:space="preserve">
+    <value>Log In</value>
+  </data>
+  <data name="Login_Validation_SummaryHeading" xml:space="preserve">
+    <value>Sorry but we couldn't log you in because:</value>
+  </data>
+  <data name="Login_Validation_EmailNotFound" xml:space="preserve">
+    <value>Sorry but there is nobody with that email in our system.</value>
+  </data>
+  <data name="MustVerify_Heading" xml:space="preserve">
+    <value>Please Verify Your Email Address</value>
+  </data>
+  <data name="Login_Validation_WrongPassword" xml:space="preserve">
+    <value>Wrong password.</value>
+  </data>
+  <data name="PasswordResetRequest_PageHeading" xml:space="preserve">
+    <value>Forgot your password?  Let's Reset It!</value>
+  </data>
+  <data name="PasswordResetRequest_SubmitBtnText" xml:space="preserve">
+    <value>Reset Password</value>
+  </data>
+  <data name="PasswordReset_EmailLabel" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="Validation_SummaryHeading" xml:space="preserve">
+    <value>Your request couldn't be processed because:</value>
+    <comment>This is a default that many pages override.</comment>
+  </data>
+  <data name="Login_PageTitle" xml:space="preserve">
+    <value>Log In</value>
+  </data>
+  <data name="PasswordResetRequest_PageTitle" xml:space="preserve">
+    <value>Reset Your Password</value>
+  </data>
+  <data name="PasswordReset_InvalidLinkDetails" xml:space="preserve">
+    <value>Sorry but the link you opened is not right.  The easiest fix is to {0}enter your e-mail address{/0} to start over.</value>
+  </data>
+  <data name="PasswordReset_InvalidLinkPageHeading" xml:space="preserve">
+    <value>We can't reset your password just yet!</value>
+  </data>
+  <data name="PasswordResetRequestSent_PageHeading" xml:space="preserve">
+    <value>Check your email!</value>
+  </data>
+  <data name="PasswordResetRequestSent_Text" xml:space="preserve">
+    <value>An email has been sent to you with a special link that will let you create a new password.  If it doesn't appear within a few minutes, please check your junk mail.  If you still have problems, please email us at support@takeoffvideo.com.</value>
+  </data>
+  <data name="PasswordResetRequestSent_PageTitle" xml:space="preserve">
+    <value>Check your email!</value>
+  </data>
+  <data name="PasswordResetRequest_UserNotFound_PageHeading" xml:space="preserve">
+    <value>Nobody here by that name!</value>
+  </data>
+  <data name="PasswordResetRequest_UserNotFound_Text" xml:space="preserve">
+    <value>Sorry but we couldn't find anyone in our system with that email address. </value>
+    <comment>0 is link back to password reset.  1 is signup.</comment>
+  </data>
+  <data name="PasswordReset_PageHeading" xml:space="preserve">
+    <value>Please Enter Your New Password</value>
+  </data>
+  <data name="PasswordReset_PasswordConfirmLabel" xml:space="preserve">
+    <value>Retype Password</value>
+    <comment>Label for password confirmation</comment>
+  </data>
+  <data name="PasswordReset_PasswordLabel" xml:space="preserve">
+    <value>New Password</value>
+    <comment>Label for Password field in form</comment>
+  </data>
+  <data name="PasswordReset_SubmitBtnText" xml:space="preserve">
+    <value>Change Password</value>
+  </data>
+  <data name="PasswordReset_PageTitle" xml:space="preserve">
+    <value>Reset Your Password</value>
+  </data>
+  <data name="Account_VerifyRequest_Explanation" xml:space="preserve">
+    <value>In order to unlock certain features, we need to confirm that you own the email address you entered.  It's simple.  Enter your email address, and we'll send an email with a special link for you to click.</value>
+  </data>
+  <data name="Account_VerifyRequest_PageHeading" xml:space="preserve">
+    <value>Let's Verify Your Email</value>
+  </data>
+  <data name="Account_VerifyRequest_SubmitBtnText" xml:space="preserve">
+    <value>Verify Email</value>
+  </data>
+  <data name="Account_VerifyRequest_PageTitle" xml:space="preserve">
+    <value>Verify Your Email</value>
+  </data>
+  <data name="Account_VerifySuccess_Message" xml:space="preserve">
+    <value>Great, now that your email address is verified we won't limit your activity.  Check out your {0}dashboard{/0} and have some fun!</value>
+  </data>
+  <data name="Account_VerifySuccess_PageHeading" xml:space="preserve">
+    <value>You've Been Verified!</value>
+  </data>
+  <data name="Account_VerifySuccess_PageTitle" xml:space="preserve">
+    <value>You've Been Verified!</value>
+  </data>
+  <data name="Account_Verify_AlreadyDone" xml:space="preserve">
+    <value>You've already verified your email address with us.  So go have some fun!</value>
+  </data>
+  <data name="Account_Verify_EmailLabel" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="Account_Verify_EmailSuccess_Msg" xml:space="preserve">
+    <value>An email has been sent with a quick link for you to click on.  If you don't see the email within a few minutes, check your junk box. </value>
+  </data>
+  <data name="Account_Verify_EmailSuccess_PageHeading" xml:space="preserve">
+    <value>Check your email!</value>
+  </data>
+  <data name="Account_Verify_EmailSuccess_PageTitle" xml:space="preserve">
+    <value>Check your email!</value>
+  </data>
+  <data name="Account_Verify_InvalidLinkDetails" xml:space="preserve">
+    <value>Sorry, but the link that brought you here is not correct. If you clicked on the link provided in an e-mail, please try selecting the entire link and pasting it in the address bar of your web browser. If you do that and it still doesn't work, go {0}here{/0} and enter your email address.</value>
+  </data>
+  <data name="Account_Verify_PageHeading" xml:space="preserve">
+    <value>Verify Your Email Address</value>
+  </data>
+  <data name="Account_Verify_UserNotFound_Msg" xml:space="preserve">
+    <value>Sorry but there is nobody in our system with that email address.  Please try another address.</value>
+  </data>
+  <data name="Account_Verify_UserNotFound_PageHeading" xml:space="preserve">
+    <value>Invalid Email Address</value>
+  </data>
+  <data name="Account_Verify_PageTitle" xml:space="preserve">
+    <value>Verify Your Email Address</value>
+  </data>
+  <data name="PasswordReset_Success" xml:space="preserve">
+    <value>Your password has been changed.</value>
+  </data>
+  <data name="Account_NecessaryInfo_PageHeading" xml:space="preserve">
+    <value>Please Provide Some Basic Information</value>
+  </data>
+  <data name="Account_NecessaryInfo_PageTitle" xml:space="preserve">
+    <value>Basic Information Required</value>
+  </data>
+  <data name="Account_ViewModel_Password" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="Shared_UpdateBtn_Text" xml:space="preserve">
+    <value>Update</value>
+  </data>
+  <data name="Footer_Copyright" xml:space="preserve">
+    <value>© Copyright Takeoff, Inc. {0}</value>
+    <comment>{0} is current year</comment>
+  </data>
+  <data name="Footer_SupportLink" xml:space="preserve">
+    <value>{0}Problems, Help, and Feedback{/0}</value>
+    <comment>0 is link to support </comment>
+  </data>
+  <data name="Header_UserRecognition" xml:space="preserve">
+    <value>Hi, {0}!</value>
+    <comment>0 is the user's name</comment>
+  </data>
+  <data name="MustVerify_Message" xml:space="preserve">
+    <value>Before we can let you go futher, we need you to verify your email address with us.  We sent you an email a while back with a link to follow.  If you have it, please open that email and click the link.  Otherwise, we can send another email.</value>
+  </data>
+  <data name="Signup_AlreadySignedUp_Message" xml:space="preserve">
+    <value>You are currently logged in and have already signed up for Takeoff.  To change your account plan or billing info, click "Account" up top.</value>
+  </data>
+  <data name="Signup_AlreadySignedUp_PageHeading" xml:space="preserve">
+    <value>You Have Already Signed Up</value>
+  </data>
+  <data name="Login_ForgotPasswordLink" xml:space="preserve">
+    <value>Forgot it?</value>
+  </data>
+  <data name="Signup_SubscribeChoice_EnterLater_BtnText" xml:space="preserve">
+    <value>Enter Later</value>
+  </data>
+  <data name="Signup_SubscribeChoice_EnterNow_BtnText" xml:space="preserve">
+    <value>Enter Billing Info Now</value>
+  </data>
+  <data name="Signup_SubscribeChoice_Explanation" xml:space="preserve">
+    <value>No matter what, your first 30 days are free.  You can enter your billing information now or later.  The advantage of entering it now is that we won't bug you about it during your trial and you won't have any lapse in service.  But you can enter your information later if you want.</value>
+  </data>
+  <data name="Signup_SubscribeChoice_PageHeading" xml:space="preserve">
+    <value>Enter Your Billing Details Now?</value>
+  </data>
+  <data name="Signup_SubscribeChoice_PageTitle" xml:space="preserve">
+    <value>Enter Your Billing Details Now?</value>
+  </data>
+  <data name="Signup_Complete_PageHeading" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Signup_Complete_PageTitle" xml:space="preserve">
+    <value>Create Sample?</value>
+  </data>
+  <data name="PageTitlePrefix" xml:space="preserve">
+    <value>Takeoff - </value>
+    <comment>When there is a custom page title, this is inserted before it.</comment>
+  </data>
+  <data name="Signup_Account_PageTitle" xml:space="preserve">
+    <value>Account Information</value>
+  </data>
+  <data name="Signup_Subscribe_PageHeading" xml:space="preserve">
+    <value>Please Enter Your Billing Information</value>
+  </data>
+  <data name="Signup_Subscribe_PageTitle" xml:space="preserve">
+    <value>Billing Information</value>
+  </data>
+  <data name="Shared_SubmitBtn_Text" xml:space="preserve">
+    <value>Submit</value>
+  </data>
+  <data name="Signup_Subscribe_BillingErrorExplanation" xml:space="preserve">
+    <value>There was a problem billing your account. Before you can use Takeoff, we need you to update your billing information. You will then immediately be charged {0}.</value>
+  </data>
+  <data name="Signup_Subscribe_InTrialExplanation" xml:space="preserve">
+    <value>Thanks for joining Takeoff. We give the first month for free, so you won't be billed until {0}. By entering your card now you ensure no disruption in service. We're happy to have you!</value>
+  </data>
+  <data name="Signup_Subscribe_TrialExpiredExplanation" xml:space="preserve">
+    <value>We hate the break the news, but your Takeoff trial expired on {0}.  To continue using Takeoff, you'll have to purchase it.  We sure hope you do.  You can enter your billing information below. </value>
+  </data>
+  <data name="Signup_Subscribe_ValidationSummary_Heading" xml:space="preserve">
+    <value>Your order couldn't be processed.  Please address the following:</value>
+  </data>
+  <data name="Subscribe_CardNumber_Label" xml:space="preserve">
+    <value>Card Number</value>
+  </data>
+  <data name="Subscribe_CardsAccepted" xml:space="preserve">
+    <value>Visa, Mastercard, American Express or Discover</value>
+  </data>
+  <data name="Subscribe_Explanation" xml:space="preserve">
+    <value>We don't accept POs, checks, or invoices to be paid at a later date. We will email you a receipt each time your card is charged. For your security and peace of mind, we do not store or handle your credit card directly and instead use a 3rd party service.  If you have any questions, you can reach us at {0}sales@takeoffvideo.com{/0}.  Thanks for your business!</value>
+  </data>
+  <data name="Subscribe_FirstName_Label" xml:space="preserve">
+    <value>First Name</value>
+  </data>
+  <data name="Subscribe_LastName_Label" xml:space="preserve">
+    <value>Last Name</value>
+  </data>
+  <data name="Subscribe_PostalCode_Label" xml:space="preserve">
+    <value>Zip/Postal Code</value>
+  </data>
+  <data name="Account_MainInfo_CurrentPassword_Label" xml:space="preserve">
+    <value>Current Password</value>
+    <comment>/account &amp; /account/maininfo</comment>
+  </data>
+  <data name="Account_MainInfo_CurrentPassword_Tooltip" xml:space="preserve">
+    <value>Please enter your current password.  This is a security measure to prevent someone else from changing your important account information.</value>
+  </data>
+  <data name="Account_MainInfo_Email_Label" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="Account_MainInfo_FirstName_Label" xml:space="preserve">
+    <value>First Name</value>
+  </data>
+  <data name="Account_MainInfo_LastName_Label" xml:space="preserve">
+    <value>Last Name</value>
+  </data>
+  <data name="Account_MainInfo_NewPassword_Label" xml:space="preserve">
+    <value>Optional New Password</value>
+  </data>
+  <data name="Account_MainInfo_PageTitle" xml:space="preserve">
+    <value>Personal Information</value>
+  </data>
+  <data name="Account_MainInfo_SubmitBtn_Text" xml:space="preserve">
+    <value>Update</value>
+  </data>
+  <data name="Account_Shared_PageHeading" xml:space="preserve">
+    <value>Account</value>
+    <comment>Shown in big letters on all /account pages</comment>
+  </data>
+  <data name="Account_Shared_SideNav_PersonalInfo_Text" xml:space="preserve">
+    <value>Personal Information</value>
+  </data>
+  <data name="Nav_AccountBtn_Text" xml:space="preserve">
+    <value>Account</value>
+  </data>
+  <data name="Nav_DashboardBtn_Text" xml:space="preserve">
+    <value>Dashboard</value>
+  </data>
+  <data name="Header_LogoutBtn_Text" xml:space="preserve">
+    <value>Log Out</value>
+  </data>
+  <data name="Header_Logo_AltText" xml:space="preserve">
+    <value>Takeoff Logo</value>
+  </data>
+  <data name="Demo_PageHeading" xml:space="preserve">
+    <value>Instant, Anonymous Demo</value>
+  </data>
+  <data name="Demo_PageTitle" xml:space="preserve">
+    <value>Instant Demo</value>
+  </data>
+  <data name="Footer_BlogFeed_Header" xml:space="preserve">
+    <value>From the Blog</value>
+  </data>
+  <data name="Footer_StayConnected_Header" xml:space="preserve">
+    <value>Stay Connected</value>
+  </data>
+  <data name="Footer_TwitterFeed_Header" xml:space="preserve">
+    <value>Twitter</value>
+  </data>
+  <data name="Footer_BlogFeed_NoDataMsg" xml:space="preserve">
+    <value>No new blog entries :(</value>
+  </data>
+  <data name="Footer_FacebookLink_Tooltip" xml:space="preserve">
+    <value>Takeoff on Facebook</value>
+  </data>
+  <data name="Footer_TwitterFeed_NoDataMsg" xml:space="preserve">
+    <value>No recent tweets.  Check back soon!</value>
+  </data>
+  <data name="Footer_TwitterLink_Tooltip" xml:space="preserve">
+    <value>Follow us on Twitter</value>
+  </data>
+  <data name="Footer_YouTubeLink_Tooltip" xml:space="preserve">
+    <value>Check out our YouTube Channel</value>
+  </data>
+  <data name="Home_PageTitle" xml:space="preserve">
+    <value>Simple Video Collaboration</value>
+  </data>
+  <data name="Demo_Explanation" xml:space="preserve">
+    <value>We like to test things out before committing. And we don't like giving away our email addresss just to do it. So we made it possible for you to try Takeoff without entering any personal information.</value>
+  </data>
+  <data name="Demo_SubmitBtn_Text" xml:space="preserve">
+    <value>Try Takeoff Now</value>
+  </data>
+  <data name="Home_HighlightsSection_Heading" xml:space="preserve">
+    <value>Takeoff Highlights</value>
+  </data>
+  <data name="Home_PlansBtn_Text" xml:space="preserve">
+    <value>See Plans {0}&amp;{/0} Pricing</value>
+    <comment>0 is a span used to format the &amp; with a different font</comment>
+  </data>
+  <data name="Home_TourBtn_Text" xml:space="preserve">
+    <value>Quick Tour</value>
+  </data>
+  <data name="Shared_Thumbnail_AltText" xml:space="preserve">
+    <value>Thumbnail</value>
+  </data>
+  <data name="Shared_ZoomBtn_Tooltip" xml:space="preserve">
+    <value>Zoom Image</value>
+    <comment>Generally, the a[title] for thumbnails</comment>
+  </data>
+  <data name="Home_ComparisonSection_Heading" xml:space="preserve">
+    <value>Takeoff Versus</value>
+  </data>
+  <data name="Tour_AssetsThumbnail_AltText" xml:space="preserve">
+    <value>Folder Illustration</value>
+  </data>
+  <data name="Tour_Assets_Details" xml:space="preserve">
+    <value>Takeoff's asset section is a great way to transfer and share files with your team. Share scripts, soundtracks, photos, artwork, or any other file you need to create your video.</value>
+  </data>
+  <data name="Tour_Assets_SubTitle" xml:space="preserve">
+    <value>File management... simplified.</value>
+  </data>
+  <data name="Tour_Assets_Title" xml:space="preserve">
+    <value>Asset Sharing</value>
+  </data>
+  <data name="Tour_CollaborationThumbnail_AltText" xml:space="preserve">
+    <value>Paper Airplane Illustration</value>
+  </data>
+  <data name="Tour_Collaboration_Details" xml:space="preserve">
+    <value>Takeoff provides a centralized, simple place for you to collaborate on videos as they are produced. Invite team members, share asset files, and upload video versions for review to this private web area.</value>
+  </data>
+  <data name="Tour_Collaboration_SubTitle" xml:space="preserve">
+    <value>Powerful, simple workflow &amp; project approvals.</value>
+  </data>
+  <data name="Tour_Collaboration_Title" xml:space="preserve">
+    <value>Production Collaboration</value>
+  </data>
+  <data name="Tour_Dashboard_Details" xml:space="preserve">
+    <value>The hub of Takeoff, your dashboard provides a simple overview of all your productions and activity. Organize all your productions and get a quick peek at what's going on with your projects.</value>
+  </data>
+  <data name="Tour_Dashboard_SubTitle" xml:space="preserve">
+    <value>Know what's going on in your production... anywhere, anytime.</value>
+  </data>
+  <data name="Tour_Dashboard_Title" xml:space="preserve">
+    <value>Dashboard</value>
+  </data>
+  <data name="Tour_MobileThumbnail_AltText" xml:space="preserve">
+    <value>Mobile Devices Illustration</value>
+  </data>
+  <data name="Tour_Mobile_Details" xml:space="preserve">
+    <value>Takeoff works on iPhone and iPad like a charm. Review and comment on the latest versions of your video in the palm of your hand. How cool is that? Native apps coming soon.</value>
+  </data>
+  <data name="Tour_Mobile_SubTitle" xml:space="preserve">
+    <value>Going mobile? Don't skip a beat.</value>
+  </data>
+  <data name="Tour_Mobile_Title" xml:space="preserve">
+    <value>Mobile Ready</value>
+  </data>
+  <data name="Tour_NotificationsThumbnail_AltText" xml:space="preserve">
+    <value>Email Illustration</value>
+  </data>
+  <data name="Tour_Notifications_Details" xml:space="preserve">
+    <value>Takeoff sends you email notifications for all activity within your productions. Know when a video is ready for review, a teammate has joined, or when a comment has been made. Busy inbox? Don't worry you can even set the frequency and settings to your liking.</value>
+  </data>
+  <data name="Tour_Notifications_SubTitle" xml:space="preserve">
+    <value>Not logged in? No problem.</value>
+  </data>
+  <data name="Tour_Notifications_Title" xml:space="preserve">
+    <value>Notifications</value>
+  </data>
+  <data name="Tour_PageHeading" xml:space="preserve">
+    <value>Feature Tour</value>
+  </data>
+  <data name="Tour_PageTitle" xml:space="preserve">
+    <value>Tour</value>
+  </data>
+  <data name="Tour_Review_Details" xml:space="preserve">
+    <value>Upload a video and let Takeoff's commenting system turn the review process into a pleasure.  Comment on the whole video or a specific moment with frame by frame accuracy. The intuitive interface makes it easy for anyone to participate, and reduces messy ambiguous feedback.</value>
+  </data>
+  <data name="Tour_Review_SubTitle" xml:space="preserve">
+    <value>Fast, accurate video review &amp; timeline-based commenting.</value>
+  </data>
+  <data name="Tour_Review_Title" xml:space="preserve">
+    <value>Video Review</value>
+  </data>
+  <data name="Tour_ScreenshotThumbnail_AltText" xml:space="preserve">
+    <value>Screenshot Thumbnail</value>
+  </data>
+  <data name="Tour_ScreenshotThumbnail_Tooltip" xml:space="preserve">
+    <value>Zoom</value>
+  </data>
+  <data name="Tour_SecurityThumbnail_AltText" xml:space="preserve">
+    <value>Lock Illustration</value>
+  </data>
+  <data name="Tour_Security_Details" xml:space="preserve">
+    <value>Takeoff is https encrypted for industrial grade privacy. The rules are simple: if you are not on the team, you do not have access. Producers can choose to make the uploaded version downloadable or restrict team members from grabbing it.</value>
+  </data>
+  <data name="Tour_Security_SubTitle" xml:space="preserve">
+    <value>Rock solid security.</value>
+  </data>
+  <data name="Tour_Security_Title" xml:space="preserve">
+    <value>Security &amp; Privacy</value>
+  </data>
+  <data name="Tour_SignupBtn_Text" xml:space="preserve">
+    <value>See Plans {0}&amp;{/0} Pricing</value>
+    <comment>0 is span so the &amp; can be in a different font</comment>
+  </data>
+  <data name="Signup_Index_PageHeading" xml:space="preserve">
+    <value>Which Plan is Right for You?</value>
+  </data>
+  <data name="Signup_Index_PageTitle" xml:space="preserve">
+    <value>Pricing</value>
+    <comment>Main signup/pricing page</comment>
+  </data>
+  <data name="Signup_Index_Faq2_Answer" xml:space="preserve">
+    <value>A production is a place in Takeoff for you to collaborate with a specific team on any number of videos and files.  Productions generally are associated with a single piece of finished work, where videos are versions, scenes, etc.  Only people you invite in have access to your production.</value>
+  </data>
+  <data name="Signup_Index_Faq2_Question" xml:space="preserve">
+    <value>What are "productions"?</value>
+  </data>
+  <data name="Signup_Index_Faq3_Answer" xml:space="preserve">
+    <value>When we say "x number of videos", we mean the number of maximum videos that can be uploaded in a given month.  The month begins on the same date as your current billing cycle.</value>
+  </data>
+  <data name="Signup_Index_Faq3_Question" xml:space="preserve">
+    <value>What do you mean by "videos"?</value>
+  </data>
+  <data name="Signup_Index_Faq4_Answer" xml:space="preserve">
+    <value>Assets are files kept in a production that teammates can access.  Assets are generally files needed for video production, like scripts and soundtracks.  Plans include a maximum total size of assets that can exist at any given time.</value>
+  </data>
+  <data name="Signup_Index_Faq4_Question" xml:space="preserve">
+    <value>What do you mean by "assets"?</value>
+  </data>
+  <data name="Signup_Index_Faq5_Answer" xml:space="preserve">
+    <value>Yes. Simply click on the "Account" link and you'll see the option.</value>
+  </data>
+  <data name="Signup_Index_Faq5_Question" xml:space="preserve">
+    <value>Can I change plans at any time?</value>
+  </data>
+  <data name="Signup_Index_Faq6_Answer" xml:space="preserve">
+    <value>We can create a custom plan for you if you have large requirements. Just sign up for one of the plans right now to get started. Then e-mail {0}sales@takeoffvideo.com{/0} and we'll switch you over to a custom plan.</value>
+  </data>
+  <data name="Signup_Index_Faq6_Question" xml:space="preserve">
+    <value>What if I need more videos than your biggest plan allows?</value>
+  </data>
+  <data name="Signup_Account_Form_SignupSourceOther_Label" xml:space="preserve">
+    <value>Please Tell Us More</value>
+  </data>
+  <data name="AccountPlan_Model_Title" xml:space="preserve">
+    <value>Title</value>
+  </data>
+  <data name="Signup_Index_PlanVideos_Text" xml:space="preserve">
+    <value>{0}{1}{/0} Videos</value>
+    <comment>0 is an &lt;em&gt;.  1 is the number of videos allowed</comment>
+  </data>
+  <data name="Signup_Index_SelectBtn_Text" xml:space="preserve">
+    <value>Select</value>
+  </data>
+  <data name="Signup_Account_PlanNotFound_Message" xml:space="preserve">
+    <value>There is no plan by that ID.  Did you hit a bad link?</value>
+  </data>
+  <data name="Signup_Account_PlanNotAvailable_Message" xml:space="preserve">
+    <value>Sorry but that plan is no longer available.</value>
+  </data>
+  <data name="Signup_Subscribe_CardExpired_Message" xml:space="preserve">
+    <value>The card has already expired.</value>
+  </data>
+  <data name="Signup_Subscribe_PlanNotFound_Message" xml:space="preserve">
+    <value>The plan couldn't be found.</value>
+  </data>
+  <data name="Signup_Subscribe_PlanNotAvailable_Message" xml:space="preserve">
+    <value>The plan is no longer available.</value>
+  </data>
+  <data name="Signup_Sample_Explanation" xml:space="preserve">
+    <value>We can put together a cool sample production that will help you understand how Takeoff typically works.  We'll even write some comments for you.  Don't worry, the pre-made videos are free and don't count against your account.</value>
+  </data>
+  <data name="Signup_Sample_NoBtn_Text" xml:space="preserve">
+    <value>No Sample</value>
+  </data>
+  <data name="Signup_Sample_No_Header" xml:space="preserve">
+    <value>No Thanks</value>
+  </data>
+  <data name="Signup_Sample_PageHeading" xml:space="preserve">
+    <value>Would You Like a Sample Production?</value>
+  </data>
+  <data name="Signup_Sample_PageTitle" xml:space="preserve">
+    <value>Sample Production?</value>
+  </data>
+  <data name="Signup_Sample_YesBtn_Text" xml:space="preserve">
+    <value>Create Sample</value>
+  </data>
+  <data name="Signup_Sample_Yes_Header" xml:space="preserve">
+    <value>Yes, I'd Like a Sample</value>
+  </data>
+  <data name="Shared_NoJavascript_Error" xml:space="preserve">
+    <value>WAIT! Takeoff is a modern dynamic web application and uses a programming language called JavaScript. You have JavaScript disabled right now. To use Takeoff, you need  to enable it. Please follow {0}these instructions{/0} and then load Takeoff again. Thanks!</value>
+  </data>
+  <data name="Signup_Account_EmailExistedButWasDeleted" xml:space="preserve">
+    <value>That e-mail address was used in a closed account.  If this is your e-mail address, please e-mail support@takeoffvideo.com and we will reactivate it.</value>
+  </data>
+  <data name="Signup_Account_EmailIsActive" xml:space="preserve">
+    <value>That e-mail address is already in the system.  Please sign in if that's your email address.</value>
+  </data>
+  <data name="Login_SignupLink" xml:space="preserve">
+    <value>New here? {0}Sign up!{/0}</value>
+    <comment>{0} is link to signup page</comment>
+  </data>
+  <data name="Dashboard_MembershipRequests_Title" xml:space="preserve">
+    <value>Invitations</value>
+  </data>
+  <data name="Productions_Create_Form_Title_Label" xml:space="preserve">
+    <value>Title</value>
+  </data>
+  <data name="Productions_Create_PageHeading" xml:space="preserve">
+    <value>New Production</value>
+  </data>
+  <data name="Productions_Create_PageTitle" xml:space="preserve">
+    <value>New Production</value>
+  </data>
+  <data name="Productions_Create_InvalidImageType_Msg" xml:space="preserve">
+    <value>The file was not an image we could detect.  Try uploading in jpg, png, gif, or tiff format.</value>
+  </data>
+  <data name="Productions_Create_Form_Logo_Label" xml:space="preserve">
+    <value>Logo Image</value>
+  </data>
+  <data name="Shared_CancelBtn_Text" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="Support_Explanation" xml:space="preserve">
+    <value>Welcome to Takeoff support.  We've laid out a bunch of simple options for you to get the answers to your Takeoff questions.</value>
+  </data>
+  <data name="Demo_Sample_Explanation" xml:space="preserve">
+    <value>A production is a secure place for a team to review video.  You can create your own productions, but it might be easier to understand Takeoff if we put one together for you.  We'll instantly add a few videos and even write some comments for you.  You can always delete it later.  How about it?</value>
+  </data>
+  <data name="Demo_Sample_PageHeading" xml:space="preserve">
+    <value>Welcome!  Shall we start with a sample?</value>
+  </data>
+  <data name="Account_NecessaryInfo_Explanation" xml:space="preserve">
+    <value>We are missing some information that we need.  It'll make your Takeoff experience better.  Don't worry, we will never distribute any of your personal information.</value>
+  </data>
+  <data name="Account_Notifications_Alerts_NotifyWhenNewCommentReply_Label" xml:space="preserve">
+    <value>Someone replies to any comment</value>
+  </data>
+  <data name="Account_Notifications_Alerts_NotifyWhenNewComment_Label" xml:space="preserve">
+    <value>Someone writes a comment</value>
+  </data>
+  <data name="Account_Notifications_Alerts_NotifyWhenNewFile_Label" xml:space="preserve">
+    <value>A new file is added</value>
+  </data>
+  <data name="Account_Notifications_Alerts_NotifyWhenNewMember_Label" xml:space="preserve">
+    <value>Someone is added to my team</value>
+  </data>
+  <data name="Account_Notifications_Alerts_NotifyWhenNewReplyToAuthoredComment_Label" xml:space="preserve">
+    <value>Someone replies to one of my comments</value>
+  </data>
+  <data name="Account_Notifications_Alerts_NotifyWhenNewVideo_Label" xml:space="preserve">
+    <value>A new video is ready to watch</value>
+  </data>
+  <data name="Account_Notifications_Alerts_Title" xml:space="preserve">
+    <value>Send Me Email When</value>
+  </data>
+  <data name="Account_Notifications_DigestFrequency_BeforeDuringWorkDay" xml:space="preserve">
+    <value>8am and 4pm</value>
+  </data>
+  <data name="Account_Notifications_DigestFrequency_Daily" xml:space="preserve">
+    <value>Once a day</value>
+  </data>
+  <data name="Account_Notifications_DigestFrequency_Hourly" xml:space="preserve">
+    <value>Every Hour</value>
+  </data>
+  <data name="Account_Notifications_DigestFrequency_Label" xml:space="preserve">
+    <value>Send Me Updates</value>
+  </data>
+  <data name="Account_Notifications_DigestFrequency_Never" xml:space="preserve">
+    <value>Never</value>
+  </data>
+  <data name="Account_Notifications_PageHeading" xml:space="preserve">
+    <value>Email Notifications</value>
+  </data>
+  <data name="Account_Billing_PageTitle" xml:space="preserve">
+    <value>Update Billing Information</value>
+  </data>
+  <data name="Error_Billing_Message" xml:space="preserve">
+    <value>We are so sorry but an error occured as we processed your order.  This happens from time to time.  A notification has been sent out to our staff and you'll hear from us very soon.  
+  Your card hasn't been charged, so don't worry about that.</value>
+  </data>
+  <data name="Error_Billing_PageHeading" xml:space="preserve">
+    <value>An Error Occured</value>
+  </data>
+  <data name="Error_Billing_PageTitle" xml:space="preserve">
+    <value>An Error Occured</value>
+  </data>
+  <data name="Error_MissingData_Explanation" xml:space="preserve">
+    <value>Sorry, but we couldn't find what you were looking for.  Maybe you entered an incorrect link. Or maybe it has been deleted.  Sorry!</value>
+  </data>
+  <data name="Error_MissingData_PageHeading" xml:space="preserve">
+    <value>We Can't Find It!</value>
+  </data>
+  <data name="Error_MissingData_PageTitle" xml:space="preserve">
+    <value>We Can't Find It!</value>
+  </data>
+  <data name="Error_MissingPage_Explanation" xml:space="preserve">
+    <value>The page you entered could not be found.  Perhaps you pasted the url incorrectly?</value>
+  </data>
+  <data name="Error_MissingPage_PageHeading" xml:space="preserve">
+    <value>We Couldn't Find That Page</value>
+  </data>
+  <data name="Error_MissingPage_PageTitle" xml:space="preserve">
+    <value>Page Not Found</value>
+  </data>
+  <data name="Error_NoPermission_Message" xml:space="preserve">
+    <value>Maybe you entered an incorrect link.  Or maybe you got voted out because you didn't sing well last week.</value>
+  </data>
+  <data name="Error_NoPermission_PageHeading" xml:space="preserve">
+    <value>Sorry, but you don't have access to this.</value>
+  </data>
+  <data name="Error_NoPermission_PageTitle" xml:space="preserve">
+    <value>Access Problem</value>
+  </data>
+  <data name="Demo_Forbidden_SignupBtnText" xml:space="preserve">
+    <value>Create an Account</value>
+  </data>
+  <data name="Production_Create_AccountReqd_Message" xml:space="preserve">
+    <value>So far, you've been a guest in Takeoff. That's cool, but as a guest you can't create your own productions, add teammates, etc. To do that, you need to sign up for an account.  Creating an account is free and requires no credit card to start.</value>
+  </data>
+  <data name="Production_Create_AccountReqd_PageHeading" xml:space="preserve">
+    <value>You'll Need an Account For This</value>
+  </data>
+  <data name="Production_Create_AccountReqd_PageTitle" xml:space="preserve">
+    <value>Please Create an Account</value>
+  </data>
+  <data name="Production_Create_AccountReqd_SignupBtnText" xml:space="preserve">
+    <value>Create an Account</value>
+  </data>
+  <data name="Account_LimitReached_Demo_PageHeading" xml:space="preserve">
+    <value>You've Reached a Demo Limit</value>
+  </data>
+  <data name="Account_LimitReached_Demo_PageTitle" xml:space="preserve">
+    <value>You've Reached a Demo Limit</value>
+    <comment>Limit reached page for demo accounts</comment>
+  </data>
+  <data name="Account_LimitReached_Guest_Explanation" xml:space="preserve">
+    <value>Sorry but the account associated with what you trying to do ran into a limit.  In order to do this, the account holder needs to upgrade their account.  Please contact them and ask them to upgrade.</value>
+  </data>
+  <data name="Account_LimitReached_Guest_PageHeading" xml:space="preserve">
+    <value>You've Reached a Limit</value>
+  </data>
+  <data name="Account_LimitReached_Guest_PageTitle" xml:space="preserve">
+    <value>You've Reached a Limit</value>
+  </data>
+  <data name="Account_LimitReached_Normal_PageHeading" xml:space="preserve">
+    <value>You've Reached Your Limit</value>
+  </data>
+  <data name="Account_LimitReached_Normal_PageTitle" xml:space="preserve">
+    <value>You've Reached Your Limit</value>
+    <comment>Limit reached page for normal account holders</comment>
+  </data>
+  <data name="Production_Details_RequestAccess_FormHeader" xml:space="preserve">
+    <value>Want to be? We can tell whoever is in charge that you'd like to join this production.</value>
+  </data>
+  <data name="Production_Details_RequestAccess_Note_Label" xml:space="preserve">
+    <value>Personal Note (optional)</value>
+  </data>
+  <data name="Production_Details_RequestAccess_PageHeading" xml:space="preserve">
+    <value>You Aren't a Member of this Production</value>
+  </data>
+  <data name="Production_Details_RequestAccess_PageTitle" xml:space="preserve">
+    <value>Request Membership</value>
+  </data>
+  <data name="Production_Details_RequestAccess_SubmitBtn_Text" xml:space="preserve">
+    <value>Request Access</value>
+  </data>
+  <data name="Production_MembershipRequestsDisabled_Explanation" xml:space="preserve">
+    <value>Sorry but you aren't a member of this production and whoever is in charge isn't accepting requests for membership. If possible, try contacting them directly and tell them to add you as a team member.</value>
+  </data>
+  <data name="Production_MembershipRequestsDisabled_PageHeading" xml:space="preserve">
+    <value>Not Accepting New Members</value>
+  </data>
+  <data name="Production_MembershipRequestsDisabled_PageTitle" xml:space="preserve">
+    <value>Not Accepting New Members</value>
+  </data>
+  <data name="Suspended_Account_Guest_Explanation" xml:space="preserve">
+    <value>There is an issue with the account that this belongs to.  The account owner has been notified, so hopefully this production can be accessed again soon.</value>
+  </data>
+  <data name="Suspended_Account_Guest_PageHeading" xml:space="preserve">
+    <value>There is a Problem With This</value>
+  </data>
+  <data name="Suspended_Account_Guest_PageTitle" xml:space="preserve">
+    <value>Account Issue</value>
+  </data>
+  <data name="Account_LimitReachedMsg_VideoUploadCount" xml:space="preserve">
+    <value>you can't upload more than {0} videos per month</value>
+  </data>
+  <data name="Nav_BuyBtn_Text" xml:space="preserve">
+    <value>Purchase</value>
+  </data>
+  <data name="Production_NotFound_Message" xml:space="preserve">
+    <value>Sorry, but we couldn't find the production you were looking for.  Either it was deleted or you entered an incorrect link.  Sorry!</value>
+  </data>
+  <data name="Production_NotFound_PageHeading" xml:space="preserve">
+    <value>This Production Doesn't Exist</value>
+  </data>
+  <data name="Production_NotFound_PageTitle" xml:space="preserve">
+    <value>Production Not Found</value>
+  </data>
+  <data name="Account_Index_PageTitle" xml:space="preserve">
+    <value>Account Summary</value>
+  </data>
+  <data name="Signup_Index_Faq7_Answer" xml:space="preserve">
+    <value>No. You can include an unlimited number of people in your productions. Only you pay for the videos that are uploaded to your productions. If you are a 
+filmmaker, your clients are considered as guests and will not be billed.</value>
+  </data>
+  <data name="Signup_Index_Faq7_Question" xml:space="preserve">
+    <value>Are there per-user fees?</value>
+  </data>
+  <data name="Signup_Index_Faq8_Answer" xml:space="preserve">
+    <value>Currently we accept Visa, Mastercard, Discover, and American Express. We do not accept PayPal. At this time we only accept payments online so we will 
+not be able to accept a P.O., invoice you, or take an order over the phone.</value>
+  </data>
+  <data name="Signup_Index_Faq8_Question" xml:space="preserve">
+    <value>What types of payment do you accept?</value>
+  </data>
+  <data name="Account_Notifications_Alerts_NotifyForMaintenance_Label" xml:space="preserve">
+    <value>Takeoff will be down for maintainence</value>
+  </data>
+  <data name="Account_Notifications_Alerts_NotifyForNewFeatures_Label" xml:space="preserve">
+    <value>New features come</value>
+  </data>
+  <data name="Account_Notifications_Alerts_NotifyPlanChanges_Label" xml:space="preserve">
+    <value>Takeoff plan prices, included features, or structures change</value>
+  </data>
+  <data name="Account_Notifications_Alerts_NotifySpecials_Label" xml:space="preserve">
+    <value>We offer discounts, packages, or products we think you'll like</value>
+  </data>
+  <data name="Account_Notifications_Announcements_Title" xml:space="preserve">
+    <value>Mail Accouncements When</value>
+  </data>
+  <data name="Account_Shared_SideNav_Summary_Text" xml:space="preserve">
+    <value>Account Summary</value>
+  </data>
+  <data name="Shared_Demo_Banner" xml:space="preserve">
+    <value>This is a demo. {0}Get full featured Takeoff. No credit card required!{/0}</value>
+  </data>
+  <data name="Account_Shared_SideNav_Logo_Text" xml:space="preserve">
+    <value>Logo</value>
+  </data>
+  <data name="Header_Logo_TitleText" xml:space="preserve">
+    <value>You are using Takeoff - takeoffvideo.com</value>
+  </data>
+  <data name="Signup_Guest_Explanation" xml:space="preserve">
+    <value>This will create a free guest account.  This is perfect if you simply want to review someone else's video.  You won't be able to create your own projects, but you can always upgrade later if you want.</value>
+  </data>
+  <data name="Signup_Guest_Form_ValidationSummary_Heading" xml:space="preserve">
+    <value>Your account couldn't be created because:</value>
+  </data>
+  <data name="Signup_Guest_PageHeading" xml:space="preserve">
+    <value>Account Information</value>
+  </data>
+  <data name="Signup_Guest_PageTitle" xml:space="preserve">
+    <value>Create Guest Account</value>
+  </data>
+  <data name="Trial_PageHeading" xml:space="preserve">
+    <value>Try Takeoff Now</value>
+  </data>
+  <data name="Trial_PageTitle" xml:space="preserve">
+    <value>Instant Free Trial</value>
+  </data>
+  <data name="Trial_Signup_Explanation" xml:space="preserve">
+    <value>Until now, you've been completely anonymous.  In order to go further, we'll need to create a Takeoff account for you. Don't worry, there is no money involved.</value>
+  </data>
+  <data name="Trial_Signup_PageHeading" xml:space="preserve">
+    <value>Let's Take This to the Next Level</value>
+  </data>
+  <data name="Trial_Signup_PageTitle" xml:space="preserve">
+    <value>Account Required</value>
+  </data>
+  <data name="Trial_Signup_SubmitButton_Text" xml:space="preserve">
+    <value>Sign Up</value>
+  </data>
+  <data name="Trial_Signup_ValidationSummary_Heading" xml:space="preserve">
+    <value>Your account couldn't be created because:</value>
+  </data>
+</root>

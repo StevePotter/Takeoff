@@ -1,0 +1,27 @@
+﻿@model Email_AddUserToProduction
+@{
+    Layout = "~/Views/Email/Layout-ProductionBase.cshtml";
+    var changeSettingsUrl = Url.Action<AccountNotificationsController>(c => c.Index(), UrlType.AbsoluteHttps);
+}
+@section Subject
+{
+@Model.AddedByName added you to @Model.ProductionTitle
+}
+@section HtmlHeader {
+    @Model.AddedByName added you as a member to @Model.ProductionTitle
+}
+@section HtmlExplanation
+{
+You are recieving this because you are a member of Takeoff and your settings indicate you wish to recieve an email when you are added to a production.  Visit <a href="@changeSettingsUrl">@changeSettingsUrl</a> to change this setting.
+}
+@section Plain {
+@Model.AddedByName added you to @Model.ProductionTitle.  To view it, please go to the following link:
+@Html.Raw(@Model.ProductionUrl)
+}
+
+<p class="big-link-container">
+<a href="@Model.ProductionUrl">Open the Production</a>
+<div class="link-to-copy">If clicking the above link didn't work, just copy and paste the following into your browser address bar:<br><b>@Model.ProductionUrl</b></div>
+</p>
+
+<p class="text">You can reach @Model.AddedByName via email at <a href="mailto:@Model.AddedByEmail">@Model.AddedByEmail</a>, or by replying to this message.</p>

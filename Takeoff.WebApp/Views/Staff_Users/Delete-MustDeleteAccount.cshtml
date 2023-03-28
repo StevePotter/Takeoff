@@ -1,0 +1,9 @@
+﻿@{
+    Layout = "~/Views/Staff/staff-layout.cshtml";
+}
+
+<h1>@("Delete User") + @ViewBag.Id</h1>
+
+<div class="@Html.AlertWarningClass()">You must delete the user's account before you delete them.</div>
+
+@Html.ActionLink("Delete Account","Delete","Staff_Accounts",new { id = @ViewBag.AccountId }, null)

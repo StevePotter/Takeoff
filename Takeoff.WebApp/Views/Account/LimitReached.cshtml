@@ -1,0 +1,17 @@
+﻿@model Account_LimitReached
+@{
+    Layout = "~/Views/Shared/Layout-App-Slim.cshtml";
+    
+    ViewData["PageTitle"] = S.Account_LimitReached_Normal_PageTitle;
+}
+@section Header
+{
+    <h1>@S.Account_LimitReached_Normal_PageHeading</h1>
+}
+<p>
+    @S.Account_LimitReached_Normal_Explanation.FormatResource(Model.LimitationMessage, Html.StartActionLink<AccountPlanController>(c => c.Index()))
+</p>
+
+<div class="actions">
+    <a class="@Html.PrimaryButtonClass()" href="@(Url.Action<AccountPlanController>(c => c.Index()))">Upgrade</a>
+</div>

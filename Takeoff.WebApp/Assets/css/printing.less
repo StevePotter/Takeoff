@@ -1,0 +1,44 @@
+﻿@import "bootstrap-2.0.3/reset.less";
+@import "bootstrap-2.0.3/variables.less"; // Modify this for custom colors, font-sizes, etc
+@import "bootstrap-2.0.3/mixins.less";
+@import "bootstrap-2.0.3/scaffolding.less";
+@import "bootstrap-2.0.3/type.less";
+
+body {
+  margin: 20px;
+}
+
+.comment
+{
+	border-bottom: 1px solid #EEEEEE;
+    margin: 18px 0;
+	padding-bottom: 17px;
+}
+
+.body
+{
+	font-size: 16px;
+    font-weight: 300;
+	white-space: pre-wrap;
+}
+
+
+.timecode, .creator { margin-right: 6px; }
+
+.created-on:before
+{
+	content: " • ";
+}
+
+.creator:before
+{
+	content: "— ";
+}
+
+.replies
+{
+	margin-left: 30px;
+	padding-left: 20px;
+	border-left: 2px solid #EEEEEE;
+}
+

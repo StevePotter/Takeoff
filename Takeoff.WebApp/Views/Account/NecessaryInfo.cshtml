@@ -1,0 +1,59 @@
+﻿@model Account_NecessaryInfo
+@{
+    Layout = "~/Views/Shared/Layout-App-Slim.cshtml";
+    
+    ViewData["PageTitle"] = S.Account_NecessaryInfo_PageTitle;
+    ViewData["EnableNagBanner"] = false;
+}
+
+@section JsExternal
+{
+    @Html.JsLib("app-account.js")
+}
+
+@section JsDocReady
+{
+    window.views.Account_NecessaryInfo();
+}
+
+@section Header
+{
+    <h1>@S.Account_NecessaryInfo_PageHeading</h1>
+}
+<p class="@Html.FormInstructionsClass()">@S.Account_NecessaryInfo_Explanation</p>
+@Html.ValidationSummary(S.Validation_SummaryHeading)
+<form action="@(Url.Action<AccountController>(c=> c.NecessaryInfo((Account_NecessaryInfo)null)))" method="post" class="form-horizontal">
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(m => m.ReturnUrl)
+    @Html.HiddenFor(m => m.TimezoneOffset)
+@if (Model.FirstName.HasNoChars())
+{
+    @Html.TextBoxControlGroupFor(m => m.FirstName)
+}
+@if (Model.LastName.HasNoChars())
+{
+    @Html.TextBoxControlGroupFor(m => m.LastName)
+}
+@if (Model.Password == null)
+{
+    @Html.PasswordControlGroupFor(m => m.Password)
+    @Html.PasswordControlGroup(S.PasswordReset_PasswordConfirmLabel, "passwordConfirm", "passwordConfirm")
+}
+    <div class="@Html.ControlGroupClass()">
+        @Html.ControlLabel(S.Signup_Account_Form_SignupSource_Label, "SignupSource")
+        <div class="controls">
+            <select id="SignupSource" name="SignupSource">
+                <option value=""></option>
+                <option value="WordOfMouth">@S.Signup_Account_Form_SignupSource_WordOfMouth</option>
+                <option value="Email">@S.Signup_Account_Form_SignupSource_Email</option>
+                <option value="SearchEngine">@S.Signup_Account_Form_SignupSource_SearchEngine</option>
+                <option value="MessageForum">@S.Signup_Account_Form_SignupSource_MessageForum</option>
+                <option value="Other">@S.Signup_Account_Form_SignupSource_Other</option>
+            </select>            
+        </div>
+    </div>
+    @Html.ControlGroup(Html.ControlLabelFor(m => m.SignupSourceOther, @S.Signup_Account_Form_SignupSourceOther_Label), @Html.TextBoxFor(m => m.SignupSourceOther), "hide","SignupSourceOther-container")
+
+    @Html.FormButtons(S.Shared_UpdateBtn_Text)
+
+</form>

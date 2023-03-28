@@ -1,0 +1,23 @@
+﻿@RenderSection("Subject", false)
+-----------EMAIL_PART-----------
+@RenderSection("Plain", false)
+-----------EMAIL_PART-----------
+@if (IsSectionDefined("Html"))
+{
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>@ViewData["Subject"]</title>
+    @RenderSection("HeadContent", false)
+</head>
+<body>
+<div class="container">
+@RenderSection("Html")
+</div>
+@if ( ViewData["IncludeOpenTracking"].ValueOr(true) && ViewData["MessageId"] != null )
+{
+<img src="@(Url.Action<EmailController>(c => c.Track(ViewData["MessageId"].CastTo<Guid>()), UrlType.AbsoluteHttps))" width="1" height="1" alt="Takeoff" />
+}
+</body>
+</html>
+}

@@ -1,0 +1,123 @@
+﻿@model Videos_Details
+@{
+    Layout = "~/Views/Shared/Layout-App-Medium.cshtml"; 
+    ViewData.AddBodyCss("production-details");
+
+    ViewData["PageTitle"] = Model.Video.Title;
+    if (!Model.IsMember)
+    {
+        ViewData.AddBodyCss("not-logged-in");
+    }
+}
+@section JsExternal
+{
+    @Html.JsLib("interior.js")
+    @Html.JsLib("productions-details.js")
+}
+@section CssInline
+{
+    #video-details-title
+    {
+        display:none;
+    }
+    #mainArea
+    {
+        width: 740px;
+        margin-left: 60px;
+    }
+}
+@section JsDocReady
+{
+    videoDetailsData =  @Html.Json(Model.Video, true); 
+    notification = $("body").madNotification({ api: true });
+    productionData = @Html.Json(new
+                     {
+                         Model.CanAddComment,
+                         Model.CanAddCommentReply,
+                         Model.IsMember,
+                     });
+    @if (Model.SemiAnonymousUserName.HasChars())
+    {
+        <text>
+    productionData.SemiAnonymousUserName = @Html.Json(Model.SemiAnonymousUserName);
+        </text>
+    }
+                     
+    initPlayer();
+    isVideoDetailsOpen = true;
+    isVideosTabOpen = function()
+    {
+        return true;
+    };
+    initHotKeys();  
+    initComments();
+    addComments();
+    $("#commentsArea").show();//todo: find out why it's hiding
+
+}
+
+@section Header
+{
+    <h1>@Model.Video.Title
+    @if (Model.Production.Logo != null)
+    {
+        <img src="@Model.Production.Logo.Url" alt="Logo" style="width:@Model.Production.Logo.Width.ToInvariant()px;height:@Model.Production.Logo.Height.ToInvariant()px;" />
+    }
+    @if (Model.Video.IsSourceDownloadable)
+    {
+        <a class="btn btn-small" href="@(Url.Action<VideosController>(c => c.Download(Model.Video.Id)))"><i class="icon-download"></i> Download</a>
+    } 
+    </h1>
+}
+
+<div class="row">
+<div id="mainArea" class="">
+<div id="video-details-container">
+        <div id="player-container"></div>
+        <div id="commentsArea">
+            <h2>Comments <span class="quantity" id="commentsQuantity">(0)</span>
+                @if (Model.CanAddComment)
+                {
+                    <a href="#" class="@Html.PrimaryButtonClass()" id="addCommentBtnInHeader">Add Comment</a>
+                }
+            </h2>
+            @if (Model.CanAddComment)
+            {
+                <form id="comment-add-form" action="@Url.Action("Create", "Comments")" style="display: none">
+                    <label for="comment-add-form-body-input">New Comment</label>
+                    <textarea rows="3" type="text" id="comment-add-form-body-input" name="body"></textarea>
+                    <div id="comment-add-form-isTimed-container">
+                        <label for="comment-add-form-isTimed-group">For</label>
+                        <div id="comment-add-form-isTimed-group">                
+                            <input type="radio" id="comment-add-form-isTimed-input-true" name="timed" value="true">
+                            <label for="comment-add-form-isTimed-input-true">Right Now (<span id="comment-add-form-isTimed-timecode">0:00</span>)</label>
+                            <input type="radio" id="comment-add-form-isTimed-input-false" name="timed" value="false">
+                            <label for="comment-add-form-isTimed-input-false">Entire Video</label>
+                        </div>
+                    </div>
+                    @if ( !Model.IsMember && !Model.SemiAnonymousUserName.HasChars())
+                    {
+                    <div class="field" id="comment-add-form-name">
+                        <label for="comment-add-form-name-input">Your Name</label>
+                        <input type="text" id="comment-add-form-name-input" name="name" value="" />                        
+                    </div>
+                    }
+                    <div class="buttons">
+                        <input type="submit" value="Add Comment" class="@Html.PrimaryButtonClass()" />
+                        <a href="#" class="btn cancel-button">Cancel</a>
+                    </div>
+                </form>
+            }
+            <div id="commentsEmpty" class="empty-data-msg @Html.AlertInfoClass(true)">
+                No comments have been written yet.
+                @if (Model.CanAddComment)
+                {
+                    <a href="#">Be the first!</a>
+                }
+            </div>
+            <div id="comments">
+            </div>
+        </div>
+    </div>
+</div>
+</div>

@@ -1,0 +1,265 @@
+﻿body.production-details
+{
+
+/* Comments
+***************************************************************************************************/
+
+#commentsArea
+{
+    position: relative;
+    display: none;
+    padding-top: 10px;
+}
+
+
+#commentsEmpty
+{
+}
+
+#comments
+{
+    display: none;
+}
+
+
+/* an arrow that points right and is shown as a popup when highlighting a comment or something.  zindex and position required by jquery position plugin */
+label.arrowRight
+{
+    width: 64px;
+    height: 64px;
+    z-index: 999;
+    position: absolute;
+    background-image: url(../img/arrow_right_green.64.png);
+}
+
+
+.comment-thread
+{
+    blockquote:after 
+    {
+        font-size: 80px;//all those comments started to look silly with the huge quote so I trimmed the size down a bit
+    }
+    
+    /* white-space preserves whitespace from source data.  this helps in formatting the comment and letting hte user edit */
+    .body 
+    {
+        white-space: pre-wrap;
+    }
+    .reply
+    {
+ 	    margin-left: 30px;   
+    }
+
+    .footer {
+        //.actions is also for bigger stuff, so I had to reset a bunch of properties
+        .actions 
+        {
+            background: none;
+            background-color: transparent;
+            padding: 0;
+            margin: 0;
+            border: 0;
+	        display: none;
+            //for hiding the while adding a reply and when hovered over replies. */
+            &.hidden
+            {
+                visibility: hidden;
+            }
+            a 
+            {
+	            margin-left: 5px;
+            }
+        }
+    }
+    
+
+    /* need the middle bit for comments, otherwise when you hover over a comment the actions for the reply will be shown.  .footer avoids interfering with .actions elements in a form */
+    &:hover > .comment-contents .footer .actions,
+    .reply:hover .footer .actions
+    {
+        display: inline !important;
+    }
+
+}
+
+
+/* buttons made for comments and replies.  they are small and pop up on comment hover */
+a.smallEdit
+{
+    padding-left: 18px;
+	background-image: url(../img/pencil.16.png);
+	background-repeat: no-repeat;
+	background-position: 0 0;
+}
+
+a.smallDelete
+{
+    padding-left: 18px;
+	background-image: url(../img/cross-small.png);
+	background-repeat: no-repeat;
+	background-position: 0 0;
+}
+
+
+/* add comment form
+*************************************************************************************/
+
+//comment form only
+#comment-add-form
+{
+    .well;  
+    .hide;  //it's initially hidden
+}
+
+form.reply-add
+{
+    div.field label {
+        width: auto !important; //needed to overwrite some styles
+    }
+}
+
+#comment-add-form
+{
+	textarea { width: 570px; }
+}
+
+form.comment-edit
+{
+	textarea { width: 540px; }
+}
+
+
+form.reply-add
+{
+	textarea { width: 565px; }
+}
+
+form.reply-edit
+{
+	textarea { width: 520px; }
+}
+
+
+//shared stuff for comment and reply forms
+#comment-add-form,
+form.comment-edit,
+form.reply-add,
+form.reply-edit
+{
+    label {
+        float: none;
+        font-weight: bold;
+        margin-bottom: 5px;
+        padding-top: 0;
+        width: auto;
+    }
+
+    textarea
+    {
+        margin-bottom: 10px;
+    }
+
+    #comment-add-form-isTimed-container 
+    {
+        .hide;
+        > label
+        {
+            padding-right: 4px; display: inline;
+        }
+        margin-bottom: 5px;
+        #comment-add-form-isTimed-group
+        {
+            display:inline;
+            label
+            {
+				display: inline;
+                font-weight: normal;
+                cursor: pointer;            
+            }
+        }
+    }
+    div.buttons
+    {
+        margin-left: 0 !important;  //reset the default
+        .btn
+        {
+            margin-right: 4px !important;  //reset the default
+        }   
+    }
+}
+
+form.reply-add //new reply form
+{
+    margin-bottom: 18px;
+    margin-left: 30px;       
+}
+
+form.reply-edit textarea
+{
+    width: 500px;//did this because it was overlapping the blockquote's big quotation mark
+}
+
+/* buttons made for comments and replies.  they are small and pop up on comment hover */
+a.commentReply
+{
+    padding-left: 18px;
+    background-image: url(../img/balloon-small-left.png);
+    background-repeat: no-repeat;
+    background-position: 0 0;
+}
+
+/* time stamp 'group headers' shown before the first comment for a given second.  
+*************************************************************************************/
+
+.timestamp {
+	.border-radius(4px);
+	width: 38px;
+	color: #fff;
+	text-shadow: 0 1px 0 rgba(0, 0, 0, 0.3);
+	font-size: 11px;
+	text-transform: uppercase;
+	line-height: 18px;
+	position: relative;
+	left: -40px;
+	margin-top: 18px;
+	margin-bottom: 2px;
+	padding-left: 25px;
+	background-image: url(../img/timestamp-sprite.png);
+	background-position: 5px 0;
+    &.selected {
+	    background-position: -85px 0;
+    }
+    a {
+	    color: #fff;
+    }
+    img {
+	    position: relative;
+	    top: 2px;
+	    margin-right: 5px;
+    }
+    .secondHeaderAll
+    {
+    }
+    .secondHeaderCurr
+    {
+        display: none;
+    }
+}
+
+#commentsArea.curr .timestamp
+{
+	width: 100px;
+	.secondHeaderAll { display: none; }
+	.secondHeaderCurr { display: inline !important; }
+}
+
+#commentsArea .comment-thread .timeCode
+{
+    display: none;
+}
+#commentsArea.curr .comment-thread .timeCode
+{
+    display: inline;
+}
+//end of body.  not indented for ease of editing/reading
+}

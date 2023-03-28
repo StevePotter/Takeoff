@@ -1,0 +1,473 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ClientName" xml:space="preserve">
+    <value>Client</value>
+  </data>
+  <data name="V1Comments" xml:space="preserve">
+    <value>[{
+    "StartTime": 9.07,
+    "ParentId": 10878,
+    "Body": "Can you put a cool background, maybe TV static?",
+    "Replies": [{
+        "ParentId": 10900,
+        "Body": "Yeah I got just the thing for that.",
+        "Replies": [],
+        "CreatedOn": 1272987315507,
+        "Creator": {
+            "Email": "stephenp@mediascend.com",
+            "Name": "stephenp@mediascend.com",
+            "Id": 10873
+        },
+        "CanEdit": false,
+        "CanDelete": false,
+        "Id": 10901
+    }],
+    "CreatedOn": 1272987298370,
+    "Creator": {
+        "Email": "",
+        "Name": "Client",
+        "Id": 10895
+    },
+    "CanEdit": true,
+    "CanDelete": true,
+    "Id": 10900
+}, {
+    "StartTime": 14.36,
+    "ParentId": 10878,
+    "Body": "You want TV static here also?",
+    "Replies": [{
+        "ParentId": 10902,
+        "Body": "Word",
+        "Replies": [],
+        "CreatedOn": 1272987365060,
+        "Creator": {
+            "Email": "",
+            "Name": "Client",
+            "Id": 10895
+        },
+        "CanEdit": true,
+        "CanDelete": true,
+        "Id": 10903
+    }],
+    "CreatedOn": 1272987352340,
+    "Creator": {
+        "Email": "stephenp@mediascend.com",
+        "Name": "stephenp@mediascend.com",
+        "Id": 10873
+    },
+    "CanEdit": false,
+    "CanDelete": false,
+    "Id": 10902
+}, {
+    "StartTime": 18.07,
+    "ParentId": 10878,
+    "Body": "Nice job censoring!  When we\u0027re done remember to give me a version with and without the bleep.",
+    "Replies": [{
+        "ParentId": 10904,
+        "Body": "Of course.  I\u0027ll include both on DVD for you.",
+        "Replies": [],
+        "CreatedOn": 1272987472760,
+        "Creator": {
+            "Email": "stephenp@mediascend.com",
+            "Name": "stephenp@mediascend.com",
+            "Id": 10873
+        },
+        "CanEdit": false,
+        "CanDelete": false,
+        "Id": 10905
+    }],
+    "CreatedOn": 1272987454453,
+    "Creator": {
+        "Email": "",
+        "Name": "Client",
+        "Id": 10895
+    },
+    "CanEdit": true,
+    "CanDelete": true,
+    "Id": 10904
+}, {
+    "StartTime": 19.8,
+    "ParentId": 10878,
+    "Body": "Can you add more color here?",
+    "Replies": [],
+    "CreatedOn": 1272987517140,
+    "Creator": {
+        "Email": "",
+        "Name": "Client",
+        "Id": 10895
+    },
+    "CanEdit": true,
+    "CanDelete": true,
+    "Id": 10906
+}, {
+    "StartTime": 23,
+    "ParentId": 10878,
+    "Body": "I think a cool texture with a bunch of colors would work well here.",
+    "Replies": [{
+        "ParentId": 10907,
+        "Body": "Yeah cool",
+        "Replies": [],
+        "CreatedOn": 1272987586670,
+        "Creator": {
+            "Email": "",
+            "Name": "Client",
+            "Id": 10895
+        },
+        "CanEdit": true,
+        "CanDelete": true,
+        "Id": 10908
+    }],
+    "CreatedOn": 1272987552247,
+    "Creator": {
+        "Email": "stephenp@mediascend.com",
+        "Name": "stephenp@mediascend.com",
+        "Id": 10873
+    },
+    "CanEdit": false,
+    "CanDelete": false,
+    "Id": 10907
+}, {
+    "StartTime": 53.03,
+    "ParentId": 10878,
+    "Body": "Is this a good shot here?",
+    "Replies": [{
+        "ParentId": 10909,
+        "Body": "Yeah bro it\u0027s awesome",
+        "Replies": [],
+        "CreatedOn": 1272987746693,
+        "Creator": {
+            "Email": "",
+            "Name": "Client",
+            "Id": 10895
+        },
+        "CanEdit": true,
+        "CanDelete": true,
+        "Id": 10910
+    }],
+    "CreatedOn": 1272987718967,
+    "Creator": {
+        "Email": "stephenp@mediascend.com",
+        "Name": "stephenp@mediascend.com",
+        "Id": 10873
+    },
+    "CanEdit": false,
+    "CanDelete": false,
+    "Id": 10909
+}, {
+    "StartTime": 59.41,
+    "ParentId": 10878,
+    "Body": "We could put some colored texture here or maybe a shot of a bunch of sneaker boxes going all the way to the ceiling.  What do you think?",
+    "Replies": [{
+        "ParentId": 10911,
+        "Body": "Sneakers to the ceiling!!!!",
+        "Replies": [],
+        "CreatedOn": 1272987841043,
+        "Creator": {
+            "Email": "",
+            "Name": "Client",
+            "Id": 10895
+        },
+        "CanEdit": true,
+        "CanDelete": true,
+        "Id": 10912
+    }],
+    "CreatedOn": 1272987812240,
+    "Creator": {
+        "Email": "stephenp@mediascend.com",
+        "Name": "stephenp@mediascend.com",
+        "Id": 10873
+    },
+    "CanEdit": false,
+    "CanDelete": false,
+    "Id": 10911
+}, {
+    "StartTime": 66.2,
+    "ParentId": 10878,
+    "Body": "Can you switch the background here?  It\u0027s a pretty long green screen shot.",
+    "Replies": [{
+        "ParentId": 10913,
+        "Body": "Yeah man I\u0027ll make it so funky you can smell it.",
+        "Replies": [],
+        "CreatedOn": 1272987949000,
+        "Creator": {
+            "Email": "stephenp@mediascend.com",
+            "Name": "stephenp@mediascend.com",
+            "Id": 10873
+        },
+        "CanEdit": false,
+        "CanDelete": false,
+        "Id": 10914
+    }],
+    "CreatedOn": 1272987911673,
+    "Creator": {
+        "Email": "",
+        "Name": "Client",
+        "Id": 10895
+    },
+    "CanEdit": true,
+    "CanDelete": true,
+    "Id": 10913
+}
+]</value>
+  </data>
+  <data name="V1FileName" xml:space="preserve">
+    <value>sneakers1.mp4</value>
+  </data>
+  <data name="V1MobileFileName" xml:space="preserve">
+    <value>sneakers1-m.mp4</value>
+  </data>
+  <data name="V2Comments" xml:space="preserve">
+    <value>[{
+    "StartTime": 14.4,
+    "ParentId": 10883,
+    "Body": "Like the static?",
+    "Replies": [{
+        "ParentId": 10915,
+        "Body": "Yeah man nice!",
+        "Replies": [],
+        "CreatedOn": 1272988322653,
+        "Creator": {
+            "Email": "",
+            "Name": "Client",
+            "Id": 10895
+        },
+        "CanEdit": false,
+        "CanDelete": true,
+        "Id": 10916
+    }],
+    "CreatedOn": 1272988306983,
+    "Creator": {
+        "Email": "stephenp@mediascend.com",
+        "Name": "stephenp@mediascend.com",
+        "Id": 10873
+    },
+    "CanEdit": true,
+    "CanDelete": true,
+    "Id": 10915
+}, {
+    "StartTime": 23.4,
+    "ParentId": 10883,
+    "Body": "Can you keep the background that was just on?",
+    "Replies": [{
+        "ParentId": 10917,
+        "Body": "Oh I see what you mean.  Nevermind.",
+        "Replies": [],
+        "CreatedOn": 1272988441410,
+        "Creator": {
+            "Email": "",
+            "Name": "Client",
+            "Id": 10895
+        },
+        "CanEdit": false,
+        "CanDelete": true,
+        "Id": 10919
+    }, {
+        "ParentId": 10917,
+        "Body": "I can, but it will probably not look great because there is a cut when the other guy shows up.  ",
+        "Replies": [],
+        "CreatedOn": 1272988429720,
+        "Creator": {
+            "Email": "stephenp@mediascend.com",
+            "Name": "stephenp@mediascend.com",
+            "Id": 10873
+        },
+        "CanEdit": true,
+        "CanDelete": true,
+        "Id": 10918
+    }],
+    "CreatedOn": 1272988370777,
+    "Creator": {
+        "Email": "",
+        "Name": "Client",
+        "Id": 10895
+    },
+    "CanEdit": false,
+    "CanDelete": true,
+    "Id": 10917
+}, {
+    "StartTime": 37.93,
+    "ParentId": 10883,
+    "Body": "Can you get rid of that effect.  I don\u0027t know what it\u0027s called but I want it to be smooth.",
+    "Replies": [{
+        "ParentId": 10922,
+        "Body": "We call it \"strobing\" and no problem, I\u0027ll remove it for the next version.",
+        "Replies": [],
+        "CreatedOn": 1272988609520,
+        "Creator": {
+            "Email": "stephenp@mediascend.com",
+            "Name": "stephenp@mediascend.com",
+            "Id": 10873
+        },
+        "CanEdit": true,
+        "CanDelete": true,
+        "Id": 10923
+    }],
+    "CreatedOn": 1272988587207,
+    "Creator": {
+        "Email": "",
+        "Name": "Client",
+        "Id": 10895
+    },
+    "CanEdit": false,
+    "CanDelete": true,
+    "Id": 10922
+}, {
+    "StartTime": 62.8,
+    "ParentId": 10883,
+    "Body": "Like it?",
+    "Replies": [{
+        "ParentId": 10920,
+        "Body": "Yeah Jimi Hendrix would approve.",
+        "Replies": [],
+        "CreatedOn": 1272988517257,
+        "Creator": {
+            "Email": "",
+            "Name": "Client",
+            "Id": 10895
+        },
+        "CanEdit": false,
+        "CanDelete": true,
+        "Id": 10921
+    }],
+    "CreatedOn": 1272988491300,
+    "Creator": {
+        "Email": "stephenp@mediascend.com",
+        "Name": "stephenp@mediascend.com",
+        "Id": 10873
+    },
+    "CanEdit": true,
+    "CanDelete": true,
+    "Id": 10920
+}]</value>
+  </data>
+  <data name="V2FileName" xml:space="preserve">
+    <value>sneakers2.mp4</value>
+  </data>
+  <data name="V2MobileFileName" xml:space="preserve">
+    <value>sneakers2-m.mp4</value>
+  </data>
+  <data name="VideoLocation" xml:space="preserve">
+    <value>sample1</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="_1x1_transparent" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>1x1-transparent.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+</root>

@@ -1,0 +1,22 @@
+﻿@model Signup_Subscribe_Success
+@{
+    Layout = "~/Views/Shared/Layout-App-Slim.cshtml"; 
+    ViewData.AddBodyCss("subscribe-success");
+    Html.DisableNagBanners();
+
+    ViewData["PageTitle"] = "Thanks for Subscribing!";
+}
+@section Header
+{
+<h1>@("WE LOVE YOU!")</h1>
+}
+<p>
+@("Thank you so much for joining Takeoff.  We promise to provide you with the best product and customer service out there.  Takeoff will continue to get better and it's largely due to your support.")
+</p>
+<p>
+    @("We have sent you a welcome e-mail as well as a receipt for your subscription.  If there's anything else you need or would like to know, you can contact our President, Chris Kilayko, directly at {0}.".FormatResource(Html.Element("a").Attr("href", "mailto:chrisk@takeoffvideo.com").Text("chrisk@takeoffvideo.com")))
+</p>
+
+<div class="actions">
+    <a class="@Html.PrimaryButtonClass()" href="@Model.GetStartedUrl">@("Let's get started!")</a>
+</div>

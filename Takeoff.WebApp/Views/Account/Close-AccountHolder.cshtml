@@ -1,0 +1,31 @@
+﻿@{
+    Layout = "~/Views/Account/Layout.cshtml";
+    ViewData["Heading"] = "Close My Account";
+    
+}
+
+<div class="well">
+	<h3>@("Remain as a Guest")</h3>
+	<p>@("We will permanently delete all productions you've made. You'll remain on as a guest.  If you are a member of other people's productions, you will remain as one.  Warning: there is no undo!")</p>
+	<div>
+        <form method="post" action="@Url.Action("Close", "Account", new { deleteUser = false })">
+            <input class="btn btn-danger" value="@("Remain a Guest")" type="submit" />
+        </form>
+	</div>
+</div>
+
+<div class="well">
+    <h3>@("Delete Everything")</h3>
+    <p class="@Html.AlertErrorClass()">@("Permanently delete everything I'm associated with. I no longer wish to be a part of Takeoff.  Warning: there is no undo!")</p>
+
+    <div>
+        <form method="post" action="@Url.Action("Close", "Account", new { deleteUser = true })">
+            <input class="btn btn-danger" value="@("Delete Everything")" type="submit" />
+        </form>
+    </div>
+</div>
+
+@if (ViewData["IsSubscribed"].ValueOr(false))
+{
+    <p>* However you close your account, you will no longer be charged for it.  We do not prorate your current bill.</p>
+}

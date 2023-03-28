@@ -1,0 +1,154 @@
+﻿/* Mixins.less
+ * Snippets of reusable CSS to develop faster and keep code readable
+ * ----------------------------------------------------------------- */
+/*
+avoid margin
+avoid padding-x, use "padding" only
+tablize as much as possible
+avoid advanced features like boxshadow
+*/
+/*fixes IE broken background-color when using rgba */
+body {
+  background-color: #ffffff;
+  -attr-leftmargin: 0;
+  -attr-marginwidth: 0;
+  -attr-topmargin: 0;
+  -attr-marginheight: 0;
+  -attr-offset: 0;
+  margin: 0;
+}
+.container {
+  width: 100%;
+  text-align: center;
+  -tableize: 1;
+  -attr-cellspacing: 0;
+  padding: 4;
+  background-color: #ffffff;
+}
+.production-header {
+  width: 640px;
+}
+.production-title {
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size: 22px;
+  font-weight: normal;
+  color: #404040;
+  text-align: left;
+  padding: 10px;
+}
+div {
+  -tableize: 1;
+  -attr-cellspacing: 0;
+}
+p {
+  -tableize: 1;
+  -attr-cellspacing: 0;
+}
+.header {
+  width: 600px;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size: 22px;
+  font-weight: normal;
+  color: #404040;
+  text-align: left;
+  padding: 10px;
+}
+.main {
+  width: 600px;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  color: #000000;
+  background-color: #F0F4F7;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  padding: 10px;
+  border: 1px solid #DDDDDD;
+}
+/* explains why they are receiving this */
+.explanation {
+  width: 600px;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size: 11px;
+  padding: 18px;
+  text-align: left;
+}
+/* contains company info */
+.footer {
+  border-top: 1px solid #DDDDDD;
+  width: 400;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  padding: 4px;
+  text-align: center;
+  font-size: 10px;
+}
+/* used to accompany clickable links in case email clients block them */
+.link-to-copy {
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size: 10px;
+  color: #000000;
+  padding: 4;
+}
+.text {
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  color: #000000;
+  width: 100%;
+  padding: 4;
+}
+/* contains a call to action link */
+.big-link-container {
+  text-align: center;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  width: 100%;
+  padding: 6;
+}
+.activity-production-title {
+  -tableize: 1;
+  -attr-cellspacing: 0;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  width: 100%;
+  padding: 2;
+}
+.activity-production-title-afterfirst {
+  border-top: 1px solid #DDDDDD;
+}
+.activity-production-items {
+  -tableize: 1;
+  -attr-cellspacing: 0;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  width: 100%;
+  padding: 2;
+}
+.video-notes {
+  font-style: italic;
+}
+.video-comment-header {
+  -tableize: 1;
+  -attr-cellspacing: 0;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  width: 100%;
+  padding: 2;
+}
+.video-comment {
+  -tableize: 1;
+  -attr-cellspacing: 0;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  width: 100%;
+  padding: 2;
+  font-style: italic;
+}
+.video-comment-reply {
+  -tableize: 1;
+  -attr-cellspacing: 0;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  width: 100%;
+  padding: 2;
+  font-style: italic;
+  font-weight: bold;
+}

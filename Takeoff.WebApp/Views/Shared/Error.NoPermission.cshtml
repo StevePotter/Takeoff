@@ -1,0 +1,14 @@
+﻿@{
+    Layout = "~/Views/Shared/Layout-App-Slim.cshtml"; 
+    ViewData["PageTitle"] = S.Error_NoPermission_PageTitle;
+    ViewData.AddBodyCss("error-access");
+    Html.DisableNagBanners();
+
+}
+@section Header
+{
+    <h1>@S.Error_NoPermission_PageHeading</h1>
+}
+<p class="@Html.AlertErrorClass(true)">
+    @S.Error_NoPermission_Message
+</p>

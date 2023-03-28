@@ -1,0 +1,17 @@
+﻿@model Staff_Users_Edit
+@{
+    Layout = "~/Views/Staff/staff-layout.cshtml";
+    ViewData["SubTitle"] = "User #" + @Model.Id;
+}
+@Html.ValidationSummary()
+<form id="mainForm" method="post" action="@Url.Action("Edit", "Staff_Users")" class="form-horizontal">
+@Html.AntiForgeryToken()
+    <fieldset>
+        @Html.TextBoxControlGroupFor(m => m.FirstName)
+        @Html.TextBoxControlGroupFor(m => m.LastName)
+        @Html.TextBoxControlGroupFor(m => m.Email)
+        @Html.TextBoxControlGroupFor(m => m.Password)
+        @Html.ControlGroup(Html.ControlLabel("Is Verified"), @Html.CheckBoxFor(m => m.IsVerified))
+        @Html.FormButtons("Update")
+    </fieldset>
+</form>

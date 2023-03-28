@@ -1,0 +1,30 @@
+﻿@{
+    Layout = "~/Views/Shared/Layout-External-Slim.cshtml";
+    
+    ViewData["PageTitle"] = "Contact Us";
+}
+@section JsDocReady
+{
+    $("#mainForm").madValidate({ useAjax: false }); 
+    $("#timezoneOffset").val(new Date().getTimezoneOffset());
+}
+@section Header
+{
+	<h1>@("Contact Us")</h1>
+}
+<address>
+    30 Spear St<br/>
+    Metuchen, NJ 08840</br>
+    (888) 551-2464
+</address>
+
+<dl class="dl-horizontal">
+    <dt>@("Support")</dt>
+    <dd><a href="mailto:support@takeoffvideo.com">support@takeoffvideo.com</a></dd>
+    <dt>@("Sales")</dt>
+    <dd><a href="mailto:sales@takeoffvideo.com">sales@takeoffvideo.com</a></dd>
+    <dt>@("Stephen Potter, CEO")</dt>
+    <dd><a href="mailto:stephenp@takeoffvideo.com">stephenp@takeoffvideo.com</a></dd>
+    <dt>@("Chris Kilayko, President")</dt>
+    <dd><a href="mailto:chrisk@takeoffvideo.com">chrisk@takeoffvideo.com</a></dd>
+</dl>

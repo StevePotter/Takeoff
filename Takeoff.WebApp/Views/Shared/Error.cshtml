@@ -1,0 +1,19 @@
+﻿@model System.Web.Mvc.HandleErrorInfo
+@{
+    Layout = "~/Views/Shared/Layout-App-Slim.cshtml"; 
+    Html.DisableNagBanners();
+}
+
+@section Header
+{
+    <h1>@("My bad!")</h1>
+}
+<div class="@Html.AlertErrorClass(true)">
+An error occured. We have logged the error and unless we're asleep or partying, we work pretty fast. You may want to give us a little while to take care of it. It couldn't hurt to send an email to <a href="mailto:support@takeoffvideo.com">support@takeoffvideo.com</a>.
+</div>
+@if (Model != null && Model.Exception != null)
+{
+<pre style="display: none">
+@Model.Exception.Report() 
+</pre>
+}

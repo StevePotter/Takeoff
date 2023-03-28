@@ -1,0 +1,326 @@
+﻿@model Production_Details
+@{
+    Layout = "~/Views/Shared/Layout-App-Medium.cshtml";
+    ViewData.AddBodyCss("production-details");
+    var showSettings = Model.Data.CanEdit || Model.IsMember || Model.Data.CanDelete;
+    ViewData["PageTitle"] = Model.Data.Title;
+    if ( !Model.IsMember)
+    {
+        ViewData.AddBodyCss("not-logged-in");
+    }
+}
+@section JsExternal
+{
+    @Html.JsLib("interior.js")
+    @Html.JsLib("productions-details.js")
+    <script type="text/javascript" src="//api.filepicker.io/v1/filepicker.js"></script>
+}
+@section JsDocReady
+{
+    productionData = @Html.Json(Model.Data); 
+    @if (Model.SemiAnonymousUserName.HasChars())
+    {
+        <text>
+    productionData.SemiAnonymousUserName = @Html.Json(Model.SemiAnonymousUserName);
+        </text>
+    }
+    preferHtml5Video = @Html.Json(Model.PreferHtml5Video);
+    filepicker.setKey(@Html.Json(Model.FilePickerApiKey));
+    @if (Model.InitialFocus.HasChars())
+    {        
+        <text>
+        initialFocus = '@Model.InitialFocus';
+        </text>
+    }    
+    @if (!Model.EnableChangeSyncing)
+    {        
+        <text>
+        enableChangeSyncing = false;
+        </text>
+    }else
+    {
+        <text>
+        activityInterval = @Html.Json(Convert.ToInt64(Model.ActivityInterval.TotalMilliseconds));
+        </text>
+    }
+    initProductionUi();
+    printCssUrl = @Html.Json(Url.Asset("Assets/css/printing.css"));
+}
+@section Header
+{
+    <h1>
+    @if (Model.Data.Logo != null)
+    {
+        <img src="@Model.Data.Logo.Url" alt="Logo" style="width:@Model.Data.Logo.Width.ToInvariant()px;height:@Model.Data.Logo.Height.ToInvariant()px;" />
+    }    
+    @Model.Data.Title
+    </h1>
+}
+<ul id="mainTabs" class="nav nav-tabs">
+    <li id="videos-tab"><a href="#">@("Videos")</a></li>
+    <li id="files-tab"><a href="#">@("Assets")</a></li>
+    <li id="members-tab"><a href="#">@("Team")</a></li>
+    <li id="settings-tab" @Html.Raw(showSettings ? string.Empty : "style=\"display:none !important;\"")><a href="#">@("Settings")</a></li>
+</ul>
+<div class="row" id="mainTabs-panels">
+<div id="mainArea" class="span8">
+    <div class="background">
+    </div>
+    <div id="videosArea" class="tabPane">
+        <h2>@("Videos")
+                @if (Model.Data.CanAddVideo)
+                    {                   
+                    <div>
+                        <a href="#" class="btn" id="video-add-button">@("Add Video")</a>
+                    </div>
+                    }
+        </h2>
+                @if (Model.Data.CanAddVideo)
+                {
+                    <div id="video-add">
+                    </div>
+                }
+        @if (Model.Data.CanAddVideo)
+            {              
+                <ul id="videoUploadQueue" class="fileUploadQueue">
+                </ul>
+@*            <div class="firstUseMsg help-block" id="videoUploadTip">
+                Your video(s) will upload in the background. So feel free to close this tab and
+                do other stuff in the meantime.</div>
+*@                }
+            <div id="videosListEmptyMsg" class="empty-data-msg @Html.AlertInfoClass(true)">
+                @if (Model.Data.CanAddVideo)
+                {        
+                    @("No videos have been uploaded yet. Want to upload one?  Click the \"Upload a Video\" button above.")
+                }
+                else
+                {
+                    @("No videos have been uploaded yet.  When one is available, it will show up here and you'll also get an email.")
+                }
+            </div>
+            <ul id="videosList" class="thumbnails">
+            </ul>
+    </div>
+    <div id="filesArea" class="tabPane">
+        <h2>@("Asset Files")
+        
+
+
+            @if (Model.Data.CanAddFile)
+            {                   
+            <div><a href="#" id="file-add-button" class="btn">@("Upload a File")</a></div>
+            }
+        </h2>
+        @if (Model.Data.CanAddFile)
+        {               
+        <ul class="fileUploadQueue" id="fileUploadQueue">
+        </ul>            
+        }
+        <div id="filesTableEmptyMsg" class="empty-data-msg @Html.AlertInfoClass(true)">
+            @("There aren't any files right now.")
+        </div>
+            <table id="filesTable" cellspacing="0" class="data table table-striped">
+                <thead>
+                    <tr>
+                        <th>Name</th><th>Size</th><th>Added&nbsp;By</th><th>Added</th><th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+    </div>
+    <div id="membersArea" class="tabPane">
+                <h2>Team
+                @if (Model.Data.CanAddMember)
+                {
+                    <a href="#" id="newMemberBtn" class="btn">@("Invite Someone")</a>
+                }
+                    </h2>
+            @if (Model.Data.CanAddMember)
+            {
+               
+                <form id="member-add-form" action="@Url.Action("Invite", "ProductionMembers")" class="form-horizontal">
+                    <fieldset>
+                        <div class="@Html.ControlGroupClass()">
+                            @Html.ControlLabel("Email or Name", "newMemberNameEmail", "If you've used Takeoff with this person in the past, just start typing their name or email address and it should show up. Otherwise, enter the person's email and we'll take it from there.")
+                            @Html.ControlsWrapperBeginTag()
+                                <input type="text" class="span4" id="newMemberNameEmail" name="newMemberNameEmail" />
+                            @Html.ControlsWrapperEndTag()
+                        </div>
+                        <div class="@Html.ControlGroupClass()">
+                            @Html.ControlLabel("Role")
+                            @Html.ControlsWrapperBeginTag()
+                                <label class="radio">
+                                    <input id="role1" type="radio" name="role" value="Client" checked="checked" />
+                                    @("Client")
+                                    @Html.ControlTooltip("Can add comments and upload files, but cannot add new videos or invite people in. Use this for customers and reviewers.")
+                                </label>
+                                <label class="radio">
+                                    <input id="role1" type="radio" name="role" value="Staff"  />
+                                    @("Staff")
+                                    @Html.ControlTooltip("Can add comments, upload files, add new teammates and upload new videos. Use this for editors and contractors.")
+                                </label>
+                            @Html.ControlsWrapperEndTag()
+                        </div>
+                        <div class="@Html.ControlGroupClass()">
+                            @Html.ControlLabel("Personal Note", "newMemberNoteInput")
+                            @Html.ControlsWrapperBeginTag()
+                            <textarea id="newMemberNoteInput" class="span4" name="note" rows="2"></textarea>
+                            @Html.ControlsWrapperEndTag()
+
+                        </div>
+                        
+                        <div class="form-actions">
+                            <input type="submit" class="@Html.PrimaryButtonClass()" value="Add" />
+                            <a class="cancelBtn btn" href="#">@("Cancel")</a>
+                        </div>
+                    </fieldset>
+                </form>
+            }
+            <div id="membersTableEmptyMsg" class="empty-data-msg @Html.AlertInfoClass(true)">
+                @("There aren't any team members right now.")
+            </div>
+            <table id="membersTable" class="data table table-striped" cellspacing="0">
+                <thead>
+                    <tr class="hidden">
+                        <th>@("Name")</th>
+                        <th>@("Status")</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+    </div>
+    <div id="settingsArea" class="tabPane" @Html.Raw(showSettings ? string.Empty : "style=\"display:none !important;\"")>
+                <h2>@("Production Settings")</h2>
+                @if (Model.Data.CanEdit)
+                {
+                    <div class="well">
+                        <h3>Change Settings</h3>
+                        @Html.ValidationSummary(@S.Validation_SummaryHeading)
+                        <form id="settingsForm" method="post" action="@Url.Action("Edit", "Productions", Model.Data.Id)" enctype="multipart/form-data"  class="form-horizontal">
+                        @Html.Hidden("id", Model.Data.Id)
+                        <fieldset>
+                            <div id="nameArea" class="@Html.ControlGroupClass()">
+                                @Html.ControlLabel("Title", "settingsFormTitle")
+                                @Html.ControlsWrapperBeginTag()
+                                    <input type="text" id="settingsFormTitle" name="Title" value="@Html.Attribute(Model.Data.Title)" />
+                                @Html.ControlsWrapperEndTag()                                
+                            </div>
+                            <div class="@Html.ControlGroupClass()">
+                                @Html.ControlLabel("Logo", "Logo-Input")
+                                @Html.ControlsWrapperBeginTag()
+                                    <input type="file" id="Logo-Input" name="Logo" size="40" />
+                                @Html.ControlsWrapperEndTag()                                
+                                
+                            </div>
+                            <div id="CustomUrl-group" class="@Html.ControlGroupClass()">
+                                @Html.ControlLabel("Custom Url", "CustomUrl", "A custom web address for this production makes it easier to find and share.  For example, enter 'mymovie' and this production can be found at http://takeoffvideo.com/mymovie.")
+    
+                                @Html.ControlsWrapperBeginTag()
+                                    <div class="input-prepend">
+                                        <span class="add-on">@("http://takeoffvideo.com/")</span><input type="text" size="16" id="CustomUrl" name="CustomUrl" class="span2" value="@Model.CustomUrl" />
+                                    </div>
+                                @Html.ControlsWrapperEndTag()                               
+                            </div>
+                            <div id="SemiAnonymousLogin-Container" class="@Html.ControlGroupClass()">
+                                @Html.ControlLabel("Guest Password", "QuickAccessDecryptedPassword", "Setting this password lets people enter the production without creating a Takeoff account.  You can optionally allow those people to add comments.")
+                                    @Html.ControlsWrapperBeginTag()
+                                    @Html.TextBoxFor(m => m.QuickAccessDecryptedPassword)
+                                    <div class="input" id="SemiAnonymousUsersCanComment-Container" style="visibility:hidden">@Html.CheckBoxFor(m => m.QuickAccessAllowCommenting)Visitors can Comment</div>
+                                @Html.ControlsWrapperEndTag()                               
+                            </div>
+                            @Html.FormButtons("Update")
+                        </fieldset>
+                        </form>
+                    </div>
+                }
+                @if (Model.IsMember)
+                {
+					<div class="well">
+						<h3>Leave this Production</h3>
+						<p>Leaving this production will remove you as a member.  You can always rejoin later.</p>
+                        <form method="post" action="@Url.Action("DeleteCurrent", "ProductionMembers")">
+                            @Html.Hidden("projectId", Model.Data.Id)
+                            <input type="submit" value="Resign from Production" class="btn btn-danger"/>
+                        </form>
+					</div>                   
+                }
+                @if (Model.Data.CanDelete)
+                {                   
+					<div class="@Html.AlertErrorClass(true)">
+						<h3>@("Delete this Production")</h3>
+						<p>@("Are you 100% sure? This will delete EVERYTHING in this production. There is no undo.")</p>
+                        <div class="alert-actions">
+                        <form method="post" action="@Url.Action("Delete", "Productions")">
+                            <input type="submit" value="@("Delete this Production")" class="btn btn-danger"/>
+                        </form>
+                        </div>
+					</div>
+                
+                    
+                }
+    </div>
+    <div id="video-details-container" class="tabPane">
+        <div id="player-container"></div>
+        <div id="commentsArea">
+            <h2>Comments <span class="quantity" id="commentsQuantity">(0)</span>
+                @if (Model.Data.CanAddComment)
+                {
+                    <a href="#" class="@Html.PrimaryButtonClass()" id="addCommentBtnInHeader">Add Comment</a>
+                }
+            </h2>
+            @if (Model.Data.CanAddComment)
+            {
+                <form id="comment-add-form" action="@Url.Action("Create", "Comments")" style="display: none">
+                    <label for="comment-add-form-body-input">New Comment</label>
+                    <textarea rows="3" class="xxlarge" id="comment-add-form-body-input" name="body"></textarea>
+                    <div id="comment-add-form-isTimed-container">
+                        <label for="comment-add-form-isTimed-group">For</label>
+                        <div id="comment-add-form-isTimed-group">                
+                            <input type="radio" id="comment-add-form-isTimed-input-true" name="timed" value="true" />
+                            <label for="comment-add-form-isTimed-input-true">Right Now (<span id="comment-add-form-isTimed-timecode">0:00</span>)</label>
+                            <input type="radio" id="comment-add-form-isTimed-input-false" name="timed" value="false" />
+                            <label for="comment-add-form-isTimed-input-false">Entire Video</label>
+                        </div>
+                    </div>
+                    @if (!Model.Data.IsMember && !Model.SemiAnonymousUserName.HasChars())
+                    {
+                    <div class="field" id="comment-add-form-name">
+                        <label for="comment-add-form-name-input">Your Name</label>
+                        <input type="text" id="comment-add-form-name-input" name="name" value="" />
+                    </div>
+                    }
+                    <div class="buttons">
+                        <input type="submit" value="Add Comment" class="@Html.PrimaryButtonClass()" />
+                        <a href="#" class="btn cancel-button">Cancel</a>
+                    </div>
+                </form>
+            }
+            <div id="commentsEmpty" class="empty-data-msg @Html.AlertInfoClass(true)">
+                @("No comments have been written yet.")
+                @if (Model.Data.CanAddComment)
+                {
+                    <a href="#">Be the first!</a>
+                }
+            </div>
+            <div id="comments">
+            </div>
+        </div>
+    </div>
+
+</div>
+<div id="sideBar" class="span4">    
+
+    <div id="activity-container">
+        <h4>@("Latest Activity")</h4>
+        <ul>
+        </ul>
+        <div id="activityEmpty" class="empty-data-msg @Html.AlertInfoClass(true)">
+            @("There's no recent activity.")
+        </div>
+    </div>
+</div>
+
+</div>

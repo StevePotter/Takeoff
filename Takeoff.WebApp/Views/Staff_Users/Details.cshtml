@@ -1,0 +1,44 @@
+﻿@model Staff_Users_Details
+@{
+    Layout = "~/Views/Staff/staff-layout.cshtml";
+}
+
+@section Header
+{
+    <h1>@("User #") @Model.Id</h1>
+}
+
+@section JsDocReady
+{
+$("#impersonate").click(function (e) {
+    var message = "Do you want to log in as this account owner?  You will be able to do everything they can do.  If you want to come back to the staff section you'll have to log out then back in under your normal account.  Remember impersonating is not an excuse for spying.";
+    if (!confirm(message)) {
+        e.preventDefault();
+        return false;
+    }
+});
+}
+@section CssInline
+{
+}
+<div>
+<a href="@Url.Action("Edit", "Staff_Users", Model.Id)">Edit User</a> &nbsp; <a href="@Url.Action("Delete", "Staff_Users", Model.Id)">Delete User</a>&nbsp; <a href="@Url.Action("Impersonate", "Staff_Users", new { id = (int)Model.Id })">Impersonate</a>
+</div>
+<div>
+    <label>Name:</label> @Model.Name
+</div>
+<div>
+    <label>Email:</label> <a href="mailto:@Model.Email">@Model.Email</a>
+@if (!@Model.IsVerified)
+{
+    <span>Not verified.  Verification link: @Html.Raw(Url.Action2("Verify", "Account", new { email = Model.Email, verificationKey = Model.VerificationKey }, UrlType.AbsoluteHttps))</span>
+}
+</div>
+
+@if (@Model.AccountId.HasValue)
+{
+<div>
+    <label>Account:</label> <a href="@Url.ActionDetails("Staff_Accounts", Model.AccountId.Value)">@Model.AccountId.Value</a>
+</div>
+
+}

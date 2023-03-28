@@ -1,0 +1,11 @@
+﻿@{
+    Layout = "~/Views/Account/Layout.cshtml";
+    
+    ViewData["Heading"] = "Account Plan";
+}
+<div class="@Html.AlertErrorClass(true)">
+Sorry but to avoid abuse, we don't allow downgrading if you haven't officially subscribed to Takeoff.
+<div class="alert-actions">
+<a class="btn" href="@(Url.Action<SignupController>(c => c.Subscribe(ViewData["PostSubscribeUrl"].ValueOr(string.Empty), null)))">Subscribe Now</a> 
+</div>
+</div>

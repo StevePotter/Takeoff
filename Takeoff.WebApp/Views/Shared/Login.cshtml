@@ -1,0 +1,42 @@
+﻿@model Account_Login
+@{
+    Layout = "~/Views/Shared/Layout-App-Slim.cshtml";
+    ViewData["PageTitle"] = S.Login_PageTitle;
+    ViewData.AddBodyCss("login");
+    
+}
+@section JsDocReady
+{
+    window.views.login(@Model.UseAjax.ToString().ToLowerInvariant()); 
+}
+
+@section Header
+{
+	<h1>@Model.Heading.CharsOr(S.Login_Subheading)</h1>
+}
+
+
+@Html.ValidationSummary("")
+<form action="@(Url.Action<AccountController>(c => c.LoginPost(null), UrlType.RelativeHttps))" method="post" id="loginForm" class="form-horizontal">
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(m => m.TimezoneOffset)
+    @Html.HiddenFor(m => m.ReturnUrl)
+    @Html.TextBoxControlGroupFor(m => m.Email)
+	<div class="@Html.ControlGroupClass()" id="password-group">
+        @Html.ControlLabelFor(m => m.Password, S.Login_PasswordLabel)
+        <div class="controls">
+            @Html.TextBoxFor(m => m.Password, new { type = "password" })
+        	<a class="help-inline" href="@(Url.Action<AccountController>(c => c.PasswordReset(null)))">@S.Login_ForgotPasswordLink</a>            
+        </div>
+	</div>
+	<div class="@Html.ControlGroupClass()" id="remember-me-group">
+        <div class="controls checkbox">
+        @Html.CheckBoxFor(m => m.RememberMe)
+        @Html.LabelFor(m => m.RememberMe, S.Login_RememberMeLabel)
+        </div>
+	</div>
+    <div class="@Html.FormActionsClass()">
+        @Html.SubmitButton(S.Login_SubmitBtnText)
+        <span>@S.Login_SignupLink.FormatResource(Html.StartTag("a").Href(Url.Action<SignupController>(c => c.Index(null, null, null))))</span>
+    </div>
+</form>

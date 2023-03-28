@@ -1,0 +1,10 @@
+﻿@{
+    Layout = "~/Views/Shared/Layout-Base.cshtml";
+    ViewData["MainCssLib"] = "Assets/css/theme.css";
+    ViewData.AddBodyCss("app", "naked");
+    this.RedefineSection("CssExternal");
+    this.RedefineSection("CssInline");
+    this.RedefineSection("JsExternal");
+    this.RedefineSection("JsDocReady");
+    this.RedefineSection("JsInline");
+}

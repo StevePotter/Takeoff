@@ -1,0 +1,13 @@
+﻿@{
+    Layout = "~/Views/Shared/Layout-App-Slim.cshtml";
+    
+    ViewData["PageTitle"] = S.Production_NotFound_PageTitle;
+}
+@section Header
+{
+    <h1>@S.Production_NotFound_PageHeading</h1>
+}
+<p class="@Html.AlertErrorClass(true)">
+@S.Production_NotFound_Message
+</p>
+

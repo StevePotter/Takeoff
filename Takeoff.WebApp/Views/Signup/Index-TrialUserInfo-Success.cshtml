@@ -1,0 +1,20 @@
+﻿@model Signup_Trial_Success
+@{
+    Layout = "~/Views/Shared/Layout-App-Slim.cshtml";
+    
+    Html.DisableNagBanners();
+
+    ViewData.AddBodyCss("subscribe-success");
+    ViewData["PageTitle"] = "Account Created";
+}
+@section Header
+{
+<h1>@("Thanks for Signing Up!")</h1>
+}
+<p class="alert alert-block alert-info">
+    @("You are awesome.  Now you have more videos and productions to use.  The trial doesn't expire and you can purchase at any time.")
+</p>
+
+<div class="actions">
+    <a class="@Html.PrimaryButtonClass()" href="@Model.ReturnUrl">@("Continue")</a>
+</div>

@@ -1,0 +1,118 @@
+﻿@model Staff_Accounts_Details
+@{
+    Layout = "~/Views/Staff/staff-layout.cshtml";
+}
+@section Header
+{
+    <h1>@("Account #") @Model.Id</h1>
+}
+
+@section JsDocReady
+{
+$("#impersonate").click(function (e) {
+    var message = "Do you want to log in as this account owner?  You will be able to do everything they can do.  If you want to come back to the staff section you'll have to log out then back in under your normal account.  Remember impersonating is not an excuse for spying.";
+    if (!confirm(message)) {
+        e.preventDefault();
+        return false;
+    }
+});
+}
+@section CssInline
+{
+}
+<div>
+<a href="@Url.Action("Edit", "Staff_Accounts", Model.Id)">Edit Account</a> &nbsp; <a href="@Url.Action("Delete", "Staff_Accounts", Model.Id)">Delete Account</a>
+</div>
+<div>
+    <label>Owner:</label>
+    @Model.Owner.DisplayName &nbsp; <a href="mailto:@Model.Owner.Email">@Model.Owner.Email</a> &nbsp; <a href="@Url.ActionDetails("Staff_Users",Model.Owner.Id)">View/Edit User Details</a> &nbsp; <a id="impersonate" href="@Url.Action("Impersonate","Staff_Users", new { id = Model.Owner.Id })">Impersonate</a>
+</div>
+@if (Model.Account.IsSubscribed())
+{
+<div>
+    <label>Recurly Link:</label>
+    <a href="@Model.RecurlyUrl" target="_blank">View Account in Recurly</a>
+</div>
+}
+<div>
+    <label>Account Status:</label>
+    @Model.Account.Status
+</div>
+<div>
+    <label>Plan:</label>
+@if ( Model.Account.Plan == null )
+{
+    <span>NONE!</span>
+}
+else
+{
+   @Model.Account.Plan.Id
+}
+</div>
+<div>
+    <label>Created:</label>
+    @Model.Account.CreatedOn
+</div>
+
+@if ( Model.Account.CurrentBillingPeriodStartedOn.HasValue )
+{
+<div>
+    <label>Current Billing Period Started On:</label>
+    @Model.Account.CurrentBillingPeriodStartedOn.Value.ToString(DateTimeFormat.ShortDateTime)
+</div>
+}
+
+@if ( Model.Account.CurrentBillingPeriodEndsOn().HasValue )
+{
+<div>
+    <label>Current Billing Period Ends On:</label>
+    @Model.Account.CurrentBillingPeriodEndsOn().Value.ToString(DateTimeFormat.ShortDateTime)
+</div>
+}
+
+
+<div>
+<label>Trial Period Ends:</label>
+@if (!Model.Account.TrialPeriodEndsOn.HasValue)
+{
+    <span>N/A</span>
+}
+else
+{
+    <span>@Model.Account.TrialPeriodEndsOn - @Model.Account.DaysLeftInTrial days left</span>
+}
+</div>
+
+
+
+
+<div>
+    <label>Productions:</label>
+    @Model.Account.ProductionCount
+</div>
+<div>
+    <label>Videos Total:</label>
+    @Model.Account.VideoCount
+</div>
+<div>
+    <label>Videos In Billing Cycle:</label>
+    @Model.Account.VideosAddedInBillingCycle
+</div>
+@*<div>
+    <label>Video Stats:</label>
+    @Model.VideoCount videos totaling @((int)TimeSpan.FromSeconds((double)Model.VideoDuration).TotalMinutes) mintues,  @Model.VideoStreamCount Video Files totaling @(new FileSize((long)Model.VideoStreamSize))
+</div>
+<div>
+    <label>Asset Files:</label>
+    @Model.AssetFileCount files totaling @(new FileSize((long)Model.AssetFileSize))
+</div>
+<div>
+    <label>Downloads:</label>
+    @Model.DownloadCount files totaling @(new FileSize((long)Model.DownloadSize))
+</div>
+<div>
+    <label>Uploads:</label>
+    @Model.UploadCount files totaling @(new FileSize((long)Model.UploadSize))
+</div>
+*@
+

@@ -1,0 +1,27 @@
+﻿@model Email_ProductionVideoComment_New
+@{
+    Layout = "~/Views/Email/Layout-ProductionBase.cshtml";
+    var changeSettingsUrl = Url.Action<AccountNotificationsController>(c => c.Index(), UrlType.AbsoluteHttps);
+}
+@section Subject
+{
+New Comment '@Model.CommentBody.Truncate(15, StringTruncating.EllipsisCharacter)' in @Model.ProductionTitle
+}
+@section HtmlHeader {
+    @Model.CreatedBy commented about the @Model.VideoTitle video in @Model.ProductionTitle
+}
+@section HtmlExplanation
+{
+You are recieving this because you are a member of Takeoff and your settings indicate you wish to recieve an email when comments are added to productions you belog to.  Visit <a href="@changeSettingsUrl">@changeSettingsUrl</a> to change this setting.
+}
+@section Plain {
+@Html.Raw(Model.CreatedBy) commented about the @Html.Raw(Model.VideoTitle) video in @Html.Raw(Model.ProductionTitle):
+@Html.Raw(Model.CommentBody)
+}
+<p class="video-comment-header">The comment:</p>
+<p class="video-comment">&quot;@Model.CommentBody&quot;</p>
+
+<p class="big-link-container">
+<a href="@Model.ViewUrl">See It</a>
+<div class="link-to-copy">If clicking the above link didn't work, just copy and paste the following into your browser address bar:<br><b>@Model.ViewUrl</b></div>
+</p>

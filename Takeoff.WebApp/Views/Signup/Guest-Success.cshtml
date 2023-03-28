@@ -1,0 +1,16 @@
+﻿@{
+    Layout = "~/Views/Shared/Layout-App-Slim.cshtml"; 
+    ViewData.AddBodyCss("subscribe-success");
+    ViewData["PageTitle"] = "Thanks for Subscribing!";
+}
+@section Header
+{
+<h1>@("Awesome!  Now what?")</h1>
+}
+<p>
+    @("Thank you so much for joining Takeoff.  Right now you are a guest, which means you can't create new productions.  You can participate in other people's productions.  At this time you aren't a member of any productions, so either someone will have to invite you, or you can paste a link that's been given to you and request access.")
+</p>
+
+<div class="actions">
+    <a class="@Html.PrimaryButtonClass()" href="@(Url.Action<DashboardController>(c => c.Index(null, null)))">@("Let's get started!")</a>
+</div>

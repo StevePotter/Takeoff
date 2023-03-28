@@ -1,0 +1,29 @@
+﻿@model Account_MainInfo
+@{
+    Layout = "~/Views/Account/Layout.cshtml";
+    
+    ViewData["Heading"] = S.Account_MainInfo_PageTitle;
+}
+@section JsDocReady
+{
+    window.views.Account_MainInfo();
+}
+@Html.ValidationSummary(S.Validation_SummaryHeading)
+<form id="mainForm" method="post" action="@(Url.Action<AccountController>(c => c.MainInfo()))" class="form-horizontal">
+@Html.AntiForgeryToken()
+    <fieldset>
+        @Html.TextBoxControlGroupFor(m => m.FirstName, S.Account_MainInfo_FirstName_Label)
+        @Html.TextBoxControlGroupFor(m => m.LastName, S.Account_MainInfo_LastName_Label)
+        @Html.TextBoxControlGroupFor(m => m.Email, S.Account_MainInfo_Email_Label)
+
+        <div class="@Html.ControlGroupClass()">
+            @Html.ControlLabelFor(m => m.CurrentPassword, S.Account_MainInfo_CurrentPassword_Label, S.Account_MainInfo_CurrentPassword_Tooltip)
+            <div class="controls">
+                @Html.TextBoxFor(m => m.CurrentPassword, new { type = "password" })
+                <label for="CurrentPassword" class="tooltip" style="display:none;">@S.Account_MainInfo_CurrentPassword_Tooltip</label>                
+            </div>
+        </div>
+        @Html.ControlGroup(Html.ControlLabelFor(m => m.NewPassword, S.Account_MainInfo_NewPassword_Label),Html.TextBoxFor(m => m.NewPassword, new { type = "password" }))
+        @Html.FormButtons(S.Account_MainInfo_SubmitBtn_Text)
+    </fieldset>
+</form>

@@ -1,0 +1,19 @@
+﻿@{
+    Layout = "~/Views/Shared/Layout-App-Slim.cshtml";
+    
+}
+@section Header
+{
+    <h1>Please Enable Cookies</h1>
+}
+@section JsDocReady
+{
+   $("#back-button").click(function () {
+        history.go(-1);
+        return false;
+    });
+}
+<p class="@Html.AlertErrorClass()">We need you to enable cookies in your browser in order to use Takeoff.</p>
+<p>Cookies are small files on your computer that store settings like login information for various web sites.  Takeoff uses cookies and can't work without them.  Right now you don't have cookies enabled.  Enabling them is easy.  Check out <a href="http://www.google.com/support/accounts/bin/answer.py?&answer=61416" target="_blank">these instructions</a> from Google (who also uses cookies). </p>
+<p>Once you have enabled cookies, please <a href="#" id="back-button">click here</a> to start using Takeoff.</p>
+   

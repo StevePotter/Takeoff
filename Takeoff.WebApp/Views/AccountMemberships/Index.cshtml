@@ -1,0 +1,61 @@
+﻿@model AccountMemberships_Index
+@{
+    Layout = "~/Views/Account/Layout.cshtml";
+    
+    ViewData["Heading"] = "Accounts I Belong To";
+}
+
+@section JsDocReady {
+
+@if (Model.AccountsUserBelongsTo.HasItems())
+    {
+     <text>
+        $("#accountsTable").dataTable({
+            bJQueryUI: false,
+            "bPaginate": false,
+            "bLengthChange": false,
+            "bFilter": false,
+            "bSort": true,
+            "bInfo": false,
+            "bAutoWidth": false,
+            aoColumns: [
+                {},
+                {bSearchable: false, bSortable: false}//delete button
+                ]
+        });
+        </text>
+    }
+
+}
+
+
+@if (!Model.AccountsUserBelongsTo.HasItems())
+    {
+    
+        <p><strong>@("You aren't a member of anyone else's account right now.")</strong></p>
+    
+    }
+    else
+    {       
+<p>@("You are a member of account(s) owned by other people.  Click to see who they are and disassociate with them if you'd like.")</p>
+    <table id="accountsTable" cellspacing="0" class="data table table-striped">
+        <thead>
+            <tr>
+                <th>Owner</th><th>Details</th>
+            </tr>
+        </thead>
+        <tbody>
+@foreach (var membership in Model.AccountsUserBelongsTo)
+{
+    var detailsUrl = Url.Action<AccountMembershipsController>(c => c.Details(membership.Id));
+            <tr>
+                <td><a href="@detailsUrl">
+                @membership.AccountOwnerName</a> </td>
+                <td><a href="@detailsUrl" class="btn">@("View Details")</a></td>
+            </tr>      
+}          
+        </tbody>
+    </table>
+
+}
+     

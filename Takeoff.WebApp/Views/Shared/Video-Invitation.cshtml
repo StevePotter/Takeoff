@@ -1,0 +1,45 @@
+﻿@model Production_Details_Invitation
+@{
+    Layout = "~/Views/Shared/Layout-App-Slim.cshtml";
+    Html.AddBodyCss("production-invitation");
+}
+@section Header
+{
+    <h1>@("You're Invited to a Production")</h1>
+}
+
+<p id="invitation-details">@Model.InvitedByName 
+    @if (!@Model.InvitedByName.EqualsCaseSensitive(@Model.InvitedByEmail) && Model.InvitedByEmail.HasChars())
+    {
+        @Model.InvitedByEmail.Surround("(", ")")            
+    }
+    wants you to join &quot;@Model.ProductionTitle&quot;.</p>
+
+@if (Model.Thumbnails.HasItems())
+{
+    <div id="videoThumbnailStrip">
+        @foreach (var thumbnail in Model.Thumbnails.Take(3))
+        {
+            <img src="@thumbnail.Url" alt="thumbnail" title="Latest Video Thumbnail" style="width:@thumbnail.Width.ToInvariant()px;height:@thumbnail.Height.ToInvariant()px;" />
+        }
+    </div>
+}
+
+@if (Model.Note.HasChars())
+{
+    <blockquote>
+        <p>@Model.Note</p>
+    </blockquote>                
+}
+
+
+<div class="actions">
+    <form method="post" action="@Url.Action("Approve", "MembershipRequests", new { id = Model.MembershipRequestId })">
+    <input type="submit" value="@("Accept")" class="@Html.PrimaryButtonClass()" />
+    </form>
+    <form method="post" action="@Url.Action("Reject", "MembershipRequests", new { id = Model.MembershipRequestId })">
+    <input type="submit" value="@("Decline")" class="btn" />
+    </form>
+</div>
+
+<p>Want to stop accepting requests? You can do it in your <a href="@Url.Action("Privacy", "Account")" target="_blank">account privacy settings.</a></p>

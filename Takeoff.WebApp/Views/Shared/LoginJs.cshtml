@@ -1,0 +1,14 @@
+﻿@{
+    Layout = null;
+    string userStatus = (string)ViewData["userStatus"];
+}
+$("#loginForm").madSignin({
+    @if (userStatus.HasChars())
+    {
+        <text>
+        userStatus: "@userStatus",
+        </text>      
+    }
+    useAjaxPostForLogin: @((bool)ViewData["useAjaxPostForLogin"] ? "true" : "false")
+});
+ 

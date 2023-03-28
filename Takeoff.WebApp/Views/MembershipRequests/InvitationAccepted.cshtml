@@ -1,0 +1,20 @@
+﻿@model MembershipRequests_InvitationAccepted
+@{
+    Layout = "~/Views/Shared/Layout-App-Slim.cshtml"; 
+}
+
+@section Header
+{
+    <h1>@("Auto Accept Future Invites?")</h1>
+}
+
+<p>The invitation was accepted.  Would you like us to automatically accept future invitations from @Model.InvitedByDisplayName?  Otherwise, you'll have to accept each invitation from them.</p>
+<div class="actions">
+    <form method="post" action="@Url.Action("SetFutureInvitationsAutoResponse", "MembershipRequests")">
+        <input type="hidden" name="userId" value="@Model.InvitedById" />
+        <input type="hidden" name="accept" value="true" />
+        <input type="hidden" name="redirectTo" value="@Url.ActionDetails("Productions", Model.ProductionId)" />
+        <input type="submit" value="Yes" class="@Html.PrimaryButtonClass()" />
+    </form>
+    <a href="@Url.ActionDetails("Productions", Model.ProductionId)" class="btn">No</a>
+</div>

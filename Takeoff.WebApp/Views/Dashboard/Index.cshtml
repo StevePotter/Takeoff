@@ -1,0 +1,97 @@
+﻿@model Dashboard_Index
+@{
+    Layout = "~/Views/Shared/Layout-App-Medium.cshtml";
+    
+    ViewData["PageTitle"] = S.Dashboard_Title;
+    var account = Model.Account;    
+    AccountStatus? accountStatus = account == null ? new AccountStatus?() : account.Status;
+    Takeoff.Data.IPlan plan = account.MapIfNotNull(a => a.Plan);
+    ViewData["pageCssClass"] = @"dashboard-index";
+}
+@section JsExternal
+{
+    @Html.JsLib("interior.js")
+    @Html.JsLib("app-dashboard.js")
+}
+@section JsDocReady
+{
+    window.views.Dashboard(@Html.Json(new
+      {
+          Activity = Model.Activity,
+          Productions = Model.Productions,
+      }));
+
+}
+@section Header
+{
+    <h1>@S.Dashboard_Title</h1>
+}
+
+@if (accountStatus.HasValue && accountStatus.Value == AccountStatus.Trial)
+{
+    <div id="accountStatus" class="@Html.AlertWarningClass()">
+        @S.Dashboard_PlanUsage_DaysLeft.FormatResource(Math.Max(0, account.DaysLeftInTrial.GetValueOrDefault()), Html.StartActionLink("Subscribe", "Signup", new { returnUrl = Url.Action("dashboard") }))
+    </div>
+}
+
+<section id="productions">
+<h2>@S.Dashboard_Productions_Title
+<a class="btn" href="@Url.Action("Create", "Productions")">@S.Dashboard_NewProduction_Text</a>
+</h2>
+<table id="productions-data" cellspacing="0" class="data table table-striped">
+    <thead>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Date Created
+            </th>
+            <th>
+                Latest Change
+            </th>
+            <th>
+                Created By
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+<div class="empty-data-msg @Html.AlertInfoClass()">
+    @S.Dashboard_NoProductions.FormatResource(Html.StartActionLink("Create", "Productions"))
+</div>
+</section>
+
+
+@if (Model.MembershipRequests.HasItems())
+{   
+<section id="membership-requests">    
+<h2>Membership Requests</h2>
+<ul>
+    @foreach (var request in Model.MembershipRequests)
+    {
+        if (request.IsInvitation)
+        {
+        <li>
+            @request.Name
+            invited you to join &quot;@request.ProductionTitle&quot;. [ <a href="@Url.ActionDetails("Productions", request.ProductionId)">Details</a> ]</li>
+        }
+        else
+        {
+        <li>
+            @request.Name
+            wants to join &quot;@request.ProductionTitle&quot;. [ <a href="@Url.ActionDetails("MembershipRequests", request.Id)">Details</a> ]</li>
+        }
+    }
+</ul>
+</section>
+}
+<section id="activity">
+<h2>@S.Dashboard_Activity_Title</h2>
+<ul>
+</ul>
+<div class="empty-data-msg @Html.AlertInfoClass(true)">
+    @S.Dashboard_Activity_EmptyMsg
+ </divclass>
+</section>

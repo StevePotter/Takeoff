@@ -1,0 +1,16 @@
+﻿@model Account_LimitReached
+@{
+    Layout = "~/Views/Shared/Layout-App-Slim.cshtml";
+    
+    ViewData["PageTitle"] = "Limit Reached";
+}
+@section Header
+{
+    <h1>You Hit a Limit</h1>
+}
+<p>
+Sorry but @Model.LimitationMessage.  To continue, you'll need to purchase a Takeoff plan.  We hope you do!
+</p>
+<div class="actions">
+    <a class="@Html.PrimaryButtonClass()" href="@(Url.Action<SignupController>(c => c.Subscribe(null, null)))">Purchase Takeoff</a>
+</div>

@@ -1,0 +1,9 @@
+﻿@{
+    Layout = "~/Views/Staff/staff-layout.cshtml";
+}
+    <p>This'll load all containers into MemCached.  Nice to use after clearing cache.</p>
+        <form id="mainForm" method="post" action="@Url.Action("PrimeCache","Staff")">
+            <div class="formfield actions">
+                <input type="submit" value="Yes, I want to prime the app cache." />
+            </div>
+    </form>

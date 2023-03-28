@@ -1,0 +1,28 @@
+﻿@model Email_User_Verify
+@{
+    Layout = "~/Views/Email/Layout-Simple.cshtml";
+}
+@section Subject
+{
+Verify Your Email
+}
+@section Plain {
+Before you can enjoy all Takeoff offers, we need to verify this is indeed your email address. So, please go to the following link to verify your address and set your password:
+@Html.Raw(Model.VerifyUrl)
+
+If you did not sign up for Takeoff, please contact support@takeoffvideo.com and let us know.
+}
+
+@section HtmlExplanation
+{
+You are receiving this because someone signed up for Takeoff with this email.  In order to verify your identity, we need you to respond to this email.  If you didn't sign up for Takeoff, please email <a href="mailto:support@takeoffvideo.com">support@takeoffvideo.com</a> and we'll help you.
+}
+
+<p class="text">
+Before you can enjoy all Takeoff offers, we need to verify this is indeed your email address.  Just click the link below and you're done!
+</p>
+
+<p class="big-link-container">
+<a href="@Model.VerifyUrl">Verify Me</a>
+<div class="link-to-copy">If clicking the above link didn't work, just copy and paste the following into your browser address bar:<br><b>@Model.VerifyUrl</b></div>
+</p>

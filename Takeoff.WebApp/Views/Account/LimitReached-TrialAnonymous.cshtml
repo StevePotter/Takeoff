@@ -1,0 +1,17 @@
+﻿@model Account_LimitReached
+@{
+    Layout = "~/Views/Shared/Layout-App-Slim.cshtml";
+    
+    ViewData["PageTitle"] = "Limit Reached";
+    Html.DisableNagBanners();
+}
+@section Header
+{
+    <h1>@("You Hit a Limit")</h1>
+}
+<p>
+Sorry but @Model.LimitationMessage.  To continue, you'll need to sign up.  Don't worry, it's free and takes only seconds.
+</p>
+<div class="actions">
+    <a class="@Html.PrimaryButtonClass()" href="@(Url.Action<SignupController>(c => c.Index(null, null, null)))">@("Sign Up")</a>
+</div>

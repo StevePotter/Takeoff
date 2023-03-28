@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Takeoff - My Production</title>
+    <link rel="shortcut icon" href="../Assets/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="../Assets/apple-touch-icon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />  
+
+    <link href="../Assets/css/to-theme.less" rel="stylesheet/less" type="text/css" />
+<link href="../Assets/css/jquery-ui-1.8.7.custom.css" rel="stylesheet" type="text/css" />
+
+    
+    <script language="javascript" type="text/javascript">
+        window.urlPrefixes = {
+            asset: '',
+            relative: '',
+            relativeHttps: '',
+            absoluteHttp: '',
+            absoluteHttps: ''
+        };
+    </script>
+    <script src="../scripts/underscore.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/less-1.3.0.min.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/jquery-1.7.1.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/backbone.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/jquery.json-2.2.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/jquery.form.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/jquery.validate.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/jquery.watermark.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/jquery.cookies.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/jquery.cycle.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/jquery.textchange.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/jquery.quote_rotator.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/takeoff-helpers.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/takeoff-forms.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/takeoff-tabs.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/takeoff-popup.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/takeoff-tooltip.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/takeoff-loginPing.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/takeoff-notification.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/date.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/json2.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/jquery.scrollTo.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/swfobject.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/takeoff-player.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/jquery.tools.min.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/jquery.keyfilter.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/bootstrap-modal.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/bootstrap-dropdown.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/bootstrap-tab.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/bootstrap-tooltip.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/bootstrap-popover.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/app.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/app-presales.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/app-login.js" language="javascript" type="text/javascript"></script>
+    
+    
+    
+    <script src="../scripts/jquery.autogrow.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/jquery-ui-1.8.7.custom.min.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/jquery.dataTables.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/jquery.dataTables.madExt.js" language="javascript" type="text/javascript"></script>
+
+    <script src="../scripts/swfupload/swfupload.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/swfupload/swfupload.speed.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/swfupload/swfupload.swfobject.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/takeoff-upload.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/jquery.autogrow.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/date.Relative.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/app-productions-details.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/app-productions-details-activity.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/app-productions-details-videos.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/app-productions-details-videoDetails.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/app-productions-details-comments.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/app-productions-details-commentReplies.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/app-productions-details-files.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/app-productions-details-members.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/app-productions-details-settings.js" language="javascript" type="text/javascript"></script>
+
+
+    <script language="javascript" type="text/javascript">
+        
+    
+    $.loginPing();
+    
+    
+
+        
+        $(document).ready(function() {
+        
+        
+        
+    productionData = {"Title":"My Production","LastChangeId":null,"LastChangeDate":0,"Videos":[{"Title":"Test Video","HasVideo":true,"IsSourceDownloadable":true,"Thumbnails":[{"Url":"rip-assets/videothumb-1.jpg","Time":4,"Width":180,"Height":101,"Id":4},{"Url":"rip-assets/videothumb-2.jpg","Time":6,"Width":180,"Height":101,"Id":4},{"Url":"rip-assets/videothumb-3.jpg","Time":8,"Width":180,"Height":101,"Id":4}],"CreatedOn":1316309760000,"Creator":{"Email":"email1@email.com","Name":"Andy Dodd","Id":5},"IsCreator":false,"CanEdit":true,"CanDelete":true,"Id":4}],"Files":[],"CurrentVideo":{"Title":"Awesomeness","HasVideo":true,"HasSource":true,"Comments":[{"StartTime":8,"ParentId":0,"Body":"Hey there dude.  This is really great.","Replies":[],"CreatedOn":1317089760000,"Creator":{"Email":"email3@email.com","Name":"Bernie Madoff","Id":5},"IsCreator":false,"CanEdit":true,"CanDelete":true,"Id":92}],"IsSourceDownloadable":true,"Thumbnails":null,"WatchUrl":"http://to-d.s3.amazonaws.com/site-rip-sample.mp4","StandaloneCustomUrl":null,"GuestsCanComment":false,"GuestPassword":null,"CreatedOn":1316396460000,"Creator":{"Email":"email1@email.com","Name":"Andy Dodd","Id":5},"IsCreator":false,"CanEdit":true,"CanDelete":true,"Id":0},"Members":[{"UserId":5,"Email":"email3@email.com","Name":"Bernie Madoff","TargetId":0,"CreatedOn":1315169100000,"Creator":{"Email":"email1@email.com","Name":"Andy Dodd","Id":5},"IsCreator":false,"CanEdit":false,"CanDelete":false,"Id":4}],"MembershipRequests":[],"Logo":null,"HasStandardLogo":false,"HasSpecificLogo":false,"Activity":null,"IsMember":false,"CanAddComment":true,"CanAddCommentReply":false,"CanAddMember":true,"CanAddVideo":true,"CanAddFile":true,"CreatedOn":1314889200000,"Creator":{"Email":"mail@mail.com","Name":"Margaret Redmond","Id":45},"IsCreator":false,"CanEdit":false,"CanDelete":false,"Id":0}; 
+    preferHtml5Video = true;
+        
+        enableChangeSyncing = false;
+        
+    initProductionUi();
+    printCssUrl = "../Assets/css/printing.css";
+
+        });
+        
+    
+    </script>
+    <!--[if lt IE 9]>
+    <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+<body class="production-details app medium productions-area productions-details">
+    
+<div class="container">
+	    <div class="navbar" id="top-nav">
+    <div class="navbar-inner">
+      <div class="container">
+                <a id="logo" class="default" href="Root_Index.html"><img src="../Assets/img/brand-logo.png" alt="Takeoff Logo" title="You are using Takeoff - takeoffvideo.com" /></a>
+        <div class="nav-collapse">
+          <ul class="nav">
+                    <li id="nav-dashboard"><a href="Dashboard_Index.html" >Dashboard</a></li>
+                    <li id="nav-account"><a href="Account_Index.html" >Account</a></li>
+          </ul>
+          <ul class="nav pull-right">
+                    <li id="nav-user-recognition">Hi, Andy!</li>
+                    <li id="nav-logout"><a href="Account_Logout.html">Log Out</a></li>
+                <li class="dropdown">
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">Help <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    <li><a href="Support_Request.html">Support Request</a></li>
+                    <li><a href="Root_Contact.html">Contact Info</a></li>
+                    <li><a href="Support_KnowledgeBase.html">Knowledge Base</a></li>
+                    <li><a href="Support_Discussions.html">Discuss</a></li>
+                    </ul>
+               </li>
+
+          </ul>
+        </div><!-- /.nav-collapse -->
+      </div>
+    </div><!-- /navbar-inner -->
+  </div>
+
+
+	<div role="main">
+        <div class="page-header">
+        
+    <h1>
+    My Production
+    </h1>
+
+        </div>
+    
+
+    
+
+
+<ul id="mainTabs" class="nav nav-tabs">
+    <li id="videos-tab"><a href="#">Videos</a></li>
+    <li id="files-tab"><a href="#">Assets</a></li>
+    <li id="members-tab"><a href="#">Team</a></li>
+    <li id="settings-tab" ><a href="#">Settings</a></li>
+</ul>
+<div class="row" id="mainTabs-panels">
+<div id="mainArea" class="span8">
+    <div class="background">
+    </div>
+    <div id="videosArea" class="tabPane">
+        <h2>Videos
+                    <div id="videoUpload">
+                        <a href="#" class="btn">Upload Video</a>
+                    </div>
+        </h2>
+                <ul id="videoUploadQueue" class="fileUploadQueue">
+                </ul>
+            <div id="videosListEmptyMsg" class="empty-data-msg alert alert-info alert-block">
+No videos have been uploaded yet. Want to upload one?  Click the &quot;Upload a Video&quot; button above.            </div>
+            <ul id="videosList" class="thumbnails">
+            </ul>
+    </div>
+    <div id="filesArea" class="tabPane">
+        <h2>Asset Files
+        
+
+
+            <div id="fileUpload"><a href="#" class="btn">Upload a File</a></div>
+        </h2>
+        <ul class="fileUploadQueue" id="fileUploadQueue">
+        </ul>            
+        <div id="filesTableEmptyMsg" class="empty-data-msg alert alert-info alert-block">
+            There aren&#39;t any files right now.
+        </div>
+            <table id="filesTable" cellspacing="0" class="data table table-striped">
+                <thead>
+                    <tr>
+                        <th>Name</th><th>Size</th><th>Added&nbsp;By</th><th>Added</th><th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+    </div>
+    <div id="membersArea" class="tabPane">
+                <h2>Team
+                    <a href="#" id="newMemberBtn" class="btn">Invite Someone</a>
+                    </h2>
+                <form id="member-add-form" action="ProductionMembers_Invite.html" class="form-horizontal">
+                    <fieldset>
+                        <div class="control-group">
+                            <label class="control-label" for="newMemberNameEmail">Email or Name<span class="tooltip-anchor label" data-title="If you&#39;ve used Takeoff with this person in the past, just start typing their name or email address and it should show up. Otherwise, enter the person&#39;s email and we&#39;ll take it from there.">?</span></label>
+                            <div class="controls">
+                                <input type="text" class="span4" id="newMemberNameEmail" name="newMemberNameEmail" />
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">Role</label>
+                            <div class="controls">
+                                <label class="radio">
+                                    <input id="role1" type="radio" name="role" value="Client" checked="checked" />
+                                    Client
+                                    <span class="tooltip-anchor label" data-title="Can add comments and upload files, but cannot add new videos or invite people in. Use this for customers and reviewers.">?</span>
+                                </label>
+                                <label class="radio">
+                                    <input id="role1" type="radio" name="role" value="Staff"  />
+                                    Staff
+                                    <span class="tooltip-anchor label" data-title="Can add comments, upload files, add new teammates and upload new videos. Use this for editors and contractors.">?</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="newMemberNoteInput">Personal Note</label>
+                            <div class="controls">
+                            <textarea id="newMemberNoteInput" class="span4" name="note" rows="2"></textarea>
+                            </div>
+
+                        </div>
+                        
+                        <div class="form-actions">
+                            <input type="submit" class="btn btn-primary" value="Add" />
+                            <a class="cancelBtn btn" href="#">Cancel</a>
+                        </div>
+                    </fieldset>
+                </form>
+            <div id="membersTableEmptyMsg" class="empty-data-msg alert alert-info alert-block">
+                There aren&#39;t any team members right now.
+            </div>
+            <table id="membersTable" class="data table table-striped" cellspacing="0">
+                <thead>
+                    <tr class="hidden">
+                        <th>Name</th>
+                        <th>Status</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+    </div>
+    <div id="settingsArea" class="tabPane" >
+                <h2>Production Settings</h2>
+					<div class="well">
+						<h3>Resign from this Production</h3>
+						<p>Resigning from this production will remove you as a member.  You can always rejoin later.</p>
+                        <form method="post" action="ProductionMembers_DeleteCurrent.html">
+                            <input id="projectId" name="projectId" type="hidden" value="0" />
+                            <input type="submit" value="Resign from Production" class="btn btn-danger"/>
+                        </form>
+					</div>                   
+    </div>
+    <div id="video-details-container" class="tabPane">
+        <div id="player-container"></div>
+        <div id="commentsArea">
+            <h2>Comments <span class="quantity" id="commentsQuantity">(0)</span>
+                    <a href="#" class="btn btn-primary" id="addCommentBtnInHeader">Add Comment</a>
+            </h2>
+                <form id="comment-add-form" action="Comments_Create.html" style="display: none">
+                    <label for="comment-add-form-body-input">New Comment</label>
+                    <textarea rows="3" class="xxlarge" id="comment-add-form-body-input" name="body"></textarea>
+                    <div id="comment-add-form-isTimed-container">
+                        <label for="comment-add-form-isTimed-group">For</label>
+                        <div id="comment-add-form-isTimed-group">                
+                            <input type="radio" id="comment-add-form-isTimed-input-true" name="timed" value="true" />
+                            <label for="comment-add-form-isTimed-input-true">Right Now (<span id="comment-add-form-isTimed-timecode">0:00</span>)</label>
+                            <input type="radio" id="comment-add-form-isTimed-input-false" name="timed" value="false" />
+                            <label for="comment-add-form-isTimed-input-false">Entire Video</label>
+                        </div>
+                    </div>
+                    <div class="field" id="comment-add-form-name">
+                        <label for="comment-add-form-name-input">Your Name</label>
+                        <input type="text" id="comment-add-form-name-input" name="name" value="" />
+                    </div>
+                    <div class="buttons">
+                        <input type="submit" value="Add Comment" class="btn btn-primary" />
+                        <a href="#" class="btn cancel-button">Cancel</a>
+                    </div>
+                </form>
+            <div id="commentsEmpty" class="empty-data-msg alert alert-info alert-block">
+                No comments have been written yet.
+                    <a href="#">Be the first!</a>
+            </div>
+            <div id="comments">
+            </div>
+        </div>
+    </div>
+
+</div>
+<div id="sideBar" class="span4">    
+
+    <div id="activity-container">
+        <h4>Latest Activity</h4>
+        <ul>
+        </ul>
+        <div id="activityEmpty" class="empty-data-msg alert alert-info alert-block">
+            There&#39;s no recent activity.
+        </div>
+    </div>
+</div>
+
+</div>
+    </div>
+	<footer>
+        <p>&#169; Copyright Takeoff, Inc. 2012</p>
+	</footer>
+</div>
+
+</body>
+<!-- See takeoffvideo.com/thanksto for a list of all the awesome projects and companies we use to make Takeoff possible -->
+</html>
+<!-- 
+Action Url: /../productions/details
+-->

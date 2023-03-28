@@ -1,0 +1,15 @@
+﻿@{
+    Layout = "~/Views/Email/Layout-Simple.cshtml";    
+    var changeSettingsUrl = Url.Action<AccountNotificationsController>(c => c.Index(), UrlType.AbsoluteHttps);
+    ViewData["ExplanationPlain"] = "You are receiving this email because you are set to receive announcments for new features.  To unsubscribe from these types of email, please visit:" + Environment.NewLine + changeSettingsUrl;
+    this.RedefineSection("Subject");
+    this.RedefineSection("Plain");
+        
+}
+
+@section HtmlExplanation
+{
+You are receiving this email because you are set to receive announcments for new features.  To unsubscribe from these types of email, please visit <a href="@changeSettingsUrl">@changeSettingsUrl</a> or email <a href="mailto:support@takeoffvideo.com">support@takeoffvideo.com</a> and we'll help you.
+}
+
+@RenderBody()

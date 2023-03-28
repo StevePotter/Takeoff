@@ -1,0 +1,12 @@
+﻿@model System.Web.Mvc.HandleErrorInfo
+@{
+    Layout = "~/Views/Shared/Layout-App-Slim.cshtml"; 
+}
+
+@section Header
+{
+    <h1>@("Sorry")</h1>
+}
+<div class="@Html.AlertErrorClass(true)">
+    @("What you did isn't valid.  Please try clicking one of the links above to get back on track.");
+</div>

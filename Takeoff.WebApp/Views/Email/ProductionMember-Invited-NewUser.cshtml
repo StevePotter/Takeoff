@@ -1,0 +1,39 @@
+﻿@model Email_AddUserToProduction
+@{
+    Layout = "~/Views/Email/Layout-ProductionBase.cshtml";
+}
+@section Subject
+{
+Please Join @Model.ProductionTitle
+}
+@section HtmlHeader {
+@Model.AddedByName would like you to join @Model.ProductionTitle
+}
+@section HtmlExplanation
+{
+You are recieving this because @Model.AddedByName (@Model.AddedByEmail) invited you to collaborate on a production in Takeoff.  If you don't want to join, simply ignore this email.
+}
+@section Plain {
+@Model.AddedByName would like you to join @Model.ProductionTitle on Takeoff.  Takeoff is a web site that makes it easy to collaborate on video.  To view it, please go to the following link:
+@Html.Raw(Model.ProductionUrl)
+@if (Model.Note.HasChars())
+{<text>    
+Here's a note @Html.Raw(Model.AddedByName) wrote about it:
+@Html.Raw(Model.Note.Indent())
+</text>
+}
+}
+<p class="text">
+All of the collaboration will be done with Takeoff, a private, secure web site that makes it easy to share and review videos.  And don't worry, it's totally free for you.
+</p>
+@if (Model.Note.HasChars())
+{
+<p class="text">Here's a note @Model.AddedByName wrote for you:<br/><span class="video-notes">@Model.Note</span></p>
+}
+
+<p class="big-link-container">
+<a href="@Model.ProductionUrl">Accept or Decline the Invitation</a>
+<div class="link-to-copy">If clicking the above link didn't work, just copy and paste the following into your browser address bar:<br><b>@Model.ProductionUrl</b></div>
+</p>
+
+<p class="text">You can reach @Model.AddedByName via email at <a href="mailto:@Model.AddedByEmail">@Model.AddedByEmail</a>, or by replying to this message.</p>

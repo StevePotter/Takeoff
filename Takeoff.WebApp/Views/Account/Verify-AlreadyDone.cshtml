@@ -1,0 +1,11 @@
+﻿@{
+    Layout = "~/Views/Shared/Layout-App-Slim.cshtml"; 
+    ViewData["PageTitle"] = S.Account_Verify_PageTitle;
+}
+
+@section Header
+{
+    <h1>@S.Account_Verify_PageHeading</h1>
+}
+
+<p class="@Html.AlertSuccessClass(true)">@S.Account_Verify_AlreadyDone</p>

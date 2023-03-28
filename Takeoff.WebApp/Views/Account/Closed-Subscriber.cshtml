@@ -1,0 +1,25 @@
+﻿@{
+    Layout = "~/Views/Shared/Layout-External-Medium.cshtml";
+    
+    ViewData["Heading"] = "Close My Account";
+    Html.AddBodyCss("account-closed");
+}
+<div class="well">
+    <h1>@("Account Closed")</h1>
+    <p>@("You will no longer be billed for Takeoff.  We'd love to know why you left and what we can do to get you back.  If cost is an issue, we'd love to work out a custom plan or give you a discount.  Or if Takeoff was missing features or doing something wrong, please let us know and chances are we can help.  We're a small company of video producers and we hate to lose you as a customer.  Please write us and let us know why you left.")</p>
+    <p><a class="btn btn-primary btn-large" href="@Html.Attribute("mailto:chrisk@takeoffvideo.com?subject=Why I Left Takeoff")">@("Email Chris, Takeoff's President")</a></p>
+@*    <form method="post" action="@Url.Action("Create", "Feedback", new { type = "AccountClosed-Subscriber" })" id="feedback-form" class="form-vertical">
+    @Html.AntiForgeryToken()
+    @Html.Hidden("userId", ViewData["UserId"])
+        <fieldset>
+            <label for="feedback-form-body">Please tell us why you're leaving:</label>
+            <textarea name="body" id="feedback-form-body"></textarea>
+            <label class="checkbox">
+                <input type="checkbox" name="allowContact" checked="checked">You can email me one time to address my feedback and/or offer me a discount.
+            </label>
+            <input class="btn btn-primary" type="submit" value="Submit" />
+        </fieldset>
+    </form>*@
+
+
+</div>

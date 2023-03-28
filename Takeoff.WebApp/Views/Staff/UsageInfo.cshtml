@@ -1,0 +1,140 @@
+﻿@{
+    Layout = "~/Views/Staff/staff-layout.cshtml";
+
+    var total = (FileTransferInfo)ViewData["total"];
+    var oneHr = (FileTransferInfo)ViewData["1hr"];
+    var today = (FileTransferInfo)ViewData["today"];
+    var yesterday = (FileTransferInfo)ViewData["yesterday"];
+    var month = (FileTransferInfo)ViewData["month"];
+}
+
+
+    <div class="reportField">
+        <label>Accounts</label>
+        <div>
+            @ViewData["AccountCount"] total,
+            @ViewData["AccountVerifiedCount"] verified
+        </div>
+    </div>
+    <div class="reportField">
+        <label>Users</label>
+        <div>
+            @ViewData["UserCount"] total,
+            @ViewData["UserVerifiedCount"] verified
+        </div>
+    </div>
+
+    <div class="reportField">
+        <label>Encoded Videos (excluding sample)</label>
+        <div>
+            @ViewData["VideoFileBytesCount"] <br />
+            Average: @Math.Round(((FileSize)ViewData["VideoFileBytesAvg"]).MegaBytes)  MB <br />
+            Min: @Math.Round(((FileSize)ViewData["VideoFileBytesMin"]).MegaBytes)  MB<br />
+            Max: @Math.Round(((FileSize)ViewData["VideoFileBytesMax"]).MegaBytes)  MB<br />
+            Total: @Math.Round(((FileSize)ViewData["VideoFileBytesSum"]).GigaBytes, 2)  GB<br />
+        </div>
+    </div>
+
+    <div class="reportField">
+        <label>Video</label>
+        <div>
+            @ViewData["VideoCountWithSample"] total,
+            @ViewData["VideoCount"] excluding sample.  Other stats excluding samples: <br />
+            Average: @ViewData["VideoDurationAvg"]  <br />
+            Min: @ViewData["VideoDurationMin"]  <br />
+            Max: @ViewData["VideoDurationMax"]  <br />
+            Total: @ViewData["VideoDurationSum"]  <br />
+        </div>
+    </div>
+
+    <div class="reportField">
+        <label>Video Viewings</label>
+        <div>
+            Average: @Math.Round(((FileSize)ViewData["VideoDownloadBytesAvg"]).MegaBytes) MB <br />
+            Total: @ViewData["VideoDownloadCount"], @Math.Round(((FileSize)ViewData["VideoDownloadBytesSum"]).GigaBytes, 2) GB <br />
+            Per Video: @ViewData["VideoDownloadPerVidAvg"] avg, @ViewData["VideoDownloadPerVidMax"] max
+        </div>
+    </div>
+
+
+    <div class="reportField">
+        <label>Asset Files</label>
+        <div>            
+            Average: @Math.Round(((FileSize)ViewData["AssetFileBytesAvg"]).MegaBytes)  MB <br />
+            Min: @Math.Round(((FileSize)ViewData["AssetFileBytesMin"]).MegaBytes)  MB<br />
+            Max: @Math.Round(((FileSize)ViewData["AssetFileBytesMax"]).MegaBytes)  MB<br />
+            Total: @ViewData["AssetFileBytesCount"], @Math.Round(((FileSize)ViewData["AssetFileBytesSum"]).GigaBytes, 2) GB<br />
+        </div>
+    </div>
+
+    <div class="reportField">
+        <label>Asset Downloads</label>
+        <div>
+            Average: @Math.Round(((FileSize)ViewData["AssetDownloadBytesAvg"]).MegaBytes) MB <br />
+            Total: @ViewData["AssetDownloadCount"], @Math.Round(((FileSize)ViewData["AssetDownloadBytesSum"]).GigaBytes, 2) GB <br />
+            Per Video: @ViewData["AssetDownloadPerFileAvg"] avg, @ViewData["AssetDownloadPerFileMax"] max
+        </div>
+    </div>
+
+
+
+
+        <div class="reportField">
+        <label>Files</label>
+        <div>
+            @ViewData["FileCount"] ,
+            @ViewData["FileSize"] 
+        </div>
+    </div>
+    <div class="reportField">
+        <label>Videos</label>
+        <div>
+            @ViewData["VideoCount"],
+            @ViewData["VideoSize"]
+        </div>
+    </div>
+    <div class="reportField">
+        <label>Last Hour</label>
+        <div>
+            @oneHr.UploadCount
+            uploads (@oneHr.UploadSize).
+            @oneHr.DownloadCount
+            downloads (@oneHr.DownloadSize). </p>
+        </div>
+    </div>
+    <div class="reportField">
+        <label>Today</label>
+        <div>
+            @today.UploadCount
+            uploads (@today.UploadSize).
+            @today.DownloadCount
+            downloads (@today.DownloadSize). </p>
+        </div>
+    </div>
+    <div class="reportField">
+        <label>Yesterday</label>
+        <div>
+            @yesterday.UploadCount
+            uploads (@yesterday.UploadSize).
+            @yesterday.DownloadCount
+            downloads (@yesterday.DownloadSize). </p>
+        </div>
+    </div>
+    <div class="reportField">
+        <label>This Month</label>
+        <div>
+            @month.UploadCount
+            uploads (@month.UploadSize).
+            @month.DownloadCount
+            downloads (@month.DownloadSize). </p>
+        </div>
+    </div>
+    <div class="reportField">
+        <label>Since Beginning</label>
+        <div>
+            @total.UploadCount
+            uploads (@total.UploadSize).
+            @total.DownloadCount
+            downloads (@total.DownloadSize).
+        </div>
+    </div>

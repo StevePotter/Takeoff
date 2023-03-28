@@ -1,0 +1,31 @@
+﻿@model Account_Verify_Request
+@{
+    Layout = "~/Views/Shared/Layout-App-Slim.cshtml"; 
+    ViewData["PageTitle"] = S.Account_VerifyRequest_PageTitle;
+    Html.DisableNagBanners();
+}
+
+@section JsDocReady
+{
+    $("#main-content form").madValidate({
+        rules:
+        {
+            Email: {
+                required: true,
+                email: true
+            }
+        },
+        useAjax: false
+    });
+}
+@section Header
+{
+	<h1>@S.Account_VerifyRequest_PageHeading</h1>
+}
+@Html.ValidationSummary(S.Validation_SummaryHeading)
+<p>@S.Account_VerifyRequest_Explanation</p>
+<form action="@(Url.Action<AccountController>(c => c.VerifyPost(null)))" method="post" class="form-horizontal">
+    @Html.AntiForgeryToken()
+    @Html.TextBoxControlGroupFor(m => m.Email)
+    @Html.FormButtons(S.Account_VerifyRequest_SubmitBtnText)
+</form>

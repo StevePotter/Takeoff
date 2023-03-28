@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Takeoff - Member Settings</title>
+    <link rel="shortcut icon" href="../Assets/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="../Assets/apple-touch-icon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />  
+
+    <link href="../Assets/css/to-theme.less" rel="stylesheet/less" type="text/css" />
+<link href="../Assets/css/jquery-ui-1.8.7.custom.css" rel="stylesheet" type="text/css" />
+
+    
+    <script language="javascript" type="text/javascript">
+        window.urlPrefixes = {
+            asset: '',
+            relative: '',
+            relativeHttps: '',
+            absoluteHttp: '',
+            absoluteHttps: ''
+        };
+    </script>
+    <script src="../scripts/underscore.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/less-1.3.0.min.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/jquery-1.7.1.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/backbone.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/jquery.json-2.2.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/jquery.form.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/jquery.validate.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/jquery.watermark.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/jquery.cookies.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/jquery.cycle.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/jquery.textchange.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/jquery.quote_rotator.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/takeoff-helpers.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/takeoff-forms.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/takeoff-tabs.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/takeoff-popup.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/takeoff-tooltip.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/takeoff-loginPing.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/takeoff-notification.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/date.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/json2.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/jquery.scrollTo.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/swfobject.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/takeoff-player.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/jquery.tools.min.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/jquery.keyfilter.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/bootstrap-modal.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/bootstrap-dropdown.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/bootstrap-tab.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/bootstrap-tooltip.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/bootstrap-popover.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/app.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/app-presales.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/app-login.js" language="javascript" type="text/javascript"></script>
+    
+    
+    
+    <script src="../scripts/jquery.autogrow.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/jquery-ui-1.8.7.custom.min.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/jquery.dataTables.js" language="javascript" type="text/javascript"></script>
+<script src="../scripts/jquery.dataTables.madExt.js" language="javascript" type="text/javascript"></script>
+
+    <script src="../scripts/app-account.js" language="javascript" type="text/javascript"></script>
+
+    
+
+    <script language="javascript" type="text/javascript">
+        
+    
+    $.loginPing();
+    
+    
+
+        
+        $(document).ready(function() {
+        
+        
+        
+    $("#deleteMemberForm").submit(function(e)
+    {
+        //in future we should put a dialog with three options:  1) no, nevermind 2) Yes but let them request access in the future  3) Yes and forbid them from requesting access to productions
+        if (!confirm("Are you sure you want to delete this person from your account?  They will not be able to access any productions they are on."))
+        {
+            return false;
+        }
+    });
+        
+    $("#roleForm").madValidate({
+        rules:
+        {
+            role: "required"
+        },
+        submitSuccess: function(result) {
+            $("body").madNotification({ api: true }).success("The role has been updated.");
+        }
+    });
+    
+
+        });
+        
+    
+    </script>
+    <!--[if lt IE 9]>
+    <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+<body class="app account-shell accountMembers-area accountMembers-details">
+    
+
+<div class="container">
+        <div class="navbar" id="top-nav">
+    <div class="navbar-inner">
+      <div class="container">
+                <a id="logo" class="default" href="Root_Index.html"><img src="../Assets/img/brand-logo.png" alt="Takeoff Logo" title="You are using Takeoff - takeoffvideo.com" /></a>
+        <div class="nav-collapse">
+          <ul class="nav">
+                    <li id="nav-dashboard"><a href="Dashboard_Index.html" >Dashboard</a></li>
+                    <li id="nav-account"><a href="Account_Index.html" >Account</a></li>
+          </ul>
+          <ul class="nav pull-right">
+                    <li id="nav-user-recognition">Hi, Bill!</li>
+                    <li id="nav-logout"><a href="Account_Logout.html">Log Out</a></li>
+                <li class="dropdown">
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">Help <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    <li><a href="Support_Request.html">Support Request</a></li>
+                    <li><a href="Root_Contact.html">Contact Info</a></li>
+                    <li><a href="Support_KnowledgeBase.html">Knowledge Base</a></li>
+                    <li><a href="Support_Discussions.html">Discuss</a></li>
+                    </ul>
+               </li>
+
+          </ul>
+        </div><!-- /.nav-collapse -->
+      </div>
+    </div><!-- /navbar-inner -->
+  </div>
+
+
+    <div id="main-content-container" role="main">
+        <div class="page-header">
+    	    <h1>Member Settings</h1>    
+        </div>
+        
+
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span3">
+                    <nav class="account-nav well">
+                    <ul class="nav nav-list">
+                        <li><a href="Account_Index.html" >Account Summary</a></li>
+                        <li><a href="Account_MainInfo.html" >Personal Information</a></li>
+                            <li><a href="Account_Logo.html" >Logo</a></li>
+                            <li><a href="Account_Billing.html"  >Billing Information</a></li>
+                        <li><a href="AccountNotifications_Index.html" >Email Notifications</a></li>
+                        <li><a href="Account_Privacy.html" >Privacy Settings</a></li>
+                            <li><a href="AccountMembers_Index.html" >My Members</a></li>
+                                <li><a href="AccountPlan_Index.html" >Change Plan</a></li>
+                                <li><a href="Invoices_Index.html" >Invoices</a></li>
+                        <li><a href="AccountMemberships_Index.html" >Associated Accounts</a></li>
+                        <li><a  href="Account_Close.html" >Close My Account</a></li>
+                    </ul>
+                    </nav>        
+                </div>
+                <div class="span9" id="main-content">
+                    
+
+
+
+<form id="roleForm" action="AccountMembers_Update.html" class="form-horizontal">
+<fieldset>
+
+<h3>Member Details</h3>
+<input id="Id" name="Id" type="hidden" value="Takeoff.ViewModels.AccountMembers_Update" />
+<div class="control-group"><label class="control-label" for="Membership_MemberName">Name</label><div class="controls"><input disabled="disabled" id="Membership_MemberName" name="Membership.MemberName" type="text" value="Bernie Madoff" /></div></div>    
+<div class="control-group"><label class="control-label" for="Membership_MemberEmail">Email</label><div class="controls"><input disabled="disabled" id="Membership_MemberEmail" name="Membership.MemberEmail" type="text" value="email3@email.com" /></div></div>    
+<div class="control-group"><label class="control-label" for="Membership_CreatedOn">Added On</label><div class="controls"><input disabled="disabled" id="Membership_CreatedOn" name="Membership.CreatedOn" type="text" value="1/1/0001 12:00:00 AM" /></div></div>    
+    <div class="control-group">
+        <label class="control-label">Role</label>
+        <div class="controls">
+        <label class="radio">
+            <input id="role1" type="radio" name="role" value="Client" checked=&#39;checked&#39;  />
+            Client
+            <span class="tooltip-anchor label" data-title="Can add comments and upload files, but cannot add new videos or invite people in. Use this for customers and reviewers.">?</span>
+        </label>
+        <label class="radio">
+            <input id="role1" type="radio" name="role" value="Staff"   />
+            Staff
+            <span class="tooltip-anchor label" data-title="Can add comments, upload files, add new teammates and upload new videos. Use this for editors and contractors.">?</span>
+        </label>
+        </div>
+    </div>    
+    <div class="form-actions"><input class="btn btn-primary" type="submit" value="Change Role" /></div>
+</fieldset>
+</form>
+
+            <h3>Productions</h3>
+        <p>This person is a member of the following productions:</p>
+        <ul>
+                <li><a href="Productions_Details.html " target="_blank">
+                    First One</a></li>
+                <li><a href="Productions_Details.html " target="_blank">
+                    Another One</a></li>
+        </ul>
+
+<div class="alert alert-error alert-block">
+	<h3>Remove Member from Account</h3>
+	<p>This person will be removed from all productions.</p>
+	<div class="alert-actions">
+    <form method="post" id="deleteMemberForm" action="AccountMembers_Delete.html">
+        <input type="hidden" name="Id" value="2" />
+        <input type="submit" class="btn btn-danger" value="Remove Member from Account" />
+    </form>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+<footer>
+    <p>&#169; Copyright Takeoff, Inc. 2012 &nbsp; <a href="Support_Index.html">Problems, Help, and Feedback</a></p>
+</footer>
+</div>
+
+</body>
+<!-- See takeoffvideo.com/thanksto for a list of all the awesome projects and companies we use to make Takeoff possible -->
+</html>
+<!-- 
+Action Url: /../account/members/details
+-->

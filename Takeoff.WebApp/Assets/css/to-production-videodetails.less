@@ -1,0 +1,473 @@
+﻿body.production-details
+{
+
+/* Video player (aka video details tab).  the rest of the css is in ProductionView.PlayerTransport and ProductionView.Comments.css
+***************************************************************************************************/
+
+/* applied to the div that contains the Flash video player or the message indicating status of video */
+#video-details-container.openTabPane
+{
+    overflow: visible !important;/* important for the comment headers, which overflow a bit on the left */
+}
+
+
+#video-details-title {
+	height: 46px;
+	position: relative;
+	margin: 0px 4px 8px 0px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border: 1px solid #eee;
+  border: 1px solid rgba(0,0,0,.05);
+  .border-radius(4px);
+  .box-shadow(0 1px 0 #FFFFFF inset);
+.breadcrumb { .reset-background(); border:none; position: absolute; left: 0; right: 100px; top: 6px; .box-shadow(none); }
+	#video-details-title-text { margin-bottom: -1px; font-size: 14px; font-weight: bold; padding-left: 4px; line-height: 12px; max-width: 380px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; display: inline-block; }//make the video title bigger and deal with long titles properly
+	.breadcrumb .icon-info-sign { margin-left: 6px; } 
+	#video-details-title-options { position: absolute; right:14px; top:7px; }
+	
+}
+
+#video-edit-form 
+{
+    display:none;
+    .well;
+}
+
+
+
+#player
+{
+    background-color:#E7E9EA;
+    position:relative;
+    width:100%;
+    height:349px;
+} 
+ 
+#playerPlugin
+{
+    position: absolute;
+    top:0px;
+    bottom:0px;
+    left:0px;
+    right:0px;
+    z-index: 1;
+}
+
+video#playerPlugin
+{
+    height:100%; 
+    width: 100%;
+}
+
+#player-container
+{
+
+    .noFlash
+    {
+        top: 20px;
+        bottom: 20px;
+        left: 20px;
+        right: 20px;
+        text-align: center;
+    }
+
+    .pong
+    {
+        margin-top: 10px;
+        border:1px solid black;
+        height:300px;
+        margin-left:auto;
+        margin-right:auto;
+        width:390px;
+        z-index: 1;
+    }
+}
+
+/* Player transport
+***************************************************************************************************/
+
+.playerTransport
+{
+	background-color: #777;
+	background-image: url("../img/player-sprite.png");
+    height: 40px;
+    width: 100%;
+    margin-bottom: 0px !important;/*override the main skin style*/
+}
+
+.playerTransport td
+{
+    width: 1%;
+    vertical-align: middle;
+    padding: 0px;
+    margin: 0px;
+    background-color: transparent !important;
+    border: 0px !important;
+    text-shadow: 0 0px !important;/*override the main skin style*/
+}
+
+
+/* play/pause button 
+*************************************************************************************/
+.playerTransport .playBtn
+{
+    cursor:pointer;
+    display:block;
+    text-indent: -9999px;
+    height:40px;
+    width:40px;
+    border: none;
+    background-image:url("../img/player-sprite.png");
+    background-color: transparent !important;
+    background-repeat: no-repeat;
+}
+.playerTransport .playBtn.disabled
+{
+    cursor: default !important;
+}
+
+.playerTransport .playBtn.play
+{
+    background-position:-240px -60px;
+}
+.playerTransport .playBtn.play:hover
+{
+    background-position: -240px -100px;
+}
+.playerTransport .playBtn.play.disabled, 
+.playerTransport .playBtn.play.disabled:hover
+{
+    background-position:-240px -60px;
+}
+
+.playerTransport .playBtn.pause
+{
+    background-position: 0 -60px;
+}
+.playerTransport .playBtn.pause:hover
+{
+    background-position: 0 -100px;
+}
+.playerTransport .playBtn.pause.disabled, 
+.playerTransport .playBtn.pause.disabled:hover
+{
+    background-position: 0 -60px;
+}
+
+
+/* mute/unmute button
+*************************************************************************************/
+.playerTransport .volumeBtn
+{
+    cursor:pointer;
+    display:block;
+    text-indent: -9999px;
+    height:40px;
+    width:40px;
+    border: none;
+    background-image:url("../img/player-sprite.png");
+    background-color: transparent !important;
+    background-repeat: no-repeat;
+}
+.playerTransport .volumeBtn.disabled
+{
+    cursor: default !important;
+}
+
+.playerTransport .volumeBtn.mute
+{
+   background-position: -80px -60px;
+}
+.playerTransport .volumeBtn.mute:hover
+{
+    background-position: -80px -100px;
+}
+.playerTransport .volumeBtn.mute.disabled, 
+.playerTransport .volumeBtn.mute.disabled:hover
+{
+    background-position: -80px -60px;
+}
+.playerTransport .volumeBtn.unmute
+{
+    background-position: -120px -60px;
+}
+.playerTransport .volumeBtn.unmute:hover
+{
+    background-position: -120px -100px;
+}
+.playerTransport .volumeBtn.unmute.disabled, 
+.playerTransport .volumeBtn.unmute.disabled:hover
+{
+    background-position: -120px -60px;
+}
+
+
+/* enlarge video button - 
+*************************************************************************************/
+.playerTransport .enlargeBtn
+{
+    cursor:pointer;
+    display:block;
+    text-indent: -9999px;
+    height:40px;
+    width:40px;
+    border: none;
+    background-image:url("../img/player-sprite.png");
+    background-color: transparent !important;
+    background-repeat: no-repeat;
+    background-position: -160px -60px;
+}
+.playerTransport .enlargeBtn.disabled
+{
+    cursor: default !important;
+    background-position: -160px -60px;
+}
+
+.playerTransport .enlargeBtn:hover
+{
+    background-position: -160px -100px;
+}
+
+.playerTransport .enlargeBtn.selected {
+	top: 0;
+	left: 580px;
+	background-position: -200px -60px;
+}
+.playerTransport .enlargeBtn.selected:hover {
+	background-position: -200px -100px;
+}
+
+
+
+
+/* gives time code for the current position
+*************************************************************************************/
+
+.playerTransport .playheadTime div
+{
+    white-space: nowrap;
+    color:#FFFFFF;
+    font-size:11px;
+    height:40px;
+    line-height:40px;
+    text-align:center;
+    width:80px;
+}
+
+/* contains playhead slider, download progress, markers, etc
+*************************************************************************************/
+
+.playerTransport .timeline
+{
+    padding-left:8px;
+    padding-right:4px;
+    width: 100% !important;
+}
+
+/* div inside td for position:relative which i couldn't get working directly in td */
+.playerTransport .timeline > div
+{
+    
+    position: relative;
+    width: 100% !important;
+    background-color:#000000;
+    /*
+    background-image:url("../img/player-sprite.png");
+    background-position:0 -40px;
+	background-repeat: repeat-x;
+*/
+    height:18px;
+    border: 1px solid #000000;
+}
+
+
+/* the jquery slider plugin that shows the playhead 
+*************************************************************************************/
+
+.playerTransport .playheadProgress
+{
+    position: absolute;
+    left: 0px;
+    width: 100%;
+    top: 0px;
+    bottom: 0px;
+    z-index: 2;
+    height: auto !important;/*jquery ui will try to set this */
+}
+
+/* the a is the playhead thumb */
+.playerTransport .playheadThumb
+{
+        cursor: default;
+    z-index: 4;
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    background: url(../img/blank.gif) no-repeat scroll 0 0 transparent;
+    height: 26px;
+    margin-top: -2px;
+    width: 18px;
+    margin-left: -12px;
+    text-decoration: none;
+    border-width: 0px !important;    
+}
+/* jquery ui uses uixxx classes */
+.playerTransport .playheadThumb.ui-state-hover
+{
+   background-image: url(../img/blank.gif);
+}
+.playerTransport .playheadThumb.disabled,
+.playerTransport .playheadThumb.ui-state-hover.disabled
+{
+    cursor: default;
+    background-image: url(../img/blank.gif);
+}
+
+/* fills the area between the left of the slider and the thumb */
+.playerTransport .playheadFill
+{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    bottom: 1px;
+    z-index: 2;
+    background-color:#555555;
+    background-image:url("../img/player-sprite.png");
+    background-position:0 -180px;
+    background-repeat:repeat-x;
+    height:18px;
+}
+
+
+
+/* download progress bar
+*************************************************************************************/
+
+.playerTransport .downloadProgress
+{/*
+    display: none;todo:remove*/
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    bottom: 0px;
+    z-index: 1;
+
+	height: 18px;
+	background-color: #222;
+	background-image: url(../img/player-sprite.png);
+	background-repeat: repeat-x;
+	background-position: 0 -140px;
+
+}
+
+
+/* comment markers
+*************************************************************************************/
+
+
+.playerTransport .marker
+{
+	background-image: url("../img/player-sprite.png");  
+    background-position:-14px -204px;
+    width: 12px;
+    height: 12px;
+    top: 50%;
+    margin-top: -5px;
+    margin-left: -6px;
+    position: absolute;
+    z-index: 3;
+}
+
+.playerTransport .marker.selected,
+.playerTransport .marker:hover
+{
+  	width: 16px;
+	height: 16px;
+	background-position: -52px -202px;
+    cursor: pointer;
+    margin-top: -7px;
+    margin-left: -8px;  
+}
+
+
+.commentMarkerTooltip
+{
+    background-image:url("../img/player-sprite.png");
+    background-position:0 -220px;
+    color:#FFFFFF;
+    font-size:11px;
+    height:90px;
+    left:296px;
+    width:240px;
+    z-index: 900;
+    position: absolute;
+    margin-top: -4px;
+    text-shadow:0 1px 0 #000000;
+}
+
+.commentMarkerTooltip div.details {
+	padding: 10px 10px 3px 10px;
+}
+.commentMarkerTooltip div.details span.time {
+	padding: 2px 5px;
+	margin-right: 5px;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	background-color: #333;
+}
+.commentMarkerTooltip div.details div.author {
+	position: absolute;
+	left: 60px;
+	right: 10px;
+	.text-overflow();
+}
+
+.commentMarkerTooltip div.body {
+	padding: 0 10px 10px 10px;
+	line-height: 1.2em;
+	color: #ccc;
+    height:30px;
+    overflow:hidden;	
+    text-overflow: ellipsis;
+}
+
+.playheadThumb > div
+{
+    background-image:url("../img/player-sprite.png");
+    background-position:-240px -220px;
+    color:#FFFFFF;
+    font-size:11px;
+    height:32px;
+    padding:10px;
+    text-shadow:0 1px 0 #000000;
+    width:170px;
+    position: absolute !important;
+    bottom: 22px !important;
+    margin-left: -83px !important;
+}
+
+.playheadThumb > div > span
+{
+	padding: 2px 5px;
+	margin-right: 5px;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	background-color: #333;
+}
+
+.playheadThumb > div > a
+{
+    white-space: nowrap;
+	color: #fff;
+}
+.playheadThumb > div > a:hover
+{
+    /* override default style */
+    cursor: pointer;
+	color: #fff !important;
+	text-decoration: underline !important;
+}
+
+}//end of body.  not indented for ease of editing/reading

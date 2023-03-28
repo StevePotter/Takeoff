@@ -1,0 +1,91 @@
+﻿@model AccountMembers_Details
+@{
+    Layout = "~/Views/Account/Layout.cshtml";
+    
+    ViewData["Heading"] = "Member Settings";
+    
+    var updateModel = new AccountMembers_Update
+                          {
+                          Id = Model.Membership.MembershipId,
+                          Role = Model.Membership.Role,
+                          };
+}
+
+
+@section JsDocReady 
+{
+    $("#deleteMemberForm").submit(function(e)
+    {
+        //in future we should put a dialog with three options:  1) no, nevermind 2) Yes but let them request access in the future  3) Yes and forbid them from requesting access to productions
+        if (!confirm("Are you sure you want to delete this person from your account?  They will not be able to access any productions they are on."))
+        {
+            return false;
+        }
+    });
+        
+    $("#roleForm").madValidate({
+        rules:
+        {
+            role: "required"
+        },
+        submitSuccess: function(result) {
+            $("body").madNotification({ api: true }).success("The role has been updated.");
+        }
+    });
+    
+}
+
+<form id="roleForm" action="@(Url.Action<AccountMembersController>(c => c.Update(null)))" class="form-horizontal">
+<fieldset>
+
+<h3>Member Details</h3>
+@Html.Hidden("Id", updateModel)
+@Html.ControlGroup(Html.ControlLabelFor(m => Model.Membership.MemberName, "Name"), Html.TextBoxFor(m => Model.Membership.MemberName, new { disabled = "disabled"}))    
+@Html.ControlGroup(Html.ControlLabelFor(m => Model.Membership.MemberEmail, "Email"), Html.TextBoxFor(m => Model.Membership.MemberEmail, new { disabled = "disabled" }))    
+@Html.ControlGroup(Html.ControlLabelFor(m => Model.Membership.CreatedOn, "Added On"), Html.TextBoxFor(m => Model.Membership.CreatedOn, new { disabled = "disabled" }))    
+    <div class="@Html.ControlGroupClass()">
+        @Html.ControlLabel("Role")
+        @Html.ControlsWrapperBeginTag()
+        <label class="radio">
+            <input id="role1" type="radio" name="role" value="Client" @("Client".Equals(Model.Membership.Role) ? "checked='checked'" : String.Empty)  />
+            @("Client")
+            @Html.ControlTooltip("Can add comments and upload files, but cannot add new videos or invite people in. Use this for customers and reviewers.")
+        </label>
+        <label class="radio">
+            <input id="role1" type="radio" name="role" value="Staff" @("Staff".Equals(Model.Membership.Role) ? "checked='checked'" : String.Empty)  />
+            @("Staff")
+            @Html.ControlTooltip("Can add comments, upload files, add new teammates and upload new videos. Use this for editors and contractors.")
+        </label>
+        @Html.ControlsWrapperEndTag()
+    </div>    
+    @Html.FormButtons("Change Role")
+</fieldset>
+</form>
+
+@if (Model.Productions.HasItems())
+    {
+
+            <h3>@("Productions")</h3>
+
+        <p>@("This person is a member of the following productions:")</p>
+        <ul>
+            @foreach (var production in Model.Productions)
+                {
+            
+                <li><a href="@Url.ActionDetails("Productions", production.Id) " target="_blank">
+                    @production.Title</a></li>
+                }
+        </ul>
+
+     }
+
+<div class="@Html.AlertErrorClass(true)">
+	<h3>Remove Member from Account</h3>
+	<p>This person will be removed from all productions.</p>
+	<div class="alert-actions">
+    <form method="post" id="deleteMemberForm" action="@(Url.Action<AccountMembersController>(c => c.Delete(Model.Membership.MembershipId)))">
+        <input type="hidden" name="Id" value="@Model.Membership.MembershipId" />
+        <input type="submit" class="btn btn-danger" value="Remove Member from Account" />
+    </form>
+    </div>
+</div>

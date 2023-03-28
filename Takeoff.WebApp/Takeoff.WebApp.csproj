@@ -1,0 +1,2304 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{55305CE3-0319-4193-8D65-91BFBCE4CAD5}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Takeoff</RootNamespace>
+    <AssemblyName>Takeoff.Mvc</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <TargetFrameworkProfile />
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <MvcProjectUpgradeChecked>true</MvcProjectUpgradeChecked>
+    <UseGlobalApplicationHostFile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <ExcludeGeneratedDebugSymbol>false</ExcludeGeneratedDebugSymbol>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <ExcludeApp_Data>false</ExcludeApp_Data>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Amazon|AnyCPU'">
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Takeoff.Mvc.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisRuleDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'FutureLive|AnyCPU'">
+    <OutputPath>bin\</OutputPath>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AssetBooster.Configuration, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\AssetBooster.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="AssetBooster.Mvc, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\AssetBooster.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper, Version=5.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.5.1.1\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="AWSSDK, Version=2.3.55.0, Culture=neutral, PublicKeyToken=9f476d3089b52be3, processorArchitecture=MSIL">
+      <HintPath>..\packages\AWSSDK.2.3.55.0\lib\net45\AWSSDK.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FiftyOne.Foundation, Version=3.2.9.1, Culture=neutral, PublicKeyToken=e0b3a8da0bbce49c, processorArchitecture=MSIL">
+      <HintPath>..\packages\51Degrees.mobi.3.2.9.1\lib\NET40\FiftyOne.Foundation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Hammock, Version=1.0.0.0, Culture=neutral, PublicKeyToken=c148cfba29ed1a4d, processorArchitecture=MSIL">
+      <HintPath>..\packages\Hammock.1.3.1\lib\4.0\Hammock.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Hammock.ClientProfile, Version=1.0.0.0, Culture=neutral, PublicKeyToken=c148cfba29ed1a4d, processorArchitecture=MSIL">
+      <HintPath>..\packages\TweetSharp.2.3.1\lib\4.0\Hammock.ClientProfile.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="HtmlAgilityPack, Version=1.4.9.5, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlAgilityPack.1.4.9.5\lib\Net45\HtmlAgilityPack.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="LitS3, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\LitS3.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.5\lib\net45-full\log4net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Web.Mvc, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Mvc2Futures.2.0.50217.0\lib\Microsoft.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MiniProfiler, Version=3.2.0.157, Culture=neutral, PublicKeyToken=b44f9351044011a3, processorArchitecture=MSIL">
+      <HintPath>..\packages\MiniProfiler.3.2.0.157\lib\net40\MiniProfiler.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MvcContrib, Version=3.0.100.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvcContrib.Mvc3-ci.3.0.100.0\lib\MvcContrib.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\TweetSharp.2.3.1\lib\4.0\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Ninject.Web.Common, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.Web.Common.3.2.3.0\lib\net45-full\Ninject.Web.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Postmark, Version=2.0.127.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Postmark.2.1.5\lib\net45\Postmark.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Postmark.Convenience, Version=2.0.127.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Postmark.2.1.5\lib\net45\Postmark.Convenience.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PrecompiledMvcViewEngine, Version=1.1.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\PrecompiledMvcViewEngine.1.1.5\lib\net40\PrecompiledMvcViewEngine.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Recurly, Version=0.0.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Recurly.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Common, Version=4.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ServiceStack.Common.4.5.0\lib\net45\ServiceStack.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ServiceStack.Interfaces, Version=4.0.0.0, Culture=neutral, PublicKeyToken=e06fbc6124f57c43, processorArchitecture=MSIL">
+      <HintPath>..\packages\ServiceStack.Interfaces.4.5.0\lib\portable-wp80+sl5+net45+win8+wpa81+monotouch+monoandroid+xamarin.ios10\ServiceStack.Interfaces.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ServiceStack.Redis, Version=4.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ServiceStack.Redis.4.5.0\lib\net45\ServiceStack.Redis.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ServiceStack.Text, Version=4.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ServiceStack.Text.4.5.0\lib\net45\ServiceStack.Text.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Specifications, Version=1.0.0.0, Culture=neutral, PublicKeyToken=d764143a80b7cabb, processorArchitecture=MSIL">
+      <HintPath>..\packages\Specifications.1.0.4\lib\net40\Specifications.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Steveo.Wetnap, Version=1.1.4448.20664, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\wetnap.1.1.4448.20572\lib\net35\Steveo.Wetnap.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.ComponentModel.DataAnnotations">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.Entity">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Messaging" />
+    <Reference Include="System.Runtime.Serialization">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.ServiceModel.Web">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Web.DataVisualization">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.Mobile" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="TweetSharp, Version=2.0.0.0, Culture=neutral, PublicKeyToken=c148cfba29ed1a4d, processorArchitecture=MSIL">
+      <HintPath>..\packages\TweetSharp.2.3.1\lib\4.0\TweetSharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="WebActivator, Version=1.5.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebActivator.1.5.3\lib\net40\WebActivator.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\AppStart.cs" />
+    <Compile Include="Controllers\EncodesController.cs" />
+    <Compile Include="Controllers\ReferralsController.cs" />
+    <Compile Include="Mobile\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Platform\Filters\CheckCookiesAttribute.cs" />
+    <Compile Include="Platform\Filters\TrialSignupRequiredAttribute.cs" />
+    <Compile Include="Platform\Filters\HttpParameterValueAttribute.cs" />
+    <Compile Include="Platform\VanityUrlConstraint.cs" />
+    <Compile Include="Platform\NullableDoubleModelBinder.cs" />
+    <Compile Include="App_Start\PrecompiledMvcViewEngineStart.cs" />
+    <Compile Include="Platform\XDocumentBinder.cs" />
+    <Compile Include="Platform\ActionResults\BadRequest.cs" />
+    <Compile Include="Platform\ActionResults\NonHtmlSuccess.cs" />
+    <Compile Include="Platform\ControllerExtensions.cs" />
+    <Compile Include="Controllers\AccountMembersController.cs" />
+    <Compile Include="Controllers\AccountMembershipsController.cs" />
+    <Compile Include="Controllers\AccountNotificationsController.cs" />
+    <Compile Include="Controllers\RepliesController.cs" />
+    <Compile Include="Controllers\RecurlyController.cs" />
+    <Compile Include="Controllers\Staff_OutgoingMailController.cs" />
+    <Compile Include="Controllers\IncomingMailController.cs" />
+    <Compile Include="Controllers\Staff_EncodesController.cs" />
+    <Compile Include="Controllers\PromptsController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="Controllers\Staff_PlansController.cs" />
+    <Compile Include="Controllers\DemoController.cs" />
+    <Compile Include="Controllers\StaffJobsController.cs" />
+    <Compile Include="Controllers\Staff_UsersController.cs" />
+    <Compile Include="Controllers\Staff_AccountsController.cs" />
+    <Compile Include="Controllers\InvoicesController.cs" />
+    <Compile Include="Controllers\AccountPlanController.cs" />
+    <Compile Include="Models\ViewModels\Comments.cs" />
+    <Compile Include="Models\ViewModels\Staff_Encodes.cs" />
+    <Compile Include="Models\ViewModels\Videos.cs" />
+    <Compile Include="Platform\ApplicationSettings.cs" />
+    <Compile Include="Models\BlogItem.cs" />
+    <Compile Include="Models\TwitterItem.cs" />
+    <Compile Include="Models\UserSettings.cs" />
+    <Compile Include="Models\ViewModels\Account.cs" />
+    <Compile Include="Models\ViewModels\AccountMembers.cs" />
+    <Compile Include="Models\ViewModels\AccountPlan.cs" />
+    <Compile Include="Models\ViewModels\AccountMemberships.cs" />
+    <Compile Include="Models\ViewModels\Prompts.cs" />
+    <Compile Include="Models\ViewModels\Email.cs" />
+    <Compile Include="Models\ViewModels\MembershipRequests.cs" />
+    <Compile Include="Models\ViewModels\Dashboard.cs" />
+    <Compile Include="Models\ViewModels\Productions.cs" />
+    <Compile Include="Models\ViewModels\Staff.cs" />
+    <Compile Include="Models\ViewModels\Generic.cs" />
+    <Compile Include="Models\ViewModels\Staff_Plans.cs" />
+    <Compile Include="Models\ViewModels\Staff_Users.cs" />
+    <Compile Include="Models\ViewModels\Staff_Accounts.cs" />
+    <Compile Include="Models\ViewModels\Shared.cs" />
+    <Compile Include="Models\ViewModels\Invoices.cs" />
+    <Compile Include="Platform\AppLogoHelper.cs" />
+    <Compile Include="Platform\Filters\Authorize2Attribute.cs" />
+    <Compile Include="Platform\Filters\RestrictIdentityAttribute.cs" />
+    <Compile Include="Platform\LogBusinessEventsHelper.cs" />
+    <Compile Include="Platform\Filters\MembersOnlyAttribute.cs" />
+    <Compile Include="Platform\LogServerRequestsHelper.cs" />
+    <Compile Include="Platform\Filters\LogRequestAttribute.cs" />
+    <Compile Include="Platform\Filters\QueueDeferredWebRequestAttribute.cs" />
+    <Compile Include="Platform\DeferredMethodInvokerHelper.cs" />
+    <Compile Include="Platform\ExtensionMethodsForViews.cs" />
+    <Compile Include="Platform\Filters\LogEmailLinkAttribute.cs" />
+    <Compile Include="Platform\Filters\QueueDeferredMethodInvokesAttribute.cs" />
+    <Compile Include="Platform\Http401ResultWithoutLoginPage.cs" />
+    <Compile Include="Platform\ActionResults\NonHtmlResponse.cs" />
+    <Compile Include="Platform\UrlPrefixes.cs" />
+    <Compile Include="Platform\Filters\AuthorizeProductionAccessAttribute.cs" />
+    <Compile Include="Platform\IdentityService.cs" />
+    <Compile Include="Platform\UserExtensions.cs" />
+    <Compile Include="Platform\Filters\CheckPromptAttribute.cs" />
+    <Compile Include="Platform\Filters\SpecialRestrictionAttribute.cs" />
+    <Compile Include="Platform\Filters\ValidateJsonAntiForgeryTokenAttribute.cs" />
+    <Compile Include="Platform\Filters\ProfilerAttribute.cs" />
+    <Compile Include="Platform\Filters\SetActionAndControllerInViewDataAttribute.cs" />
+    <Compile Include="Platform\Filters\EnsureNecessaryUserInfoAttribute.cs" />
+    <Compile Include="Platform\FluentHtmlHelper.cs" />
+    <Compile Include="Platform\LocalizedDisplayNameAttribute.cs" />
+    <Compile Include="Platform\ModelBinders.cs" />
+    <Compile Include="Platform\PagingHelper.cs" />
+    <Compile Include="Platform\ResourceHelper.cs" />
+    <Compile Include="Platform\TakeoffHtmlHelperExtensions.cs" />
+    <Compile Include="Resources\ChartTemplates.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ChartTemplates.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\BasicController.cs" />
+    <Compile Include="Controllers\DashboardController.cs" />
+    <Compile Include="Models\ViewModels\Signup.cs" />
+    <Compile Include="Platform\Filters\CheckSuspendedAccountAttribute.cs" />
+    <Compile Include="Platform\Filters\AjaxRedirectAttribute.cs" />
+    <Compile Include="Platform\Filters\WarnAboutIE6Attribute.cs" />
+    <Compile Include="Platform\Filters\ExcludeFilterAttribute.cs" />
+    <Compile Include="Controllers\SignupController.cs" />
+    <Compile Include="Controllers\EmailController.cs" />
+    <Compile Include="Controllers\MembershipRequestsController.cs" />
+    <Compile Include="Controllers\CommentsController.cs" />
+    <Compile Include="Controllers\ProductionFilesController.cs" />
+    <Compile Include="Controllers\ProductionMembersController.cs" />
+    <Compile Include="Controllers\ProductionsController.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controllers\VideosController.cs" />
+    <Compile Include="Controllers\StaffController.cs" />
+    <Compile Include="Controllers\SupportController.cs" />
+    <Compile Include="Controllers\UploadTestsController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\RootController.cs" />
+    <Compile Include="Platform\ChartResult.cs" />
+    <Compile Include="Platform\Filters\RequiresVerificationAttribute.cs" />
+    <Compile Include="Platform\Filters\HandleErrorExAttribute.cs" />
+    <Compile Include="Platform\DeferredWebRequestHelpers.cs" />
+    <Compile Include="Platform\ApplicationEx.cs" />
+    <Compile Include="Platform\Exceptions.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\Files.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Platform\MvcExtensions.cs" />
+    <Compile Include="Platform\WebImageUtil.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\Billing.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Billing.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\S.cs" />
+    <Compile Include="Resources\Strings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Strings.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\SampleProduction.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SampleProduction.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AccountMemberships\Index.generated.cs">
+      <DependentUpon>Index.cshtml</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\AccountMemberships\Details.generated.cs">
+      <DependentUpon>Details.cshtml</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\AccountMembers\Index.generated.cs">
+      <DependentUpon>Index.cshtml</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\AccountMembers\Details.generated.cs">
+      <DependentUpon>Details.cshtml</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\AccountNotifications\Index.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Index.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Account\Signout-AnonymousTrial.generated.cs">
+      <DependentUpon>Signout-AnonymousTrial.cshtml</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Account\LimitReached-Trial2.generated.cs">
+      <DependentUpon>LimitReached-Trial2.cshtml</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Account\LimitReached-TrialAnonymous.generated.cs">
+      <DependentUpon>LimitReached-TrialAnonymous.cshtml</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Home\Test.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Test.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Referrals\Index.generated.cs">
+      <DependentUpon>Index.cshtml</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Root\Contact.generated.cs">
+      <DependentUpon>Contact.cshtml</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Root\ThanksTo.generated.cs">
+      <DependentUpon>ThanksTo.cshtml</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Root\Try.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Try.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\Account-Trial-PurchaseRequired.generated.cs">
+      <DependentUpon>Account-Trial-PurchaseRequired.cshtml</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Shared\Layout-App-Medium.generated.cs">
+      <DependentUpon>Layout-App-Medium.cshtml</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Shared\Layout-External-Medium.generated.cs">
+      <DependentUpon>Layout-External-Medium.cshtml</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Shared\Layout-Nav1.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Layout-Nav.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\Pricing.generated.cs">
+      <DependentUpon>Pricing.cshtml</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Shared\Layout-External-Nav.generated.cs">
+      <DependentUpon>Layout-External-Nav.cshtml</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Shared\Layout-External-Slim.generated.cs">
+      <DependentUpon>Layout-External-Slim.cshtml</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Shared\Layout-NagBanners.generated.cs">
+      <DependentUpon>Layout-NagBanners.cshtml</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Shared\Account-Trial-SignupRequired.generated.cs">
+      <DependentUpon>Account-Trial-SignupRequired.cshtml</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Signup\AlreadySignedUp.generated.cs">
+      <DependentUpon>AlreadySignedUp.cshtml</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Signup\DirectPurchase-ChoosePlan.generated.cs">
+      <DependentUpon>DirectPurchase-ChoosePlan.cshtml</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Signup\DirectPurchase.generated.cs">
+      <DependentUpon>DirectPurchase.cshtml</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Signup\Index-TrialUserInfo-Success.generated.cs">
+      <DependentUpon>Index-TrialUserInfo-Success.cshtml</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Signup\Index-TrialUserInfoRequested.generated.cs">
+      <DependentUpon>Index-TrialUserInfoRequested.cshtml</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Signup\Index.generated.cs">
+      <DependentUpon>Index.cshtml</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Signup\Subscribe-ChoosePlan.generated.cs">
+      <DependentUpon>Subscribe-ChoosePlan.cshtml</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Account\Billing-Success.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Billing-Success.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Account\Billing.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Billing.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Account\Close-AccountHolder.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Close-AccountHolder.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Account\Close-Guest.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Close-Guest.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Account\Layout.generated.cs">
+      <DependentUpon>Layout.cshtml</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Account\Signout-Done.generated.cs">
+      <DependentUpon>Signout-Done.cshtml</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Account\Logo.generated.cs">
+      <DependentUpon>Logo.cshtml</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Account\Verify-Success.generated.cs">
+      <DependentUpon>Verify-Success.cshtml</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Account\Index-HasAccount.generated.cs">
+      <DependentUpon>Index-HasAccount.cshtml</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Account\Index-NoAccount.generated.cs">
+      <DependentUpon>Index-NoAccount.cshtml</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Email\ProductionVideo-EncodingError-TooLong.generated.cs">
+      <DependentUpon>ProductionVideo-EncodingError-TooLong.cshtml</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Email\User-Signup-MustVerify.generated.cs">
+      <DependentUpon>User-Signup-MustVerify.cshtml</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Email\ProductionVideoCommentReply-New.generated.cs">
+      <DependentUpon>ProductionVideoCommentReply-New.cshtml</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Email\ProductionAsset-New.generated.cs">
+      <DependentUpon>ProductionAsset-New.cshtml</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Email\ProductionVideo-EncodingError.generated.cs">
+      <DependentUpon>ProductionVideo-EncodingError.cshtml</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Email\ProductionMember-Added-ToOtherMembers.generated.cs">
+      <DependentUpon>ProductionMember-Added-ToOtherMembers.cshtml</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Email\ProductionMember-RequestByNonMember.generated.cs">
+      <DependentUpon>ProductionMember-RequestByNonMember.cshtml</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Email\ProductionMember-Invited-ExistingUser.generated.cs">
+      <DependentUpon>ProductionMember-Invited-ExistingUser.cshtml</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Email\ProductionMember-Invited-NewUser.generated.cs">
+      <DependentUpon>ProductionMember-Invited-NewUser.cshtml</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Email\ProductionVideoComment-New.generated.cs">
+      <DependentUpon>ProductionVideoComment-New.cshtml</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Email\ProductionMember-Added-ToNewMember.generated.cs">
+      <DependentUpon>ProductionMember-Added-ToNewMember.cshtml</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Email\ProductionVideo-Added-ToCreator.generated.cs">
+      <DependentUpon>ProductionVideo-Added-ToCreator.cshtml</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Email\ProductionVideo-Added-ToNonCreators.generated.cs">
+      <DependentUpon>ProductionVideo-Added-ToNonCreators.cshtml</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Shared\Account-AnonymousTrial-ProductionAccess-NotLoggedIn.generated.cs">
+      <DependentUpon>Account-AnonymousTrial-ProductionAccess-NotLoggedIn.cshtml</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Shared\BadRequest.generated.cs">
+      <DependentUpon>BadRequest.cshtml</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Shared\Layout-App-Slim.generated.cs">
+      <DependentUpon>Layout-App-Slim.cshtml</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Shared\Success.generated.cs">
+      <DependentUpon>Success.cshtml</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Shared\NoPermission.generated.cs">
+      <DependentUpon>NoPermission.cshtml</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Shared\SemiAnonymousUserForbidden.generated.cs">
+      <DependentUpon>SemiAnonymousUserForbidden.cshtml</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Shared\Production-Login-SemiAnonymousAccess.generated.cs">
+      <DependentUpon>Production-Login-SemiAnonymousAccess.cshtml</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Shared\Layout-Base.generated.cs">
+      <DependentUpon>Layout-Base.cshtml</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Shared\Account-Suspended.generated.cs">
+      <DependentUpon>Account-Suspended.cshtml</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Signup\Guest-Success.generated.cs">
+      <DependentUpon>Guest-Success.cshtml</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Signup\Guest.generated.cs">
+      <DependentUpon>Guest.cshtml</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Staff\ClearCache.generated.cs">
+      <DependentUpon>ClearCache.cshtml</DependentUpon>
+      <SubType>Code</SubType>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Views\Staff\ClearCache.Success.generated.cs">
+      <DependentUpon>ClearCache.Success.cshtml</DependentUpon>
+      <SubType>Code</SubType>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Views\Staff\FileSummary.generated.cs">
+      <DependentUpon>FileSummary.cshtml</DependentUpon>
+      <SubType>Code</SubType>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Views\Staff\Index.generated.cs">
+      <DependentUpon>Index.cshtml</DependentUpon>
+      <SubType>Code</SubType>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Views\Staff\PrimeCache.generated.cs">
+      <DependentUpon>PrimeCache.cshtml</DependentUpon>
+      <SubType>Code</SubType>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Views\Staff\PrimeCache.Success.generated.cs">
+      <DependentUpon>PrimeCache.Success.cshtml</DependentUpon>
+      <SubType>Code</SubType>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Views\Staff\ResourceTracing.generated.cs">
+      <DependentUpon>ResourceTracing.cshtml</DependentUpon>
+      <SubType>Code</SubType>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Views\Staff\staff-layout.generated.cs">
+      <DependentUpon>staff-layout.cshtml</DependentUpon>
+      <SubType>Code</SubType>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Views\Staff\UsageInfo.generated.cs">
+      <DependentUpon>UsageInfo.cshtml</DependentUpon>
+      <SubType>Code</SubType>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Views\Staff\VideoUploads.generated.cs">
+      <DependentUpon>VideoUploads.cshtml</DependentUpon>
+      <SubType>Code</SubType>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Views\Staff\VideoWatches.generated.cs">
+      <DependentUpon>VideoWatches.cshtml</DependentUpon>
+      <SubType>Code</SubType>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Views\Staff_OutgoingMail\Index.generated.cs">
+      <DependentUpon>Index.cshtml</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Email\ActivityDigest.generated.cs">
+      <DependentUpon>ActivityDigest.cshtml</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Email\Layout-Base.generated.cs">
+      <DependentUpon>Layout-Base.cshtml</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Email\User-PasswordReset.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>User-PasswordReset.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Email\Layout-ProductionBase.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Layout-ProductionBase.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Email\TrialExpired.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TrialExpired.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Email\TrialExpiresInDays.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TrialExpiresInDays.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Email\TrialExpiresTomorrow.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TrialExpiresTomorrow.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Email\Layout-Simple.generated.cs">
+      <DependentUpon>Layout-Simple.cshtml</DependentUpon>
+      <SubType>Code</SubType>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Views\Email\User-Verify.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>User-Verify.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Error\PageNotFound.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PageNotFound.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Root\About.generated.cs">
+      <DependentUpon>About.cshtml</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Root\Privacy.generated.cs">
+      <DependentUpon>Privacy.cshtml</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Shared\Production-Login.generated.cs">
+      <DependentUpon>Production-Login.cshtml</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Shared\Productions-NotFound.generated.cs">
+      <DependentUpon>Productions-NotFound.cshtml</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Prompts\LetterAfterConversionToPaidProduct.generated.cs">
+      <DependentUpon>LetterAfterConversionToPaidProduct.cshtml</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Shared\Account-Required.generated.cs">
+      <DependentUpon>Account-Required.cshtml</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Shared\Layout-External-Naked.generated.cs">
+      <DependentUpon>Layout-External-Naked.cshtml</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Shared\DemoForbidden.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DemoForbidden.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Account\LimitReached-Demo.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LimitReached-Demo.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Account\LimitReached-NotOwner.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LimitReached-NotOwner.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Account\LimitReached.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LimitReached.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Account\MainInfo.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MainInfo.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Account\NecessaryInfo.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NecessaryInfo.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Account\PasswordReset-InvalidLink.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PasswordReset-InvalidLink.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Account\PasswordReset-Request-UserNotFound.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PasswordReset-Request-UserNotFound.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Account\PasswordReset-Request.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PasswordReset-Request.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Account\PasswordReset.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PasswordReset.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Account\Privacy.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Privacy.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Account\Signout-Confirm.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Signout-Confirm.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Account\Verify-AlreadyDone.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Verify-AlreadyDone.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Account\Verify-InvalidLink.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Verify-InvalidLink.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Account\Verify-Request.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Verify-Request.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dashboard\Index.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Index.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Invoices\Details.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Details.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Invoices\Index.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Index.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MembershipRequests\ChooseRoleForApproval.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ChooseRoleForApproval.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MembershipRequests\Details.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Details.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MembershipRequests\InvitationAccepted.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>InvitationAccepted.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MembershipRequests\InvitationRejected.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>InvitationRejected.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MembershipRequests\Created.generated.cs">
+      <DependentUpon>Created.cshtml</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\MembershipRequests\Reject.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reject.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Productions\Create.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Create.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Productions\Create.NoAccount.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Create.NoAccount.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\Video-Invitation.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Video-Invitation.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\Production-RequestAccess.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Production-RequestAccess.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Productions\Details.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Details.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Root\Index.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Index.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Root\NoCookies.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NoCookies.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Root\SendFileToSupport.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SendFileToSupport.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Root\UserAgreement.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UserAgreement.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Root\WhyVerify.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WhyVerify.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\Production-MembershipRequests-Disabled.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Production-MembershipRequests-Disabled.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\AlreadyLoggedIn.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AlreadyLoggedIn.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\Error-Billing.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Error-Billing.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\Error.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Error.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\Error.HttpCode.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Error.HttpCode.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\Error.NoPermission.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Error.NoPermission.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\Error.ThingNotFound.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Error.ThingNotFound.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\ErrorAjax.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ErrorAjax.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\InternetExplorerOldWarning.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>InternetExplorerOldWarning.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\LinkDoesNotApply.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LinkDoesNotApply.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\Login.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Login.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\LoginJs.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LoginJs.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\Account-Suspended-NotOwner.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Account-Suspended-NotOwner.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Productions\Details-MembershipRequestSent.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Details-MembershipRequestSent.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\RequiresVerification.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RequiresVerification.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\SuccessMessage1.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SuccessMessage.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\Login-MustVerify.generated.cs">
+      <DependentUpon>Login-MustVerify.cshtml</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Signup\Signup-AlreadyDone.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Signup-AlreadyDone.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Signup\Subscribe-Success.generated.cs">
+      <DependentUpon>Subscribe-Success.cshtml</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Signup\Sample.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Sample.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Signup\Subscribe.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Subscribe.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Staff\ZencoderRequest.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ZencoderRequest.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Staff_Accounts\Delete.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Delete.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Staff_Accounts\Details.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Details.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Staff_Accounts\Edit.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Edit.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Staff_Accounts\Index.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Index.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Staff_Encodes\Index.generated.cs">
+      <DependentUpon>Index.cshtml</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Staff_Plans\Create.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Create.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Staff_Plans\Details.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Details.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Staff_Plans\Edit.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Edit.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Staff_Plans\Index.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Index.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Staff_Plans\Sync.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Sync.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Staff_Plans\SyncError.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SyncError.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Staff_Users\Delete-MustDeleteAccount.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Delete-MustDeleteAccount.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Staff_Users\Delete.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Delete.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Staff_Users\Details.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Details.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Staff_Users\Edit.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Edit.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Staff_Users\Index.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Index.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AccountPlan\Edit-Downgrade.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Edit-Downgrade.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AccountPlan\Edit-DowngradeForbidden.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Edit-DowngradeForbidden.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AccountPlan\Edit-DowngradeInvalid.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Edit-DowngradeInvalid.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AccountPlan\Edit-Upgrade.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Edit-Upgrade.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AccountPlan\Index.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Index.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Support\Index.generated.cs">
+      <DependentUpon>Index.cshtml</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Videos\Details.generated.cs">
+      <DependentUpon>Details.cshtml</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Videos\Video-Login-SemiAnonymousAccess.generated.cs">
+      <DependentUpon>Video-Login-SemiAnonymousAccess.cshtml</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\Email\email.css">
+      <DependentUpon>email.less</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </EmbeddedResource>
+    <Content Include="Assets\css\jquery-ui-1.8.7.custom.css" />
+    <Content Include="Assets\css\to-theme.css">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>to-theme.less</DependentUpon>
+    </Content>
+    <Content Include="Assets\img\about-chris.jpg" />
+    <Content Include="Assets\img\about-steve.jpg" />
+    <Content Include="Assets\img\body-bg.png" />
+    <Content Include="Assets\img\cross-large.png" />
+    <Content Include="Assets\img\exclamation-large.png" />
+    <Content Include="Assets\img\glyphicons-halflings-white.png" />
+    <Content Include="Assets\img\glyphicons-halflings.png" />
+    <Content Include="Assets\img\icon-check.png" />
+    <Content Include="Assets\img\icon-cross.png" />
+    <Content Include="Assets\img\info.24.png" />
+    <Content Include="Assets\img\sort_asc.png" />
+    <Content Include="Assets\img\sort_asc_disabled.png" />
+    <Content Include="Assets\img\sort_both.png" />
+    <Content Include="Assets\img\sort_desc.png" />
+    <Content Include="Assets\img\sort_desc_disabled.png" />
+    <Content Include="Assets\img\support-discuss.png" />
+    <Content Include="Assets\img\support-idea.png" />
+    <Content Include="Assets\img\support-knowledgebase.png" />
+    <Content Include="Assets\img\support-request.png" />
+    <Content Include="Assets\img\tick-large.png" />
+    <Content Include="Assets\expressInstall.swf" />
+    <Content Include="Assets\favicon.ico" />
+    <Content Include="Assets\apple-touch-icon.png" />
+    <Content Include="Assets\img\home-highlight-1.jpg" />
+    <Content Include="Assets\img\home-highlight-2.jpg" />
+    <Content Include="Assets\img\home-highlight-3.jpg" />
+    <Content Include="Assets\img\home-highlight-4.jpg" />
+    <Content Include="Assets\img\brand-logo.png" />
+    <Content Include="Assets\plupload.flash.swf" />
+    <Content Include="Assets\pong.swf" />
+    <Content Include="Assets\ExternalPlayer.swf" />
+    <Content Include="Global.asax" />
+    <Content Include="humans.txt" />
+    <Content Include="Assets\img\arrow_right_green.64.png" />
+    <Content Include="Assets\img\balloon-small-left.png" />
+    <Content Include="Assets\img\blank.gif" />
+    <Content Include="Assets\img\jui\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Assets\img\jui\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Assets\img\jui\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Assets\img\jui\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Assets\img\jui\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Assets\img\jui\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Assets\img\jui\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Assets\img\jui\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Assets\img\jui\ui-icons_222222_256x240.png" />
+    <Content Include="Assets\img\jui\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Assets\img\jui\ui-icons_454545_256x240.png" />
+    <Content Include="Assets\img\jui\ui-icons_888888_256x240.png" />
+    <Content Include="Assets\img\jui\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Assets\img\cross-small.png" />
+    <Content Include="Assets\img\cross.png" />
+    <Content Include="Assets\img\logo.png" />
+    <Content Include="Assets\img\play.64.png" />
+    <Content Include="Assets\img\pencil.16.png" />
+    <Content Include="Assets\img\player-sprite.png" />
+    <Content Include="Assets\img\plus-small.png" />
+    <Content Include="Assets\img\get_flash_player.gif" />
+    <Content Include="Assets\img\timestamp-sprite.png" />
+    <Content Include="Assets\img\user-small.png" />
+    <Content Include="Assets\Player.swf" />
+    <Content Include="Assets\img\warning64.png" />
+    <Content Include="App_Data\51Degrees.dat" />
+    <Content Include="51Degrees.config" />
+    <None Include="Assets\css\bootstrap-2.0.3\accordion.less" />
+    <None Include="Assets\css\bootstrap-2.0.3\alerts.less" />
+    <None Include="Assets\css\bootstrap-2.0.3\bootstrap.less" />
+    <None Include="Assets\css\bootstrap-2.0.3\breadcrumbs.less" />
+    <None Include="Assets\css\bootstrap-2.0.3\button-groups.less" />
+    <None Include="Assets\css\bootstrap-2.0.3\buttons.less" />
+    <None Include="Assets\css\bootstrap-2.0.3\carousel.less" />
+    <None Include="Assets\css\bootstrap-2.0.3\close.less" />
+    <None Include="Assets\css\bootstrap-2.0.3\code.less" />
+    <None Include="Assets\css\bootstrap-2.0.3\component-animations.less" />
+    <None Include="Assets\css\bootstrap-2.0.3\dropdowns.less" />
+    <None Include="Assets\css\bootstrap-2.0.3\forms.less" />
+    <None Include="Assets\css\bootstrap-2.0.3\grid.less" />
+    <None Include="Assets\css\bootstrap-2.0.3\hero-unit.less" />
+    <None Include="Assets\css\bootstrap-2.0.3\labels-badges.less" />
+    <None Include="Assets\css\bootstrap-2.0.3\layouts.less" />
+    <None Include="Assets\css\bootstrap-2.0.3\mixins.less" />
+    <None Include="Assets\css\bootstrap-2.0.3\modals.less" />
+    <None Include="Assets\css\bootstrap-2.0.3\navbar.less" />
+    <None Include="Assets\css\bootstrap-2.0.3\navs.less" />
+    <None Include="Assets\css\bootstrap-2.0.3\pager.less" />
+    <None Include="Assets\css\bootstrap-2.0.3\pagination.less" />
+    <None Include="Assets\css\bootstrap-2.0.3\popovers.less" />
+    <None Include="Assets\css\bootstrap-2.0.3\progress-bars.less" />
+    <None Include="Assets\css\bootstrap-2.0.3\reset.less" />
+    <None Include="Assets\css\bootstrap-2.0.3\responsive-1200px-min.less" />
+    <None Include="Assets\css\bootstrap-2.0.3\responsive-767px-max.less" />
+    <None Include="Assets\css\bootstrap-2.0.3\responsive-768px-979px.less" />
+    <None Include="Assets\css\bootstrap-2.0.3\responsive-navbar.less" />
+    <None Include="Assets\css\bootstrap-2.0.3\responsive-utilities.less" />
+    <None Include="Assets\css\bootstrap-2.0.3\responsive.less" />
+    <None Include="Assets\css\bootstrap-2.0.3\scaffolding.less" />
+    <None Include="Assets\css\bootstrap-2.0.3\sprites.less" />
+    <None Include="Assets\css\bootstrap-2.0.3\tables.less" />
+    <None Include="Assets\css\bootstrap-2.0.3\thumbnails.less" />
+    <None Include="Assets\css\bootstrap-2.0.3\tooltip.less" />
+    <None Include="Assets\css\bootstrap-2.0.3\type.less" />
+    <None Include="Assets\css\bootstrap-2.0.3\utilities.less" />
+    <None Include="Assets\css\bootstrap-2.0.3\variables.less" />
+    <None Include="Assets\css\bootstrap-2.0.3\wells.less" />
+    <None Include="Assets\css\to-theme.less">
+      <Generator>LessCss</Generator>
+      <LastGenOutput>to-theme.css</LastGenOutput>
+    </None>
+    <None Include="Assets\css\dataTable.less" />
+    <None Include="Assets\css\to-production-comments.less" />
+    <None Include="Assets\css\to-production-videodetails.less" />
+    <None Include="Assets\css\to-production.less" />
+    <None Include="Assets\Email\email.less">
+      <Generator>LessCss</Generator>
+      <LastGenOutput>email.css</LastGenOutput>
+    </None>
+    <None Include="Assets\Email\mixins.less" />
+    <None Include="ClassDiagram1.cd" />
+    <Content Include="Mobile\Default.aspx" />
+    <Content Include="packages.config" />
+    <None Include="RenderedViews\rip-assets\asset-sample.docx" />
+    <None Include="Resources\Strings-js.txt" />
+    <EmbeddedResource Include="Resources\1x1-transparent.png" />
+    <Content Include="Mockups\account-referrals.html" />
+    <Content Include="Mockups\error.404.html" />
+    <Content Include="scripts\app-account.js" />
+    <Content Include="scripts\app-dashboard.js" />
+    <Content Include="scripts\app-login.js" />
+    <Content Include="scripts\app-presales.js" />
+    <Content Include="scripts\app-productions-create.js" />
+    <Content Include="scripts\app-productions-details-activity.js" />
+    <Content Include="scripts\app-productions-details-commentReplies.js" />
+    <Content Include="scripts\app-productions-details-comments.js" />
+    <Content Include="scripts\app-productions-details-files.js" />
+    <Content Include="scripts\app-productions-details-members.js" />
+    <Content Include="scripts\app-productions-details-settings.js" />
+    <Content Include="scripts\app-productions-details-videodetails.js" />
+    <Content Include="scripts\app-productions-details-videos.js" />
+    <Content Include="scripts\app-productions-details.js" />
+    <Content Include="scripts\app-referrals-create.js" />
+    <Content Include="scripts\app-signup.js" />
+    <Content Include="scripts\app-staff.js" />
+    <Content Include="scripts\app.js" />
+    <Content Include="scripts\backbone-min.js" />
+    <Content Include="scripts\backbone.js" />
+    <Content Include="scripts\bootstrap-alert.js" />
+    <Content Include="scripts\bootstrap-button.js" />
+    <Content Include="scripts\bootstrap-carousel.js" />
+    <Content Include="scripts\bootstrap-collapse.js" />
+    <Content Include="scripts\bootstrap-dropdown.js" />
+    <Content Include="scripts\bootstrap-modal.js" />
+    <Content Include="scripts\bootstrap-popover.js" />
+    <Content Include="scripts\bootstrap-scrollspy.js" />
+    <Content Include="scripts\bootstrap-tab.js" />
+    <Content Include="scripts\bootstrap-tooltip.js" />
+    <Content Include="scripts\bootstrap-transition.js" />
+    <Content Include="scripts\bootstrap-typeahead.js" />
+    <None Include="scripts\jquery-3.1.0.intellisense.js" />
+    <Content Include="scripts\jquery-3.1.0.js" />
+    <Content Include="scripts\jquery-3.1.0.min.js" />
+    <Content Include="scripts\jquery-3.1.0.slim.js" />
+    <Content Include="scripts\jquery-3.1.0.slim.min.js" />
+    <Content Include="scripts\jquery.print.js" />
+    <Content Include="scripts\jquery.textchange.js" />
+    <Content Include="scripts\jquery.keyfilter.js" />
+    <None Include="scripts\jquery.validate-vsdoc.js" />
+    <Content Include="scripts\jquery.validate.js" />
+    <Content Include="scripts\jquery.validate.min.js" />
+    <Content Include="scripts\json2.js" />
+    <Content Include="scripts\less-1.3.0.min.js" />
+    <Content Include="scripts\modernizr-2.8.3.js" />
+    <Content Include="scripts\moment.js" />
+    <Content Include="scripts\moment.min.js" />
+    <Content Include="scripts\takeoff-forms.js" />
+    <Content Include="scripts\takeoff-helpers.js" />
+    <Content Include="scripts\takeoff-loginPing.js" />
+    <Content Include="scripts\takeoff-notification.js" />
+    <Content Include="scripts\takeoff-player.js" />
+    <Content Include="scripts\takeoff-popup.js" />
+    <Content Include="scripts\takeoff-tabs.js" />
+    <Content Include="scripts\takeoff-tokenizer.js" />
+    <Content Include="scripts\takeoff-tooltip.js" />
+    <Content Include="scripts\underscore.js" />
+    <Content Include="scripts\underscore.min.js" />
+    <Content Include="scripts\jquery-i18n-1.0.0.js" />
+    <Content Include="scripts\jquery.event.drag-2.0.min.js" />
+    <Content Include="scripts\jquery.event.drop-2.0.min.js" />
+    <Content Include="scripts\jquery-ui-1.8.7.custom.min.js" />
+    <Content Include="scripts\jquery.cycle.js" />
+    <Content Include="scripts\jquery.cycle.min.js" />
+    <Content Include="scripts\jquery.plupload.queue.js" />
+    <Content Include="scripts\jquery.cycle.lite.js" />
+    <Content Include="scripts\jquery.tools.min.js" />
+    <Content Include="scripts\jquery-ui-1.8.4.custom.min.js" />
+    <Content Include="scripts\jquery.cookies.js" />
+    <Content Include="scripts\jquery.quote_rotator.js" />
+    <Content Include="scripts\date.Relative.js" />
+    <Content Include="scripts\date.min.js" />
+    <Content Include="scripts\jquery.form.js" />
+    <Content Include="scripts\jquery.json-2.2.min.js" />
+    <Content Include="scripts\jquery.watermark.min.js" />
+    <Content Include="scripts\swfobject.min.js" />
+    <Content Include="scripts\uploadtest.js" />
+    <Content Include="Views\Account\Verify-InvalidLink.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Verify-InvalidLink.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Email\Layout-Simple.cshtml">
+      <SubType>Code</SubType>
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Layout-Simple.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Shared\Video-Invitation.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Video-Invitation.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Account\MainInfo.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>MainInfo.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Account\Signout-Confirm.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Signout-Confirm.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Account\Close-AccountHolder.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Close-AccountHolder.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\AccountNotifications\Index.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Index.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Account\Privacy.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Privacy.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Account\PasswordReset.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>PasswordReset.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\AccountPlan\Index.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Index.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Shared\Production-RequestAccess.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Production-RequestAccess.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\MembershipRequests\ChooseRoleForApproval.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>ChooseRoleForApproval.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\MembershipRequests\Details.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Details.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\MembershipRequests\InvitationAccepted.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>InvitationAccepted.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\MembershipRequests\InvitationRejected.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>InvitationRejected.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\MembershipRequests\Reject.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Reject.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Email\Layout-ProductionBase.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Layout-ProductionBase.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Email\User-PasswordReset.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>User-PasswordReset.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Account\Billing.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Billing.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Account\Billing-Success.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Billing-Success.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Shared\DemoForbidden.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>DemoForbidden.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Shared\RequiresVerification.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>RequiresVerification.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Email\User-Verify.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>User-Verify.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Account\LimitReached-Demo.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>LimitReached-Demo.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Account\LimitReached.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>LimitReached.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Account\LimitReached-NotOwner.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>LimitReached-NotOwner.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Email\TrialExpiresInDays.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>TrialExpiresInDays.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Email\TrialExpired.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>TrialExpired.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Email\TrialExpiresTomorrow.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>TrialExpiresTomorrow.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Account\Close-Guest.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Close-Guest.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Invoices\Index.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Index.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Invoices\Details.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Details.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Error\PageNotFound.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>PageNotFound.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\MembershipRequests\Created.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Created.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\AccountMembers\Index.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Index.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\AccountMembers\Details.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Details.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\AccountMemberships\Index.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Index.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\AccountMemberships\Details.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Details.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Prompts\LetterAfterConversionToPaidProduct.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>LetterAfterConversionToPaidProduct.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Shared\Productions-NotFound.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Productions-NotFound.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Account\Index-NoAccount.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Index-NoAccount.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Account\Index-HasAccount.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Index-HasAccount.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Root\Privacy.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Privacy.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Root\About.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>About.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Email\ActivityDigest.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>ActivityDigest.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Account\Verify-Success.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Verify-Success.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Email\Layout-Base.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Layout-Base.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Staff\ClearCache.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>ClearCache.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Staff\ClearCache.Success.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>ClearCache.Success.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Staff\FileSummary.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>FileSummary.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Staff\Index.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Index.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Staff\PrimeCache.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>PrimeCache.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Staff\PrimeCache.Success.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>PrimeCache.Success.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Staff\ResourceTracing.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>ResourceTracing.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Staff\staff-layout.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>staff-layout.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Staff\UsageInfo.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>UsageInfo.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Staff\VideoUploads.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>VideoUploads.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Staff\VideoWatches.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>VideoWatches.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Staff_OutgoingMail\Index.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Index.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Email\ProductionVideo-Added-ToNonCreators.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>ProductionVideo-Added-ToNonCreators.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Email\ProductionVideo-Added-ToCreator.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>ProductionVideo-Added-ToCreator.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Email\ProductionMember-Added-ToNewMember.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>ProductionMember-Added-ToNewMember.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Email\ProductionVideoComment-New.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>ProductionVideoComment-New.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Email\ProductionMember-Invited-NewUser.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>ProductionMember-Invited-NewUser.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Email\ProductionMember-Invited-ExistingUser.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>ProductionMember-Invited-ExistingUser.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Email\ProductionMember-RequestByNonMember.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>ProductionMember-RequestByNonMember.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Email\ProductionMember-Added-ToOtherMembers.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>ProductionMember-Added-ToOtherMembers.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Email\ProductionVideo-EncodingError.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>ProductionVideo-EncodingError.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Email\ProductionAsset-New.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>ProductionAsset-New.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Email\ProductionVideoCommentReply-New.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>ProductionVideoCommentReply-New.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Email\User-Signup-MustVerify.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>User-Signup-MustVerify.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Account\Logo.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Logo.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Account\Signout-Done.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Signout-Done.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Account\Layout.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Layout.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Email\ProductionVideo-EncodingError-TooLong.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>ProductionVideo-EncodingError-TooLong.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Signup\Subscribe-ChoosePlan.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Subscribe-ChoosePlan.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Account\LimitReached-TrialAnonymous.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>LimitReached-TrialAnonymous.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Account\LimitReached-Trial2.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>LimitReached-Trial2.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Account\Signout-AnonymousTrial.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Signout-AnonymousTrial.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Root\ThanksTo.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>ThanksTo.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Root\Contact.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Contact.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Account\NecessaryInfo.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>NecessaryInfo.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Shared\Production-MembershipRequests-Disabled.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Production-MembershipRequests-Disabled.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Shared\AlreadyLoggedIn.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>AlreadyLoggedIn.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Shared\Error-Billing.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Error-Billing.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Shared\Error.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Error.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Shared\Error.HttpCode.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Error.HttpCode.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Shared\Error.NoPermission.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Error.NoPermission.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Shared\Error.ThingNotFound.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Error.ThingNotFound.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Shared\ErrorAjax.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>ErrorAjax.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Shared\InternetExplorerOldWarning.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>InternetExplorerOldWarning.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Shared\LinkDoesNotApply.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>LinkDoesNotApply.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Shared\Login.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Login.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Shared\LoginJs.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>LoginJs.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Shared\Account-Suspended-NotOwner.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Account-Suspended-NotOwner.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Productions\Details-MembershipRequestSent.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Details-MembershipRequestSent.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Dashboard\Index.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Index.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Account\PasswordReset-Request.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>PasswordReset-Request.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Account\PasswordReset-InvalidLink.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>PasswordReset-InvalidLink.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Account\PasswordReset-Request-UserNotFound.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>PasswordReset-Request-UserNotFound.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Account\Verify-Request.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Verify-Request.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Account\Verify-AlreadyDone.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Verify-AlreadyDone.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Root\SendFileToSupport.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>SendFileToSupport.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Root\NoCookies.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>NoCookies.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Productions\Create.NoAccount.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Create.NoAccount.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Root\Try.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Try.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Root\UserAgreement.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>UserAgreement.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Root\WhyVerify.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>WhyVerify.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="scripts\date.js" />
+    <Content Include="scripts\jquery.autogrow.js" />
+    <Content Include="scripts\jquery.dataTables.js" />
+    <Content Include="scripts\jquery.dataTables.madExt.js" />
+    <Content Include="scripts\jquery.dataTables.min.js" />
+    <Content Include="scripts\jquery.scrollTo.js" />
+    <Content Include="scripts\jquery.scrollTo.min.js" />
+    <Content Include="scripts\jquery.watermark.js" />
+    <Content Include="scripts\swfobject.js" />
+    <Content Include="Views\UploadTests\Index.aspx" />
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Views\Signup\Subscribe.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Subscribe.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Signup\Sample.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Sample.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Signup\Signup-AlreadyDone.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Signup-AlreadyDone.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\AccountPlan\Edit-Upgrade.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Edit-Upgrade.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\AccountPlan\Edit-Downgrade.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Edit-Downgrade.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\AccountPlan\Edit-DowngradeForbidden.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Edit-DowngradeForbidden.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\AccountPlan\Edit-DowngradeInvalid.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Edit-DowngradeInvalid.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Staff_Accounts\Index.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Index.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Staff\ZencoderRequest.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>ZencoderRequest.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Staff_Accounts\Details.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Details.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Staff_Accounts\Edit.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Edit.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Staff_Accounts\Delete.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Delete.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Staff_Users\Index.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Index.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Staff_Users\Details.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Details.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Staff_Users\Delete.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Delete.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Staff_Users\Delete-MustDeleteAccount.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Delete-MustDeleteAccount.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Staff_Users\Edit.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Edit.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Staff_Plans\Index.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Index.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Staff_Plans\Create.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Create.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Staff_Plans\Details.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Details.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Staff_Plans\Edit.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Edit.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Staff_Plans\SyncError.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>SyncError.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Staff_Plans\Sync.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Sync.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Shared\SuccessMessage.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>SuccessMessage1.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Shared\Layout-External-Naked.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Layout-External-Naked.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Shared\Account-Required.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Account-Required.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Shared\Production-Login.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Production-Login.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Shared\Layout-Base.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Layout-Base.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Shared\Production-Login-SemiAnonymousAccess.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Production-Login-SemiAnonymousAccess.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Shared\SemiAnonymousUserForbidden.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>SemiAnonymousUserForbidden.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Shared\NoPermission.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>NoPermission.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Shared\Success.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Success.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Shared\Layout-App-Slim.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Layout-App-Slim.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Shared\Account-AnonymousTrial-ProductionAccess-NotLoggedIn.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Account-AnonymousTrial-ProductionAccess-NotLoggedIn.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Shared\BadRequest.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>BadRequest.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Shared\Layout-Nav.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Layout-Nav1.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Shared\Layout-NagBanners.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Layout-NagBanners.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Shared\Account-Trial-PurchaseRequired.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Account-Trial-PurchaseRequired.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Shared\Layout-External-Slim.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Layout-External-Slim.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Shared\Layout-External-Nav.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Layout-External-Nav.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Shared\Pricing.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Pricing.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Shared\Layout-External-Medium.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Layout-External-Medium.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Signup\Subscribe-Success.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Subscribe-Success.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Support\Index.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Index.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Staff_Encodes\Index.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Index.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Shared\Login-MustVerify.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Login-MustVerify.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Amazon.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.FutureLive.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Views\Videos\Details.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Details.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Videos\Video-Login-SemiAnonymousAccess.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Video-Login-SemiAnonymousAccess.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Shared\Account-Suspended.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Account-Suspended.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Signup\Guest.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Guest.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Signup\Guest-Success.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Guest-Success.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Signup\Index.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Index.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Signup\Index-TrialUserInfoRequested.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Index-TrialUserInfoRequested.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Signup\Index-TrialUserInfo-Success.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Index-TrialUserInfo-Success.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Signup\DirectPurchase.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>DirectPurchase.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Signup\DirectPurchase-ChoosePlan.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>DirectPurchase-ChoosePlan.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Signup\AlreadySignedUp.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>AlreadySignedUp.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Shared\Account-Trial-SignupRequired.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Account-Trial-SignupRequired.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Shared\Layout-App-Medium.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Layout-App-Medium.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Referrals\Index.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Index.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Home\Test.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Test.generated.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="scripts\jquery-3.1.0.slim.min.map" />
+    <Content Include="scripts\jquery-3.1.0.min.map" />
+    <None Include="scripts\jquery.json-2.2.js" />
+    <Content Include="Views\Productions\Create.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Create.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Productions\Details.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Details.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Root\Index.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Index.generated.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\ChartTemplates.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ChartTemplates.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Billing.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Billing.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Strings.en-US.resx" />
+    <EmbeddedResource Include="Resources\Strings.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Strings.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\SampleProduction.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>SampleProduction.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Takeoff.AwsExtensions\Takeoff.AwsExtensions.csproj">
+      <Project>{B6FE3BA9-B950-45DC-9AB1-7140B6DB42B6}</Project>
+      <Name>Takeoff.AwsExtensions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Takeoff.Data\Takeoff.Data.csproj">
+      <Project>{EB6FDCBB-5152-42FE-AE3E-FF828B6C56CE}</Project>
+      <Name>Takeoff.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Takeoff.Goodies\Takeoff.Goodies.csproj">
+      <Project>{09109476-24C9-4AEB-A833-D641CA9CA25E}</Project>
+      <Name>Takeoff.Goodies</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Takeoff.Models\Takeoff.Models.csproj">
+      <Project>{028DE7CA-A3D2-4F8A-976E-C92D0832C357}</Project>
+      <Name>Takeoff.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Takeoff.MvcExtensions\Takeoff.MvcExtensions.csproj">
+      <Project>{DDB1DDEA-58BB-45E3-9C6B-9F80EB228708}</Project>
+      <Name>Takeoff.MvcExtensions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Takeoff.Transcoder.Model\Takeoff.Transcoder.Model.csproj">
+      <Project>{622F8498-E7DA-4BE1-BF9E-99CDA7AFAEB5}</Project>
+      <Name>Takeoff.Transcoder.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target> -->
+  <Target Name="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(ProjectDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>False</AutoAssignPort>
+          <DevelopmentServerPort>8080</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
+</Project>

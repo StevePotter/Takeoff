@@ -1,0 +1,24 @@
+﻿@model Message
+@{
+    //this page is used to provide simple error to users, such as validation or account problems.  
+    Layout = "~/Views/Shared/Layout-App-Slim.cshtml"; 
+    Html.DisableNagBanners();
+    if ( Model.PageTitle.HasChars())
+    {
+        ViewData["PageTitle"] = Model.PageTitle;
+    }
+    else if ( Model.Heading.HasChars())
+    {
+        ViewData["PageTitle"] = Model.Heading;            
+    }
+}
+
+@section Header
+{
+    @if (Model.Heading.HasChars())
+    {
+        <h1>@Model.Heading</h1>
+    }
+}
+
+<p class="@Html.AlertSuccessClass(true)">@Model.Text</p>

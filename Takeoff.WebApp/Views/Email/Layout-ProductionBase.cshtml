@@ -1,0 +1,39 @@
+﻿@model Email_ProductionBase
+@{
+    Layout = "~/Views/Email/Layout-Simple.cshtml";
+    this.RedefineSection("Subject");
+    this.RedefineSection("HeadContent");
+    this.RedefineSection("Plain");
+    this.RedefineSection("HtmlExplanation");
+}
+@section HtmlHeader
+{
+<table class="production-header" cellpadding="0" cellspacing="0">
+    <tr>
+        <td width="99%" valign="middle" class="production-title">
+            @RenderSection("HtmlHeader", false)
+        </td>
+        @if (Model.LogoUrl.HasChars())
+        {
+            <td width="1%" valign="middle">
+                <img src="@Model.LogoUrl" width="@Model.LogoWidth" height="@Model.LogoHeight" alt="Production logo" />
+            </td>
+        }
+    </tr>
+</table>
+@if (Model.Thumbnails.HasItems() && ViewData["IncludeThumbnails"].ValueOr<bool>(true))
+{
+<table class="thumbnailsContainer" cellpadding="4">
+    <tr>
+        @foreach (var thumbnail in Model.Thumbnails)
+        {
+            <td>
+                <img src="@thumbnail.Url" alt="thumbnail" width="@thumbnail.Width.ToInvariant()" height="@thumbnail.Height.ToInvariant()" />
+            </td> 
+        }
+    </tr>
+</table>
+}
+}
+
+@RenderBody()

@@ -1,0 +1,105 @@
+﻿@model Signup_Subscription
+@{
+    Layout = "~/Views/Shared/Layout-App-Slim.cshtml";
+    Html.DisableNagBanners();
+    Html.AddBodyCss("signup-subscribe");
+    ViewData["PageTitle"] = S.Signup_Subscribe_PageTitle;
+    var account = Model.Account;
+    var status = account == null ? AccountStatus.Trial2 : account.Status;
+    var plan = Model.Plan;
+    var cost = plan.PriceInDollars();
+    this.ViewData.AddBodyCss("subscribe");
+    if ( account != null && account.CreatedDuringBeta())
+    {
+        cost = cost*.8;
+    }
+}
+@section JsExternal
+{
+    @Html.JsLib("signup.js")
+}
+@section JsDocReady
+{
+$.page_subscribe();
+}
+
+@section Header
+{
+    @if (status == AccountStatus.TrialExpired)
+    {
+        <h1>Your Takeoff Trial Has Expired</h1>
+    }
+    else
+    {
+        <h1>@S.Signup_Subscribe_PageHeading</h1>        
+    }
+}
+
+
+@if (status == AccountStatus.TrialExpired)
+{
+    <p class="@Html.AlertErrorClass(true)">@S.Signup_Subscribe_TrialExpiredExplanation.FormatResource(account.TrialPeriodEndsOn.GetValueOrDefault(DateTime.Today).ToString(DateTimeFormat.ShortDate))</p>
+}
+else if (status == AccountStatus.Pastdue || status == AccountStatus.ExpiredNonpayment)
+{
+    <p class="@Html.AlertErrorClass()">@S.Signup_Subscribe_BillingErrorExplanation.FormatResource(plan.PriceInDollars().ToString(NumberFormat.Currency))</p>
+}
+else if (account != null && account.DaysLeftInTrial.GetValueOrDefault() >= 1)
+{
+    <p class="">@S.Signup_Subscribe_InTrialExplanation.FormatResource(account.TrialPeriodEndsOn.Value.ToString(DateTimeFormat.ShortDate))</p>
+}
+
+@if (account != null && account.CreatedDuringBeta())
+{
+    <p id="beta-discount" class="@Html.AlertInfoClass()">Because you joined us during the beta, you are getting 20% off every month for life.  As a result, you will be charged @cost.ToString(NumberFormat.Currency) per month. </p>
+}
+else
+{
+    <p id="cost-explanation" class="@Html.AlertInfoClass()">You are purchasing the @plan.Title plan, which will cost you <strong>@cost.ToString(NumberFormat.Currency) per month.</strong></p>
+}
+
+@Html.ValidationSummary(@S.Signup_Subscribe_ValidationSummary_Heading)
+<form method="post" action="@(Url.Action<SignupController>(c => c.Subscribe(null, null)))" id="subscribe-form" class="form-horizontal">
+@Html.AntiForgeryToken()
+@Html.HiddenFor(m => m.PostSignupUrl)
+@Html.HiddenFor(m => m.PlanId)
+    <fieldset>
+        @Html.TextBoxControlGroupFor(m => m.FirstName)
+        @Html.TextBoxControlGroupFor(m => m.LastName)
+        @Html.ControlGroup(Html.ControlLabelFor(m => m.PostalCode), Html.TextBoxFor(m => m.PostalCode, new { @class = "mini "}))
+        <div class="@Html.ControlGroupClass()">
+            @Html.ControlLabelFor(m => m.CreditCardNumber)
+            @Html.ControlsWrapperBeginTag()
+            @Html.TextBoxFor(m => m.CreditCardNumber)
+            <p id="cards-accepted" class="help-block">@S.Subscribe_CardsAccepted</p>
+            @Html.ControlsWrapperEndTag()
+        </div>
+        @Html.TextBoxControlGroupFor(m => m.CreditCardVerificationCode)
+        <div class="@Html.ControlGroupClass()">
+            @Html.ControlLabel("Expiration", "ccExpiration")
+            @Html.ControlsWrapperBeginTag()
+            @Html.DropDownListFor(m => m.CreditCardMonth, Model.CreditCardMonths)
+            @Html.DropDownListFor(m => m.CreditCardYear, Model.CreditCardYears)
+            @Html.ControlsWrapperEndTag()
+        </div>
+        @Html.FormButtons(S.Shared_SubmitBtn_Text)
+    </fieldset>
+</form>
+<p>@S.Subscribe_Explanation.FormatResource(Html.StartTag("a").Href("mailto:sales@takeoffvideo.com"))</p>
+
+@if (status == AccountStatus.TrialExpired)
+{
+    <div id="client-close">
+    <h2>What if I Don't Want to Pay?</h2>
+    <p>If you don't want to pay for Takeoff, you have two options.  You can close your account but remain a guest of the system.  Or, you can remove yourself completely from the system and we won't bother you again.   
+    </p>
+    <div class="actions">
+    <form method="post" action="@(Url.Action<AccountController>(c => c.Close(false)))">
+    <input type="submit" class="btn" value="Stay a Guest" /><span> - you can view videos, comment, etc.  You just can't create your own productions.  If you are a client of a video producer, this is for you.</span>
+    </form>
+    <form method="post" action="@(Url.Action<AccountController>(c => c.Close(true)))">
+    <input type="submit" class="btn" value="Remove Me Completely" /><span> - you will no longer be a member of Takeoff.</span>
+    </form>
+    </div>
+    </div>
+}

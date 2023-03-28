@@ -1,0 +1,70 @@
+﻿@{
+    var controllerName = ViewData["ControllerName"].CastTo<string>();
+    var actionName = ViewData["ActionName"].CastTo<string>();
+    var user = ViewData["User"].CastTo<IUser>();
+    var identity = ViewData["Identity"].CastTo<Identity>();
+
+    var account = user.MapIfNotNull(u => u.Account);
+    var isDemo = account != null && account.Status == AccountStatus.Demo;
+
+    const string selectedCssClass = "selected";
+}
+<div class="navbar" id="top-nav">
+<div class="navbar-inner">
+    <div class="container">
+    <a id="logo" class="default" href="@(Url.Action<RootController>(c => c.Index(null)))"><img src="@this.Url.Asset("/Assets/img/brand-logo.png")" alt="@S.Header_Logo_AltText" title="@S.Header_Logo_TitleText" /></a>
+    <div class="nav-collapse">
+        <ul class="nav">
+		    <li id="nav-home"><a href="@(Url.Action<RootController>(c => c.Index(null)))" class="@(controllerName.Equals("Root") && actionName.Equals("Index") ? "selected" : string.Empty)">@S.Nav_HomeBtn_Text</a></li>
+		    <li id="nav-try"><a href="@(Url.Action<RootController>(c => c.Try()))" class="@(controllerName.Equals("Demo") ? "selected" : string.Empty)">@S.Nav_DemoBtn_Text</a></li>
+		    <li id="nav-pricing"><a href="@(Url.Action<RootController>(c => c.Pricing()))" class="@(controllerName.Equals("Root") && actionName.Equals("Pricing") ? "selected" : string.Empty)">@S.Nav_PricingBtn_Text</a></li>
+          <li class="dropdown">
+            <a data-toggle="dropdown" class="dropdown-toggle" href="#">@("Company") <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+            <li><a href="@(Url.Action<RootController>(c => c.About()))">@("About")</a></li>
+            <li><a href="@(Url.Action<RootController>(c => c.Contact()))">@("Contact")</a></li>
+            <li><a href="http://blog.takeoffvideo.com" target="_blank">@("Blog")</a></li>
+            <li><a href="@Html.AppSetting("FacebookUrl")" target="_blank">@("Facebook")</a></li>
+            <li><a href="@Html.AppSetting("TwitterUrl")" target="_blank">@("Twitter")</a></li>
+            </ul>
+            </li>
+        </ul>
+        <ul class="nav pull-right">
+            @if (identity == null)
+            {
+		        <li id="nav-signup"><a href="@(Url.Action<SignupController>(c => c.Index(null, null, null)))"  class="btn btn-primary @(controllerName.Equals("Signup") ? "selected" : string.Empty)">@("Sign Up")</a></li>
+                <li id="nav-login"><a href="@(Url.Action<AccountController>(c => c.Login(null)))">@S.Nav_LoginBtn_Text</a></li>
+            }
+            else if (isDemo)
+            {                     
+                <li id="nav-logout"><a href="@(Url.Action<AccountController>(c => c.Logout(null)))">@("Exit Demo")</a></li>
+            }
+            else if (account != null && account.Status == AccountStatus.TrialAnonymous)
+            {
+                <li id="nav-logout"><a href="@(Url.Action<AccountController>(c => c.Logout(null)))">@("Exit Demo")</a></li>
+            }
+            else if (user != null)
+            {
+                <li id="nav-user-recognition"><span>@S.Header_UserRecognition.FormatResource(user.FirstName.CharsOr(user.DisplayName).Truncate(20, StringTruncating.EllipsisCharacter))</span></li>
+                <li id="nav-dashboard"><a href="@(Url.Action<DashboardController>(c => c.Index(null, null)))" @(Html.ClassAttIfController<DashboardController>(selectedCssClass))>@S.Nav_DashboardBtn_Text</a></li>
+                <li id="nav-logout"><a href="@(Url.Action<AccountController>(c => c.Logout(null)))">@S.Header_LogoutBtn_Text</a></li>
+            }
+            else if (identity != null && identity is SemiAnonymousUserIdentity)
+            {
+                <li id="nav-logout"><a href="@(Url.Action<AccountController>(c => c.Logout(null)))">@S.Header_LogoutBtn_Text</a></li>                
+            }
+            <li class="dropdown">
+            <a data-toggle="dropdown" class="dropdown-toggle" href="#">Help <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                <li><a href="mailto:support@takeoffvideo.com">@("Support Request")</a></li>
+                <li><a href="@(Url.Action<SupportController>(c => c.KnowledgeBase()))">@("Knowledge Base")</a></li>
+                <li><a href="@(Url.Action<SupportController>(c => c.Discussions()))">@("Discuss")</a></li>
+                </ul>
+            </li>
+
+
+        </ul>
+    </div>
+    </div>
+</div>
+</div>

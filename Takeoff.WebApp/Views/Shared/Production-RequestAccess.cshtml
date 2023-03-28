@@ -1,0 +1,21 @@
+﻿@model Productions_Details_RequestAccess
+@{
+    Layout = "~/Views/Shared/Layout-App-Slim.cshtml";
+    ViewData["PageTitle"] = @S.Production_Details_RequestAccess_PageTitle;
+}
+@section JsExternal {
+    @Html.JsLib("interior.js")
+}
+@section Header
+{
+    <h1>@S.Production_Details_RequestAccess_PageHeading</h1>
+}
+<p>@S.Production_Details_RequestAccess_FormHeader</p>
+<form method="post" action="@Url.Action("Create", "MembershipRequests")" class="form-horizontal">
+@Html.HiddenFor(m => m.ProductionId)
+@Html.ControlGroup(Html.ControlLabelFor(m => m.Note, S.Production_Details_RequestAccess_Note_Label), Html.TextAreaFor(m => m.Note, new { @class = "span4" }))
+<div class="@Html.FormActionsClass()">
+    <input type="submit" class="@Html.PrimaryButtonClass()" value="@S.Production_Details_RequestAccess_SubmitBtn_Text" />
+    <a href="#" class="btn">@S.Shared_CancelBtn_Text</a>
+</div>
+</form>

@@ -1,0 +1,24 @@
+﻿@{
+    Layout = "~/Views/Account/Layout.cshtml";
+    ViewData["Heading"] = "Referrals";   
+}
+@section CssExternal {
+    @Html.CssLib("Assets/css/token-input.css")
+}
+@section JsExternal {
+    @Html.JsLib("token-input.js")    
+}
+@section JsDocReady {
+     window.views.Referrals_Create();
+}
+<h3>Refer People</h3>
+<form id="invite-form" method="post" action="@(Url.Action<ReferralsController>(c => c.Index()))" class="form-horizontal">
+    @Html.AntiForgeryToken()
+    <fieldset>
+        <div class="@Html.ControlGroupClass()">
+            <p>@("Enter email addresses.  You can copy/paste from a list if you want.")</p>
+            <input type="text" id="people" name="people" />
+        </div>
+        @Html.FormButtons("Invite")
+    </fieldset>
+</form>

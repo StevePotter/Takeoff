@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{EB6FDCBB-5152-42FE-AE3E-FF828B6C56CE}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Takeoff.Data</RootNamespace>
+    <AssemblyName>Takeoff.Data</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AWSSDK, Version=2.3.55.0, Culture=neutral, PublicKeyToken=9f476d3089b52be3, processorArchitecture=MSIL">
+      <HintPath>..\packages\AWSSDK.2.3.55.0\lib\net45\AWSSDK.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ServiceStack.Common, Version=4.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ServiceStack.Common.4.5.0\lib\net45\ServiceStack.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ServiceStack.Interfaces, Version=4.0.0.0, Culture=neutral, PublicKeyToken=e06fbc6124f57c43, processorArchitecture=MSIL">
+      <HintPath>..\packages\ServiceStack.Interfaces.4.5.0\lib\portable-wp80+sl5+net45+win8+wpa81+monotouch+monoandroid+xamarin.ios10\ServiceStack.Interfaces.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ServiceStack.Redis, Version=4.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ServiceStack.Redis.4.5.0\lib\net45\ServiceStack.Redis.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ServiceStack.Text, Version=4.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ServiceStack.Text.4.5.0\lib\net45\ServiceStack.Text.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Steveo.Wetnap, Version=1.1.4448.20664, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\wetnap.1.1.4448.20572\lib\net35\Steveo.Wetnap.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Entities\AccountStatus.cs" />
+    <Compile Include="Entities\AccountExtensions.cs" />
+    <Compile Include="Entities\BusinessEventInsertParams.cs" />
+    <Compile Include="Entities\IBusinessEvent.cs" />
+    <Compile Include="Entities\ProductionExtensions.cs" />
+    <Compile Include="Entities\VideoExtensions.cs" />
+    <Compile Include="Entities\ISemiAnonymousUser.cs" />
+    <Compile Include="Entities\ITweet.cs" />
+    <Compile Include="Entities\IBlogEntry.cs" />
+    <Compile Include="Entities\EmailDigestFrequency.cs" />
+    <Compile Include="Entities\EntityExistance.cs" />
+    <Compile Include="Entities\IAccount.cs" />
+    <Compile Include="Entities\IAccountMembership.cs" />
+    <Compile Include="Entities\IChange.cs" />
+    <Compile Include="Entities\IComment.cs" />
+    <Compile Include="Entities\IFile.cs" />
+    <Compile Include="Entities\IFileBase.cs" />
+    <Compile Include="Entities\IImage.cs" />
+    <Compile Include="Entities\IMembership.cs" />
+    <Compile Include="Entities\IPlan.cs" />
+    <Compile Include="Entities\IProduction.cs" />
+    <Compile Include="Entities\IViewPrompt.cs" />
+    <Compile Include="Entities\ISetting.cs" />
+    <Compile Include="Entities\ITypicalEntity.cs" />
+    <Compile Include="Entities\IUser.cs" />
+    <Compile Include="Entities\IVideo.cs" />
+    <Compile Include="Entities\IVideoComment.cs" />
+    <Compile Include="Entities\IVideoStream.cs" />
+    <Compile Include="Entities\PlanExtensions.cs" />
+    <Compile Include="Entities\ProductionActivityItem.cs" />
+    <Compile Include="Entities\UserExtensions.cs" />
+    <Compile Include="PlanInterval.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\IBusinessEventsRepository.cs" />
+    <Compile Include="Repositories\IProductionsRepository.cs" />
+    <Compile Include="Repositories\IVideosRepository.cs" />
+    <Compile Include="Repositories\ISemiAnonymousUsersRepository.cs" />
+    <Compile Include="Repositories\ITweetsRepository.cs" />
+    <Compile Include="Repositories\IBlogEntriesRepository.cs" />
+    <Compile Include="Repositories\IAccountsRepository.cs" />
+    <Compile Include="Repositories\IPlansRepository.cs" />
+    <Compile Include="Repositories\IPromptsRepository.cs" />
+    <Compile Include="Repositories\IRepository.cs" />
+    <Compile Include="Repositories\IUsersRepository.cs" />
+    <Compile Include="Repositories\Repos.cs" />
+    <Compile Include="Services\IIdentityService.cs" />
+    <Compile Include="Services\IThreadCacheService.cs" />
+    <Compile Include="SettingDefinition.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Takeoff.Goodies\Takeoff.Goodies.csproj">
+      <Project>{09109476-24C9-4AEB-A833-D641CA9CA25E}</Project>
+      <Name>Takeoff.Goodies</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="readme.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

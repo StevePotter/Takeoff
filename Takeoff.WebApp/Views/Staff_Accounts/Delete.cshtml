@@ -1,0 +1,14 @@
+﻿
+@{
+    Layout = "~/Views/Staff/staff-layout.cshtml";
+    ViewData["SubTitle"] = "Delete Account #" + @ViewBag.Id;
+}
+
+	<h1>@("Delete Account")</h1>
+<p class="@Html.AlertWarningClass()">There is no undo!</p>
+        <form method="post" action="@Url.Action("Delete", "Staff_Accounts", new { id = ViewBag.Id })" class="form-horizontal">
+            @Html.ControlGroup(Html.ControlLabel("Delete User Also"), Html.CheckBox("deleteUser"))
+            <div class="@Html.FormActionsClass()">
+                <input class="btn btn-danger" value="@("Delete Account ")" type="submit" />
+            </div>
+        </form>

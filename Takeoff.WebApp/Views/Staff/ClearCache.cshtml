@@ -1,0 +1,14 @@
+﻿@{
+    Layout = "~/Views/Staff/staff-layout.cshtml";
+    
+}
+@section Header
+{
+    <h1>Clear Memcached</h1>
+}
+    <p>This will clear all data held in Memcached.  Doing this unnecessarily will dramatically reduce application performace.  This is for Steve and if you don't know what you're doing, get away asshole.</p>
+        <form id="mainForm" class="form-horizontal" method="post" action="@Url.Action("ClearCache","Staff")">
+            <div class="@Html.FormActionsClass()">
+                <input type="submit" class="btn btn-danger" value="Yes, I want to clear the app cache." />
+            </div>
+    </form>

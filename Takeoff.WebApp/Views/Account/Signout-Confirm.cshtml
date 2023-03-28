@@ -1,0 +1,19 @@
+﻿@{
+    Layout = "~/Views/Shared/Layout-App-Slim.cshtml";
+    ViewData["PageTitle"] = "Sign out Permanently?";
+    ViewData.AddBodyCss("logout-confirm");
+    
+    
+}
+@section Header
+{
+<h1>Sign out Permanently?</h1>
+}
+<p>When you signed in, you chose to 'Stay signed in'.  Signing out now will cancel that and you'll have to enter your password next time.  If you don't wish to sign out completely, just go to another site or close the browser.  Are you sure you want to sign out?</p>
+<div class="actions">
+	<h3>Sign Me Out</h3>
+	<p>I'll enter my password when I come back.</p>
+	<div class="alert-actions">
+		<a class="@Html.PrimaryButtonClass()" href="@(Url.Action<AccountController>(c => c.Logout(true)))">Sign Me Out</a>
+	</div>
+</div>

@@ -1,0 +1,63 @@
+﻿@{
+    Layout = "~/Views/Shared/Layout-External-Slim.cshtml";
+    
+    ViewData["PageTitle"] = "Thanks To";
+}
+@section JsDocReady
+{
+    $("#mainForm").madValidate({ useAjax: false }); 
+    $("#timezoneOffset").val(new Date().getTimezoneOffset());
+}
+@section Header
+{
+	<h1>@("We Didn't do it Alone")</h1>
+}
+<p>
+    @("Takeoff leverages some of the best companies and open source projects out there.  We love you all!")
+</p>
+
+<ul>
+    <li><a href="http://zencoder.com" target="_blank">Zencoder</a> - handles all of Takeoff's video encoding.</li>
+    <li><a href="http://aws.amazon.com" target="_blank">Amazon Web Services</a> - handles our file storage, message queueing, job servers, outgoing mail, data storage, caching, and content delivery.</li>
+    <li><a href="http://softsyshosting.com" target="_blank">Softsys</a> - powers the mega awesome web server that runs Takeoff.</li>
+    <li><a href="http://asp.net/mvc" target="_blank">.NET MVC</a> - the amazing web framework that Takeoff was built on.</li>
+    <li><a href="http://cloudmailin.net" target="_blank">CloudmailIn</a> - processes incoming email for Takeoff.</li>
+    <li><a href="http://postmarkapp.com" target="_blank">PostMark</a> - more outgoing email.</li>
+    <li><a href="http://recurly.com" target="_blank">Recurly</a> - processes credit cards and handles recurring billing.</li>
+    <li><a href="http://zendesk.com" target="_blank">Zendesk</a> - handles our support.</li>
+    <li><a href="http://trello.com" target="_blank">Trello</a> - internal project management.</li>
+    <li><a href="http://beanstalkapp.com" target="_blank">Beanstalk</a> - git and svn hosting.</li>
+</ul>
+<h3>Web Libraries</h3>
+<ul>
+    <li><a href="http://twitter.github.com/bootstrap/" target="_blank">Bootstrap</a> - provides the UI elements and some JS plugins we use to build our web app.</li>
+    <li><a href="http://lesscss.org" target="_blank">LessCss</a> - CSS preprocessor that makes web dev a ton easier.</li>
+    <li><a href="http://jquery.com" target="_blank">JQuery</a> - Makes UI scripting a cinch.</li>
+    <li><a href="http://datejs.com" target="_blank">Date</a> - Date formatting and parsing for javascript.</li>
+    <li><a href="http://swfupload.com" target="_blank">SWFUpload</a> - Flash-based file uploading.</li>
+    <li><a href="http://datatables.new" target="_blank">DataTables</a> - awesome client-side data grid.</li>
+    <li><a href="#" target="_blank">KeyFilter</a> - useful for filtering key entry into form fields.</li>
+    <li><a href="http://docs.jquery.com/Plugins/Validation" target="_blank">Validate</a> - the best validation plugin ever made.</li>
+    <li><a href="http://flesler.blogspot.com/2007/10/jqueryscrollto.html" target="_blank">ScrollTo</a> - scroll to an element automatically.</li>
+    <li><a href="http://code.google.com/p/swfobject" target="_blank">SWFObject</a> - best way to embed Flash elements.</li>
+</ul>
+<h3>Server Libraries</h3>
+<ul>
+    <li><a href="#" target="_blank">Hammock</a> - easy way to communicate with REST interfaces in .net.</li>
+    <li><a href="#" target="_blank">HTML Agility Pack</a> - used for our outgoing mail so we can turn typical markup into old school tables for email clients.</li>
+    <li><a href="#" target="_blank">NewtonSoft JSON</a> - best JSON library out there.</li>
+    <li><a href="#" target="_blank">Enyim Caching</a> - .net memcached client.</li>
+    <li><a href="#" target="_blank">MVC mini profiler</a> - MVC mini profiler so our staff can monitor app performance in production.</li>
+    <li><a href="#" target="_blank">Ninject</a> - Dependency injection, used to make various components pluggable.</li>
+    <li><a href="#" target="_blank">Moq</a> - Mocking framework used for testing.</li>
+</ul>
+<h3>Our Open Source Projects</h3>
+<p>We're open sourced some of the components we built for Takeoff.  And we plan on doing more of it.</p>
+<ul>
+    <li><a href="http://github.com/StevePotter/ArmChair" target="_blank">Armchair</a> - easily speeds up .net mvc apps by offloading certain tasks, like sending email or logging, to a different machine or process.</li>
+    <li><a href="#" target="_blank">AssetBooster</a> - a build-time tool to minify, package, and upload static assets to a CDN.  Safer and more dev-friendly than dynamic packaging alternatives.</li>
+    <li><a href="http://github.com/StevePotter/wetnap" target="_blank">Wetnap</a> - a collection of awesome .net extension methods that we feel should be built into the framework.</li>
+    <li>Email Inliner (coming one day) - email clients suck with modern html standards.  This project lets you write html emails using regular css and elements like div, then transforms the document into a mail client-friendly format.  No more tables in your html email templates!</li>
+    <li>Steps (coming one day) - helps .net jobs run better by splitting work into fault-tolerant 'steps' that are closely measured with killer reporting built in.</li>
+    <li>Ripper (coming one day) - makes it possible to render mvc Razor views into static html files.  Awesome for QA, testing translations, and for designers who hate windows :).</li>
+</ul>

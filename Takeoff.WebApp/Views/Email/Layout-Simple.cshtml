@@ -1,0 +1,43 @@
+﻿@{
+    Layout = "~/Views/Email/Layout-Base.cshtml";
+    this.RedefineSection("Subject");
+}
+@section HeadContent
+{
+    @RenderSection("HeadContent", false)
+    <style>
+    @Html.Raw(typeof(Global).GetEmbeddedResourceString(@"Takeoff.Assets.Email.email.css"))
+    </style>
+}
+@section Plain
+{
+@RenderSection("Plain", false)
+
+@Html.Raw(ViewData.ValueOrDefault("ExplanationPlain", string.Empty))
+
+Takeoff - www.takeoffvideo.com - Simple Video Collaboration
+© Copyright @DateTime.Now.Year.ToInvariant() Takeoff, Inc. 218 Denison Street, Unit 1 Highland Park, NJ 08904
+Questions, comments?  Email info@takeoffvideo.com
+We'd love to hear from you.  Email info@takeoffvideo.com or call 800-561-1785
+}
+@section Html
+{
+@if (IsSectionDefined("HtmlHeader"))
+{
+    @RenderSection("HtmlHeader")           
+}
+    <div class="main">
+        @RenderBody()
+    </div>
+
+@if (IsSectionDefined("HtmlExplanation"))
+{
+     <div class="explanation">
+        @RenderSection("HtmlExplanation")       
+     </div>
+}
+
+<div class="footer">Takeoff - <a href="http://www.takeoffvideo.com">www.takeoffvideo.com</a> - Simple Video Collaboration<br />
+&copy; Copyright @DateTime.Now.Year.ToInvariant() Takeoff, Inc. 218 Denison Street, Unit 1 Highland Park, NJ 08904 <br/>
+We'd love to hear from you.  Email <a href="mailto:info@takeoffvideo.com">info@takeoffvideo.com</a> or call 800-561-1785</div>
+}

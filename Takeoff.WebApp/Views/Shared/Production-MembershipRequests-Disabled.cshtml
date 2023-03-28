@@ -1,0 +1,11 @@
+﻿@{
+    Layout = "~/Views/Shared/Layout-App-Slim.cshtml"; 
+    ViewData["PageTitle"] = S.Production_MembershipRequestsDisabled_PageTitle;
+}
+@section Header
+{
+    <h1>@S.Production_MembershipRequestsDisabled_PageHeading</h1>
+}
+<p class="@Html.AlertWarningClass(true)">
+@S.Production_MembershipRequestsDisabled_Explanation
+</p>

@@ -1,0 +1,10 @@
+﻿@{
+    Layout = "~/Views/Shared/Layout-App-Slim.cshtml"; 
+}
+
+@section Header
+{
+    <h1>@("Your Account has Been Suspended")</h1>
+}
+<div class="@Html.AlertErrorClass(true)">Your account has been suspended for some reason.  To resolve this, please contact us at <a href="mailto:support@takeoffvideo.com">support@takeoffvideo.com</a>.</div>
+

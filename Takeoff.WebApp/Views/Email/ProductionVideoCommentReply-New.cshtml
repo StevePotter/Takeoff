@@ -1,0 +1,46 @@
+﻿@model Email_ProductionVideoCommentReply_New
+@{
+    Layout = "~/Views/Email/Layout-ProductionBase.cshtml";
+    var changeSettingsUrl = Url.Action<AccountNotificationsController>(c => c.Index(), UrlType.AbsoluteHttps);
+}
+@section Subject
+{
+New Reply '@Model.CommentBody.Truncate(15, StringTruncating.EllipsisCharacter)' in @Model.ProductionTitle
+}
+@section HtmlHeader {
+New Reply '@Model.CommentBody.Truncate(15, StringTruncating.EllipsisCharacter)' in @Model.ProductionTitle
+}
+@section HtmlExplanation
+{
+You are recieving this because you are a member of Takeoff and your settings indicate you wish to recieve an email when comments replies are added to productions you belog to.  Visit <a href="@changeSettingsUrl">@changeSettingsUrl</a> to change this setting.
+}
+
+@if (Model.IsCommentAndCommentReplySameCreator)
+{
+    <p class="text">
+    @Model.ReplyCreatedBy replied to a comment he/she wrote in the @Model.VideoTitle.Surround("\"") video in the @Model.ProductionTitle.Surround("\"") production.
+    </p>
+    <p class="video-comment-header">The original comment:</p>
+}
+else if (Model.IsRecipientCommentCreator)
+{
+    <p class="text">
+    @Model.ReplyCreatedBy replied to a comment you wrote in the @Model.VideoTitle.Surround("\"") video in the @Model.ProductionTitle.Surround("\"") production.
+    </p>
+    <p class="video-comment-header">Your original comment:</p>
+}
+else
+{
+    <p class="text">
+    @Model.ReplyCreatedBy replied to a comment @Model.CommentCreatedBy wrote in the @Model.VideoTitle.Surround("\"") video in the @Model.ProductionTitle.Surround("\"") production.
+    </p>
+    <p class="video-comment-header">@Model.CommentCreatedBy.EndWith("'s") original comment:</p>
+}
+<p class="video-comment">@Model.CommentBody.Surround("\"")</p>
+<p class="video-comment-header">The reply:</p>
+<p class="video-comment-reply">@Model.ReplyBody.Surround("\"")</p>
+
+<p class="big-link-container">
+<a href="@Model.ViewUrl">See It</a>
+<div class="link-to-copy">If clicking the above link didn't work, just copy and paste the following into your browser address bar:<br><b>@Model.ViewUrl</b></div>
+</p>

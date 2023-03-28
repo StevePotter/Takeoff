@@ -1,0 +1,15 @@
+﻿@model Staff_ResourceTracing
+@{
+    ViewBag.Title = "Resource Tracing";
+    Layout = "~/Views/Staff/staff-layout.cshtml";
+}
+<p>This will change a setting that will turn on a level of resource tracing.</p>
+<form id="mainForm" method="post" action="@Url.Action("ResourceTracing", "Staff")">
+<div class="form-field">
+    <label>Level</label>
+    @Html.EnumDropDownListFor(m => m.ResourceTraceLevel)
+</div>
+<div class="form-field">
+    <input value="@S.Shared_UpdateBtn_Text" type="submit" />
+</div>
+</form>

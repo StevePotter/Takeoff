@@ -1,0 +1,14 @@
+this document describes the known parameters for videos that should play fine within Takeoff without requiring transcoding
+
+General support:
+'Format' = 'Flash Video'		flv
+'Format' = 'MPEG-4'		movs, mp4s, f4v
+
+Video supported:
+
+'Format' = 'VP6'  used by flvs a lot
+'Format' = 'AVC' used by mp4s and movs (h264)
+
+Audios supported
+audio 'Format' = 'MPEG Audio'
+audio 'Format' = 'AAC'

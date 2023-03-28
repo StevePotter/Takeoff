@@ -1,0 +1,14 @@
+﻿@{
+    Layout = "~/Views/Shared/Layout-App-Slim.cshtml";
+    
+    Html.DisableNagBanners();
+
+    ViewData["PageTitle"] = S.Account_VerifySuccess_PageTitle;
+}
+
+@section Header
+{
+    <h1>@S.Account_VerifySuccess_PageHeading</h1>
+}
+
+<p class="alert alert-block alert-success">@S.Account_VerifySuccess_Message.FormatResource(Html.StartActionLink<DashboardController>(c => c.Index(null, null)))</p>

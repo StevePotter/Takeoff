@@ -1,0 +1,63 @@
+﻿@model Signup_DirectPurchase
+@{
+    Layout = "~/Views/Shared/Layout-App-Slim.cshtml";
+    
+    ViewData["PageTitle"] = S.Signup_Account_PageTitle;
+    ViewData["EnableNagBanner"] = false;//don't nag demo people during signup
+}
+@section JsExternal
+{
+    @Html.JsLib("signup.js")
+}
+@section JsDocReady
+{
+$.pageAccount();
+}
+@section Header
+{
+<h1>@S.Signup_Account_PageHeading</h1>
+}
+@Html.ValidationSummary(S.Signup_Account_Form_ValidationSummary_Heading)
+<form id="mainForm" class="form-horizontal" method="post" action="@(Url.Action<SignupController>(c => c.Index(SignupType.DirectPurchase, null, null)))">
+@Html.AntiForgeryToken()
+@Html.HiddenFor(m => m.PlanId)
+@Html.HiddenFor(m => m.ReturnUrl)
+@Html.HiddenFor(m => m.TimezoneOffset)
+<fieldset>
+    @Html.TextBoxControlGroupFor(m => m.FirstName)
+    @Html.TextBoxControlGroupFor(m => m.LastName)
+    @Html.TextBoxControlGroupFor(m => m.Email)
+    @Html.ControlGroup(Html.ControlLabelFor(m => m.Password), Html.TextBoxFor(m => m.Password, new { type = "password" }))
+    <div class="control-group">
+        <label for="passwordConfirm" class="control-label">@S.Signup_Account_Form_PasswordConfirm_Label</label>
+        <div class="controls">
+            <input type="password" id="passwordConfirm" value="" name="passwordConfirm" />                                
+        </div>
+    </div>
+@*    @if (ViewBag.ShowSignupSource == null || (bool)ViewBag.ShowSignupSource)
+    {
+        <div class="field">
+            <label for="SignupSource">@S.Signup_Account_Form_SignupSource_Label</label>
+            <select id="SignupSource" name="SignupSource">
+                <option value=""></option>
+                <option value="WordOfMouth">@S.Signup_Account_Form_SignupSource_WordOfMouth</option>
+                <option value="Email">@S.Signup_Account_Form_SignupSource_Email</option>
+                <option value="SearchEngine">@S.Signup_Account_Form_SignupSource_SearchEngine</option>
+                <option value="MessageForum">@S.Signup_Account_Form_SignupSource_MessageForum</option>
+                <option value="Other">@S.Signup_Account_Form_SignupSource_Other</option>
+            </select>
+        </div>
+        <div class="field hide" id="SignupSourceOther-container">
+            @Html.LabelFor(m => m.SignupSourceOther, @S.Signup_Account_Form_SignupSourceOther_Label)
+            @Html.TextBoxFor(m => m.SignupSourceOther)
+        </div>
+    }*@
+        <div class="control-group" id="user-agreement-group">
+            <div class="controls">
+                <input type="checkbox" name="agreeToTerms" /><span>I agree to Takeoff's <a href="@(Url.Action<RootController>(c => c.UserAgreement()))" target="_blank">user agreement</a> and <a href="@(Url.Action<RootController>(c => c.Privacy()))" target="_blank">privacy policy</a>.</span>
+            </div>
+        </div>
+    @Html.FormButtons(S.Shared_UpdateBtn_Text)
+
+</fieldset>
+</form>

@@ -1,0 +1,17 @@
+﻿(function ($) {
+
+	$.extend(window.appStrings || {}, { 
+		Account_LimitReached_AssetCount : '%Account_LimitReached_AssetCount%',
+		Account_LimitReached_AssetFileSize : '%Account_LimitReached_AssetCount%',
+		Account_LimitReached_AssetTotalSize : '%Account_LimitReached_AssetCount%',
+		Account_LimitReached_DemoMsg : '%Account_LimitReached_AssetCount%'
+	});
+
+	if ( $.validator )
+	{
+		$.extend($.validator.defaults || {}, { 
+			required : '%Account_LimitReached_AssetCount%'
+		});
+	}
+
+}(jQuery);

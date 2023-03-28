@@ -1,0 +1,39 @@
+﻿@{
+    Layout = "~/Views/Shared/Layout-App-Slim.cshtml";
+    
+    ViewData["PageTitle"] = "Sign Up";
+}
+@section JsDocReady
+{
+    $("#mainForm").madValidate({ useAjax: false }); 
+    $("#timezoneOffset").val(new Date().getTimezoneOffset());
+}
+@section Header
+{
+	<h1>@("Sign Up")</h1>
+}
+<p class="instructions">
+    @("Takeoff takes only seconds to sign up.  Just pick what fits you best below and let's rock!")
+</p>
+<div class="actions big-explanations">
+    <div class="row-fluid">
+        <div class="span3">
+            <form method="post" action="@Url.Action("Create", "Signup", new { type = SignupType.StartTrial }, UrlType.RelativeHttps)">
+                <input class="btn btn-large btn-primary" value="@("Trial")" type="submit" />
+            </form>            
+        </div>
+        <div class="span9">@("I'd like to upload some videos and try it out first, then maybe I'll buy.  Heck, I don't even want you to know who I am yet.")</div>
+    </div>
+    <div class="row-fluid">
+        <div class="span3">
+        <a class="btn btn-large btn-primary" href="@(Url.Action<SignupController>(c=>c.Index(SignupType.Guest, null, null)))">@("Guest")</a>
+        </div>
+        <div class="span9">@("I don't need to upload any videos.  I'm just here to review other people's videos and I don't plan on purchasing Takeoff.")</div>
+    </div>
+    <div class="row-fluid">
+        <div class="span3">
+            <a class="btn btn-large btn-primary" href="@(Url.Action<SignupController>(c=>c.Index(SignupType.DirectPurchase, null, null)))">@("Purchase")</a>
+        </div>
+        <div class="span9">@("I know what I want, and what I want is to buy Takeoff right now.  I am also extremely awesome and good looking.")</div>
+    </div>
+</div>

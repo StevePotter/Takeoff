@@ -1,0 +1,17 @@
+﻿@{
+    Layout = "~/Views/Shared/Layout-App-Slim.cshtml"; 
+    ViewData["PageTitle"] = "Your Internet Explorer is Outdated";
+    ViewData.AddBodyCss("outdated-browser");    
+}
+@section Header
+{
+    <h1>Your Internet Explorer is Outdated</h1>
+}
+<p class="@Html.AlertWarningClass()">Your version of Internet Explorer is a bit too old and unfortunately won't work well with Takeoff. Have no fear. You have options and in just a few minutes you can be rocking out.</p>
+<ul>
+    <li>If you have FireFox, Safari, or Google Chrome already on your computer use one of them for Takeoff instead.</li>
+    <li>Upgrade to the <a href="http://www.microsoft.com/windows/internet-explorer/worldwide-sites.aspx">latest Internet Explorer.</a>  It's an awesome browser!  You can download and install right away. Even Microsoft recommends you do this.</li>
+    <li>Download an Internet Explorer alternative. We recommend <a href="http://www.mozilla.com/en-US/firefox/firefox.html">FireFox</a>, <a href="http://www.apple.com/safari/download/">Safari</a>, or <a href="http://www.google.com/chrome">Google Chrome</a>. Choose one or all because each is great!</li>
+</ul>
+<p>This warning page will only show once. If you really want to use Takeoff with your current Internet Explorer, we won't stop you. But beware, it will probably look like garbage!</p>
+<p>Whatever dude, I want to <a href="@ViewData["RequestedUrl"]">my old, insecure, scary, dangerous version</a> of Internet Explorer.</p>

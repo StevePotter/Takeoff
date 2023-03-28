@@ -1,0 +1,32 @@
+﻿@model IEnumerable<Invoices_InvoiceSummary>
+@{
+    Layout = "~/Views/Account/Layout.cshtml";
+    
+    ViewData["Heading"] = "Invoices";
+}
+@section JsDocReady {
+
+}
+        <h3>@("Invoices")</h3>
+
+    <table cellspacing="0" class="table table-striped">
+    <thead>
+    <tr>
+    <th>@("Number")</th>
+    <th>@("Date")</th>
+    <th>@("Total")</th>
+    <th>&nbsp;</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var invoice in Model)
+    {
+        <tr>
+        <td>@invoice.Number</td>
+        <td>@invoice.Date.ToString(DateTimeFormat.ShortDate)</td>
+        <td>@invoice.Total.ToString(NumberFormat.Currency)</td>
+        <td><a class="btn" href="@(Url.Action<InvoicesController>(c => c.Details(invoice.Id)))">@("View Details")</a></td>
+        </tr>
+    }
+    </tbody>
+    </table>

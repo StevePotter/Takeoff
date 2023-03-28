@@ -1,0 +1,42 @@
+﻿@model System.Net.HttpStatusCode?
+@{
+    Layout = "~/Views/Shared/Layout-App-Slim.cshtml"; 
+    Html.DisableNagBanners();
+
+ //   ViewData["PageTitle"] = S.Error_MissingData_PageTitle;
+    ViewData.AddBodyCss("error-httpcode");   
+}
+@section Header
+{
+    @if (!Model.HasValue)
+    {
+        <h1>My bad!</h1>  
+    }
+    else if (Model.Value == System.Net.HttpStatusCode.NotFound)
+    {
+        <h1>Whoops!  We couldn't find what you were looking for.</h1>  
+    }
+    else
+    {
+        <h1>My bad!</h1>  
+    }
+}
+
+@if (!Model.HasValue)
+{
+    <p class="@Html.AlertErrorClass(true)">
+    An error occured.  You may want to give us a little while to take care of it.  It couldn't hurt to send an email to <a href="mailto:support@takeoffvideo.com">support@takeoffvideo.com</a>.
+    </p>
+}
+else if (Model.Value == System.Net.HttpStatusCode.NotFound)
+{
+    <p class="@Html.AlertErrorClass(true)">
+    We couldn't find anything associated with the link you entered.  It may be an old link or was misspelled. 
+    </p>
+}
+else
+{
+    <p class="@Html.AlertErrorClass(true)">
+    An error occured.  You may want to give us a little while to take care of it.  It couldn't hurt to send an email to <a href="mailto:support@takeoffvideo.com">support@takeoffvideo.com</a>.
+    </p>
+}

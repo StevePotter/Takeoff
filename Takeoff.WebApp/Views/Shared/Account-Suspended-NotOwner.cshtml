@@ -1,0 +1,11 @@
+﻿@{
+    Layout = "~/Views/Shared/Layout-App-Slim.cshtml"; 
+    ViewData["PageTitle"] = S.Suspended_Account_Guest_PageTitle;
+}
+@section Header
+{
+    <h1>@S.Suspended_Account_Guest_PageHeading</h1>
+}
+<p class="@Html.AlertErrorClass(true)">
+@S.Suspended_Account_Guest_Explanation
+</p>

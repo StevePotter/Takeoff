@@ -1,0 +1,15 @@
+﻿@{
+    Layout = "~/Views/Account/Layout.cshtml";
+    
+    ViewData["Heading"] = "Close My Account";
+}
+<div class="well">
+    <h3>@("Delete My Account")</h3>
+    <p class="@Html.AlertErrorClass()">@("Permanently delete my Takeoff account and associated data.  Warning: there is no undo!")</p>
+    <div>
+        <form method="post" action="@Url.Action("Close", "Account", new { deleteUser = true })">
+            <input class="btn btn-danger" value="@("Delete My Account")" type="submit" />
+        </form>
+    </div>
+</div>
+

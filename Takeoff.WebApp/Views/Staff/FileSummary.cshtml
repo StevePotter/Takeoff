@@ -1,0 +1,67 @@
+﻿@{
+    Layout = "~/Views/Staff/staff-layout.cshtml";
+        var total = (FileTransferInfo)ViewData["total"];
+        var oneHr = (FileTransferInfo)ViewData["1hr"];
+        var today = (FileTransferInfo)ViewData["today"];
+        var yesterday = (FileTransferInfo)ViewData["yesterday"];
+        var month = (FileTransferInfo)ViewData["month"];
+    }
+    <div class="reportField">
+        <label>Files</label>
+        <div>
+            @ViewData["FileCount"] ,
+            @ViewData["FileSize"] 
+        </div>
+    </div>
+    <div class="reportField">
+        <label>Videos</label>
+        <div>
+            @ViewData["VideoCount"],
+            @ViewData["VideoSize"]
+        </div>
+    </div>
+    <div class="reportField">
+        <label>Last Hour</label>
+        <div>
+            @oneHr.UploadCount
+            uploads (@oneHr.UploadSize).
+            @oneHr.DownloadCount
+            downloads (@oneHr.DownloadSize). </p>
+        </div>
+    </div>
+    <div class="reportField">
+        <label>Today</label>
+        <div>
+            @today.UploadCount
+            uploads (@today.UploadSize).
+            @today.DownloadCount
+            downloads (@today.DownloadSize). </p>
+        </div>
+    </div>
+    <div class="reportField">
+        <label>Yesterday</label>
+        <div>
+            @yesterday.UploadCount
+            uploads (@yesterday.UploadSize).
+            @yesterday.DownloadCount
+            downloads (@yesterday.DownloadSize). </p>
+        </div>
+    </div>
+    <div class="reportField">
+        <label>This Month</label>
+        <div>
+            @month.UploadCount
+            uploads (@month.UploadSize).
+            @month.DownloadCount
+            downloads (@month.DownloadSize). </p>
+        </div>
+    </div>
+    <div class="reportField">
+        <label>Since Beginning</label>
+        <div>
+            @total.UploadCount
+            uploads (@total.UploadSize).
+            @total.DownloadCount
+            downloads (@total.DownloadSize).
+        </div>
+    </div>

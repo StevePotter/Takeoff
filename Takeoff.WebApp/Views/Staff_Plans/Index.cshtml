@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Takeoff.Data.IPlan>
+@{
+    Layout = "~/Views/Staff/staff-layout.cshtml";
+}
+@section Header
+{
+    <h1>@("Plans")</h1>
+}
+@section JsDocReady
+{
+}
+@section CssInline
+{
+}
+<p>Pricing Plans.</p><a href="/staff/plans/create">New</a>
+    @if (!Model.HasItems())
+    {   
+        <p><strong>There aren't any.</strong></p>
+    }
+    else
+    {
+        <table id="membersList" cellspacing="0" class="data table table-striped">
+            <thead>
+                <tr>
+                    <th>Id</th><th>Title</th><th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var plan in Model)
+                {
+                    <tr>
+                        <td><a href="/staff/plans/details?id=@plan.Id">@plan.Id</a></td>
+                        <td>@plan.Title</td>
+                        <td>@(((double)plan.PriceInCents/100.0).ToString(NumberFormat.Currency))</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    
+}

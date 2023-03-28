@@ -1,0 +1,36 @@
+﻿@model MembershipRequests_Details
+@{
+    Layout = "~/Views/Shared/Layout-App-Slim.cshtml";
+    Html.AddBodyCss("production-membership-request");
+}
+@section Header
+{
+    <h1>@("Membership Request")</h1>
+}
+
+<p id="details">@Model.RequestedByName 
+    @if (!@Model.RequestedByName.EqualsCaseSensitive(@Model.RequestedByEmail) && Model.RequestedByEmail.HasChars())
+    {
+        @Model.RequestedByEmail.Surround("(", ")")            
+    }
+    wants to join <a href="@Url.ActionDetails("Productions", @Model.ProductionId)" target="_blank">@Model.ProductionTitle</a>.</p>
+
+@if (Model.Note.HasChars())
+{
+    <blockquote>
+        <p>@Model.Note</p>
+	    <small>@Model.RequestedByName</small>
+    </blockquote>                
+}
+
+<div class="actions">
+    <form method="post" action="@Url.Action("Approve", "MembershipRequests", new { id = Model.RequestId })">
+    <input type="submit" value="@("Accept")" class="@Html.PrimaryButtonClass()" />
+    </form>
+    <form method="post" action="@Url.Action("Reject", "MembershipRequests", new { id = Model.RequestId })">
+    <input type="submit" value="@("Ignore")" class="btn" />
+    </form>
+</div>
+
+<p>The request was made on
+    @Model.CreatedOn.ToString(DateTimeFormat.ShortDateTime).  For safety, we urge you to verify the name above matches the email address.  Want to stop accepting requests? You can do it in your <a href="@Url.Action("Privacy", "Account")" target="_blank">account privacy settings.</a> </p>

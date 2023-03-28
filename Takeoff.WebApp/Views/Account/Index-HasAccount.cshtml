@@ -1,0 +1,85 @@
+﻿@model Takeoff.Data.IAccount
+@{
+    Layout = "~/Views/Account/Layout.cshtml";
+    ViewData["Heading"] = S.Account_Index_PageTitle;
+    
+    var plan = Model.Plan;
+
+    var billingPeriodEndsOn = Model.CurrentBillingPeriodEndsOn();
+}
+
+    <h3>@("Account Status")</h3>
+@if (Model.Status == AccountStatus.Trial)
+{
+    <p>You are in a free trial.  Your trial ends on @Model.TrialPeriodEndsOn.GetValueOrDefault().ToString(DateTimeFormat.ShortDate).  <a href="@(Url.Action<SignupController>(c => c.Index(null, null, null)))">Purchase Takeoff</a> or, <a href="mailto:support@takeoffvideo.com">contact our sales team</a>.</p>
+}
+else if (Model.Status == AccountStatus.TrialAnonymous)
+{
+    <p>@("You are in a Takeoff demo and haven't signed up yet.  You will be limited in what you can do but you can always sign up for free.")</p>
+}
+else if (Model.Status == AccountStatus.Trial2)
+{
+    <p>@("You are in a free trial.  Enjoy, and purchase any time!")</p>
+}
+else if (Model.Status == AccountStatus.Subscribed)
+{
+    <p>@("You are a paying customer.  Everythign is cool.  We love you and got your back.")</p>    
+}
+else
+{
+    <p>You are on the @plan.Title plan.  <a href="@(Url.Action<AccountPlanController>(c => c.Index()))">Change your plan.</a></p>
+}
+@if (Model.Status != AccountStatus.TrialAnonymous && Model.Status != AccountStatus.Trial2)
+{
+    <h3>Current Billing Cycle</h3>
+if (Model.CreatedDuringBeta())
+ {
+     <em>Please note that statistics here don't include the complimentary stuff from our beta.</em>
+ }
+if (Model.Status == AccountStatus.Subscribed && Model.CurrentBillingPeriodStartedOn.HasValue)
+ {
+     <p>Cycle began on @Model.CurrentBillingPeriodStartedOn.Value.ToString(DateTimeFormat.ShortDate) and will end on @Model.CurrentBillingPeriodEndsOn().GetValueOrDefault().ToString(DateTimeFormat.ShortDate).</p>
+ }
+}
+
+<h3>Usage:</h3>
+<ul>
+@if (plan == null || !plan.ProductionLimit.HasValue)
+{
+    <li>Productions: @Model.ProductionCountBillable.  Keep em coming!</li>    
+}
+else
+{
+    <li>Productions: @Model.ProductionCountBillable of @(plan.ProductionLimit.Value).  @Model.ProductionCountBillable.PercentString(plan.ProductionLimit.Value)</li>
+}
+@if (plan == null || !plan.VideosPerBillingCycleMax.HasValue)
+{
+    <li>Videos uploaded:  @Model.VideosAddedInBillingCycle</li>
+}
+else
+{
+    <li>Videos uploaded:  @Model.VideosAddedInBillingCycle of @plan.VideosPerBillingCycleMax.</li>
+}
+@if (plan == null || !plan.VideosTotalMaxCount.HasValue)
+{
+    <li>Videos at once:  @Model.VideoCountBillable</li>
+}
+else
+{
+    <li>Videos at once: @Model.VideoCountBillable of @plan.VideosTotalMaxCount.</li>
+}
+
+@if (plan == null || !plan.AssetsTotalMaxSize.HasValue)
+{
+    <li>Assets: @Model.AssetsTotalSizeBillable.ToString()</li>
+}
+else
+{
+    <li>Assets: @Model.AssetsTotalSizeBillable.ToString() of @plan.AssetsTotalMaxSize.ToString().  @Model.AssetsTotalSizeBillable.Bytes.PercentString(plan.AssetsTotalMaxSize.Value.Bytes)</li>
+}
+</ul>
+
+@if (Model.Status != AccountStatus.TrialAnonymous && Model.Status != AccountStatus.Trial2)
+{
+    <p>For more usage, you can <a href="@(Url.Action<AccountPlanController>(c => c.Index()))">upgrade your plan</a>.  You can always downgrade later :)</p>
+}

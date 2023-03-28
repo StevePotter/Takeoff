@@ -1,0 +1,34 @@
+﻿@model AccountPlan_Edit
+@{
+    Layout = "~/Views/Account/Layout.cshtml";
+    
+    ViewData["Heading"] = "Downgrade Your Plan";
+    var user = (IUser)ViewData["User"];
+    var account = user.Account;
+    var currentPlan = Model.CurrentPlan;
+    var newPlan = (IPlan)Model.NewPlan;
+
+    //we don't allow downgrades unless they are subscribed
+}
+
+@if (account.InTrialPeriod())
+{
+    <p>Since you're still in the trial period, you won't pay anything until your trial expires, which is on @account.TrialPeriodEndsOn.Value.ToString(DateTimeFormat.ShortDate).</p>
+}
+else
+{
+    <p>Are you sure you'd like to downgrade? Since you have already paid for this month, downgrades will take place at the beginning of the next month.</p>
+}
+<p>You are currently on the @currentPlan.Title plan, which charges @currentPlan.PriceInDollars().ToString(NumberFormat.Currency)
+    every @currentPlan.BillingIntervalLength @currentPlan.BillingIntervalType.ToString().ToLowerInvariant().EndWith("{s}").</p>
+<p>You are downgrading to the @newPlan.Title plan, which charges @newPlan.PriceInDollars().ToString(NumberFormat.Currency)
+    every @newPlan.BillingIntervalLength @newPlan.BillingIntervalType.ToString().ToLowerInvariant().EndWith("{s}").</p>
+
+<form  method="post" action="@(Url.Action<AccountPlanController>(c => c.EditPost(null)))">
+<div class="well">
+@Html.AntiForgeryToken()
+@Html.Hidden("plan", newPlan.Id)
+    <input type="submit" class="@Html.PrimaryButtonClass()" value="Downgrade my Account" />
+    <a class="btn" href="@(Url.Action<AccountPlanController>(c => c.Index()))">Cancel</a>
+</div>
+</form>

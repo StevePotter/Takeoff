@@ -1,0 +1,17 @@
+﻿@model Account_LimitReached
+@{
+    Layout = "~/Views/Shared/Layout-App-Slim.cshtml";
+    ViewData["PageTitle"] = "Purchase Required";
+    
+    Html.DisableNagBanners();
+}
+@section Header
+{
+    <h1>@("Purchase Required")</h1>
+}
+<p>
+@("Sorry but you must purchase a Takeoff plan to continue.  We hope you do and we'll love you big time for it!")
+</p>
+<div class="actions">
+    <a class="@Html.PrimaryButtonClass()" href="@(Url.Action<SignupController>(c => c.Subscribe(null, null)))">@("Purchase Takeoff")</a>
+</div>

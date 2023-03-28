@@ -1,0 +1,20 @@
+﻿@model MembershipRequests_InvitationRejected
+@{
+    Layout = "~/Views/Shared/Layout-App-Slim.cshtml";
+}
+
+@section Header
+{
+    <h1>@("Auto Decline Future Invites?")</h1>
+}
+<p>The invitation was declined.  Would you like us to automatically decline future invitations from @Model.InvitedByDisplayName?   Otherwise, you'll have to accept/decline each invitation from them.</p>
+<div class="actions">
+    <form method="post" action="@Url.Action("SetFutureInvitationsAutoResponse", "MembershipRequests")">
+        <input type="hidden" name="userId" value="@Model.InvitedById" />
+        <input type="hidden" name="accept" value="false" />
+        <input type="hidden" name="redirectTo" value="@Url.ActionDetails("Productions", Model.ProductionId)" />
+        <input type="submit" value="Yes" class="@Html.PrimaryButtonClass()" />
+    </form>
+    <a href="@Url.Action("Index", "Dashboard")" class="btn">No</a>
+</div>
+

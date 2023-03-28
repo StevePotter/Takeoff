@@ -1,0 +1,37 @@
+﻿@{
+    Layout = "~/Views/Shared/Layout-Base.cshtml";
+    ViewData["MainCssLib"] = "Assets/css/theme.css";
+    ViewData.AddBodyCss("app", "slim");
+    this.RedefineSection("CssExternal");
+    this.RedefineSection("CssInline");
+    this.RedefineSection("JsExternal");
+    this.RedefineSection("JsDocReady");
+
+}
+@section JsInline
+{
+    @if (ViewData["Identity"].CastTo<Identity>() != null)
+    {
+    <text>
+    $.loginPing();
+    </text>
+    }
+    @RenderSection("JsInline", false)
+}
+<div class="container">
+    @RenderPage("~/Views/Shared/Layout-Nav.cshtml")
+    <div role="main">
+        @RenderPage("~/Views/Shared/Layout-NagBanners.cshtml")
+		<div id="main-content">
+
+    @if (IsSectionDefined("Header"))
+    {
+        @RenderSection("Header")
+    }
+    @RenderBody()
+		</div>
+	</div>
+	<footer>
+        <p>@S.Footer_Copyright.FormatResource(DateTime.Now.Year.ToInvariant())</p>
+	</footer>
+</div>

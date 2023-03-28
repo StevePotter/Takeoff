@@ -1,0 +1,11 @@
+﻿@{
+    Layout = "~/Views/Shared/Layout-App-Slim.cshtml"; 
+        Html.DisableNagBanners();
+
+}
+@section Header
+{
+<h1>@S.Signup_AlreadySignedUp_PageHeading</h1>
+}
+
+<p class="@Html.AlertWarningClass(true)">@S.Signup_AlreadySignedUp_Message</p>

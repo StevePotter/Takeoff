@@ -1,0 +1,64 @@
+﻿@model Staff_Plans_Plan
+@{
+    Layout = "~/Views/Staff/staff-layout.cshtml";
+
+    var intervals = System.Enum.GetValues(typeof(PlanInterval)).Cast<PlanInterval>().Select(value => new SelectListItem
+                {
+                    Text = value.ToString(),
+                    Value = value.ToString()                
+                });    
+}
+@section JsDocReady
+{
+    $("#mainForm").madValidate({
+        rules:
+        {
+            "Id": "required"
+        },
+        useAjax: false
+    });
+}
+@section Header
+{
+    <h1>@("New Account Plan")</h1>
+}
+
+
+    @Html.ValidationSummary()
+    <form id="mainForm" method="post" action="@Url.Action("Create", "Staff_Plans")" class="form-horizontal">
+        @Html.AntiForgeryToken()
+
+        @Html.TextBoxControlGroupFor(m => m.Id)
+        @Html.TextBoxControlGroupFor(m => m.Title)
+        @Html.TextBoxControlGroupFor(m => m.Notes)
+        @Html.TextBoxControlGroupFor(m => m.AssetsTotalSizeMax)
+        @Html.TextBoxControlGroupFor(m => m.Price)
+        @Html.ControlGroup(Html.ControlLabelFor(m=>m.AllowSignups), Html.CheckBoxFor(m =>m.AllowSignups))
+        <div class="@Html.ControlGroupClass()">
+            @Html.ControlLabelFor(m => m.BillingIntervalLength)
+            @Html.ControlsWrapperBeginTag()
+            @Html.TextBoxFor(m=> m.BillingIntervalLength)
+            @Html.DropDownListFor(m => m.BillingIntervalUnit, intervals)
+            @Html.ControlsWrapperEndTag()
+        </div>
+        <div class="@Html.ControlGroupClass()">
+            @Html.ControlLabelFor(m => m.TrialIntervalLength)
+            @Html.ControlsWrapperBeginTag()
+            @Html.TextBoxFor(m=> m.TrialIntervalLength)
+            @Html.DropDownListFor(m => m.TrialIntervalUnit, intervals)
+            @Html.ControlsWrapperEndTag()
+        </div>
+        @Html.TextBoxControlGroupFor(m => m.VideosTotalMaxCount)
+        @Html.TextBoxControlGroupFor(m => m.VideosPerBillingCycleMax)
+        @Html.TextBoxControlGroupFor(m => m.VideoFileSizeMax)
+        @Html.TextBoxControlGroupFor(m => m.VideoDurationLimit, "Max Video Duration (sec)")
+
+        @Html.TextBoxControlGroupFor(m => m.ProductionLimit)
+        @Html.TextBoxControlGroupFor(m => m.AssetFileSizeMax)
+        @Html.TextBoxControlGroupFor(m => m.AssetsAllTimeMaxCount)
+        @Html.TextBoxControlGroupFor(m => m.AssetsTotalMaxCount)
+        @Html.TextBoxControlGroupFor(m => m.AssetsTotalSizeMax)
+
+        @Html.FormButtons("Create")
+
+    </form>

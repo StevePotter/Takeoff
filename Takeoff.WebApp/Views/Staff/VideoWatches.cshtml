@@ -1,0 +1,53 @@
+﻿@{
+    Layout = "~/Views/Staff/staff-layout.cshtml";
+}
+
+@section JsDocReady {
+
+ function updateChart()
+{
+    $("#chart").attr("src",window.urlPrefixes.relative + "Staff/VideoWatchesChart?dataToGraph=" + $("#dataToGraph").val() + "&from=" + $("#dateFrom").val() + "&to=" + $("#dateTo").val());
+}
+
+$("#dateFrom, #dateTo").datepicker(
+{
+   onSelect: function(dateText, inst) {
+        updateChart();
+   }
+});
+
+$("#dataToGraph").change(function()
+{
+        updateChart();
+});
+
+updateChart();   
+
+}
+
+    <div>
+        <label for="dataToGraph">
+            What to plot:</label>
+        <select id="dataToGraph">
+            <option value="watches">Number of views</option>
+            <option value="bandwidth">Download bandwidth</option>
+            <option value="duration">Total duration watched</option>
+            <option value="users">Users who watched video(s)</option>
+            <option value="accounts">Accounts with video(s) watched</option>
+            <option value="productions">Productions with a video(s) watched</option>
+        </select>
+    </div>
+    <div>
+        <label for="dateFrom">
+            From:</label>
+        <input id="dateFrom" type="text" value="@DateTime.Now.Subtract(TimeSpan.FromDays(5)).ToString(DateTimeFormat.ShortDate) " />
+        <label for="dateTo">
+            To:</label>
+        <input id="dateTo" type="text" value="@DateTime.Now.ToString(DateTimeFormat.ShortDate) " />
+    </div>
+    <div class="reportField">
+        <div>
+            <img id="chart" src="" style="width: 600px; height: 400px" />
+        </div>
+    </div>
+

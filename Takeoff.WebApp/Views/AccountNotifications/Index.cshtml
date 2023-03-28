@@ -1,0 +1,92 @@
+﻿@model Account_Notifications
+@{
+    Layout = "~/Views/Account/Layout.cshtml";
+    
+    ViewData["Heading"] = S.Account_Notifications_PageHeading;
+    
+    var selectItems = new SelectListItem[]
+                          {
+                              new SelectListItem
+                                  {
+                                      Text = S.Account_Notifications_DigestFrequency_Never,
+                                      Value = EmailDigestFrequency.Never.ToString()
+                                  },
+                              new SelectListItem
+                                  {
+                                      Text = S.Account_Notifications_DigestFrequency_Hourly,
+                                      Value = EmailDigestFrequency.Hourly.ToString()
+                                  },
+                              new SelectListItem
+                                  {
+                                      Text = S.Account_Notifications_DigestFrequency_BeforeDuringWorkDay,
+                                      Value = EmailDigestFrequency.BeforeDuringWorkDay.ToString()
+                                  },
+                              new SelectListItem
+                                  {
+                                      Text = S.Account_Notifications_DigestFrequency_Daily,
+                                      Value = EmailDigestFrequency.Daily.ToString()
+                                  },
+                          };
+
+                         // selectItems.FirstOrDefault(i => i.Value.EqualsCaseInsensitive(Model.EmailDigestFrequency.ToString())).IfNotNull(i => i.Selected = true);
+}
+@section JsDocReady {
+    window.views.Account_Notifications();
+}
+<form id="mainForm" method="post" action="@(Url.Action<AccountNotificationsController>(c => c.Index(null)))" class="form-horizontal">
+    <fieldset>
+        <div class="@Html.ControlGroupClass()">
+            @Html.ControlLabel(S.Account_Notifications_Alerts_Title)
+            <ul class="option-group">
+                <li>
+                    @Html.CheckBoxFor(m => m.NotifyWhenNewVideo)
+                    @Html.LabelFor(m => m.NotifyWhenNewVideo,S.Account_Notifications_Alerts_NotifyWhenNewVideo_Label)
+                </li>
+                <li>
+                    @Html.CheckBoxFor(m => m.NotifyWhenNewComment)
+                    @Html.LabelFor(m => m.NotifyWhenNewComment, S.Account_Notifications_Alerts_NotifyWhenNewComment_Label)
+                </li>
+                <li>
+                    @Html.CheckBoxFor(m => m.NotifyWhenNewCommentReply)
+                    @Html.LabelFor(m => m.NotifyWhenNewCommentReply, S.Account_Notifications_Alerts_NotifyWhenNewCommentReply_Label)
+                </li>
+                <li>
+                    @Html.CheckBoxFor(m => m.NotifyWhenNewReplyToAuthoredComment)
+                    @Html.LabelFor(m => m.NotifyWhenNewReplyToAuthoredComment, S.Account_Notifications_Alerts_NotifyWhenNewReplyToAuthoredComment_Label)
+                </li>
+                <li>
+                    @Html.CheckBoxFor(m => m.NotifyWhenNewMember)
+                    @Html.LabelFor(m => m.NotifyWhenNewMember, S.Account_Notifications_Alerts_NotifyWhenNewMember_Label)
+                </li>
+                <li>
+                    @Html.CheckBoxFor(m => m.NotifyWhenNewFile)
+                    @Html.LabelFor(m => m.NotifyWhenNewFile, S.Account_Notifications_Alerts_NotifyWhenNewFile_Label)
+                </li>
+            </ul>
+        </div>
+        @Html.ControlGroup(Html.ControlLabelFor(m => m.DigestEmailFrequency, S.Account_Notifications_DigestFrequency_Label), Html.DropDownListFor(m => m.DigestEmailFrequency, selectItems))
+        
+        <div class="@Html.ControlGroupClass()">
+            @Html.ControlLabel(S.Account_Notifications_Announcements_Title)
+            <ul class="option-group">
+                <li>
+                    @Html.CheckBoxFor(m => m.NotifyForNewFeatures)
+                    @Html.LabelFor(m => m.NotifyForNewFeatures, S.Account_Notifications_Alerts_NotifyForNewFeatures_Label)
+                </li>
+                <li>
+                    @Html.CheckBoxFor(m => m.NotifyForMaintenance)
+                    @Html.LabelFor(m => m.NotifyForMaintenance, S.Account_Notifications_Alerts_NotifyForMaintenance_Label)
+                </li>
+                <li>
+                    @Html.CheckBoxFor(m => m.NotifyForPlanChanges)
+                    @Html.LabelFor(m => m.NotifyForPlanChanges, S.Account_Notifications_Alerts_NotifyPlanChanges_Label)
+                </li>
+                <li>
+                    @Html.CheckBoxFor(m => m.NotifyForSpecials)
+                    @Html.LabelFor(m => m.NotifyForSpecials, S.Account_Notifications_Alerts_NotifySpecials_Label)
+                </li>
+            </ul>
+        </div>
+        @Html.FormButtons(S.Account_MainInfo_SubmitBtn_Text)
+    </fieldset>
+</form>

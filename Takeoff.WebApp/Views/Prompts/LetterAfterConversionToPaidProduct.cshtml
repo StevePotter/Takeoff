@@ -1,0 +1,51 @@
+﻿@model ViewPromptViewModel
+@{
+    Layout = "~/Views/Shared/Layout-App-Slim.cshtml"; 
+    ViewData["PageTitle"] = "Takeoff is Now a Premium Product";
+    ViewData.AddBodyCss("prompt");
+}
+
+@section Header
+{
+    <h1>Welcome to the New Takeoff</h1>
+}
+
+<p>In case you haven't heard, Takeoff has come out of its Beta
+period and is now a paid product.  We've converted your account to the least
+expensive plan, $9.99/month, which can be changed at any time.  And...</p>
+
+<h2>You get 20% off for life!</h2>
+
+<p>Usage until now won't count, so don't worry about all the videos or productions you already have in the system.  You have 30 days
+ to decide if you want to be a Takeoff customer.  With a paid product, we can invest more resources into making Takeoff better. Here's our plans:</p>
+<ul>
+<li>Ability to password-protect your productions so clients don't need to create an account.</li>
+<li>We are working hard on an iPhone app for
+Takeoff.  Expect it in the app store within a few months.</li>
+<li>Visual customizations.  You can replace the Takeoff logo with your own.  Eventually you'll be able to change much more.</li>
+<li>Other nifty features: data export, login with Facebook or Google,
+asset folders, better and faster upload, and simple ways to move videos
+throughout productions.</li>
+<li>For you video producers, we are building a Mac desktop app.  It'll
+sport rock solid uploads, a slick interface, and possibly drop folders. Most
+importantly, it'll provide integrations with editing programs, starting with
+Final Cut Pro.</li>
+</ul>
+
+<p>Keep an eye on our blog, because we'll be sharing our
+progress as we go.  It is our goal to build the easiest, best video collaboration
+system on the planet.  It can only happen with your support.  I hope you'll
+join us.  Also, I'd love to hear from you personally, so feel free to write me
+at any time.</p>
+
+<p>Thank you from the bottom of my heart,</p>
+
+<p>Chris Kilayko<br>
+President, Takeoff Inc.<br>
+<a href="mailto:chrisk@takeoffvideo.com">chrisk@takeoffvideo.com</a><br>
+800-561-1785 ext 3</p>
+
+<div class="actions">
+    <a class="@Html.PrimaryButtonClass()" href="@Model.MapIfNotNull(m => m.OriginalUrl)">Continue</a>
+</div>
+

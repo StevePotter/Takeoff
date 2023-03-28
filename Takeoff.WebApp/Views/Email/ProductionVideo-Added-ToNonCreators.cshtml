@@ -1,0 +1,37 @@
+﻿@model Email_ProductionVideo_New
+@{
+    Layout = "~/Views/Email/Layout-ProductionBase.cshtml";
+    var changeSettingsUrl = Url.Action<AccountNotificationsController>(c => c.Index(), UrlType.AbsoluteHttps);
+}
+<a href="Copy%20of%20ProductionVideo-Added-ToNonCreators.cshtml">Copy of ProductionVideo-Added-ToNonCreators.cshtml</a>
+@section Subject
+{
+New Video Called @Model.VideoTitle
+}
+@section HtmlHeader {
+    A video, @Model.VideoTitle, was added to to the @Model.ProductionTitle production by @Model.CreatedBy.
+}
+@section HtmlExplanation
+{
+You are recieving this because you are a member of Takeoff and your settings indicate you wish to recieve an email when videos are added to productions you belog to.  Visit <a href="@changeSettingsUrl">@changeSettingsUrl</a> to change this setting.
+}
+@section Plain {
+A video called @Html.Raw(Model.VideoTitle) was added to to the @Html.Raw(Model.ProductionTitle) production by @Html.Raw(Model.CreatedBy).  To view it, please go to the following link:
+@Html.Raw(Model.WatchUrl)
+@if (Model.Notes.HasChars())
+{<text>    
+Here's some notes @Html.Raw(Model.CreatedBy) wrote about it:
+@Html.Raw(Model.Notes.Indent())
+</text>
+}
+}
+
+@if (Model.Notes.HasChars())
+{
+<p class="text">Here's some notes @Model.CreatedBy wrote about it:<br/><span class="video-notes">@Model.Notes</span></p>
+}
+
+<p class="big-link-container">
+<a href="@Model.WatchUrl">Watch It</a>
+<div class="link-to-copy">If clicking the above link didn't work, just copy and paste the following into your browser address bar:<br><b>@Model.WatchUrl</b></div>
+</p>

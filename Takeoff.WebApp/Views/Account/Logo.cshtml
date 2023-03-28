@@ -1,0 +1,36 @@
+﻿@model Account_Logo
+@{
+    Layout = "~/Views/Account/Layout.cshtml";
+    ViewData["Heading"] = "Account Logo";
+    
+}
+@section JsDocReady
+{
+    window.views.Account_Logo();
+}
+<p>@("This logo will replace the Takeoff logo up top for you and your clients.  In each production, you can also add an accompanying production-specific logo.")</p>
+@Html.ValidationSummary(S.Validation_SummaryHeading)
+<form id="logo-form" method="post" enctype="multipart/form-data" action="@(Url.Action<AccountController>(c => c.Logo()))" class="form-horizontal">
+@Html.AntiForgeryToken()
+    <fieldset>
+        <div class="@Html.ControlGroupClass()">
+            @Html.ControlLabel("New Logo", "Logo")
+            @Html.ControlsWrapperBeginTag()
+                <input type="file" id="Logo" name="Logo" size="30" />                
+            @Html.ControlsWrapperEndTag()
+        </div>
+        @Html.FormButtons(S.Account_MainInfo_SubmitBtn_Text)
+    </fieldset>
+</form>
+
+@if (true)
+{
+    <div class="well">
+        <h3>@("Delete my Logo")</h3>
+        <p>@("You and your account members will see Takeoff's regular logo at the top of the page.")</p>
+            <form method="POST" action="@(Url.Action<AccountController>(c => c.Logo()))">
+                @Html.AntiForgeryToken()
+                <input type="submit" value="Delete" class="btn btn-danger"/>
+            </form>
+    </div>
+}

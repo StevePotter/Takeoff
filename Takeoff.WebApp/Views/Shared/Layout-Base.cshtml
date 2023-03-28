@@ -1,0 +1,158 @@
+﻿<!DOCTYPE html>
+@{
+    var prefixes = Url.UrlPrefixes();
+    var checkCookies = ViewData["CheckForCookies"] != null;
+
+    //if they specify a css class specific to this page, use that.  otherwise use the controller-action syntax
+    var bodyCssClasses = ViewData.BodyCssClasses();
+
+    var controllerName = ViewData["ControllerName"].CastTo<string>();
+    var actionName = ViewData["ActionName"].CastTo<string>();
+    if ( controllerName.HasChars() && actionName.HasChars())
+    {
+        bodyCssClasses.Add(controllerName.LowerFirstChar() + "-area");
+        bodyCssClasses.Add(controllerName.LowerFirstChar() + "-" + actionName.LowerFirstChar());
+    }
+    
+    var banners = (List<Banner>)ViewBag.__banners;//generally for warnings and whatnot
+    //note: apple-touch-icon shuld have an absolute url, which it always done in production cuz it lives on the cdn.  this is because apparently android only works iwth absolute url
+
+    var startupMessage = Model as Takeoff.ViewModels.StartupMessage;
+    if (startupMessage == null)
+    {
+        startupMessage = (Takeoff.ViewModels.StartupMessage) ViewData["StartupMessage"];
+    }
+    var hasStartupMessage = startupMessage != null && startupMessage.StartupMessageBody.HasChars();
+    var title = (string)ViewData["PageTitle"];
+    if ( title == null )
+    {
+        title = S.DefaultPageTitle;   
+    }
+    else
+    {
+        title = S.PageTitlePrefix + title;
+    }
+    var stealthMode = Takeoff.Global.StealthUI;
+}
+<html>
+<head>
+    @if (!stealthMode)
+    {
+    <title>@title</title>
+    <link rel="shortcut icon" href="@this.Url.Asset("/Assets/favicon.ico")" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="@this.Url.Asset("/Assets/apple-touch-icon.png")" />
+    }
+    else
+    {
+        <title>New Tab</title><!-- Actual title: @title -->
+    }
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />  
+
+    @Html.CssLib(@ViewData["MainCssLib"].CastTo<string>().CharsOrEmpty())
+    @if (stealthMode)
+    {
+        @Html.CssLib("styles/stealthUI-3.css")
+    }
+    @RenderSection("CssExternal", false)
+    @if (IsSectionDefined("CssInline"))
+    {
+    <style type="text/css">        
+        @RenderSection("CssInline", false)
+    </style>
+    }
+    <script language="javascript" type="text/javascript">
+        window.urlPrefixes = {
+            asset: '@prefixes.Asset',
+            relative: '@prefixes.Relative',
+            relativeHttps: '@prefixes.RelativeHttps',
+            absoluteHttp: '@prefixes.AbsoluteHttp',
+            absoluteHttps: '@prefixes.AbsoluteHttps'
+        };
+    </script>
+    @Html.JsLib("main.js")    
+    @StackExchange.Profiling.MiniProfiler.RenderIncludes()
+    @RenderSection("JsExternal", false)
+    <script language="javascript" type="text/javascript">
+        @RenderSection("JsInline", false)
+    @if (stealthMode)
+    {
+        <text>
+        $(document).ready(function() {
+            $("#stealth-cover").click(function()
+            {
+                $(this).hide();
+            });
+           @if (this.Request.UrlReferrer != null)
+           {
+               <text>
+            $("#stealth-cover").hide();
+            </text>
+           }
+            $(document).keyup(function(e) {
+                    if (e.keyCode == 27) { $("#stealth-cover").show(); } 
+            });
+        });
+        </text>
+    }
+    @if (checkCookies || hasStartupMessage || IsSectionDefined("JsDocReady"))
+    {
+        <text>
+        $(document).ready(function() {
+        </text>
+        if (checkCookies)
+        {
+            <text>
+            if (!$.cookiesEnabled())
+            {
+                $.goTo("/NoCookies");
+            }
+        </text>
+        }
+        if (hasStartupMessage)
+        {
+            var messageType = (startupMessage.StartupMessageType == StartupMessageType.NotSet ? StartupMessageType.Success : startupMessage.StartupMessageType).ToString().ToLowerInvariant();
+            <text>
+        var msg = @Html.Json(new { text = startupMessage.StartupMessageBody, type = messageType });
+        $("body").madNotification({ api: true })[msg.type](msg.text);
+        </text>
+        }
+        <text>
+        @RenderSection("JsDocReady", false)
+        });
+        </text>
+    }
+    @Html.GoogleAnalytics()
+    </script>
+    <!--[if lt IE 9]>
+    <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+<body class="@string.Join(" ",bodyCssClasses)">
+    @if (stealthMode)
+    {
+        <div id="stealth-cover"></div>
+    }
+    @if (banners.HasItems())
+    {
+        foreach (var banner in banners)
+        {
+            if (banner.HtmlEncode)
+            {
+                 <div class="warningBanner">@banner.Source</div>
+            }
+            else
+            {
+                 <div class="warningBanner">@Html.Raw(banner.Source)</div>
+            }
+        }
+    }
+    @if (ViewData["IncludeNoScriptWarning"].ValueOr(false))
+    {
+        <noscript>
+            <p class="alert-message error">@S.Shared_NoJavascript_Error.FormatResource(Html.StartTag("a").Href("http://www.iatn.net/help/javascript/").Attr("target", "_blank"))</p>
+        </noscript>
+    }
+    @RenderBody()
+</body>
+<!-- See takeoffvideo.com/thanksto for a list of all the awesome projects and companies we use to make Takeoff possible -->
+</html>

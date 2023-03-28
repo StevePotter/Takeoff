@@ -1,0 +1,24 @@
+﻿@{
+    Layout = "~/Views/Staff/staff-layout.cshtml";
+}
+
+
+@if (ViewData["JobId"] != null)
+    {
+     
+        <div id="emailSentMsg" class="successMsg">
+            The job was submitted.  Job ID# <a href="https://app.zencoder.com/jobs/@ViewData["JobId"] " target="_blank">@ViewData["JobId"] </a></div>
+
+    }
+         
+    <h3>Make a Zencoder API Request</h3>
+        <form id="mainForm" method="post" action="@Url.Action("ZencoderRequest","Staff")">
+        <div id="nameArea" class="formfield">
+            <label for="apiParams">Production Url or ID #:</label>
+            <textarea id="apiParams" name="apiParams" rows="20" cols="50">@ViewData["json"] </textarea>
+        </div>
+        <div class="formfield actions">
+            <input type="submit" value="Do it" />
+        </div>
+    </form>
+    <ul id="transcodeReportsList"></ul>

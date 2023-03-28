@@ -1,0 +1,83 @@
+﻿@model PlanForSale[]
+@{
+    Layout = "~/Views/Shared/Layout-External-Slim.cshtml";
+    
+    ViewData["PageTitle"] = S.Signup_Index_PageTitle;
+    var postSignupUrl = ViewData["PostSignupUrl"].CastTo<string>();
+    Func<string, string> planUrl = (plan) => Url.Action<SignupController>(c => c.Index(SignupType.DirectPurchase, postSignupUrl, null), UrlType.RelativeHttps);
+}
+@section Header
+{
+    <h1>@S.Signup_Index_PageHeading</h1>
+}
+
+<table class="table table-striped">
+<thead>
+    <tr>
+        <th>Plan</th>
+        <th>Price Per Month</th>
+        <th>Videos</th>
+        <th>Assets</th>
+        <th>Productions</th>
+        <th></th>
+    </tr>
+</thead>
+    <tbody>
+        @foreach(var plan in Model)
+        {
+            <tr>
+                <td>@plan.Title</td>
+                <td>@plan.Price.ToString(NumberFormat.Currency)</td>
+                <td>@Html.Raw(plan.VideosPerBillingCycleMax.HasValue ? plan.VideosPerBillingCycleMax.Value.ToInvariant() : "&infin;")</td>
+                <td>@Html.Raw(plan.AssetsTotalMaxSize.HasValue ? plan.AssetsTotalMaxSize.Value.ToString() : "&infin;")</td>
+                <td>@Html.Raw(plan.ProductionLimit.HasValue ? plan.ProductionLimit.Value.ToInvariant() : "&infin;")</td>
+                <td>
+                    <a class="btn" href="@(Url.Action<SignupController>(c => c.Index(SignupType.DirectPurchase, null, plan.Id)))">@("Choose Plan")</a>
+                </td>
+            </tr>            
+        }
+        <tr>
+            <td>@("Custom")</td>
+            <td colspan="5"><a class="btn" href="mailto:sales@takeoffvideo.com?subject=Custom Takeoff Plan">Contact us</a> and let's build a custom plan for you.</td>
+        </tr>
+    </tbody>
+</table>
+
+
+<section id="faqs">
+<h3>Frequently Asked Questions</h3>
+<ul>
+@*    <li>
+        <strong>@S.Signup_Index_Faq1_Question</strong>
+        <p>@S.Signup_Index_Faq1_Answer</p>
+    </li>*@
+    <li>
+        <strong>@S.Signup_Index_Faq2_Question</strong>
+        <p>@S.Signup_Index_Faq2_Answer</p>
+    </li>
+    <li>
+        <strong>@S.Signup_Index_Faq3_Question</strong>
+        <p>@S.Signup_Index_Faq3_Answer</p>
+    </li>
+    <li>
+        <strong>@S.Signup_Index_Faq4_Question</strong>
+        <p>@S.Signup_Index_Faq4_Answer</p>
+    </li>
+    <li>
+        <strong>@S.Signup_Index_Faq5_Question</strong>
+        <p>@S.Signup_Index_Faq5_Answer</p>
+    </li>
+    <li>
+        <strong>@S.Signup_Index_Faq6_Question</strong>
+        <p>@S.Signup_Index_Faq6_Answer.FormatResource(Html.Element("a").Href("mailto:sales@takeoffvideo.com"))</p>
+    </li>
+    <li>
+        <strong>@S.Signup_Index_Faq7_Question</strong>
+        <p>@S.Signup_Index_Faq7_Answer</p>
+    </li>
+    <li>
+        <strong>@S.Signup_Index_Faq8_Question</strong>
+        <p>@S.Signup_Index_Faq8_Answer</p>
+    </li>
+</ul>
+</section>

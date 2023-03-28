@@ -1,0 +1,25 @@
+﻿@model Email_ProductionVideo_EncodingError
+@{
+    Layout = "~/Views/Email/Layout-ProductionBase.cshtml";
+    ViewData["IncludeThumbnails"] = false;
+    var changeSettingsUrl = Url.Action<AccountNotificationsController>(c => c.Index(), UrlType.AbsoluteHttps);
+}
+@section Subject
+{
+Video Was Too Long
+}
+@section HtmlHeader {
+The video you uploaded to @Model.ProductionTitle was too long.
+}
+@section Plain {
+The video file you uploaded, @Model.UploadedFileName, which you titled @Model.VideoTitle, was too long.  Currently we allow video durations up to 1 hour.
+}
+
+<p class="text">The video file you uploaded, @Model.UploadedFileName, which you titled @Model.VideoTitle, was too long.</p>
+
+<p class="text">Currently we allow video durations up to 1 hour.  To fix this, you should break the video up into chunks and upload them separately.  We realize this is probably not what you want to hear, but to keep things running smoothly, we need to have a duration limit.</p>
+
+<p class="big-link-container">
+<a href="@Model.ProductionUrl">Visit the Production</a>
+<div class="link-to-copy">If clicking the above link didn't work, just copy and paste the following into your browser address bar:<br><b>@Model.ProductionUrl</b></div>
+</p>

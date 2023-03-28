@@ -1,0 +1,12 @@
+﻿@{
+    Layout = "~/Views/Shared/Layout-App-Slim.cshtml"; 
+    ViewData["PageTitle"] = S.Error_MissingPage_PageTitle;
+    ViewData.AddBodyCss("error-page-missing");   
+}
+@section Header
+{
+    <h1>@S.Error_MissingPage_PageHeading</h1>
+}
+<p class="@Html.AlertErrorClass(true)">
+    @S.Error_MissingPage_Explanation
+</p>

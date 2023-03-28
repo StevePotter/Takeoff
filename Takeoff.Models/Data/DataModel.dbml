@@ -1,0 +1,425 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Takeoff" EntityNamespace="Takeoff.Models.Data" ContextNamespace="Takeoff.Models" Class="DataModelBase" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=steve-macbook\sqlexpress;Initial Catalog=Takeoff;Integrated Security=True" SettingsObjectName="Takeoff.Models.Properties.Settings" SettingsPropertyName="TakeoffConnectionString1" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Account" Member="Accounts">
+    <Type Name="Account">
+      <Column Name="ThingId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="LogoImageId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FilesLocation" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="PlanId" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Status" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="ConvertedFromBetaOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DemoConvertedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="SubscriptionCreatedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="TrialPeriodEndsOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CurrentBillingPeriodStartedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AccountMembership" Member="AccountMemberships">
+    <Type Name="AccountMembership">
+      <Column Name="ThingId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="RoleName" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ActivitySummaryEmail" Member="ActivitySummaryEmails">
+    <Type Name="ActivitySummaryEmail">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SentOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="PeriodStart" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="PeriodEnd" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="JobId" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Change" Member="Actions">
+    <Type Name="Action">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ThingId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ChangeDetailsId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ChangeSource" Member="ActionSources">
+    <Type Name="ActionSource">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ThingId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ThingType" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="ThingParentId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Action" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Data" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Comment" Member="Comments">
+    <Type Name="Comment">
+      <Column Name="ThingId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Body" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedBySemiAnonymousUserId" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="CreatedBySemiAnonymousUserName" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.EncodeLog" Member="EncodeLogs">
+    <Type Name="EncodeLog">
+      <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AccountId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="InputId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="InputUrl" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="InputBytes" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="InputOriginalFileName" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="InputDuration" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="UploadDuration" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="UploadCompleted" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Encoder" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="EncoderJobId" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="EncodingTriageRequested" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EncodingTriageStarted" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EncodingRequested" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EncodingCompleted" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ErrorCode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Outputs" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="InputFileFormat" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="InputVideoFormat" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="InputFrameRate" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="InputWidth" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="InputHeight" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="InputVideoBitRate" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="InputAudioFormat" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="InputAudioBitRate" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="JobCompleted" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="UploadStarted" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="JobDuration" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.FeatureAccess" Member="FeatureAccesses">
+    <Type Name="FeatureAccess">
+      <Column Name="ThingId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[File]" Member="Files">
+    <Type Name="File">
+      <Column Name="ThingId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="FileName" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="OriginalFileName" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="Bytes" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Location" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="DeletePhysicalFile" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="PhysicalFileDeleted" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="IsSample" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="IsComplimentary" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.FileDownloadLog" Member="FileDownloadLogs">
+    <Type Name="FileDownloadLog">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="AccountId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FileThingId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FileThingType" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="Url" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="Bytes" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="OriginalFileName" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="IsSampleFile" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.FileUploadLog" Member="FileUploadLogs">
+    <Type Name="FileUploadLog">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="AccountId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FileThingId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FileThingType" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="Url" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="Bytes" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="OriginalFileName" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="UploadDuration" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="UploadStarted" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="UploadCompleted" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Image" Member="Images">
+    <Type Name="Image">
+      <Column Name="ThingId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Width" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Height" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.JobLog" Member="JobLogs">
+    <Type Name="JobLog">
+      <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="StartedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EndedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="JobType" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="Status" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Error" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Membership" Member="Memberships">
+    <Type Name="Membership">
+      <Column Name="ThingId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TargetId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.MembershipRequest" Member="MembershipRequests">
+    <Type Name="MembershipRequest">
+      <Column Name="ThingId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Note" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="IsInvitation" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Role" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.MembershipRequestAutoReponse" Member="MembershipRequestAutoReponses">
+    <Type Name="MembershipRequestAutoReponse">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserRequestedBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Accept" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsInvitation" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.OutgoingEmailLinkClickLog" Member="OutgoingEmailLinkClickLogs">
+    <Type Name="OutgoingEmailLinkClickLog">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MessageId" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="Date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Url" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.OutgoingEmailLog" Member="OutgoingEmailLogs">
+    <Type Name="OutgoingEmailLog">
+      <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ToAddress" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
+      <Column Name="ToUserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="JobId" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="Template" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="SentOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="SendAttemptedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Error" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="Provider" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="IncludedTrackingImage" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="OpenCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LinkClickCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.OutgoingEmailOpenLog" Member="OutgoingEmailOpenLogs">
+    <Type Name="OutgoingEmailOpenLog">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MessageId" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="Date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Permission" Member="Permissions">
+    <Type Name="Permission">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ApplicationId" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="RoleName" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="ContainerThingType" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="TargetThingType" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="Action" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Condition" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+      <Column Name="ConditionContext" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Project" Member="Projects">
+    <Type Name="Project">
+      <Column Name="ThingId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="FilesLocation" Type="System.String" DbType="VarChar(80)" CanBeNull="true" />
+      <Column Name="LogoImageId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IsSample" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="IsComplimentary" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="SemiAnonymousPassword" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
+      <Column Name="SemiAnonymousUserCanComment" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="VanityUrl" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.RecurlyWebHookLog" Member="RecurlyWebHookLogs">
+    <Type Name="RecurlyWebHookLog">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="AccountId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Type" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="ReceivedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ServerRequestId" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="Processed" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ServerRequestLog" Member="ServerRequestLogs">
+    <Type Name="ServerRequestLog">
+      <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RequestedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="SavedRequest" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="SavedResponse" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="UrlLocalPath" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Setting" Member="Settings">
+    <Type Name="Setting">
+      <Column Name="ThingId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ApplicationId" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="[Key]" Member="Key" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Value" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Thing" Member="Things">
+    <Type Name="Thing">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Type" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedByUserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedOn" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="ParentId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ContainerId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IsContainer" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="AccountId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DeletedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="LinkedThingsId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="OwnerUserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ThingAccessLog" Member="ThingAccessLogs">
+    <Type Name="ThingAccessLog">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="ThingId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[User]" Member="Users">
+    <Type Name="User">
+      <Column Name="ThingId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Password" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="PasswordSalt" Type="System.String" DbType="VarChar(128)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="PasswordResetKey" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="IsVerified" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="VerificationKey" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="InvitedByUserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TimezoneOffset" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SignupSource" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
+      <Column Name="FirstName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="LastName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Company" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="ConvertedFromBetaOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VideoComment" Member="VideoComments">
+    <Type Name="VideoComment">
+      <Column Name="ThingId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="StartTime" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VideoStream" Member="VideoStreams">
+    <Type Name="VideoStream">
+      <Column Name="ThingId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="VideoBitRate" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AudioBitRate" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Profile" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VideoThumbnail" Member="VideoThumbnails">
+    <Type Name="VideoThumbnail">
+      <Column Name="ThingId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Time" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="Width" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Height" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VideoWatchLog" Member="VideoWatchLogs">
+    <Type Name="VideoWatchLog">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="AccountId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="VideoId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="VideoStreamId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ProductionId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Url" Type="System.String" DbType="VarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="IsSample" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Profile" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Duration" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Bytes" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ViewPrompt" Member="ViewPrompts">
+    <Type Name="ViewPrompt">
+      <Column Name="ThingId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="[View]" Member="View" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="ExpiresOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="StartsOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SemiAnonymousUser" Member="SemiAnonymousUsers">
+    <Type Name="SemiAnonymousUser">
+      <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CreatedOn" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="TargetId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UserName" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Video" Member="Videos">
+    <Type Name="Video">
+      <Column Name="ThingId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="OriginalFileId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="VarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="Duration" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="IsSourceDownloadable" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="IsSample" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="IsComplimentary" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="GuestPassword" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
+      <Column Name="GuestsCanComment" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="CustomUrl" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.BusinessEvent" Member="BusinessEvents">
+    <Type Name="BusinessEvent">
+      <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Type" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="OccuredOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AccountId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TargetId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RequestId" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.BusinessEventParameter" Member="BusinessEventParameters">
+    <Type Name="BusinessEventParameter">
+      <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="BusinessEventId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="[Key]" Member="Key" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="ValueString" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="ValueBool" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ValueDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ValueInt" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ValueFloat" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ValueGuid" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[Plan]" Member="Plans">
+    <Type Name="Plan">
+      <Column Name="Id" Type="System.String" DbType="VarChar(100) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CreatedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Title" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Notes" Type="System.String" DbType="VarChar(5000)" CanBeNull="true" />
+      <Column Name="BillingIntervalLength" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="BillingIntervalUnit" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="TrialIntervalLength" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TrialIntervalUnit" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="VideosTotalMaxCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="VideosPerBillingCycleMax" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="VideoFileSizeMaxBytes" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="AssetsTotalMaxBytes" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="AssetsTotalMaxCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AssetsAllTimeMaxCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AssetFileSizeMaxBytes" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="ProductionLimit" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AllowSignups" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="PriceInCents" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="VideoDurationLimit" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>

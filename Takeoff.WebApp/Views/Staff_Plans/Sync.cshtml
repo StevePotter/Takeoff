@@ -1,0 +1,11 @@
+﻿@{
+    Layout = "~/Views/Staff/staff-layout.cshtml";
+    ViewData["SubTitle"] = "Plans";
+}
+
+    <p>This will update Recurly's plan database to match Takeoff's.  It might modify Recurly data.</p>
+        <form id="mainForm" method="post" action="@Url.Action("Sync","Staff_Plans")">
+            <div class="formfield actions">
+                <input type="submit" value="Yes, I want to sync Recurly with Takeoff." />
+            </div>
+    </form>

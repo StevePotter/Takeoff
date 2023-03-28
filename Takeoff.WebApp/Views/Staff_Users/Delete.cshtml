@@ -1,0 +1,12 @@
+﻿@{
+    Layout = "~/Views/Staff/staff-layout.cshtml";
+}
+
+<h1>@("Delete User") + @ViewBag.Id</h1>
+
+<p class="@Html.AlertWarningClass()">There is no undo!</p>
+        <form method="post" action="@Url.Action("Delete", "Staff_Users", new { id = ViewBag.Id })" class="form-horizontal">
+            <div class="@Html.FormActionsClass()">
+                <input class="btn btn-danger" value="@("Delete User ")" type="submit" />
+            </div>
+        </form>

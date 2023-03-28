@@ -1,0 +1,44 @@
+﻿@model AccountMemberships_Details
+@{
+    Layout = "~/Views/Account/Layout.cshtml";
+    
+    ViewData["Heading"] = "Membership Settings";
+}
+@section JsDocReady {
+    $("#deleteMemberForm").submit(function(e)
+    {
+        if (!confirm("Are you sure you want to do this?  You will be removed from all productions on this account."))
+        {
+            return false;
+        }
+    });
+}
+<h3>@("Membership Details")</h3>
+
+<dl class="dl-horizontal">
+    <dt>@("Account Owner Name")</dt>
+    <dd>@Model.AccountOwner.Name</dd>
+    <dt>@("Account Owner Email")</dt>
+    <dd><a href="@Html.Attribute("mailto:" + Model.AccountOwner.Email)">@Model.AccountOwner.Email</a></dd>
+    <dt>@("Added to Account")</dt>
+    <dd>@Model.JoinedAccountOn.ToString(DateTimeFormat.ShortDateTime)</dd>
+</dl>
+@if (Model.Productions.HasItems())
+{
+    <h3>@("Productions")</h3>
+    <p>@("You are a member of the following productions on this account:")</p>
+    <ul>
+        @foreach (var production in Model.Productions)
+        {
+            <li><a href="@Url.ActionDetails("Productions", production.Id)" target="_blank">@production.Title</a></li>           
+        }
+    </ul>
+}
+
+<h3>@("Disassociate")</h3>
+<p>@("You will be removed from all productions on this account.")</p>
+<form method="post" id="deleteMemberForm" action="@(Url.Action<AccountMembershipsController>(c => c.Delete(Model.Id)))">
+    @Html.HiddenFor(m => m.Id)
+    <input type="submit" class="btn btn-danger" value="@("Disassociate from Account")" />
+</form>
+

@@ -1,0 +1,38 @@
+﻿@model Email_MembershipRequestToProduction
+@{
+    Layout = "~/Views/Email/Layout-ProductionBase.cshtml";
+    var changeSettingsUrl = Url.Action<AccountController>(c => c.Privacy(), UrlType.AbsoluteHttps);
+}
+@section Subject
+{
+I Want to Join @Model.ProductionTitle
+}
+@section HtmlHeader {
+@Model.RequestFromName would like to join @Model.ProductionTitle
+}
+@section HtmlExplanation
+{
+You are recieving this because you are a member of Takeoff and your settings allow other users to request membership to your productions.  Visit <a href="@changeSettingsUrl">@changeSettingsUrl</a> to change this setting.
+}
+@section Plain {
+@Model.RequestFromName would like you to join @Model.ProductionTitle.  To view it, please go to the following link:
+@Html.Raw(Model.ProductionUrl)
+@if (Model.Note.HasChars())
+{<text>    
+Here's a @Html.Raw(Model.RequestFromName) wrote to you:
+@Html.Raw(Model.Note.Indent())
+</text>
+}
+}
+
+@if (Model.Note.HasChars())
+{
+<p class="text">Here's a note @Model.RequestFromName wrote for you:<br/><span class="video-notes">@Model.Note</span></p>
+}
+
+<p class="big-link-container">
+<a href="@Model.RequestUrl">Accept or Decline the Request</a>
+<div class="link-to-copy">If clicking the above link didn't work, just copy and paste the following into your browser address bar:<br><b>@Model.ProductionUrl</b></div>
+</p>
+
+<p class="text">You can reach @Model.RequestFromName via email at <a href="mailto:@Model.RequestFromEmail">@Model.RequestFromEmail</a>, or by replying to this message.</p>
